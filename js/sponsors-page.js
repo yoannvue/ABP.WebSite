@@ -15,7 +15,7 @@
 
     const link = url
       ? `<a class="sponsor-link" href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">Voir le site</a>`
-      : '<span class="sponsor-link is-disabled">Sans site web</span>';
+      : '<span class="sponsor-link is-disabled"></span>';
 
     return `
       <article class="sponsor-card">
