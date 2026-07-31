@@ -3,42 +3,16 @@
     <head>
         <meta charSet="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <link rel="preload" as="image" href="/assets/logo-abp.png"/>
-        <link rel="stylesheet" href="/assets/index-CRKL6PzU.css" type="text/css" data-precedence="default"/>
+        <link rel="preload" as="image" href="/ressources/logo-abp.png"/>
+        <link rel="stylesheet" href="/css/site.css" type="text/css" data-precedence="default"/>
         <title>Amicale Basket Pecquencourt - Montigny en Ostrevent</title>
         <meta name="description" content="Actualités, horaires, salles, coachs et équipes de l’Amicale Basket Pecquencourt - Montigny en Ostrevent."/>
-        <link rel="modulepreload" href="/assets/index-Ba89Tmdw.js"/>
-        <link rel="modulepreload" href="/assets/equipes-DKO7hnSp.js"/>
-        <link rel="modulepreload" href="/assets/club-Bj7tUB4l.js"/>
-        <link rel="icon" href="/assets/logo-abp.png"/>
+        <link rel="icon" href="/ressources/logo-abp.png"/>
     </head>
-    <body>
+    <body data-page="equipes">
         <div class="site-shell">
             <a class="skip-link" href="#contenu">Aller au contenu</a>
-            <header class="site-header">
-                <a href="/" class="brand">
-                    <img src="/assets/logo-abp.png" alt="Logo de l’Amicale Basket Pecquencourt - Montigny en Ostrevent"/>
-                    <span class="brand-copy">
-                        <strong>Amicale Basket</strong>
-                        <span>Pecquencourt · Montigny</span>
-                    </span>
-                </a>
-                <button class="menu-button" type="button" aria-label="Ouvrir le menu" aria-expanded="false">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu" aria-hidden="true">
-                        <path d="M4 5h16"></path>
-                        <path d="M4 12h16"></path>
-                        <path d="M4 19h16"></path>
-                    </svg>
-                </button>
-                <nav class="main-nav" aria-label="Navigation principale">
-                    <a href="/" class="nav-link">Accueil</a>
-                    <a href="/entrainements" class="nav-link">Entraînements</a>
-                    <a href="/salles" class="nav-link">Salles</a>
-                    <a href="/coachs" class="nav-link">Coachs</a>
-                    <a class="nav-link active active" href="/equipes" data-status="active" aria-current="page">Équipes</a>
-                </nav>
-            </header>
-            <script src="/js/menu.js"></script>
+            <header id="site-header"></header>
             <main id="contenu">
                 <!--$-->
                 <section class="page-intro">
@@ -46,10 +20,6 @@
                         <span class="eyebrow">De 5 à 77 ans</span>
                         <h1>Une équipe pour chaque envie</h1>
                         <p>Apprendre, progresser, gagner ou simplement retrouver le plaisir de jouer : les Cerfs accueillent tous les profils.</p>
-                    </div>
-                    <div class="page-marker" aria-hidden="true">
-                        <span>05</span>
-                        <i></i>
                     </div>
                 </section>
                 <section class="teams-list section-wrap">
@@ -152,19 +122,8 @@
                     <a href="/pages/entrainements.html" class="button button-light">Voir les créneaux</a>
                 </section>
             </main>
-            <footer class="site-footer">
-                <div class="footer-mark">
-                    <img src="/ressources/logo-abp.png" alt=""/>
-                    <div>
-                        <strong>Deux villes. Un club.</strong>
-                        <span>Depuis 2019, le basket nous rassemble.</span>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <strong>Contact du club à renseigner</strong>
-                    <span>Informations de saison à valider auprès du club.</span>
-                </div>
-            </footer>
+            <footer id="site-footer"></footer>
         </div>
     </body>
+    <script src="/js/site-shell.js" type="text/javascript"></script>
 </html>
