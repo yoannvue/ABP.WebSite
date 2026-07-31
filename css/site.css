@@ -592,10 +592,8 @@ img {
 
 .hero-emblem img {
     z-index: 2;
-    filter: drop-shadow(0 32px 25px #0a0a2752);
     width: min(480px,90%);
     position: relative;
-    left: 50px;
 }
 
 
@@ -728,13 +726,8 @@ img {
     gap: 8px 16px;
     min-height: 166px;
     padding: 27px 30px;
-    transition: transform .25s;
     display: grid;
     position: relative
-}
-
-.quick-card:hover {
-    transform: translateY(-7px)
 }
 
 .quick-card>svg:first-child {
