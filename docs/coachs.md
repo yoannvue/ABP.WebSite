@@ -92,3 +92,7 @@ Le script sera executé manuellement par l'utilisateur.
 |Daniel|Thomas|Coach Seniors|BF|/ressources/Coachs/BF Thomas.jpg|Responsable Secteur Masculin||
 |Halluin|Estelle|Coach Seniors|||||
 |Rogala|Emilien|Directeur technique|||||
+
+## Ligne de commande d'execution
+
+node "z:\Basket\ABP.WebSite\docs\generate-coachs.js" "z:\Basket\ABP.WebSite\docs\coachs.md" "z:\Basket\ABP.WebSite\pages\coachs.html"
