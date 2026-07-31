@@ -79,7 +79,7 @@ Le script sera executé manuellement par l'utilisateur.
 |Sede|John|Coach U11F| | | ||
 |Dorchy|Steeve|Coach U13F| CS 1 |/ressources/Coachs/Diplome Steeve.jpeg | Responsable Secteur Feminin| /ressources/Coachs/Steeve Dorchy.JPG|
 |Hayez|Gaëtan|Coach U13F| | | |/ressources/Coachs/Gaetan.JPG|
-|Routier|Jimmy|Coach U13M| | | ||
+|Routier|Jimmy|Coach U13M|BF |/ressources/Coachs/BF Jimmy.jpeg | ||
 |Leleu|Guillaume|Coach U13M| | | |/ressources/Coachs/Guillaume.JPG|
 |Oudhof|Anne Gaëlle|Coach U15F| | | |/ressources/Coachs/Anne Gaelle.JPG|
 |Dalla Costa|Manon|Coach U15F & Loisirs| BF|/ressources/Coachs/Bf Manon.jpg | |/ressources/Coachs/Manon.JPEG|

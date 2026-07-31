@@ -1,0 +1,236 @@
+[
+  {
+    "prenom": "Pascal",
+    "nom": "Dorchy",
+    "role": "Coach U7",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "Président",
+    "image": "/ressources/Coachs/Pascal Dorchy.JPG"
+  },
+  {
+    "prenom": "Sade",
+    "nom": "Aded",
+    "role": "Coach U7",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Eric",
+    "nom": "Cartigny",
+    "role": "Coach U7",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Anaelle",
+    "nom": "Becq",
+    "role": "Coach U9M",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Kornelia",
+    "nom": "Chauffaud",
+    "role": "Coach U9F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Camille",
+    "nom": "Vue",
+    "role": "Coach U9F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Bastien",
+    "nom": "Chausson",
+    "role": "Coach U9F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Yoann",
+    "nom": "Vue",
+    "role": "Coach U11F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Yoann.JPG"
+  },
+  {
+    "prenom": "Sébastien",
+    "nom": "Marfil",
+    "role": "Coach U11F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Cedric",
+    "nom": "Labre",
+    "role": "Coach U11M",
+    "diplome": "BF",
+    "imageDiplome": "/ressources/Coachs/BF Cedric.jpg",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "John",
+    "nom": "Sede",
+    "role": "Coach U11F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Steeve",
+    "nom": "Dorchy",
+    "role": "Coach U13F",
+    "diplome": "CS 1",
+    "imageDiplome": "/ressources/Coachs/Diplome Steeve.jpeg",
+    "specification": "Responsable Secteur Feminin",
+    "image": "/ressources/Coachs/Steeve Dorchy.JPG"
+  },
+  {
+    "prenom": "Gaëtan",
+    "nom": "Hayez",
+    "role": "Coach U13F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Gaetan.JPG"
+  },
+  {
+    "prenom": "Jimmy",
+    "nom": "Routier",
+    "role": "Coach U13M",
+    "diplome": "BF",
+    "imageDiplome": "/ressources/Coachs/BF Jimmy.jpeg",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Guillaume",
+    "nom": "Leleu",
+    "role": "Coach U13M",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Guillaume.JPG"
+  },
+  {
+    "prenom": "Anne Gaëlle",
+    "nom": "Oudhof",
+    "role": "Coach U15F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Anne Gaelle.JPG"
+  },
+  {
+    "prenom": "Manon",
+    "nom": "Dalla Costa",
+    "role": "Coach U15F & Loisirs",
+    "diplome": "BF",
+    "imageDiplome": "/ressources/Coachs/Bf Manon.jpg",
+    "specification": "",
+    "image": "/ressources/Coachs/Manon.JPEG"
+  },
+  {
+    "prenom": "Ludovic",
+    "nom": "Mascart",
+    "role": "Coach U15M",
+    "diplome": "BF",
+    "imageDiplome": "/ressources/Coachs/BF Ludovic.jpg",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Aurélien",
+    "nom": "Dziadek",
+    "role": "Coach U15M",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Manu",
+    "nom": "Chauffaud",
+    "role": "Coach U18F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Manu.JPG"
+  },
+  {
+    "prenom": "Elio",
+    "nom": "Degardin",
+    "role": "Coach U18F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Remy",
+    "nom": "Dechappe",
+    "role": "Coach U18F",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/remy dechappe.JPG"
+  },
+  {
+    "prenom": "Anthony",
+    "nom": "Blandin",
+    "role": "Coach Seniors",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Thomas",
+    "nom": "Daniel",
+    "role": "Coach Seniors",
+    "diplome": "BF",
+    "imageDiplome": "/ressources/Coachs/BF Thomas.jpg",
+    "specification": "Responsable Secteur Masculin",
+    "image": ""
+  },
+  {
+    "prenom": "Estelle",
+    "nom": "Halluin",
+    "role": "Coach Seniors",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  },
+  {
+    "prenom": "Emilien",
+    "nom": "Rogala",
+    "role": "Directeur technique",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": ""
+  }
+]

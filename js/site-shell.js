@@ -15,7 +15,8 @@
     '/pages/salles.html': 'salles',
     '/pages/coach.html': 'coachs',
     '/pages/coachs.html': 'coachs',
-    '/pages/equipes.html': 'equipes'
+    '/pages/equipes.html': 'equipes',
+    '/pages/sponsors.html': 'sponsors'
   };
 
   function getCurrentPageKey() {
