@@ -915,7 +915,6 @@ img {
     background: var(--cream);
     border-bottom: 1px solid var(--line);
     grid-template-columns: 1fr 300px;
-    min-height: 430px;
     padding: 90px max(6vw,50vw - 590px);
     display: grid;
     position: relative;
@@ -1767,12 +1766,12 @@ img {
 
     .page-intro {
         grid-template-columns: 1fr;
-        min-height: 560px;
-        padding: 70px 22px 210px
+        max-height: 250px;
+        padding: 30px 22px 30px;
     }
 
     .page-intro h1 {
-        font-size: clamp(46px,13vw,65px)
+        font-size: clamp(20px,30px,40px)
     }
 
     .page-intro p {
