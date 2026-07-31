@@ -1486,10 +1486,15 @@ img {
 .sponsors-grid {
     background: var(--paper);
     border: 1px solid var(--line);
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    /* 
+      1. auto-fit : adapte le nombre de colonnes automatiquement
+      2. 180px : largeur MINIMALE d'une colonne avant d'aller à la ligne
+      3. 1fr : chaque colonne prend tout l'espace disponible
+    */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 24px;
     padding: 24px;
-    display: grid
+    display: grid;
 }
 
 .sponsor-card {
