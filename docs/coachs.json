@@ -6,7 +6,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "Président",
-    "image": "/ressources/Coachs/Pascal Dorchy.JPG"
+    "image": "/ressources/Coachs/Pascal Dorchy.jpg"
   },
   {
     "prenom": "Sade",
@@ -69,7 +69,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/Yoann.JPG"
+    "image": "/ressources/Coachs/Yoann.jpg"
   },
   {
     "prenom": "Sébastien",
@@ -87,7 +87,7 @@
     "diplome": "BF",
     "imageDiplome": "/ressources/Coachs/BF Cedric.jpg",
     "specification": "",
-    "image": ""
+    "image": "/ressources/Coachs/cedric.png"
   },
   {
     "prenom": "John",
@@ -103,9 +103,9 @@
     "nom": "Dorchy",
     "role": "Coach U13F",
     "diplome": "CS 1",
-    "imageDiplome": "/ressources/Coachs/Diplome Steeve.jpeg",
+    "imageDiplome": "/ressources/Coachs/Diplome Steeve.jpg",
     "specification": "Responsable Secteur Feminin",
-    "image": "/ressources/Coachs/Steeve Dorchy.JPG"
+    "image": "/ressources/Coachs/Steeve Dorchy.jpg"
   },
   {
     "prenom": "Gaëtan",
@@ -114,14 +114,14 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/Gaetan.JPG"
+    "image": "/ressources/Coachs/Gaetan.jpg"
   },
   {
     "prenom": "Jimmy",
     "nom": "Routier",
     "role": "Coach U13M",
     "diplome": "BF",
-    "imageDiplome": "/ressources/Coachs/BF Jimmy.jpeg",
+    "imageDiplome": "/ressources/Coachs/BF Jimmy.jpg",
     "specification": "",
     "image": ""
   },
@@ -132,7 +132,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/Guillaume.JPG"
+    "image": "/ressources/Coachs/Guillaume.jpg"
   },
   {
     "prenom": "Anne Gaëlle",
@@ -141,7 +141,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/Anne Gaelle.JPG"
+    "image": "/ressources/Coachs/Anne Gaelle.jpg"
   },
   {
     "prenom": "Manon",
@@ -150,7 +150,7 @@
     "diplome": "BF",
     "imageDiplome": "/ressources/Coachs/Bf Manon.jpg",
     "specification": "",
-    "image": "/ressources/Coachs/Manon.JPEG"
+    "image": "/ressources/Coachs/Manon.jpg"
   },
   {
     "prenom": "Ludovic",
@@ -177,7 +177,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/Manu.JPG"
+    "image": "/ressources/Coachs/Manu.jpg"
   },
   {
     "prenom": "Elio",
@@ -195,7 +195,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/remy dechappe.JPG"
+    "image": "/ressources/Coachs/remy dechappe.jpg"
   },
   {
     "prenom": "Anthony",
@@ -231,6 +231,6 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": ""
+    "image": "/ressources/Coachs/Emilien.jpg"
   }
 ]

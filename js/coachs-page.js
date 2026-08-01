@@ -30,7 +30,7 @@
     const specification = coach.specification || '';
 
     const portraitImage = image
-      ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="lazy" />`
+      ? `<img class="coach-portrait-image" src="${escapeHtml(image)}" alt="${escapeHtml(name)}" loading="lazy" />`
       : '';
 
     const diplomeHtml = diplome
@@ -41,7 +41,7 @@
                 <small>Diplôme</small>
                 <strong>${escapeHtml(diplome)}</strong>
             </div>
-            ${imageDiplome ? `<img class="coach-diplome" src="${escapeHtml(imageDiplome)}" alt="${escapeHtml(name)}" />` : ''}
+            ${imageDiplome ? `<br/><img class="coach-diplome" src="${escapeHtml(imageDiplome)}" alt="${escapeHtml(name)}" />` : ''}
         </div>`
       : '';
 
