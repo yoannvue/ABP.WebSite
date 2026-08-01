@@ -1,0 +1,62 @@
+[
+    {
+        "date": "Juillet 2026",
+        "categorie": "Training Camp",
+        "titre": "Duo Training Camp 2026",
+        "lien" :"",
+        "contenu": [
+            { 
+                "type": "texte", 
+                "texte": "Clap de fin pour nos 24 sportifs en herbe participant au stage de basket en présence de Virginie Bremont et Sade Aded Hussein."
+            },
+            { 
+                "type": "image", 
+                "lien": "/ressources/Actualites/20260714 - Fin Duo Training Camp.jpg"
+            },
+            { 
+                "type": "image", 
+                "lien": "/ressources/Actualites/20260714 - Fin Duo Training Camp -02.jpg"
+            }
+        ]
+    },
+    {
+        "date": "Juillet 2026",
+        "categorie": "Vie du club",
+        "titre": "Les inscriptions pour la saison 2026 – 2027 sont ouvertes",
+        "lien" :"",
+        "contenu": [
+            { 
+                "type": "texte", 
+                "texte": "Jeunes, adultes, débutants ou compétiteurs : rejoignez les Cerfs pour une nouvelle saison de basket." 
+            }
+        ]
+    },
+    {
+        "date": "Juillet 2026",
+        "categorie": "Horaires",
+        "titre": "Organisation des entrainements",
+        "lien" :"/pages/entrainements.html",
+        "contenu": [
+            { 
+                "type": "texte", 
+                "texte": "Les nouveaux horaires d'entraînement sont disponibles dès maintenant." 
+            }
+        ]
+    },
+     {
+        "date": "Juin 2026",
+        "categorie": "Recompenses",
+        "titre": "Label Parité Sport 2026",
+        "lien" :"https://www.cdosnord.fr/label-parite-sport-2026-12-clubs-nordistes-labellises/",
+        "contenu": [
+            { 
+                "type": "texte", 
+                "texte": "Notre club fait partie des labellisés Parité Sport 2026." 
+            },
+            { 
+                "type": "image", 
+                "lien": "/ressources/Actualites/LABEL_PARITE_SPORT-300x224.jpg" 
+            }
+        ]
+    }
+]
