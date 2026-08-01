@@ -1327,7 +1327,7 @@ img {
 .coach-portrait:before {
     aspect-ratio: 1;
     content: "";
-    border: 1px solid #ffffff52;
+    border: 3px solid #ffffff52;
     border-radius: 50%;
     width: 240px;
     position: absolute
@@ -1425,6 +1425,80 @@ img {
 .teams-list {
     border-top: 2px solid var(--ink);
     margin-block:90px 120px}
+
+.season-block {
+    margin-bottom: 52px
+}
+
+.season-header {
+    margin-bottom: 26px
+}
+
+.season-header h2 {
+    font-family: var(--display);
+    letter-spacing: -.05em;
+    text-transform: uppercase;
+    margin: 10px 0 0;
+    font-size: clamp(32px,4vw,56px)
+}
+
+.season-teams {
+    display: grid;
+    gap: 20px
+}
+
+.team-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 14px 40px rgba(16, 24, 54, 0.04);
+    padding: 22px 24px 18px
+}
+
+.team-card-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: end;
+    margin-bottom: 18px
+}
+
+.team-card-header h3 {
+    font-family: var(--display);
+    letter-spacing: -.04em;
+    text-transform: uppercase;
+    margin: 8px 0 0;
+    font-size: clamp(24px,2.5vw,36px)
+}
+
+.team-card-header .team-level {
+    max-width: 220px;
+    text-align: right
+}
+
+.team-card-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px
+}
+
+.team-photo {
+    margin: 0;
+    overflow: hidden;
+    background: var(--paper);
+    border: 1px solid var(--line)
+}
+
+.team-photo img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    display: block
+}
+
+.team-card-empty {
+    margin: 0;
+    color: var(--muted)
+}
 
 .team-row {
     border-bottom: 1px solid var(--line);

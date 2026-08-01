@@ -1,0 +1,185 @@
+[
+    {
+        "saison": "2026-2027",
+        "equipes": [
+            {
+                "equipe": "U9F",
+                "coach": "Kornélia, Camille et Bastien",
+                "photos": []
+            },
+            {
+                "equipe": "U9M",
+                "coach": "Anaëlle",
+                "photos": []
+            },
+            {
+                "equipe": "U11F",
+                "coach": "Sébastien et Yoann",
+                "photos": []
+            },
+            {
+                "equipe": "U11M",
+                "coach": "Cédric et John",
+                "photos": []
+            },
+            {
+                "equipe": "U13F",
+                "coach": "Steeve et Gaëtan",
+                "photos": []
+            },
+            {
+                "equipe": "U13M",
+                "coach": "Jimmy et Guillaume",
+                "photos": []
+            },
+            {
+                "equipe": "U15F",
+                "coach": "Anne Gaëlle et Manon",
+                "photos": []
+            },
+            {
+                "equipe": "U15M",
+                "coach": "Ludovic et Aurélien",
+                "photos": []
+            },
+            {
+                "equipe": "U18F",
+                "coach": "Manu et Elio",
+                "photos": []
+            },
+            {
+                "equipe": "U18M",
+                "coach": "Remy",
+                "photos": []
+            },
+            {
+                "equipe": "Seniors M",
+                "coach": "Anthony, Thomas et Estelle",
+                "photos": []
+            },
+            {
+                "equipe": "Loisirs",
+                "coach": "Manon",
+                "photos": []
+            }
+        ]
+    },
+    {
+        "saison": "2025-2026",
+        "equipes": [
+            {
+                "equipe": "U9F",
+                "coach": "Yoann et Jérémy",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U9F1 - 01.jpg",
+                    "/ressources/Equipes/2025-2026/U9F1 - 02.jpg",
+                    "/ressources/Equipes/2025-2026/U9F-2.jpg"
+                ]
+            },
+            {
+                "equipe": "U9M",
+                "coach": "Anaëlle",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U9M.jpg"
+                ]
+            },
+            {
+                "equipe": "U11F",
+                "coach": "Anne Gaëlle et Gaëtan",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U11F - 01.jpg"
+                ]
+            },
+            {
+                "equipe": "U11M1",
+                "coach": "Jordan et Guillaume",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U11M1.jpg"
+                ]
+            },
+            {
+                "equipe": "U11M2",
+                "coach": "Cédric",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U11M2.jpg"
+                ]
+            },
+            {
+                "equipe": "U13F",
+                "coach": "Steeve",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U13F - 01.jpg"
+                ]
+            },
+            {
+                "equipe": "U13M1",
+                "coach": "Thomas et Manon",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U13M1.jpg",
+                    "/ressources/Equipes/2025-2026/U13M1 - 01.jpg"
+                ]
+            },
+            {
+                "equipe": "U13M2",
+                "coach": "Jimmy",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U13M2 - 01.jpg",
+                    "/ressources/Equipes/2025-2026/U13M2 - 02.jpg"
+                ]
+            },
+            {
+                "equipe": "U15F",
+                "coach": "Mohammed",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U15F.jpg",
+                    "/ressources/Equipes/2025-2026/U15F - 02.jpg"
+                ]
+            },
+            {
+                "equipe": "U15M",
+                "coach": "Christopher et Alain",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U15M.jpg"
+                ]
+            },
+            {
+                "equipe": "U18F",
+                "coach": "Manon",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U18F.jpg",
+                    "/ressources/Equipes/2025-2026/U18F - 02.jpg"
+                ]
+            },
+            {
+                "equipe": "U18M1",
+                "coach": "Steeve",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U18M1.jpg"
+                ]
+            },
+            {
+                "equipe": "U18M2",
+                "coach": "Remy et Jerome",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/U18M2.jpg",
+                    "/ressources/Equipes/2025-2026/U18M2 - 02.jpg"
+                ]
+            },
+            {
+                "equipe": "Seniors M",
+                "coach": "Anthony et Estelle",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/seniors 1.jpg",
+                    "/ressources/Equipes/2025-2026/seniors 2.jpg"
+                ]
+            },
+            {
+                "equipe": "Loisirs",
+                "coach": "Manon",
+                "photos": [
+                    "/ressources/Equipes/2025-2026/loisirs.jpg"
+                ]
+            }
+        ]
+    }
+]
