@@ -3,7 +3,17 @@
  */
 
 import { FlipCard } from './flip-card.js';
-import { getRarityLabel } from './utils.js';
+import { buildGiftUrl, getRarityLabel } from './utils.js';
+
+function generateGiftQrCode(cardId) {
+  const giftUrl = buildGiftUrl(cardId);
+  const qrUrl = new URL('https://api.qrserver.com/v1/create-qr-code/');
+  qrUrl.searchParams.set('data', giftUrl);
+  qrUrl.searchParams.set('size', '320x320');
+  qrUrl.searchParams.set('format', 'png');
+  qrUrl.searchParams.set('ecc', 'M');
+  return qrUrl.toString();
+}
 
 export function setupNavigation() {
   const navBtns = document.querySelectorAll('.nav-btn');
@@ -113,14 +123,72 @@ export function setupConsentBanner() {
   }
 }
 
-export function showCardDetail(card, isOwned) {
+export function showCardDetail(card, isOwned, onGive = null) {
   const modal = document.getElementById('card-modal');
+  const modalContent = modal.querySelector('.modal-content');
+  const modalImage = modal.querySelector('#modal-image');
+  const giftUrlEl = modalContent.querySelector('.gift-url');
+  const giftUrlParagraph = giftUrlEl || document.createElement('p');
+
+  if (!giftUrlEl) {
+    giftUrlParagraph.className = 'gift-url';
+    giftUrlParagraph.style.display = 'none';
+    modalContent.appendChild(giftUrlParagraph);
+  }
   
-  modal.querySelector('#modal-image').src = card.images[0]?.url || '';
+  modalImage.src = card.images[0]?.url || '';
+  modalImage.alt = card.displayName;
   modal.querySelector('#modal-title').textContent = card.displayName;
   modal.querySelector('#modal-category').textContent = card.category;
   modal.querySelector('#modal-owned').innerHTML = isOwned ? '✅ Obtenue' : '❌ Manquante';
   modal.querySelector('#modal-rarity').textContent = getRarityLabel(card.weight);
+  if (giftUrlParagraph) {
+    giftUrlParagraph.style.display = 'none';
+    giftUrlParagraph.textContent = '';
+  }
+
+  let actionsContainer = modalContent.querySelector('.modal-actions');
+  if (!actionsContainer) {
+    actionsContainer = document.createElement('div');
+    actionsContainer.className = 'modal-actions';
+    modalContent.appendChild(actionsContainer);
+  }
+
+  actionsContainer.innerHTML = '';
+
+  if (onGive) {
+    const giveBtn = document.createElement('button');
+    giveBtn.type = 'button';
+    giveBtn.className = 'btn-secondary';
+    giveBtn.textContent = 'Donner';
+    giveBtn.addEventListener('click', () => {
+      try {
+        const qrCodeUrl = generateGiftQrCode(card.id);
+        const giftUrl = buildGiftUrl(card.id);
+
+        modalImage.src = qrCodeUrl;
+        modalImage.alt = `QR code pour donner ${card.displayName}`;
+        modal.querySelector('#modal-title').textContent = 'Code QR de donation';
+        modal.querySelector('#modal-category').textContent = 'Carte à offrir';
+        modal.querySelector('#modal-owned').innerHTML = '🚚 Donnée';
+        modal.querySelector('#modal-rarity').textContent = 'QR code';
+
+        giftUrlParagraph.textContent = `URL générée : ${giftUrl}`;
+        giftUrlParagraph.style.display = 'block';
+        giftUrlParagraph.style.wordBreak = 'break-all';
+        giftUrlParagraph.style.fontSize = '12px';
+        giftUrlParagraph.style.color = '#4b5563';
+        giftUrlParagraph.style.marginTop = '12px';
+
+        actionsContainer.innerHTML = '';
+        onGive();
+      } catch (error) {
+        console.error('Erreur génération QR code', error);
+        alert('Impossible de générer le QR code pour cette carte.');
+      }
+    });
+    actionsContainer.appendChild(giveBtn);
+  }
   
   modal.style.display = 'flex';
 

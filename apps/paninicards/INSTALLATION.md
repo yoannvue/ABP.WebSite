@@ -2,6 +2,8 @@
 
 ## ✨ Modifications principales
 
+?gift=c3RlZXZlLWNvYWNoLTAwNA
+
 ### 1. **Configuration restructurée** ✅
 Ton `config.json` a été intégré avec une nouvelle structure :
 - Section `gallery` séparée avec `sections` et `subsections`

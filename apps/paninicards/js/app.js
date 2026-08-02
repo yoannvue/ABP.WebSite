@@ -5,6 +5,7 @@
 import { initGame, drawCardsForToday, getPlayerStats } from './game.js';
 import { setupNavigation, displayDrawnCards, updateProgress, displayMissing, setupConsentBanner } from './ui.js';
 import { getCollection, saveCollection, exportCollection, importCollection, deleteCollection } from './storage.js';
+import { decodeGiftValue } from './utils.js';
 
 let config = null;
 
@@ -14,7 +15,10 @@ async function init() {
     config = await initGame();
     console.log('Config chargée :', config);
 
-    // 2. Setup UI général
+    // 2. Traiter un cadeau reçu via querystring
+    applyGiftFromUrl();
+
+    // 3. Setup UI général
     setupConsentBanner();
     setupNavigation();
 
@@ -27,6 +31,52 @@ async function init() {
   } catch (error) {
     console.error('Erreur lors de l\'initialisation', error);
     alert('Erreur lors du chargement du jeu. Rafraîchissez la page.');
+  }
+}
+
+function applyGiftFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const giftValue = params.get('gift');
+
+  if (!giftValue || !config?.cards) {
+    return;
+  }
+
+  try {
+    const cardId = decodeGiftValue(giftValue);
+    const isValidCard = config.cards.some(card => card.id === cardId);
+
+    if (!isValidCard) {
+      console.warn('Carte cadeau inconnue', cardId);
+      return;
+    }
+
+    const stored = getCollection();
+    const collection = Array.isArray(stored.collection) ? [...stored.collection] : [];
+    collection.push(cardId);
+    saveCollection({ ...stored, collection });
+
+    const drawSection = document.getElementById('draw-section');
+    const drawStatus = document.getElementById('draw-status');
+
+    if (drawSection) {
+      drawSection.classList.remove('hidden');
+    }
+
+    if (drawStatus) {
+      drawStatus.textContent = 'Cadeau reçu ! Merci beaucoup !';
+      drawStatus.style.display = 'block';
+      drawStatus.style.color = '#16a34a';
+      drawStatus.style.fontWeight = 'bold';
+    }
+
+    localStorage.setItem('paniniConsent', 'true');
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete('gift');
+    window.history.replaceState({}, '', url);
+  } catch (error) {
+    console.error('Erreur lecture cadeau', error);
   }
 }
 

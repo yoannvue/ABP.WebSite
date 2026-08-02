@@ -242,8 +242,8 @@ body {
 
 .draw-status {
   margin: 20px 0;
-  font-size: 16px;
-  color: var(--text-light);
+  font-size: 30px;
+  color: green;
 }
 
 /* ===== Boutons ===== */
@@ -420,8 +420,7 @@ body {
 
 /* ===== Progression ===== */
 .progress-section {
-  background: #f9fafb;
-  padding: 20px;
+   padding: 20px;
   border-radius: var(--border-radius);
   margin-top: 30px;
 }
@@ -457,7 +456,7 @@ body {
 #progress-text {
   font-size: 18px;
   font-weight: bold;
-  color: var(--text-dark);
+  color: white;
   margin-bottom: 15px;
 }
 
@@ -673,10 +672,7 @@ body {
 
 /* ===== Stats ===== */
 .stats-container {
-  background: white;
-  border-radius: var(--border-radius);
   padding: 30px;
-  box-shadow: var(--box-shadow);
 }
 
 .stats-container h2 {
@@ -816,6 +812,27 @@ body {
 .modal-content p {
   margin-bottom: 10px;
   color: var(--text-light);
+}
+
+.modal-content .gift-url {
+  display: none;
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #4b5563;
+  word-break: break-all;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.modal-actions .btn-secondary {
+  margin: 0;
+  width: 100%;
+  max-width: 220px;
 }
 
 /* ===== Responsive ===== */

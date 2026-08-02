@@ -60,3 +60,22 @@ export function importCollection(jsonString) {
     return false;
   }
 }
+
+export function removeOneCard(cardId) {
+  try {
+    const data = getCollection();
+    const collection = Array.isArray(data.collection) ? [...data.collection] : [];
+    const index = collection.lastIndexOf(cardId);
+
+    if (index === -1) {
+      return false;
+    }
+
+    collection.splice(index, 1);
+    saveCollection({ ...data, collection });
+    return true;
+  } catch (e) {
+    console.error('Erreur suppression carte', e);
+    return false;
+  }
+}

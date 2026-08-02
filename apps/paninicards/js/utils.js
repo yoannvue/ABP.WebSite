@@ -39,3 +39,30 @@ export function getRarityLabel(weight) {
   if (weight == 4) return 'Très rare ⭐⭐⭐⭐';
   return 'Exceptionnelle 🌟';
 }
+
+export function encodeGiftValue(value) {
+  const bytes = new TextEncoder().encode(value);
+  let binary = '';
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+
+  return btoa(binary)
+    .replace(/\+/g, '-')
+    .replace(/\//g, '_')
+    .replace(/=+$/g, '');
+}
+
+export function buildGiftUrl(cardId) {
+  const url = new URL('https://abpecquencourt.fr/apps/paninicards/');
+  url.searchParams.set('gift', encodeGiftValue(cardId));
+  return url.toString();
+}
+
+export function decodeGiftValue(value) {
+  const normalized = value.replace(/-/g, '+').replace(/_/g, '/');
+  const padding = '='.repeat((4 - (normalized.length % 4)) % 4);
+  const binary = atob(normalized + padding);
+  const bytes = Uint8Array.from(binary, char => char.charCodeAt(0));
+  return new TextDecoder().decode(bytes);
+}

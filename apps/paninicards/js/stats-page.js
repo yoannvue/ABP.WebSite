@@ -2,7 +2,7 @@
  * stats-page.js - Point d'entrée pour la page statistiques
  */
 
-import { getCollection, saveCollection, exportCollection, importCollection, deleteCollection } from './storage.js';
+import { getCollection, saveCollection, exportCollection, importCollection, deleteCollection, removeOneCard } from './storage.js';
 import { showCardDetail } from './ui.js';
 import { getRarityLabel } from './utils.js';
 
@@ -66,27 +66,36 @@ function displayMyCollection(collection, unique) {
     cardCounts[cardId] = (cardCounts[cardId] || 0) + 1;
   });
 
-  config.cards.forEach(card => {
-    if (cardCounts[card.id]) {
-      const count = cardCounts[card.id];
-      const cardEl = document.createElement('div');
-      cardEl.className = 'collection-card';
+  const duplicateCards = config.cards.filter(card => (cardCounts[card.id] || 0) > 1);
 
-      const imageUrl = card.images[0]?.url || '';
+  if (duplicateCards.length === 0) {
+    container.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 40px;">Aucun doublon pour le moment.</p>';
+    return;
+  }
 
-      cardEl.innerHTML = `
-        <img src="${imageUrl}" 
-             alt="${card.displayName}"
-             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 300%22%3E%3Crect fill=%22%23667eea%22 width=%22200%22 height=%22300%22/%3E%3Ctext x=%22100%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2212%22%3E${card.displayName}%3C/text%3E%3C/svg%3E'">
-        ${count > 1 ? `<div class="collection-card-count">×${count}</div>` : ''}
-      `;
+  duplicateCards.forEach(card => {
+    const count = cardCounts[card.id];
+    const cardEl = document.createElement('div');
+    cardEl.className = 'collection-card';
 
-      cardEl.addEventListener('click', () => {
-        showCardDetail(card, true);
+    const imageUrl = card.images[0]?.url || '';
+
+    cardEl.innerHTML = `
+      <img src="${imageUrl}" 
+           alt="${card.displayName}"
+           onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 300%22%3E%3Crect fill=%22%23667eea%22 width=%22200%22 height=%22300%22/%3E%3Ctext x=%22100%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2212%22%3E${card.displayName}%3C/text%3E%3C/svg%3E'">
+      <div class="collection-card-count">×${count}</div>
+    `;
+
+    cardEl.addEventListener('click', () => {
+      showCardDetail(card, true, () => {
+        if (removeOneCard(card.id)) {
+          updateStats();
+        }
       });
+    });
 
-      container.appendChild(cardEl);
-    }
+    container.appendChild(cardEl);
   });
 }
 
