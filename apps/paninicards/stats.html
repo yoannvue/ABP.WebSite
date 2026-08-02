@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma collection - Collection Panini ABP Basketball</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>🏀 Collection ABP Basketball</h1>
+      <nav>
+        <a href="index.html" class="nav-btn">Tirage du jour</a>
+        <a href="gallery.html" class="nav-btn">Galerie</a>
+        <a href="stats.html" class="nav-btn active">Ma collection</a>
+      </nav>
+    </header>
+
+    <!-- Stats -->
+    <section class="view active">
+      <div class="stats-container">
+        <h2>Ma collection</h2>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-value" id="stat-total">0</span>
+            <span class="stat-label">Cartes obtenues</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-unique">0</span>
+            <span class="stat-label">Cartes uniques</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-duplicates">0</span>
+            <span class="stat-label">Doublons</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="stat-percentage">0%</span>
+            <span class="stat-label">Collection</span>
+          </div>
+        </div>
+
+        <!-- Progression -->
+        <div id="progress-section" class="progress-section">
+          <h3>Votre progression</h3>
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <p id="progress-text">0/10 cartes</p>
+        </div>
+
+        <!-- Cartes obtenues -->
+        <div id="my-collection" class="collection-display"></div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button id="export-btn" class="btn-secondary">📥 Télécharger ma collection</button>
+          <button id="import-btn" class="btn-secondary">📤 Importer une collection</button>
+          <input type="file" id="import-file" accept=".json" style="display: none;">
+          <button id="reset-btn" class="btn-secondary">🔄 Réinitialiser (test)</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal pour détails carte -->
+  <div id="card-modal" class="card-modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <img id="modal-image" src="" alt="">
+      <h2 id="modal-title"></h2>
+      <p><strong>Catégorie :</strong> <span id="modal-category"></span></p>
+      <p><strong>Possession :</strong> <span id="modal-owned"></span></p>
+      <p><strong>Rareté :</strong> <span id="modal-rarity"></span></p>
+    </div>
+  </div>
+
+  <!-- Scripts modulaires -->
+  <script type="module" src="js/stats-page.js"></script>
+</body>
+</html>

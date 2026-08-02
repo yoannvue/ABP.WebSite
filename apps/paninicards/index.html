@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection Panini ABP Basketball</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>🏀 Collection ABP Basketball</h1>
+      <nav>
+        <a href="index.html" class="nav-btn active">Tirage du jour</a>
+        <a href="gallery.html" class="nav-btn">Galerie</a>
+        <a href="stats.html" class="nav-btn">Ma collection</a>
+      </nav>
+    </header>
+
+    <!-- Vue 1 : Tirage du jour -->
+    <section id="daily-view" class="view active">
+      <div class="daily-container">
+        
+        <!-- Banner consentement -->
+        <div id="consent-banner" class="consent-banner">
+          <p><B>Bienvenue !</B></p>
+          <p>Nous vous présentons notre premier petit jeu de la rentrée.</p>
+          <p>L'objectif est simple : collectionner l'ensemble des cartes disponibles representant les différentes personnalités ou simplement objets et lieux relatifs à l'Amicale Basket Pecquencourt Montigny en Ostrevent.</p>
+          <p>Vous aurez le droit à un tirage aléatoire de cartes chaque jour.</p>
+          <p>Amu</p>
+          <Br/>
+          <p>⚠️ Ce jeu stocke votre collection localement. Ne supprimez pas vos données navigateur ou vous perdrez tout !</p>
+          <button id="consent-btn" class="btn-primary">J'ai compris</button>
+        </div>
+
+        <!-- Section de tirage -->
+        <div id="draw-section" class="draw-section hidden">
+          <div id="draw-status" class="draw-status"></div>
+          
+          <button id="draw-btn" class="btn-large">🎲 Tirer une carte</button>
+          
+          <!-- Conteneur des cartes tirées -->
+          <div id="drawn-cards" class="cards-container"></div>
+          
+          <!-- Bouton de flip -->
+          <button id="flip-btn" class="btn-flip" style="display: none;">
+            🎲 Révéler les cartes
+          </button>
+        </div>
+
+
+        Actions
+        <div class="actions">          
+          <button id="reset-btn" class="btn-secondary">🔄 Réinitialiser (test)</button>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+
+  <!-- Modal pour détails carte -->
+  <div id="card-modal" class="card-modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <img id="modal-image" src="" alt="">
+      <h2 id="modal-title"></h2>
+      <p><strong>Catégorie :</strong> <span id="modal-category"></span></p>
+      <p><strong>Possession :</strong> <span id="modal-owned"></span></p>
+      <p><strong>Rareté :</strong> <span id="modal-rarity"></span></p>
+    </div>
+  </div>
+
+  <!-- Scripts modulaires -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

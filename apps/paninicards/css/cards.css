@@ -1,0 +1,59 @@
+/* Masque la moitié droite (n'affiche que la gauche) */
+.clip-gauche {
+  aspect-ratio: 2 / 3;
+  width: 200px;             /* Moitié de la largeur totale */
+  object-fit: cover;
+  object-position: left center;  /* Ancre l'image à gauche */
+  border-radius: 12px 0px 0px 12px !important;
+}
+
+/* Masque la moitié gauche (n'affiche que la droite) */
+.clip-droite {
+  aspect-ratio: 2 / 3;
+  width: 200px;
+  object-fit: cover;
+  object-position: right center; /* Ancre l'image à droite */
+  border-radius: 0px 12px 12px 0px !important;
+}
+
+.vignette-collection {
+    /* 1. Dimensions et Ratio */
+    display: block;
+    width: 100%;              /* S'adapte si le parent est plus petit */
+    height: auto;             /* Conserve le ratio défini ci-dessous */
+    object-fit: cover;        /* L'image remplit le cadre sans être déformée */
+
+    /* 2. Le Cadre Épais (Style Métal Doré Vieilli) */
+    /* On utilise padding + background-image pour simuler une bordure complexe */
+    padding: 6px;            /* Épaisseur du cadre externe */
+    background-color: #c5a059; /* Couleur de base dorée */
+    background-image: 
+      /* Texture de grain léger sur le cadre */
+      url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCA0IDQiPjxnIGZpbGwtcmVsZT0iZXZlbm9kZCI+PGcgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij48cGF0aCBkPSJNMCAwaDF2MUgwVjB6TTEgMWgxdjFIMVYxeiBNMiAwaDF2MUgyVjB6TTMgMWgxdjFIM1YxeiIvPjwvZz48L2c+PC9zdmc+'),
+      /* Dégradé pour l'effet métallique */
+      linear-gradient(135deg, #e4c87f 0%, #c5a059 50%, #85662f 100%);
+    
+    /* 3. Bordures et Coins */
+    border: 3px solid #412db3; /* Bordure fine extérieure sombre */
+    border-radius: 12px;       /* Coins arrondis de la carte */
+    box-sizing: border-box;    /* Inclut padding et border dans la largeur */
+
+  }
+
+  .gallery-equipe {
+    display: flex;
+  }
+
+
+  .gallery-full {
+    display: flex;
+    flex-wrap: wrap; /* ESSENTIEL pour autoriser le passage à la ligne */
+    gap: 16px;
+  }
+
+  /* @media (min-width: 768px) {
+  .gallery-full {
+    grid-template-columns: repeat(4, 1fr); 
+  }
+  */
+} 

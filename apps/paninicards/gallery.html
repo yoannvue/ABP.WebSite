@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie - Collection Panini ABP Basketball</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cards.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <h1>🏀 Collection ABP Basketball</h1>
+      <nav>
+        <a href="index.html" class="nav-btn">Tirage du jour</a>
+        <a href="gallery.html" class="nav-btn active">Galerie</a>
+        <a href="stats.html" class="nav-btn">Ma collection</a>
+      </nav>
+    </header>
+
+  <!-- Modal pour détails carte -->
+  <div id="card-modal" class="card-modal" style="display: none;">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <img id="modal-image" src="" alt="">
+      <h2 id="modal-title"></h2>
+      <p><strong>Catégorie :</strong> <span id="modal-category"></span></p>
+      <p><strong>Possession :</strong> <span id="modal-owned"></span></p>
+      <p><strong>Rareté :</strong> <span id="modal-rarity"></span></p>
+    </div>
+  </div>
+  <section id="daily-view" class="view active">
+    <div class="daily-container">
+      <h2>Galerie des cartes</h2>
+      <p>Découvrez toutes les cartes disponibles dans la collection ABP Basketball. Cliquez sur une carte pour voir plus de détails.</p>
+      <br/>
+      <!-- Galerie des cartes -->
+      <section id="gallery" class="gallery"></section>
+    </div>
+  </section>
+  <!-- Scripts modulaires -->
+  <script type="module" src="js/gallery-page.js"></script>
+</body>
+</html>

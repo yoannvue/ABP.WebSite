@@ -1,0 +1,190 @@
+{
+  "game": {
+    "title": "Collection ABP Basketball - Prototype",
+    "startDate": "2026-07-01",
+    "endDate": "2026-12-31",
+    "totalCards": 10,
+    "description": "Collection de test avec 10 cartes"
+  },
+  "mechanics": {
+    "drawsPerDay": 1,
+    "cardsPerDraw": 2
+  },
+  "drawsIncreasePhase": {
+    "enabled": true,
+    "startDate": "2026-09-01",
+    "cardsPerDraw": 2,
+    "reason": "Phase finale : doublez votre chance !"
+  },
+  "cards": [
+    {
+      "id": "team-u9-girls-left-001",
+      "name": "Équipe U9 Filles",
+      "category": "team",
+      "weight": 10,
+      "displayName": "U9 Filles - Partie Gauche",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/Equipes/2025-2026/U9F1 - 01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u9-girls-right-002",
+      "name": "Équipe U9 Filles",
+      "category": "team",
+      "weight": 10,
+      "displayName": "U9 Filles - Partie Droite",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/Equipes/2025-2026/U9F1 - 01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u18-girls-left-003",
+      "name": "Équipe U18 Filles",
+      "category": "team",
+      "weight": 10,
+      "displayName": "U18 Filles - Partie Gauche",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/Equipes/2025-2026/U18F.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u18-girls-right-004",
+      "name": "Équipe U18 Filles",
+      "category": "team",
+      "weight": 10,
+      "displayName": "U18 Filles - Partie Droite",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/Equipes/2025-2026/U18F.jpg"
+        }
+      ]
+    },
+    {
+      "id": "anaelle-coach-001",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 10,
+      "displayName": "Annaelle - Coach U9M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/anaelle.jpg"
+        }
+      ]
+    },
+    {
+      "id": "yoann-coach-002",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 10,
+      "displayName": "Yoann - Coach U11F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Yoann.jpg"
+        }
+      ]
+    },
+    {
+      "id": "sebastien-coach-003",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 10,
+      "displayName": "Sebastien - Coach U11F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Sebastien.jpg"
+        }
+      ]
+    },
+    {
+      "id": "steeve-coach-004",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 10,
+      "displayName": "Steeve - Coach U13F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Steeve Dorchy.jpg"
+        }
+      ]
+    },
+    {
+      "id": "cedric-coach-005",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 10,
+      "displayName": "Cédric - Coach U11M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Cedric.png"
+        }
+      ]
+    },
+    {
+      "id": "bureau-treasurer-009",
+      "name": "Bureau",
+      "category": "bureau",
+      "weight": 3,
+      "displayName": "Christian - Vice Président",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Christian.jpg"
+        }
+      ]
+    },
+    {
+      "id": "bureau-president-010",
+      "name": "Président",
+      "category": "president",
+      "weight": 1,
+      "displayName": "🌟 Pascal - Président",
+      "rarity": "legendary",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Pascal Dorchy.jpg"
+        }
+      ]
+    }
+  ],
+  "gallery": {
+    "sections": [
+      {
+        "name": "Équipes",
+        "subsections": [
+          {
+            "name": "U9 Filles",
+            "cards": ["team-u9-girls-left-001", "team-u9-girls-right-002"]
+          },
+          {
+            "name": "U18 Filles",
+            "cards": ["team-u18-girls-left-003", "team-u18-girls-right-004"]
+          }
+        ]
+      },
+      {
+        "name": "Encadrement",
+        "cards": ["anaelle-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005"]
+      },
+      {
+        "name": "Bureau",       
+        "cards": ["bureau-treasurer-009", "bureau-president-010"]
+      }
+    ]
+  }
+}
