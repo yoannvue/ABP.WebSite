@@ -2,7 +2,7 @@
  * storage.js - Wrapper pour localStorage
  */
 
-const STORAGE_KEY = 'paniniGame';
+const STORAGE_KEY = 'paniniGame-beta';
 
 export function getCollection() {
   try {
