@@ -11,7 +11,7 @@
   function getInitials(prenom = '', nom = '') {
     const first = String(prenom || '').trim().charAt(0) || '';
     const last = String(nom || '').trim().charAt(0) || '';
-    return `${first}${last}`.toUpperCase();
+    return `${last}${first}`.toUpperCase();
   }
 
   function buildFullName(prenom = '', nom = '') {
