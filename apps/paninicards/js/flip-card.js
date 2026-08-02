@@ -31,13 +31,12 @@ export class FlipCard {
     div.innerHTML = `
       <div class="flip-card-inner">
         <div class="flip-card-front">
-          🎴
+          <img src="/ressources/logo-abp.png" alt="Logo ABP" style="width: 100px; object-fit: cover;filter: grayscale(100%);">
         </div>
         <div class="flip-card-back">
-          <img src="${imageUrl}" class="${cardstyleimg}"
+          <img src="${imageUrl}" class="${cardstyleimg} "
                alt="${this.card.displayName}"
                onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 300%22%3E%3Crect fill=%22%23e5e7eb%22 width=%22200%22 height=%22300%22/%3E%3Ctext x=%22100%22 y=%22150%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%236b7280%22 font-size=%2212%22%3EImage manquante%3C/text%3E%3C/svg%3E'">
-          <div class="card-title">${this.card.displayName}</div>
         </div>
       </div>
     `;

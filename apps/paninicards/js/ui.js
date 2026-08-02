@@ -40,11 +40,8 @@ export function setupNavigation() {
 
 export function displayDrawnCards(cards) {
   const container = document.getElementById('drawn-cards');
-  const flipBtn = document.getElementById('flip-btn');
 
   container.innerHTML = '';
-  flipBtn.style.display = 'block';
-  flipBtn.disabled = false;
 
   const flipCards = [];
 
@@ -61,22 +58,17 @@ export function displayDrawnCards(cards) {
     });
   });
 
-  const handler = () => {
-    flipBtn.disabled = true;
+  // Scroll vers les cartes sur mobile
+  if (window.innerWidth <= 768) {
+    container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
+  // Retournement automatique après 1 seconde
+  setTimeout(() => {
     flipCards.forEach(({ flipCard, delayBeforeFlip }) => {
       flipCard.flipWithDelay(delayBeforeFlip);
     });
-
-    const maxDelay = Math.max(...flipCards.map(f => f.delayBeforeFlip)) + 600;
-    setTimeout(() => {
-      flipBtn.disabled = false;
-    }, maxDelay);
-  };
-
-  flipBtn.replaceWith(flipBtn.cloneNode(true));
-  const newFlipBtn = document.getElementById('flip-btn');
-  newFlipBtn.addEventListener('click', handler);
+  }, 1000);
 }
 
 export function updateProgress(stats) {

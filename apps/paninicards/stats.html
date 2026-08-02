@@ -7,16 +7,32 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header>
-      <h1>🏀 Collection ABP Basketball</h1>
-      <nav>
-        <a href="index.html" class="nav-btn">Tirage du jour</a>
-        <a href="gallery.html" class="nav-btn">Galerie</a>
-        <a href="stats.html" class="nav-btn active">Ma collection</a>
-      </nav>
-    </header>
+  <div class="app-layout">
+
+    <!-- Sidebar / Barre de navigation -->
+    <nav class="sidebar">
+      <div class="sidebar-logo">
+        <img src="../../ressources/logo-abp.png" alt="ABP Basketball" class="logo-full">
+        <img src="../../ressources/logo-abp.png" alt="ABP" class="logo-icon">
+      </div>
+      <div class="sidebar-nav">
+        <a href="index.html" class="nav-link">
+          <span class="nav-icon">🎲</span>
+          <span class="nav-label">Tirage du jour</span>
+        </a>
+        <a href="gallery.html" class="nav-link">
+          <span class="nav-icon">🃏</span>
+          <span class="nav-label">Collection</span>
+        </a>
+        <a href="stats.html" class="nav-link active">
+          <span class="nav-icon">📊</span>
+          <span class="nav-label">Mes stats</span>
+        </a>
+      </div>
+    </nav>
+
+    <!-- Contenu principal -->
+    <main class="main-content">
 
     <!-- Stats -->
     <section class="view active">
@@ -63,6 +79,8 @@
         </div>
       </div>
     </section>
+
+    </main>
   </div>
 
   <!-- Modal pour détails carte -->

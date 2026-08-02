@@ -8,6 +8,13 @@
   --border-radius: 10px;
   --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+
+  /* Navy theme */
+  --navy: #151D31;
+  --navy-mid: #112244;
+  --navy-light: #1e3a6e;
+  --sidebar-width: 240px;
+  --topbar-height: 64px;
 }
 
 /* ===== Reset & Layout global ===== */
@@ -19,60 +26,154 @@
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--navy);
   color: var(--text-dark);
   min-height: 100vh;
-  padding: 20px;
 }
 
-.container {
-  margin: 0 auto;
-}
-
-/* ===== Header ===== */
-header {
-  background: white;
-  border-radius: var(--border-radius);
-  padding: 30px;
-  margin-bottom: 30px;
-  box-shadow: var(--box-shadow);
-}
-
-header h1 {
-  text-align: center;
-  color: var(--primary-color);
-  margin-bottom: 20px;
-  font-size: 32px;
-}
-
-nav {
+/* ===== App Layout ===== */
+.app-layout {
   display: flex;
-  gap: 10px;
+  min-height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--navy-mid);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  border-right: 1px solid var(--navy-light);
+}
+
+.sidebar-logo {
+  display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  padding: 8px 0 24px 0;
+  border-bottom: 1px solid var(--navy-light);
+  margin-bottom: 24px;
 }
 
-.nav-btn {
-  padding: 10px 20px;
-  border: 2px solid var(--primary-color);
-  background: white;
-  color: var(--primary-color);
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  transition: all 0.3s;
-  font-weight: bold;
+.sidebar-logo .logo-full {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+.sidebar-logo .logo-icon {
+  display: none;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  color: #94a3b8;
   text-decoration: none;
-  display: inline-block;
+  border-radius: 8px;
+  transition: all 0.2s;
+  font-weight: 500;
+  font-size: 15px;
 }
 
-.nav-btn:hover {
-  background: var(--primary-color);
-  color: white;
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
 }
 
-.nav-btn.active {
-  background: var(--primary-color);
-  color: white;
+.nav-link.active {
+  background: rgba(102, 126, 234, 0.2);
+  color: #a5b4fc;
+  font-weight: 600;
+}
+
+.nav-icon {
+  font-size: 20px;
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* ===== Main Content ===== */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 32px;
+  min-height: 100vh;
+  color: White;
+}
+
+/* ===== Mobile (barre de navigation en haut) ===== */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 400px;
+    height: var(--topbar-height);
+    flex-direction: row;
+    align-items: center;
+    padding: 0 16px;
+    gap: 8px;
+    border-right: none;
+    border-bottom: 1px solid var(--navy-light);
+  }
+
+  .sidebar-logo {
+    padding: 0;
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+
+  .sidebar-logo .logo-full {
+    display: none;
+  }
+
+  .sidebar-logo .logo-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    gap: 4px;
+    margin-left: auto;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+    font-size: 13px;
+    gap: 6px;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .nav-icon {
+    font-size: 22px;
+    width: auto;
+  }
+
+  .main-content {
+    margin-left: 0;
+    margin-top: var(--topbar-height);
+    padding: 0;
+    width: 400px;
+  }
 }
 
 /* ===== Sections ===== */
@@ -115,15 +216,28 @@ nav {
 .consent-banner p {
   margin-bottom: 10px;
   color: var(--text-dark);
-}
+} 
 
 .draw-section {
-  text-align: center;
+  margin-left: 40px;
+  margin-top: 40px;
   margin-bottom: 40px;
+  color: white;
 }
 
 .draw-section.hidden {
   display: none;
+}
+
+.draw-imageTirage {
+  width: 300px;
+  height: auto;
+  margin-left: 20px;
+}
+.draw-imagePochette {
+  width: 400px;
+  height: auto;
+  margin-left: 20px;
 }
 
 .draw-status {
@@ -156,13 +270,14 @@ nav {
 
 .btn-large {
   padding: 20px 40px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: orange;
   color: white;
   font-size: 20px;
   width: 100%;
   max-width: 400px;
   margin: 20px auto;
   display: block;
+  max-height: 80px;
 }
 
 .btn-large:hover {
@@ -249,7 +364,6 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-radius: var(--border-radius);
   border: 3px solid #764ba2;
   box-shadow: var(--box-shadow);
   font-size: 50px;
@@ -264,9 +378,7 @@ nav {
   height: 100%;
   backface-visibility: hidden;
   transform: rotateY(180deg);
-  border-radius: var(--border-radius);
-  border: 3px solid #333;
-  box-shadow: var(--box-shadow);
+  border: 5px solid #ffffff;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -274,7 +386,7 @@ nav {
 
 .flip-card-back img {
   width: 100%;
-  height: 70%;
+  height: 100%;
   object-fit: cover;
   background: #e5e7eb;
 }
@@ -426,18 +538,19 @@ nav {
   margin-bottom: 40px;
   display: flex;
   flex-wrap: wrap;
+  gap:10px;
 }
 
-.gallery-section h2 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  border-bottom: 3px solid var(--primary-color);
+.gallery h2 {
+  font-size: 24px;
   padding-bottom: 10px;
   text-align: left;
+  color: orange;
 }
 
 .gallery-subsection {
   margin-top: 25px;
+  gap: 0px;
 }
 
 .gallery-subsection h3 {
@@ -456,13 +569,13 @@ nav {
 .gallery-card {
   position: relative;
   background: white;
-  border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--box-shadow);
   cursor: pointer;
   transition: all 0.3s ease;
   border: 3px solid transparent;
   width: 300px;
+  height: 400px;
   filter: grayscale(100%);
   opacity: 0.5;
 }
@@ -494,8 +607,8 @@ nav {
 .gallery-card img {
   width: 100%;
   object-fit: cover;
-  background: #e5e7eb;
   width: 295px;
+  height: 390px;
 }
 
 .gallery-card-title {
@@ -703,7 +816,7 @@ nav {
   .daily-container,
   .gallery-container,
   .stats-container {
-    padding: 15px;
+    padding: 0px;
   }
 
   header {
@@ -731,5 +844,25 @@ nav {
   .nav-btn {
     padding: 8px 12px;
     font-size: 12px;
+  }
+
+  .draw-section {
+    margin-left: 0px;
+  }
+
+  .draw-imagePochette {
+    width: 350px;
+  }
+
+  .gallery-card{
+    width: 180px;
+    height: 250px;
+  }
+
+  .gallery-card img {
+    width: 100%;
+    object-fit: cover;
+    width: 175px;
+    height: 230px;
   }
 }

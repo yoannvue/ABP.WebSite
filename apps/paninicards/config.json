@@ -18,11 +18,102 @@
   },
   "cards": [
     {
+      "id": "logo-001",
+      "name": "Logo ABP",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Logo du club",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/logo-abp.png"
+        }
+      ]
+    },
+    {
+      "id": "salle-pecquencourt-jeandegros-left",
+      "name": "Salle Pecquencourt Jeandegros",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Salle Pecquencourt Jean Degros",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/image-Pecquencourt-jeanDegros.png"
+        }
+      ]
+    },
+    {
+      "id": "salle-pecquencourt-jeandegros-right",
+      "name": "Salle Pecquencourt Jeandegros",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Salle Pecquencourt Jean Degros",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/image-Pecquencourt-jeanDegros.png"
+        }
+      ]
+    },
+    {
+      "id": "salle-pecquencourt-anchin-left",
+      "name": "Salle Pecquencourt Anchin",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Salle Anchin - Pecquencourt",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/image-Pecquencourt-SalleAnchin.png"
+        }
+      ]
+    },
+    {
+      "id": "salle-pecquencourt-anchin-right",
+      "name": "Salle Pecquencourt Anchin",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Salle Anchin - Pecquencourt",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/image-Pecquencourt-SalleAnchin.png"
+        }
+      ]
+    },
+    {
+      "id": "salle-montigny-salledessports-left",
+      "name": "Salle des sports - Montigny en Ostrevent",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Salle des sports - Montigny en Ostrevent",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/image-Montigny-Salledessports.png"
+        }
+      ]
+    },
+    {
+      "id": "salle-montigny-salledessports-right",
+      "name": "Salle des sports - Montigny en Ostrevent",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Salle des sports - Montigny en Ostrevent",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/image-Montigny-Salledessports.png"
+        }
+      ]
+    },
+    {
       "id": "team-u9-girls-left-001",
       "name": "Équipe U9 Filles",
       "category": "team",
-      "weight": 10,
-      "displayName": "U9 Filles - Partie Gauche",
+      "weight": 1,
+      "displayName": "U9 Filles",
       "images": [
         {
           "side": "left",
@@ -34,8 +125,8 @@
       "id": "team-u9-girls-right-002",
       "name": "Équipe U9 Filles",
       "category": "team",
-      "weight": 10,
-      "displayName": "U9 Filles - Partie Droite",
+      "weight": 1,
+      "displayName": "U9 Filles",
       "images": [
         {
           "side": "right",
@@ -47,8 +138,8 @@
       "id": "team-u18-girls-left-003",
       "name": "Équipe U18 Filles",
       "category": "team",
-      "weight": 10,
-      "displayName": "U18 Filles - Partie Gauche",
+      "weight": 1,
+      "displayName": "U18 Filles",
       "images": [
         {
           "side": "left",
@@ -60,8 +151,8 @@
       "id": "team-u18-girls-right-004",
       "name": "Équipe U18 Filles",
       "category": "team",
-      "weight": 10,
-      "displayName": "U18 Filles - Partie Droite",
+      "weight": 1,
+      "displayName": "U18 Filles",
       "images": [
         {
           "side": "right",
@@ -73,7 +164,7 @@
       "id": "anaelle-coach-001",
       "name": "Coach",
       "category": "staff",
-      "weight": 10,
+      "weight": 2,
       "displayName": "Annaelle - Coach U9M",
       "images": [
         {
@@ -86,7 +177,7 @@
       "id": "yoann-coach-002",
       "name": "Coach",
       "category": "staff",
-      "weight": 10,
+      "weight": 2,
       "displayName": "Yoann - Coach U11F",
       "images": [
         {
@@ -99,7 +190,7 @@
       "id": "sebastien-coach-003",
       "name": "Coach",
       "category": "staff",
-      "weight": 10,
+      "weight": 2,
       "displayName": "Sebastien - Coach U11F",
       "images": [
         {
@@ -112,7 +203,7 @@
       "id": "steeve-coach-004",
       "name": "Coach",
       "category": "staff",
-      "weight": 10,
+      "weight": 2,
       "displayName": "Steeve - Coach U13F",
       "images": [
         {
@@ -125,7 +216,7 @@
       "id": "cedric-coach-005",
       "name": "Coach",
       "category": "staff",
-      "weight": 10,
+      "weight": 2,
       "displayName": "Cédric - Coach U11M",
       "images": [
         {
@@ -151,7 +242,7 @@
       "id": "bureau-president-010",
       "name": "Président",
       "category": "president",
-      "weight": 1,
+      "weight": 4,
       "displayName": "🌟 Pascal - Président",
       "rarity": "legendary",
       "images": [
@@ -164,6 +255,24 @@
   ],
   "gallery": {
     "sections": [
+      {
+        "name": "Divers",
+        "cards": ["logo-001"],
+        "subsections": [
+          {
+            "name": "Salle Jean Degros - Pecquencourt",
+            "cards": ["salle-pecquencourt-jeandegros-left", "salle-pecquencourt-jeandegros-right"]
+          },
+          {
+            "name": "Salle des sports - Montigny en Ostrevent",
+            "cards": ["salle-montigny-salledessports-left", "salle-montigny-salledessports-right"]
+          },
+          {
+            "name": "Salle Anchin - Pecquencourt",
+            "cards": ["salle-pecquencourt-anchin-left", "salle-pecquencourt-anchin-right"]
+          }
+        ]
+      },
       {
         "name": "Équipes",
         "subsections": [
