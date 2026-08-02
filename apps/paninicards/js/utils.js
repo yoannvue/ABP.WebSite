@@ -33,9 +33,9 @@ export function formatDate(date = new Date()) {
 }
 
 export function getRarityLabel(weight) {
-  if (weight >= 40) return 'Commune ⭐';
-  if (weight >= 15) return 'Peu commune ⭐⭐';
-  if (weight >= 5) return 'Rare ⭐⭐⭐';
-  if (weight >= 2) return 'Très rare ⭐⭐⭐⭐';
+  if (weight == 1) return 'Commune ⭐';
+  if (weight == 2) return 'Peu commune ⭐⭐';
+  if (weight == 3) return 'Rare ⭐⭐⭐';
+  if (weight == 4) return 'Très rare ⭐⭐⭐⭐';
   return 'Exceptionnelle 🌟';
 }

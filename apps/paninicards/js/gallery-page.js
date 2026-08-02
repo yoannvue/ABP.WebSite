@@ -58,11 +58,11 @@ export function buildGalleryFromConfig(config) {
     const title = document.createElement('h2');
     title.textContent = sectionName;
     gallery.appendChild(title);
+    
+    const sectionDiv = document.createElement('div');
+    sectionDiv.className = 'gallery-section';
 
-    const sectionDivCards = document.createElement('div');
-    sectionDivCards.className = 'gallery-section';   
-
-    if (section.cards.length > 0) {
+    if (Object.keys(section.cards || {}).length > 0) {
       // Gallery des cartes principales de la section
       const grid = document.createElement('div');
       grid.className = 'gallery gallery-full';
@@ -72,13 +72,10 @@ export function buildGalleryFromConfig(config) {
         grid.appendChild(cardEl);
       });
 
-      sectionDivCards.appendChild(grid);
+      sectionDiv.appendChild(grid);
     }
-    gallery.appendChild(sectionDivCards);
-    
-    const sectionDivSubSections = document.createElement('div');
-    sectionDivSubSections.className = 'gallery-section';  
 
+    
     // Gallery des sous-sections
     Object.entries(section.subsections).forEach(([subsectionName, subsection]) => {
       const subsectionDiv = document.createElement('div');
@@ -99,10 +96,10 @@ export function buildGalleryFromConfig(config) {
       });
 
       subsectionDiv.appendChild(grid);
-      sectionDivSubSections.appendChild(subsectionDiv);
+      sectionDiv.appendChild(subsectionDiv);
     });
 
-    gallery.appendChild(sectionDivSubSections);
+    gallery.appendChild(sectionDiv);
   });
 }
 

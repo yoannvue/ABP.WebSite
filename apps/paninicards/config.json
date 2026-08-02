@@ -148,6 +148,84 @@
       ]
     },
     {
+      "id": "team-u9-masculins-left",
+      "name": "Équipe U9 Masculins",
+      "category": "team",
+      "weight": 1,
+      "displayName": "U9 Masculins",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/Equipes/2025-2026/U9M.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u9-masculins-right",
+      "name": "Équipe U9 Masculins",
+      "category": "team",
+      "weight": 1,
+      "displayName": "U9 Masculins",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/Equipes/2025-2026/U9M.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u11-filles-left",
+      "name": "Équipe U11 Filles",
+      "category": "team",
+      "weight": 1,
+      "displayName": "U11 Filles",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/Equipes/2025-2026/U11F - 01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u11-filles-right",
+      "name": "Équipe U11 Filles",
+      "category": "team",
+      "weight": 1,
+      "displayName": "U11 Filles",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/Equipes/2025-2026/U11F - 01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u13-filles-left",
+      "name": "Équipe U13 Filles",
+      "category": "team",
+      "weight": 1,
+      "displayName": "U13 Filles",
+      "images": [
+        {
+          "side": "left",
+          "url": "/ressources/Equipes/2025-2026/U13F - 01.jpg"
+        }
+      ]
+    },
+    {
+      "id": "team-u13-filles-right",
+      "name": "Équipe U13 Filles",
+      "category": "team",
+      "weight": 1,
+      "displayName": "U13 Filles",
+      "images": [
+        {
+          "side": "right",
+          "url": "/ressources/Equipes/2025-2026/U13F - 01.jpg"
+        }
+      ]
+    },
+    {
       "id": "team-u18-girls-left-003",
       "name": "Équipe U18 Filles",
       "category": "team",
@@ -396,6 +474,18 @@
           {
             "name": "U9 Filles",
             "cards": ["team-u9-girls-left-001", "team-u9-girls-right-002"]
+          },
+          {
+            "name": "U9 Masculins",
+            "cards": ["team-u9-masculins-left", "team-u9-masculins-right"]
+          },
+          {
+            "name": "U11 Filles",
+            "cards": ["team-u11-filles-left", "team-u11-filles-right"]
+          },
+          {
+            "name": "U13 Filles",
+            "cards": ["team-u13-filles-left", "team-u13-filles-right"]
           },
           {
             "name": "U18 Filles",

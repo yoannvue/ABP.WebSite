@@ -119,7 +119,7 @@ body {
 /* ===== Mobile (barre de navigation en haut) ===== */
 @media (max-width: 768px) {
   .sidebar {
-    width: 400px;
+    width: 360px;
     height: var(--topbar-height);
     flex-direction: row;
     align-items: center;
@@ -627,6 +627,50 @@ body {
   background: linear-gradient(transparent, rgba(34, 197, 94, 0.7));
 }
 
+/* Masque la moitié droite (n'affiche que la gauche) */
+.clip-gauche {
+  aspect-ratio: 2 / 3;
+  width: 200px;
+  /* Moitié de la largeur totale */
+  object-fit: cover;
+  object-position: left center;
+  /* Ancre l'image à gauche */
+}
+
+/* Masque la moitié gauche (n'affiche que la droite) */
+.clip-droite {
+  aspect-ratio: 2 / 3;
+  width: 200px;
+  object-fit: cover;
+  object-position: right center;
+  /* Ancre l'image à droite */
+}
+
+.vignette-collection {
+  /* 1. Dimensions et Ratio */
+  display: block;
+
+ /* 3. Bordures et Coins */
+  border: 3px solid #e4e3ec;
+  /* Bordure fine extérieure sombre */
+  box-sizing: border-box;
+  /* Inclut padding et border dans la largeur */
+
+}
+
+.gallery-equipe {
+  display: flex;
+  gap:0px;
+}
+
+
+.gallery-full {
+  display: flex;
+  flex-wrap: wrap;
+  /* ESSENTIEL pour autoriser le passage à la ligne */
+  gap: 16px;
+}
+
 /* ===== Stats ===== */
 .stats-container {
   background: white;
@@ -810,7 +854,13 @@ body {
 
 @media (max-width: 480px) {
   body {
-    padding: 10px;
+    padding: 0px;
+    margin:0px;
+  }
+
+  .main-content {
+    width:360px;
+    margin-left:10px;
   }
 
   .daily-container,
@@ -828,13 +878,12 @@ body {
   }
 
   .flip-card {
-    width: 140px;
-    height: 210px;
+    width: 130px;
+    height: 200px;
   }
 
   .gallery {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
   }
 
   .stats-grid {
@@ -851,18 +900,26 @@ body {
   }
 
   .draw-imagePochette {
-    width: 350px;
+    width: 320px;
   }
 
   .gallery-card{
-    width: 180px;
-    height: 250px;
+    width: 160px;
+    height: 220px;
   }
 
   .gallery-card img {
     width: 100%;
     object-fit: cover;
-    width: 175px;
-    height: 230px;
+    width: 155px;
+    height: 210px;
+  }
+
+  .gallery-full {
+    gap: 10px;
+  }
+
+  .gallery-equipe {
+    gap: 0px;
   }
 }
