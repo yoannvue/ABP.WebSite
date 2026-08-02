@@ -59,10 +59,12 @@ export function buildGalleryFromConfig(config) {
     title.textContent = sectionName;
     gallery.appendChild(title);
     
-    const sectionDiv = document.createElement('div');
-    sectionDiv.className = 'gallery-section';
+    
 
     if (Object.keys(section.cards || {}).length > 0) {
+      const sectionDivCards = document.createElement('div');
+      sectionDivCards.className = 'gallery-section';
+
       // Gallery des cartes principales de la section
       const grid = document.createElement('div');
       grid.className = 'gallery gallery-full';
@@ -72,34 +74,37 @@ export function buildGalleryFromConfig(config) {
         grid.appendChild(cardEl);
       });
 
-      sectionDiv.appendChild(grid);
+      sectionDivCards.appendChild(grid);
+      gallery.appendChild(sectionDivCards);
     }
 
-    
-    // Gallery des sous-sections
-    Object.entries(section.subsections).forEach(([subsectionName, subsection]) => {
-      const subsectionDiv = document.createElement('div');
-      subsectionDiv.className = 'gallery-subsection';
+    if (Object.keys(section.subsections || {}).length > 0) {
+      const sectionDivSubSections = document.createElement('div');
+      sectionDivSubSections.className = 'gallery-section';
+      Object.entries(section.subsections).forEach(([subsectionName, subsection]) => {
+        const subsectionDiv = document.createElement('div');
+        subsectionDiv.className = 'gallery-subsection';
 
-      if (subsectionName !== 'default') {
-        const subtitle = document.createElement('h3');
-        subtitle.textContent = subsectionName;
-        subsectionDiv.appendChild(subtitle);
-      }
+        if (subsectionName !== 'default') {
+          const subtitle = document.createElement('h3');
+          subtitle.textContent = subsectionName;
+          subsectionDiv.appendChild(subtitle);
+        }
 
-      const grid = document.createElement('div');
-      grid.className = 'gallery gallery-equipe';
+        const grid = document.createElement('div');
+        grid.className = 'gallery gallery-equipe';
 
-      subsection.cards.forEach(cardid => {
-        const cardEl = createGalleryCard(config, cardid, ownedIds);
-        grid.appendChild(cardEl);
+        subsection.cards.forEach(cardid => {
+          const cardEl = createGalleryCard(config, cardid, ownedIds);
+          grid.appendChild(cardEl);
+        });
+
+        subsectionDiv.appendChild(grid);
+        sectionDivSubSections.appendChild(subsectionDiv);
       });
-
-      subsectionDiv.appendChild(grid);
-      sectionDiv.appendChild(subsectionDiv);
-    });
-
-    gallery.appendChild(sectionDiv);
+      gallery.appendChild(sectionDivSubSections);
+    }
+    
   });
 }
 

@@ -265,6 +265,19 @@
       ]
     },
     {
+      "id": "camille-coach-001",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Camille - Coach U9F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/camille.jpg"
+        }
+      ]
+    },
+    {
       "id": "yoann-coach-002",
       "name": "Coach",
       "category": "staff",
@@ -434,6 +447,32 @@
       ]
     },
     {
+      "id": "helene",
+      "name": "Bureau",
+      "category": "bureau",
+      "weight": 3,
+      "displayName": "Hélène - Trésorière",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/helene.jpg"
+        }
+      ]
+    },
+    {
+      "id": "olivier",
+      "name": "Bureau",
+      "category": "bureau",
+      "weight": 3,
+      "displayName": "Olivier - Secrétaire Adjoint",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/olivier.jpg"
+        }
+      ]
+    },
+    {
       "id": "pascal",
       "name": "Président",
       "category": "president",
@@ -495,11 +534,11 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "remy-coach-011", "manu-coach-012", "thomas-coach-009"]
+        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "remy-coach-011", "manu-coach-012", "thomas-coach-009"]
       },
       {
         "name": "Bureau",       
-        "cards": ["emilien", "christian", "pascal"]
+        "cards": ["emilien", "christian", "helene","olivier", "pascal"]
       }
     ]
   }
