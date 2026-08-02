@@ -473,6 +473,20 @@
       ]
     },
     {
+      "id": "sabrina",
+      "name": "Bureau",
+      "category": "bureau",
+      "weight": 4,
+      "displayName": "🌟 Sabrina - Secrétaire",
+      "rarity": "legendary",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/sabrina.png"
+        }
+      ]
+    },
+    {
       "id": "pascal",
       "name": "Président",
       "category": "president",
@@ -538,7 +552,7 @@
       },
       {
         "name": "Bureau",       
-        "cards": ["emilien", "christian", "helene","olivier", "pascal"]
+        "cards": ["emilien", "christian", "helene","olivier", "sabrina", "pascal"]
       }
     ]
   }
