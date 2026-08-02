@@ -2,7 +2,7 @@
  * game.js - Logique du jeu (tirage, seed, validation)
  */
 
-import { getDailySeed, weightedRandomCard, simpleHash, formatDate, validateCardId } from './utils.js';
+import { weightedRandomCard, simpleHash, formatDate, validateCardId } from './utils.js';
 import { getCollection, saveCollection } from './storage.js';
 
 let config = null;
@@ -55,10 +55,9 @@ export function drawCardsForToday() {
 
   const cardsPerDraw = getCardsPerDraw();
   const drawnCards = [];
-  const seed = getDailySeed();
 
   for (let i = 0; i < cardsPerDraw; i++) {
-    const card = weightedRandomCard(config.cards, seed + i / 1000);
+    const card = weightedRandomCard(config.cards);
     drawnCards.push(card);
   }
 

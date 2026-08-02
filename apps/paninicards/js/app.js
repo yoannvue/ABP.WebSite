@@ -38,6 +38,11 @@ function setupDailyDraw() {
       const result = drawCardsForToday();
 
       if (result.status === 'success') {
+        // Masquer le div tirage
+        const tirageDiv = document.getElementById('tirage');
+        if (tirageDiv) {
+          tirageDiv.style.display = 'none';
+        }
         displayDrawnCards(result.cards);
       } else {
         alert(result.message);
