@@ -31,6 +31,19 @@
       ]
     },
     {
+      "id": "ballon",
+      "name": "Ballon ABP",
+      "category": "objets",
+      "weight": 1,
+      "displayName": "Ballon du club",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/ballon.jpg"
+        }
+      ]
+    },
+    {
       "id": "salle-pecquencourt-jeandegros-left",
       "name": "Salle Pecquencourt Jeandegros",
       "category": "objets",
@@ -221,12 +234,116 @@
       "images": [
         {
           "side": "full",
-          "url": "/ressources/Coachs/Cedric.png"
+          "url": "/ressources/Coachs/cedric.png"
         }
       ]
     },
     {
-      "id": "bureau-treasurer-009",
+      "id": "jimmy-coach-006",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Jimmy - Coach U13M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/jimmy.jpg"
+        }
+      ]
+    },
+    {
+      "id": "gaetan-coach-007",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Gaétan - Coach U13F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Gaetan.jpg"
+        }
+      ]
+    },
+    {
+      "id": "annegaelle-coach-008",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Anne-Gaëlle - Coach U15F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Anne Gaelle.jpg"
+        }
+      ]
+    },
+    {
+      "id": "manon-coach-010",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Manon - Coach U15F & Loisirs",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Manon.jpg"
+        }
+      ]
+    },
+    {
+      "id": "remy-coach-011",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Remy - Coach U18M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/remy Dechappe.jpg"
+        }
+      ]
+    },
+    {
+      "id": "manu-coach-012",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Manu - Coach U18F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Manu.jpg"
+        }
+      ]
+    },
+    {
+      "id": "thomas-coach-009",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 2,
+      "displayName": "Thomas - Coach Seniors",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Thomas.jpg"
+        }
+      ]
+    },
+    {
+      "id": "emilien",
+      "name": "Bureau",
+      "category": "bureau",
+      "weight": 3,
+      "displayName": "Emilien - Directeur Technique",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/Emilien.jpg"
+        }
+      ]
+    },
+    {
+      "id": "christian",
       "name": "Bureau",
       "category": "bureau",
       "weight": 3,
@@ -239,7 +356,7 @@
       ]
     },
     {
-      "id": "bureau-president-010",
+      "id": "pascal",
       "name": "Président",
       "category": "president",
       "weight": 4,
@@ -257,7 +374,7 @@
     "sections": [
       {
         "name": "Divers",
-        "cards": ["logo-001"],
+        "cards": ["logo-001","ballon"],
         "subsections": [
           {
             "name": "Salle Jean Degros - Pecquencourt",
@@ -288,11 +405,11 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005"]
+        "cards": ["anaelle-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "remy-coach-011", "manu-coach-012", "thomas-coach-009"]
       },
       {
         "name": "Bureau",       
-        "cards": ["bureau-treasurer-009", "bureau-president-010"]
+        "cards": ["emilien", "christian", "pascal"]
       }
     ]
   }
