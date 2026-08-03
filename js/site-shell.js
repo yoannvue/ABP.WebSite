@@ -13,7 +13,6 @@
     '/index.html': 'accueil',
     '/pages/entrainements.html': 'entrainements',
     '/pages/salles.html': 'salles',
-    '/pages/coach.html': 'coachs',
     '/pages/coachs.html': 'coachs',
     '/pages/equipes.html': 'equipes',
     '/pages/sponsors.html': 'sponsors'
@@ -116,11 +115,25 @@
     }
   }
 
+  function loadAnalyticsScript() {
+    const existingScript = document.querySelector('script[data-analytics-loader="true"]');
+    if (existingScript) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = getBasePath() + 'js/analytics.js';
+    script.async = true;
+    script.dataset.analyticsLoader = 'true';
+    document.head.appendChild(script);
+  }
+
   async function bootstrap() {
     for (const partial of partials) {
       await loadPartial(partial.target, partial.url);
     }
 
+    loadAnalyticsScript();
     applyActiveLink();
     initMobileMenu();
   }
