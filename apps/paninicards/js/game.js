@@ -55,10 +55,14 @@ export function drawCardsForToday() {
 
   const cardsPerDraw = getCardsPerDraw();
   const drawnCards = [];
+  const ownedIds = new Set(stored.collection || []);
 
   for (let i = 0; i < cardsPerDraw; i++) {
     const card = weightedRandomCard(config.cards);
-    drawnCards.push(card);
+    drawnCards.push({
+      ...card,
+      isNew: !ownedIds.has(card.id)
+    });
   }
 
   const validIds = new Set(config.cards.map(c => c.id));

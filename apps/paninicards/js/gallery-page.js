@@ -15,6 +15,7 @@ async function init() {
     console.log('Config chargée :', config);
 
     // Afficher la galerie
+    updateProgress();
     buildGalleryFromConfig(config);
 
   } catch (error) {
@@ -25,12 +26,26 @@ async function init() {
 
 
 
+function updateProgress() {
+  const stored = getCollection();
+  const collection = stored.collection || [];
+  const unique = new Set(collection);
+  const total = config?.cards?.length || 0;
+
+  document.getElementById('progress-text').textContent =
+    `${unique.size}/${total} cartes`;
+
+  const progressPercentage = total ? Math.min(100, (unique.size / total) * 100) : 0;
+  document.getElementById('progress-fill').style.width = `${progressPercentage}%`;
+}
+
 export function buildGalleryFromConfig(config) {
   const gallery = document.getElementById('gallery');
   gallery.innerHTML = '';
 
   const stored = getCollection();
   const ownedIds = new Set(stored.collection || []);
+  updateProgress();
 
   const sections = {};
   // Préparer les sections et sous-sections à partir de la configuration

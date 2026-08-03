@@ -47,7 +47,7 @@
       "id": "salle-pecquencourt-jeandegros-left",
       "name": "Salle Pecquencourt Jeandegros",
       "category": "objets",
-      "weight": 1,
+      "weight": 2,
       "displayName": "Salle Pecquencourt Jean Degros",
       "images": [
         {
@@ -60,7 +60,7 @@
       "id": "salle-pecquencourt-jeandegros-right",
       "name": "Salle Pecquencourt Jeandegros",
       "category": "objets",
-      "weight": 1,
+      "weight": 2,
       "displayName": "Salle Pecquencourt Jean Degros",
       "images": [
         {
@@ -73,7 +73,7 @@
       "id": "salle-pecquencourt-anchin-left",
       "name": "Salle Pecquencourt Anchin",
       "category": "objets",
-      "weight": 1,
+      "weight": 2,
       "displayName": "Salle Anchin - Pecquencourt",
       "images": [
         {
@@ -86,7 +86,7 @@
       "id": "salle-pecquencourt-anchin-right",
       "name": "Salle Pecquencourt Anchin",
       "category": "objets",
-      "weight": 1,
+      "weight": 2,
       "displayName": "Salle Anchin - Pecquencourt",
       "images": [
         {
@@ -99,7 +99,7 @@
       "id": "salle-montigny-salledessports-left",
       "name": "Salle des sports - Montigny en Ostrevent",
       "category": "objets",
-      "weight": 1,
+      "weight": 2,
       "displayName": "Salle des sports - Montigny en Ostrevent",
       "images": [
         {
@@ -112,7 +112,7 @@
       "id": "salle-montigny-salledessports-right",
       "name": "Salle des sports - Montigny en Ostrevent",
       "category": "objets",
-      "weight": 1,
+      "weight": 2,
       "displayName": "Salle des sports - Montigny en Ostrevent",
       "images": [
         {
@@ -125,7 +125,7 @@
       "id": "team-u9-girls-left-001",
       "name": "Équipe U9 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U9 Filles",
       "images": [
         {
@@ -138,7 +138,7 @@
       "id": "team-u9-girls-right-002",
       "name": "Équipe U9 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U9 Filles",
       "images": [
         {
@@ -151,7 +151,7 @@
       "id": "team-u9-masculins-left",
       "name": "Équipe U9 Masculins",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U9 Masculins",
       "images": [
         {
@@ -164,7 +164,7 @@
       "id": "team-u9-masculins-right",
       "name": "Équipe U9 Masculins",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U9 Masculins",
       "images": [
         {
@@ -177,7 +177,7 @@
       "id": "team-u11-filles-left",
       "name": "Équipe U11 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U11 Filles",
       "images": [
         {
@@ -190,7 +190,7 @@
       "id": "team-u11-filles-right",
       "name": "Équipe U11 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U11 Filles",
       "images": [
         {
@@ -203,7 +203,7 @@
       "id": "team-u13-filles-left",
       "name": "Équipe U13 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U13 Filles",
       "images": [
         {
@@ -216,7 +216,7 @@
       "id": "team-u13-filles-right",
       "name": "Équipe U13 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U13 Filles",
       "images": [
         {
@@ -229,7 +229,7 @@
       "id": "team-u18-girls-left-003",
       "name": "Équipe U18 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U18 Filles",
       "images": [
         {
@@ -242,7 +242,7 @@
       "id": "team-u18-girls-right-004",
       "name": "Équipe U18 Filles",
       "category": "team",
-      "weight": 1,
+      "weight": 3,
       "displayName": "U18 Filles",
       "images": [
         {
@@ -255,7 +255,7 @@
       "id": "anaelle-coach-001",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Annaelle - Coach U9M",
       "images": [
         {
@@ -268,7 +268,7 @@
       "id": "camille-coach-001",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Camille - Coach U9F",
       "images": [
         {
@@ -281,7 +281,7 @@
       "id": "yoann-coach-002",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Yoann - Coach U11F",
       "images": [
         {
@@ -294,7 +294,7 @@
       "id": "sebastien-coach-003",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Sebastien - Coach U11F",
       "images": [
         {
@@ -307,7 +307,7 @@
       "id": "steeve-coach-004",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Steeve - Coach U13F",
       "images": [
         {
@@ -320,7 +320,7 @@
       "id": "cedric-coach-005",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Cédric - Coach U11M",
       "images": [
         {
@@ -333,7 +333,7 @@
       "id": "jimmy-coach-006",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Jimmy - Coach U13M",
       "images": [
         {
@@ -346,7 +346,7 @@
       "id": "gaetan-coach-007",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Gaétan - Coach U13F",
       "images": [
         {
@@ -359,7 +359,7 @@
       "id": "annegaelle-coach-008",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Anne-Gaëlle - Coach U15F",
       "images": [
         {
@@ -372,7 +372,7 @@
       "id": "manon-coach-010",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Manon - Coach U15F & Loisirs",
       "images": [
         {
@@ -385,7 +385,7 @@
       "id": "remy-coach-011",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Remy - Coach U18M",
       "images": [
         {
@@ -398,7 +398,7 @@
       "id": "manu-coach-012",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Manu - Coach U18F",
       "images": [
         {
@@ -411,7 +411,7 @@
       "id": "thomas-coach-009",
       "name": "Coach",
       "category": "staff",
-      "weight": 2,
+      "weight": 4,
       "displayName": "Thomas - Coach Seniors",
       "images": [
         {
@@ -421,10 +421,23 @@
       ]
     },
     {
+      "id": "aurelien-coach-013",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Aurélien - Coach U15M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/aurelien.jpg"
+        }
+      ]
+    },
+    {
       "id": "emilien",
       "name": "Bureau",
       "category": "bureau",
-      "weight": 3,
+      "weight": 6,
       "displayName": "Emilien - Directeur Technique",
       "images": [
         {
@@ -437,7 +450,7 @@
       "id": "christian",
       "name": "Bureau",
       "category": "bureau",
-      "weight": 3,
+      "weight": 7,
       "displayName": "Christian - Vice Président",
       "images": [
         {
@@ -450,7 +463,7 @@
       "id": "helene",
       "name": "Bureau",
       "category": "bureau",
-      "weight": 3,
+      "weight": 7,
       "displayName": "Hélène - Trésorière",
       "images": [
         {
@@ -463,7 +476,7 @@
       "id": "olivier",
       "name": "Bureau",
       "category": "bureau",
-      "weight": 3,
+      "weight": 7,
       "displayName": "Olivier - Secrétaire Adjoint",
       "images": [
         {
@@ -476,7 +489,7 @@
       "id": "christelle",
       "name": "Bureau",
       "category": "bureau",
-      "weight": 3,
+      "weight": 7,
       "displayName": "Christelle - Trésorière Adjointe",
       "images": [
         {
@@ -489,7 +502,7 @@
       "id": "sabrina",
       "name": "Bureau",
       "category": "bureau",
-      "weight": 4,
+      "weight": 10,
       "displayName": "🌟 Sabrina - Secrétaire",
       "rarity": "legendary",
       "images": [
@@ -503,7 +516,7 @@
       "id": "pascal",
       "name": "Président",
       "category": "president",
-      "weight": 4,
+      "weight": 10,
       "displayName": "🌟 Pascal - Président",
       "rarity": "legendary",
       "images": [
@@ -561,7 +574,7 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "remy-coach-011", "manu-coach-012", "thomas-coach-009"]
+        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "remy-coach-011", "manu-coach-012", "thomas-coach-009", "aurelien-coach-013"]
       },
       {
         "name": "Bureau",       

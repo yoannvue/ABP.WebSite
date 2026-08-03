@@ -338,6 +338,7 @@ body {
   height: 300px;
   perspective: 1000px;
   cursor: pointer;
+  position: relative;
 }
 
 .flip-card-inner {
@@ -351,6 +352,16 @@ body {
 
 .flip-card.flipping .flip-card-inner {
   transform: rotateY(180deg);
+}
+
+.flip-card.is-new .flip-card-front,
+.flip-card.is-new .flip-card-back {
+  box-shadow: var(--box-shadow);
+}
+
+.flip-card.is-new.flipping .flip-card-back,
+.flip-card.is-new.flipping .flip-card-front {
+  box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.9), 0 0 25px rgba(251, 191, 36, 0.7);
 }
 
 .flip-card-front {
@@ -382,6 +393,29 @@ body {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}
+
+.new-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #111827;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.7);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.flip-card.is-new.flipping .new-badge {
+  opacity: 1;
 }
 
 .flip-card-back img {

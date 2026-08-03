@@ -13,12 +13,22 @@ export function simpleHash(str) {
 }
 
 export function weightedRandomCard(cards) {
+  // 1. Calculer le poids total
   const totalWeight = cards.reduce((sum, card) => sum + card.weight, 0);
-  let random = Math.random() * totalWeight;
+  
+  // 2. Générer un nombre aléatoire entre 0 et totalWeight
+  const random = Math.random() * totalWeight;
 
+  // 3. Accumuler les poids et vérifier la plage
+  let cumulativeWeight = 0;
+  
   for (const card of cards) {
-    random -= card.weight;
-    if (random <= 0) return card;
+    cumulativeWeight += card.weight;  // ✅ ADDITION = correct !
+    
+    // Si random est dans la plage [poids précédent, poids courant]
+    if (random < cumulativeWeight) {
+      return card;
+    }
   }
 
   return cards[cards.length - 1];
