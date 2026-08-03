@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirection... | AB Pecquencourt</title>
+  <script>
+    (function() {
+      // Récupère le chemin demandé (ex: /club ou /club/bureau)
+      const path = window.location.pathname;
+
+      // Table de correspondance / règles de redirection
+      // Vous pouvez ajouter d'anciennes pages spécifiques ici
+      const redirects = {
+         '/club/coachs-et-aides-coachs': '/pages/coachs.html',
+         '/club/entrainements': '/pages/entrainements.html'
+      };
+
+      // 1. Redirection spécifique si définie dans le tableau
+      if (redirects[path]) {
+        window.location.replace(redirects[path]);
+        return;
+      }
+
+      // 2. Redirection globale si l'URL commence par /club
+      if (path.startsWith('/club')) {
+        // Redirige vers la page d'accueil ou une page de votre choix
+        window.location.replace('/');
+        return;
+      }      
+    })();
+  </script>
+  <style>
+    :root {
+      --primary: #1e3a8a;
+      --text: #1f2937;
+      --bg: #f8fafc;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      max-width: 480px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 4rem;
+      margin: 0;
+      color: var(--primary);
+    }
+    h2 {
+      margin-top: 0.5rem;
+      font-size: 1.5rem;
+    }
+    p {
+      color: #6b7280;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .btn:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>404</h1>
+    <h2>Page introuvable</h2>
+    <p>La page que vous cherchez a été déplacée ou n'existe plus.</p>
+    <a href="/" class="btn">Retourner à l'accueil</a>
+  </div>
+</body>
+</html>
