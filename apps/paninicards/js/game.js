@@ -82,6 +82,8 @@ export function drawCardsForToday() {
 
   saveCollection(newData);
 
+  Analytics.trackEvent('tirage');
+
   return {
     status: 'success',
     cards: drawnCards,
