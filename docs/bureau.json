@@ -1,0 +1,38 @@
+[
+    { 
+        "nom": "Pascal DORCHY",
+        "role": "Président",
+        "photo": "/ressources/Coachs/Pascal Dorchy.jpg",
+        "description": "Coordonne le club et représente l'association."
+    },
+    { 
+        "nom": "Christian MENAR",
+        "role": "Vice Président",
+        "photo": "/ressources/Coachs/Christian.jpg",
+        "description": "Assiste le président et participe à la coordination des activités et des manifestations du club."
+    },
+    { 
+        "nom": "Helene AROLD",
+        "role": "Trésorière",
+        "photo": "/ressources/Coachs/Helene.jpg",
+        "description": "Gère les finances du club, prépare le budget et assure la transparence financière."
+    },
+    { 
+        "nom": "Sabrina TELLE",
+        "role": "Secrétaire",
+        "photo": "/ressources/Coachs/Sabrina.jpg",
+        "description": "Assure la communication interne et externe du club, rédige les comptes rendus des réunions et gère les inscriptions."
+    },
+    { 
+        "nom": "Helene AROLD",
+        "role": "Trésorière Adjointe",
+        "photo": "/ressources/Coachs/Christelle.jpg",
+        "description": "Assiste la trésorière dans la gestion des finances du club et participe à la préparation du budget."
+    },
+    { 
+        "nom": "Olivier DUJARDIN",
+        "role": "Secrétaire Adjoint",
+        "photo": "/ressources/Coachs/Olivier.jpg",
+        "description": "Assiste la secrétaire dans la gestion de la communication et des inscriptions, et participe à l'organisation des événements du club."
+    }
+]

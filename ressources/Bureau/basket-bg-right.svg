@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 500 500">
+
+<g transform="rotate(25 250 250)"
+   stroke="#123B72"
+   stroke-width="3"
+   fill="none"
+   opacity="0.18">
+
+    <circle cx="250"
+            cy="250"
+            r="180"/>
+
+    <path d="M250 70
+             A180 180 0 0 1
+             250 430"/>
+
+    <path d="M250 70
+             A180 180 0 0 0
+             250 430"/>
+
+    <path d="M70 250
+             A180 180 0 0 1
+             430 250"/>
+
+    <path d="M70 250
+             A180 180 0 0 0
+             430 250"/>
+
+</g>
+
+</svg>

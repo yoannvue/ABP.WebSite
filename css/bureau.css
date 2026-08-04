@@ -1,0 +1,486 @@
+/* ==========================================================
+   AB PECQUENCOURT - BUREAU
+   Hall Of Fame
+   ========================================================== */
+
+:root{
+
+    /* Couleurs */
+
+    --blue:#0f2d57;
+    --blue-light:#234f8a;
+    --orange:#ff7b22;
+
+    --background:#f7f8fb;
+
+    --text:#333;
+    --text-light:#666;
+
+    --white:#ffffff;
+
+    /* Cartes */
+
+    --radius:18px;
+
+    --shadow:
+        0 10px 35px rgba(0,0,0,.08);
+
+    --shadow-hover:
+        0 18px 45px rgba(0,0,0,.15);
+
+}
+
+/**************************************************
+GLOBAL
+**************************************************/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+/**************************************************
+SECTION
+**************************************************/
+
+.bureau{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:80px 20px;
+
+    background-color:var(--background);
+
+}
+
+/**************************************************
+Décors
+**************************************************/
+
+.bureau::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+        url(images/basket-bg-left.svg),
+        url(images/basket-bg-right.svg),
+        url(images/dots.svg);
+
+    background-repeat:
+
+        no-repeat,
+        no-repeat,
+        no-repeat;
+
+    background-position:
+
+        left -120px top 100px,
+        right -120px bottom 80px,
+        right top;
+
+    background-size:
+
+        420px,
+        420px,
+        220px;
+
+    opacity:.08;
+
+    pointer-events:none;
+
+}
+
+/**************************************************
+Titre
+**************************************************/
+
+.bureau-header{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.bureau-header h2{
+
+    font-size:4rem;
+
+    color:var(--blue);
+
+    text-transform:uppercase;
+
+    letter-spacing:2px;
+
+    font-weight:800;
+
+}
+
+.bureau-header p{
+
+    margin-top:15px;
+
+    color:#4d4d4d;
+
+    font-size:1.25rem;
+
+}
+
+/**************************************************
+Grille
+**************************************************/
+
+.bureau-grid{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    display:grid;
+
+    gap:35px;
+
+    grid-template-columns:
+
+        repeat(3,1fr);
+
+}
+
+/**************************************************
+Carte
+**************************************************/
+
+.member-card{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:var(--radius);
+
+    padding:
+
+        45px
+        30px
+        35px;
+
+    text-align:center;
+
+    box-shadow:var(--shadow);
+
+    transition:
+
+        transform .35s,
+        box-shadow .35s;
+
+}
+
+.member-card:hover{
+
+    transform:
+
+        translateY(-10px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+/**************************************************
+Photo
+**************************************************/
+
+.member-photo{
+
+    width:150px;
+
+    height:150px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    border:4px solid var(--blue);
+
+    background:#ddd;
+
+}
+
+.member-photo img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.4s;
+
+}
+
+.member-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/**************************************************
+Icône
+**************************************************/
+
+.member-icon{
+
+    width:58px;
+
+    height:58px;
+
+    position:relative;
+
+    margin:-28px auto 15px;
+
+    border-radius:50%;
+
+    background:white;
+
+    border:3px solid var(--blue);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.member-icon img{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+/**************************************************
+Nom
+**************************************************/
+
+.member-name{
+
+    font-size:2rem;
+
+    font-weight:800;
+
+    color:var(--blue);
+
+    text-transform:uppercase;
+
+}
+
+/**************************************************
+Fonction
+**************************************************/
+
+.member-role{
+
+    color:var(--orange);
+
+    font-weight:700;
+
+    font-size:1rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-top:8px;
+
+}
+
+/**************************************************
+Séparateur
+**************************************************/
+
+.member-separator{
+
+    width:55px;
+
+    height:3px;
+
+    background:var(--orange);
+
+    margin:
+
+        20px auto;
+
+    border-radius:3px;
+
+}
+
+/**************************************************
+Description
+**************************************************/
+
+.member-description{
+
+    color:var(--text-light);
+
+    line-height:1.65;
+
+    font-size:.95rem;
+
+}
+
+/**************************************************
+Animation apparition
+**************************************************/
+
+.member-card{
+
+    opacity:0;
+
+    transform:
+
+        translateY(40px);
+
+    animation:
+
+        apparition .8s forwards;
+
+}
+
+.member-card:nth-child(2){
+
+    animation-delay:.1s;
+
+}
+
+.member-card:nth-child(3){
+
+    animation-delay:.2s;
+
+}
+
+.member-card:nth-child(4){
+
+    animation-delay:.3s;
+
+}
+
+.member-card:nth-child(5){
+
+    animation-delay:.4s;
+
+}
+
+.member-card:nth-child(6){
+
+    animation-delay:.5s;
+
+}
+
+@keyframes apparition{
+
+    to{
+
+        opacity:1;
+
+        transform:none;
+
+    }
+
+}
+
+/**************************************************
+TABLETTE
+**************************************************/
+
+@media(max-width:1000px){
+
+    .bureau-grid{
+
+        grid-template-columns:
+
+            repeat(2,1fr);
+
+    }
+
+    .bureau-header h2{
+
+        font-size:3rem;
+
+    }
+
+}
+
+/**************************************************
+MOBILE
+**************************************************/
+
+@media(max-width:680px){
+
+    .bureau{
+
+        padding:50px 15px;
+
+    }
+
+    .bureau-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .member-card{
+
+        padding:35px 25px;
+
+    }
+
+    .member-photo{
+
+        width:125px;
+        height:125px;
+
+    }
+
+    .member-name{
+
+        font-size:1.55rem;
+
+    }
+
+    .bureau-header h2{
+
+        font-size:2.4rem;
+
+    }
+
+    .bureau-header p{
+
+        font-size:1rem;
+
+    }
+
+}

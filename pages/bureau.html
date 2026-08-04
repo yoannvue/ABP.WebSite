@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charSet="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" as="image" href="/ressources/logo-abp.png" />
+    <link rel="stylesheet" href="/css/site.css" type="text/css" data-precedence="default" />
+    <link rel="stylesheet" href="/css/bureau.v2.css" type="text/css" data-precedence="default" />
+    <title>Amicale Basket Pecquencourt - Montigny en Ostrevent</title>
+    <meta name="description"
+        content="Actualités, horaires, salles, coachs et équipes de l’Amicale Basket Pecquencourt - Montigny en Ostrevent." />
+    <link rel="icon" href="/ressources/logo-abp.png" />
+</head>
+
+<body data-page="bureau">
+    <div class="site-shell">
+        <a class="skip-link" href="#contenu">Aller au contenu</a>
+        <header id="site-header"></header>
+        <main id="contenu">
+            <section class="bureau">
+                <div class="bureau-header">
+                    <h2>Le Bureau</h2>
+                    <p>Les bénévoles qui font vivre le club au quotidien</p>
+                </div>
+
+                <div class="bureau-grid" data-bureau-render aria-live="polite">
+                    <!-- Members rendered from docs/bureau.json -->
+                </div>
+            </section>
+        </main>
+        <footer id="site-footer"></footer>
+    </div>
+</body>
+<script src="/js/site-shell.js" type="text/javascript"></script>
+<script src="/js/bureau-page.js" type="text/javascript"></script>
+
+</html>

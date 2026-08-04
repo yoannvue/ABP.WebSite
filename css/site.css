@@ -1619,7 +1619,7 @@ img {
     font-size: clamp(12px,14px,20px)
 }
 
-.sponsor-link {
+.sp-url {
     color: var(--orange-deep);
     text-decoration: none;
     font-size: 12px;
@@ -1628,7 +1628,7 @@ img {
     text-transform: uppercase
 }
 
-.sponsor-link.is-disabled {
+.sp-url.is-disabled {
     color: var(--muted)
 }
 
