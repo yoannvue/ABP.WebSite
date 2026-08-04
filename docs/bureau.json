@@ -14,25 +14,25 @@
     { 
         "nom": "Helene AROLD",
         "role": "Trésorière",
-        "photo": "/ressources/Coachs/Helene.jpg",
+        "photo": "/ressources/Coachs/helene.jpg",
         "description": "Gère les finances du club, prépare le budget et assure la transparence financière."
     },
     { 
         "nom": "Sabrina TELLE",
         "role": "Secrétaire",
-        "photo": "/ressources/Coachs/Sabrina.jpg",
+        "photo": "/ressources/Coachs/sabrina.jpg",
         "description": "Assure la communication interne et externe du club, rédige les comptes rendus des réunions et gère les inscriptions."
     },
     { 
-        "nom": "Helene AROLD",
+        "nom": "Christelle KOPEC",
         "role": "Trésorière Adjointe",
-        "photo": "/ressources/Coachs/Christelle.jpg",
+        "photo": "/ressources/Coachs/christelle.jpg",
         "description": "Assiste la trésorière dans la gestion des finances du club et participe à la préparation du budget."
     },
     { 
         "nom": "Olivier DUJARDIN",
         "role": "Secrétaire Adjoint",
-        "photo": "/ressources/Coachs/Olivier.jpg",
+        "photo": "/ressources/Coachs/olivier.jpg",
         "description": "Assiste la secrétaire dans la gestion de la communication et des inscriptions, et participe à l'organisation des événements du club."
     }
 ]

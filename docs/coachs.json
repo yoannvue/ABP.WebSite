@@ -27,6 +27,15 @@
     "image":  "/ressources/Coachs/Homme.jpg"
   },
   {
+    "prenom": "Sabrina",
+    "nom": "Labre",
+    "role": "Coach U7",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image":  "/ressources/Coachs/Femme.jpg"
+  },
+  {
     "prenom": "Anaelle",
     "nom": "Becq",
     "role": "Coach U9M",
@@ -134,6 +143,15 @@
     "specification": "",
     "image": "/ressources/Coachs/Guillaume.jpg"
   },
+   {
+    "prenom": "Andy",
+    "nom": "Marin Helbecque",
+    "role": "Coach U13M",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Homme.jpg"
+  },
   {
     "prenom": "Anne Gaëlle",
     "nom": "Oudhof",
@@ -191,11 +209,20 @@
   {
     "prenom": "Remy",
     "nom": "Dechappe",
-    "role": "Coach U18F",
+    "role": "Coach U18M",
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
     "image": "/ressources/Coachs/remydechappe.jpg"
+  },
+   {
+    "prenom": "Antoine",
+    "nom": "Nortier",
+    "role": "Coach U18M",
+    "diplome": "",
+    "imageDiplome": "",
+    "specification": "",
+    "image": "/ressources/Coachs/Homme.jpg"
   },
   {
     "prenom": "Anthony",

@@ -3,7 +3,7 @@
     {
       "age": "Né(e)s en 2020 - 2021 - Mixte",
       "label": "Baby & Mini-basket",
-      "coach": "Entrainés par Pascal, Eric et Sade",
+      "coach": "Entrainés par Pascal, Eric, Sabrina et Sade",
       "accent": "blue",
       "sessions": [
         { "day": "Mercredi", "time": "14h15 — 15h15", "place": "Salle Jean Degros - Pecquencourt" }
@@ -62,7 +62,7 @@
     {
       "age": "Nés en 2014 - 2015",
       "label": "U13M",
-      "coach": "Entrainés par Jimmy et Guillaume",
+      "coach": "Entrainés par Jimmy, Andy et Guillaume",
       "accent": "blue",
       "sessions": [
         { "day": "Mercredi", "time": "16h00 — 18h00", "place": "Salle d'Anchin" },
@@ -103,7 +103,7 @@
     {
       "age": "Nés en 2009 - 2010 - 2011",
       "label": "U18M",
-      "coach": "Entrainés par Rémi",
+      "coach": "Entrainés par Rémi et Antoine",
       "accent": "blue",
       "sessions": [
         { "day": "Mardi", "time": "20h00 — 21h30", "place": "Salle d'Anchin" },
