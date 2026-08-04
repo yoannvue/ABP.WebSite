@@ -28,10 +28,15 @@
       .join('');
   }
 
+  function getNewsCardClass(index = 0) {
+    const palette = ['post-orange', 'post-blue', 'post-cream'];
+    return `post-card ${palette[index % palette.length]}`;
+  }
+
   function renderNewsCard(item = {}, index = 0) {
     const hasLink = typeof item.lien === 'string' && item.lien.trim() !== '';
     const external = hasLink && /^https?:\/\//i.test(item.lien);
-    const cardClass = index === 0 ? 'post-card post-orange' : index === 1 ? 'post-card post-blue' : 'post-card post-cream';
+    const cardClass = getNewsCardClass(index);
     const cardMarkup = `
       <article>
         <div class="post-number">${String(index + 1).padStart(2, '0')}</div>

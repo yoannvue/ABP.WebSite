@@ -20,6 +20,25 @@
         ]
     },
     {
+        "date": "Juin 2026",
+        "categorie": "Recompenses",
+        "titre": "Label Mini Basket",
+        "contenu":[
+            { 
+                "type": "texte", 
+                "texte":"Le BabyBasket a pour vocation de faire découvrir le basket aux enfants de façon ludique à travers de nombreux jeux."
+            },
+            { 
+                "type": "image", 
+                "lien":"/ressources/Actualites/labelminibasket.jpg"
+            },
+            { 
+                "type": "texte", 
+                "texte":"Notre club a obtenu la 1ière et la 3ième étoile pour la période 2026-2029."
+            }
+        ]
+    },
+    {
         "date": "Juillet 2026",
         "categorie": "Vie du club",
         "titre": "Les inscriptions pour la saison 2026 – 2027 sont ouvertes",

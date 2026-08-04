@@ -804,7 +804,6 @@ img {
 }
 
 .post-card:first-child {
-    background: var(--orange);
     grid-row: span 2;
     min-height: 620px;
     padding: 48px
@@ -859,6 +858,55 @@ img {
 
 .post-card:nth-child(2) .post-number {
     color: #ffffff14
+}
+
+.post-card.post-orange {
+    background: var(--orange);
+    color: var(--navy-dark)
+}
+
+.post-card.post-blue {
+    background: var(--navy);
+    color: #fff
+}
+
+.post-card.post-cream {
+    background: var(--cream);
+    color: var(--navy-dark)
+}
+
+.post-card.post-orange .post-number,
+.post-card.post-cream .post-number {
+    color: rgba(19, 23, 52, .12)
+}
+
+.post-card.post-blue .post-number {
+    color: rgba(255,255,255,.14)
+}
+
+.post-card.post-blue .post-read,
+.post-card.post-blue .post-meta,
+.post-card.post-blue h3,
+.post-card.post-blue p {
+    color: #fff
+}
+
+.post-card.post-orange .post-read,
+.post-card.post-orange .post-meta,
+.post-card.post-orange h3,
+.post-card.post-orange p,
+.post-card.post-cream .post-read,
+.post-card.post-cream .post-meta,
+.post-card.post-cream h3,
+.post-card.post-cream p {
+    color: currentColor
+}
+
+.post-card.post-blue .post-read svg,
+.post-card.post-blue .post-meta svg,
+.post-card.post-blue h3 svg,
+.post-card.post-blue p svg {
+    color: inherit
 }
 
 .post-read {
