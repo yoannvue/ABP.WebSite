@@ -34,7 +34,7 @@
             <span class="team-category">Équipe</span>
             <h3>${escapeHtml(teamName)}</h3>
           </div>
-          <span class="team-level">Equipe entrainée par ${escapeHtml(coach)}</span>
+          <span class="team-level">Equipe entrainée<BR/> par ${escapeHtml(coach)}</span>
         </div>
 
         ${photos.length

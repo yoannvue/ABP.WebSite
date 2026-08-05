@@ -1,0 +1,119 @@
+#sectionRencontres{
+    background-image: url('/ressources/agenda2025.png');
+    background-repeat: no-repeat;
+    height: 900px;
+    width: 700px;
+    padding-left: 120px;
+    padding-right: 10px;
+    padding-top:10px;
+    padding-bottom:10px;   
+    
+    display: flex;
+    align-items: center; /* Aligne verticalement au centre */
+
+}
+
+#sectionRencontres.AucuneRencontre{
+    display:block;
+    background-image: none;
+    background-repeat: no-repeat;
+    min-height: 50px;
+    height: 50px;
+    padding-left: 0px;
+}
+
+.listRencontres {
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    width:100%
+}
+
+.titreSemaine{
+    margin:10px;
+    font-family: 'Alfa Slab One', 'Impact', 'Arial Black', cursive, sans-serif;
+    font-size: 2.2rem;
+    color: #ec843f; /* Orange vif / cuivré */
+    text-align: left;
+
+    /* Contour/Lueur sombre et ombre portée pour reproduire l'effet 3D/relief */
+    text-shadow: 
+        -1px -1px 0 #111,  
+        1px -1px 0 #111,
+        -1px  1px 0 #111,
+        1px  1px 0 #111,
+        3px  4px 6px rgba(0, 0, 0, 0.85);
+        
+    letter-spacing: 0.5px;
+}
+
+.titreGroupe{
+    margin:10px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', 'Arial Black', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: #ffffff; /* Blanc pur */
+    text-transform: uppercase;
+    letter-spacing: 2.5px; /* Espacement marqué entre les lettres */
+    
+    /* Légère ombre portée pour détacher le texte du fond dégradé bleu */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center; /* Aligne verticalement au centre */    
+}
+
+.rencontre{
+    display:grid;
+    grid-template-columns:1fr 60px 1fr;
+    align-items:center;
+
+    border:1px solid #fffefe7c;
+    border-radius:0px;
+
+    padding:2px 5px;
+    margin-bottom:0px;
+    color:whitesmoke;    
+}
+
+.exempt_list {
+    text-align: right;
+    margin-top:50px;
+    margin-right:10px;
+    font-size:12px;
+    font-weight:bold;
+    color: orange;
+}
+
+.equipeABP {
+    color: orange;
+}
+
+.equipe{
+    font-size:12px;
+    font-weight:bold;
+}
+
+.gauche{
+    text-align:left;
+}
+
+.droite{
+    text-align:right;
+}
+
+.centre{
+    text-align:center;
+    font-size: 10px;
+}
+
+.jour{
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.heure{
+    margin-top:4px;
+    font-size:1.15em;
+    color:#0b63c8;
+}

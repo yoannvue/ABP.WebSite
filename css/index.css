@@ -1,0 +1,112 @@
+/* ==========================================================================
+   1. VARIABLES & RESET
+   ========================================================================== */
+:root {
+  --primary-dark: #0b1320;
+  --primary-blue: #0b1b33;
+  --accent-orange: #f26522;
+  --accent-orange-hover: #d95314;
+  --bg-light: #f4f5f7;
+  --bg-white: #ffffff;
+  --text-dark: #1e293b;
+  --text-muted: #64748b;
+  --border-radius: 12px;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+
+.formation-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  position: relative;
+  margin-top: 3rem;
+}
+
+/* Ligne de connexion orange entre les étapes */
+.formation-timeline::before {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 10%;
+  right: 10%;
+  height: 3px;
+  background-color: var(--accent-orange);
+  z-index: 1;
+}
+
+.formation-step {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.step-icon {
+  width: 42px;
+  height: 42px;
+  background-color: var(--accent-orange);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  font-weight: 700;
+  border: 4px solid var(--bg-light);
+  box-shadow: 0 0 0 2px var(--accent-orange);
+}
+
+.step-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--primary-dark);
+  margin-bottom: 0.2rem;
+}
+
+.step-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.step-age {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+
+/* ==========================================================================
+   6. ADAPTATION MOBILE (CONCEPT 3 FULL)
+   ========================================================================== */
+@media (max-width: 850px) {
+
+  /* Adaptation de la timeline de formation sur mobile (affichage vertical) */
+  .formation-timeline {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .formation-timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    right: auto;
+    width: 3px;
+    height: 100%;
+  }
+
+  .formation-step {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+
+  .step-icon {
+    margin: 0;
+    flex-shrink: 0;
+  }
+}
