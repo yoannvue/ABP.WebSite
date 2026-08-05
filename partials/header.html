@@ -18,8 +18,18 @@
     <nav class="main-nav" aria-label="Navigation principale">
         <a href="/" class="nav-link" data-page="accueil">Accueil</a>
         <a href="/pages/entrainements.html" class="nav-link" data-page="entrainements">Entraînements</a>
-        <a href="/pages/salles.html" class="nav-link" data-page="salles">Salles</a>
-        <a href="/pages/bureau.html" class="nav-link" data-page="bureau">Bureau</a>
+
+        <div class="nav-item has-submenu">
+            <button type="button" class="nav-link nav-trigger" data-page="clubs" aria-expanded="false" aria-controls="clubs-submenu">
+                Clubs
+            </button>
+            <div class="submenu" id="clubs-submenu">
+                <a href="/pages/salles.html" class="nav-link sub-nav-link" data-page="salles">Salles</a>
+                <a href="/pages/bureau.html" class="nav-link sub-nav-link" data-page="bureau">Bureau</a>
+                <a href="/pages/arbitrage.html" class="nav-link sub-nav-link" data-page="arbitrage">Formations</a>
+            </div>
+        </div>
+
         <a href="/pages/coachs.html" class="nav-link" data-page="coachs">Coachs</a>
         <a href="/pages/equipes.html" class="nav-link" data-page="equipes">Équipes</a>
         <a href="/pages/sponsors.html" class="nav-link" data-page="sponsors">Sponsors</a>

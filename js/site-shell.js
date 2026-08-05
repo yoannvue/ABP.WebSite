@@ -16,7 +16,8 @@
     '/pages/coachs.html': 'coachs',
     '/pages/equipes.html': 'equipes',
     '/pages/sponsors.html': 'sponsors',
-    '/pages/bureau.html': 'bureau'
+    '/pages/bureau.html': 'bureau',
+    '/pages/arbitrage.html' : 'arbitrage'
   };
 
   function getCurrentPageKey() {
@@ -29,6 +30,27 @@
 
   function applyActiveLink() {
     const currentPage = getCurrentPageKey();
+    const clubParent = document.querySelector('.nav-item.has-submenu');
+    const clubTrigger = document.querySelector('.nav-trigger[data-page="clubs"]');
+    const isClubPage = currentPage === 'salles' || currentPage === 'bureau';
+
+    if (clubParent) {
+      clubParent.classList.toggle('is-active', isClubPage);
+    }
+
+    if (clubTrigger) {
+      clubTrigger.classList.toggle('active', isClubPage);
+      clubTrigger.classList.toggle('is-active', isClubPage);
+
+      if (isClubPage) {
+        clubTrigger.setAttribute('aria-current', 'page');
+        clubTrigger.dataset.status = 'active';
+      } else {
+        clubTrigger.removeAttribute('aria-current');
+        delete clubTrigger.dataset.status;
+      }
+    }
+
     const links = document.querySelectorAll('.nav-link[data-page]');
 
     links.forEach((link) => {
@@ -66,10 +88,25 @@
       setMenuState(!nav.classList.contains('is-open'));
     });
 
+    nav.querySelectorAll('.nav-trigger').forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        if (window.matchMedia('(max-width: 980px)').matches) {
+          event.preventDefault();
+          const parent = trigger.closest('.nav-item');
+          const isOpen = parent.classList.toggle('is-open');
+          trigger.setAttribute('aria-expanded', String(isOpen));
+        }
+      });
+    });
+
     nav.querySelectorAll('a').forEach((link) => {
       link.addEventListener('click', () => {
         if (window.matchMedia('(max-width: 980px)').matches) {
           setMenuState(false);
+          const parent = link.closest('.nav-item');
+          if (parent) {
+            parent.classList.remove('is-open');
+          }
         }
       });
     });

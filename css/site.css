@@ -437,6 +437,10 @@ img {
     display: flex
 }
 
+.nav-item {
+    position: relative
+}
+
 .nav-link {
     color: #ffffffb3;
     letter-spacing: .08em;
@@ -445,7 +449,15 @@ img {
     font-size: 13px;
     font-weight: 700;
     transition: color .25s;
-    position: relative
+    position: relative;
+    display: inline-flex;
+    align-items: center
+}
+
+.nav-trigger {
+    background: 0 0;
+    border: 0;
+    cursor: pointer;
 }
 
 .nav-link:after {
@@ -467,6 +479,39 @@ img {
 
 .nav-link:hover:after,.nav-link.active:after {
     transform: scaleX(1)
+}
+
+.submenu {
+    background: rgba(15,23,42,.96);
+    border: 1px solid rgba(255,255,255,.12);
+    box-shadow: 0 16px 36px rgba(9,14,24,.28);
+    min-width: 180px;
+    opacity: 0;
+    pointer-events: none;
+    padding: 12px 14px;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    transition: opacity .2s ease,transform .2s ease;
+    display: grid;
+    gap: 6px;
+    z-index: 15
+}
+
+.nav-item:hover .submenu,.nav-item:focus-within .submenu,.nav-item.is-open .submenu {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0)
+}
+
+.sub-nav-link {
+    padding: 10px 8px;
+    white-space: nowrap
+}
+
+.sub-nav-link:after {
+    bottom: 2px
 }
 
 .menu-button {
@@ -1794,6 +1839,36 @@ img {
         padding: 15px 4px
     }
 
+    .nav-item {
+        display: grid
+    }
+
+    .nav-trigger {
+        width: 100%;
+        justify-content: flex-start
+    }
+
+    .submenu {
+        background: rgba(255,255,255,.03);
+        border: 0;
+        box-shadow: none;
+        position: static;
+        opacity: 1;
+        pointer-events: auto;
+        padding: 0 0 0 14px;
+        transform: none;
+        display: none
+    }
+
+    .nav-item.is-open .submenu {
+        display: grid
+    }
+
+    .sub-nav-link {
+        border-bottom: 1px solid #ffffff14;
+        padding: 15px 4px
+    }
+
     .home-hero {
         grid-template-columns: 1fr
     }
@@ -2110,6 +2185,10 @@ img {
     .footer-links {
         text-align: left;
         justify-items: start
+    }
+
+    .nav-item:hover .submenu,.nav-item:focus-within .submenu,.nav-item.is-open .submenu {
+        transform: translateX(0) translateY(0)
     }
 }
 
