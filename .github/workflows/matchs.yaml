@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -21,23 +23,10 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Debug commits payload
-        run: |
-          echo "=== RAW COMMITS ==="
-          echo '${{ toJson(github.event.commits) }}'
-
       - name: Get XLS file name
         id: getfile
         run: |
-          COMMITS='${{ toJson(github.event.commits) }}'
-          echo "=== ADDED FILES ==="
-          echo "$COMMITS" | jq -r '.[].added // [] | .[]'
-          echo "=== MODIFIED FILES ==="
-          echo "$COMMITS" | jq -r '.[].modified // [] | .[]'
-          FILE=$(echo "$COMMITS" \
-            | jq -r '[.[].added // [], .[].modified // []] | flatten | map(select(endswith(".xlsx"))) | last // ""')
-          echo "=== FILE FOUND ==="
-          echo "$FILE"
+          FILE=$(git diff --name-only HEAD~1 HEAD -- 'data/rencontres/**/*.xlsx' | tail -1)
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
