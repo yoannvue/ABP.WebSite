@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: "24"
 
@@ -31,10 +31,14 @@ jobs:
           echo "$FILE"
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
-      - name: Debug file
-        run: |
-          echo "File found: ${{ steps.getfile.outputs.file }}"
-
       - name: Convert XLS to JSON
         run: |
           node scripts/matchs-xls-to-json.js ${{ steps.getfile.outputs.file }}
+
+      - name: Commit and push JSON
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/rencontres.json
+          git diff --cached --quiet || git commit -m "chore: update rencontres.json from ${{ steps.getfile.outputs.file }}"
+          git push
