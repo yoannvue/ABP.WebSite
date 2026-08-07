@@ -25,7 +25,7 @@ jobs:
         id: getfile
         run: |
           FILE=$(echo '${{ toJson(github.event.commits) }}' \
-            | jq -r '[.[].added[], .[].modified[]] | map(select(endswith(".xlsx"))) | last // ""')
+            | jq -r '[.[].added // [], .[].modified // []] | flatten | map(select(endswith(".xlsx"))) | last // ""')
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
