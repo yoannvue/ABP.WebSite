@@ -41,7 +41,7 @@ jobs:
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
-        run: echo "Fichier détecté: ${{ steps.getfile.outputs.file }}"
+        run: echo "Fichier detecte:" ${{ steps.getfile.outputs.file }}
 
       - name: Convert XLS to JSON
         run: node scripts/matchs-xls-to-json.js ${{ steps.getfile.outputs.file }}
