@@ -1,0 +1,30 @@
+name: XLS to JSON
+
+on:
+  push:
+    paths:
+      - "data/rencontres/*.xlsx"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Get XLS file name
+        id: getfile
+        run: |
+          echo "file=$(git diff --name-only HEAD~1 HEAD | grep '.xlsx')" >> $GITHUB_OUTPUT
+
+      - name: Convert XLS to JSON
+        run: node scripts/matchs-xls-to-json.js ${{ steps.getfile.outputs.file }}
