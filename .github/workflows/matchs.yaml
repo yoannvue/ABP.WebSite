@@ -26,7 +26,9 @@ jobs:
       - name: Get XLS file name
         id: getfile
         run: |
-          FILE=$(git diff --name-only HEAD~1 HEAD -- 'data/rencontres/**/*.xlsx' | tail -1)
+          FILE=$(git diff --name-only HEAD~1 HEAD | grep 'data/rencontres/.*\.xlsx$' | tail -1)
+          echo "=== FILE FOUND ==="
+          echo "$FILE"
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
