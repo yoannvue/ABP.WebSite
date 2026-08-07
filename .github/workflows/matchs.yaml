@@ -42,3 +42,14 @@ jobs:
           git add docs/rencontres.json
           git diff --cached --quiet || git commit -m "chore: update rencontres.json from ${{ steps.getfile.outputs.file }}"
           git push
+
+      - name: Generate image
+        run: node scripts/matchs-div-to-image.js
+
+      - name: Commit image
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add output/*.png
+          git commit -m "Ajout de l'image de la semaine"
+          git push

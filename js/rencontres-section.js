@@ -1,6 +1,6 @@
 async function chargerRencontres() {
     try {
-        const response = await fetch("/docs/no-rencontres.json");
+        const response = await fetch("/docs/rencontres.json");
         const fichier = await response.json();
 
         const section = document.getElementById("sectionRencontres");
