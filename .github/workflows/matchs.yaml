@@ -11,12 +11,12 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "24"
 
       - name: Install dependencies
         run: npm install
@@ -25,7 +25,9 @@ jobs:
         id: getfile
         run: |
           FILE=""
-          for commit in $(echo '${{ toJson(github.event.commits) }}' | sed 's/},{/} {/g'); do
+          COMMITS='${{ toJson(github.event.commits) }}'
+
+          echo "$COMMITS" | sed 's/},{/} {/g' | while read -r commit; do
             ADDED=$(echo "$commit" | grep -o '"added":
 
 \[[^]]*\]
