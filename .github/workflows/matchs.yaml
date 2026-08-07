@@ -21,11 +21,23 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Debug commits payload
+        run: |
+          echo "=== RAW COMMITS ==="
+          echo '${{ toJson(github.event.commits) }}'
+
       - name: Get XLS file name
         id: getfile
         run: |
-          FILE=$(echo '${{ toJson(github.event.commits) }}' \
+          COMMITS='${{ toJson(github.event.commits) }}'
+          echo "=== ADDED FILES ==="
+          echo "$COMMITS" | jq -r '.[].added // [] | .[]'
+          echo "=== MODIFIED FILES ==="
+          echo "$COMMITS" | jq -r '.[].modified // [] | .[]'
+          FILE=$(echo "$COMMITS" \
             | jq -r '[.[].added // [], .[].modified // []] | flatten | map(select(endswith(".xlsx"))) | last // ""')
+          echo "=== FILE FOUND ==="
+          echo "$FILE"
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
