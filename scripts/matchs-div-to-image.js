@@ -20,7 +20,7 @@ const path = require("path");
     // Capturer uniquement la div
     const element = await page.$("#sectionRencontres");
     await element.screenshot({
-        path: path.join(__dirname, `../data/rencontres/rencontres-${data.semaine.replace(/\s+/g, "_")}.png`)
+        path: path.join(__dirname, `../data/rencontres/rencontres.png`)
     });
 
     await browser.close();
