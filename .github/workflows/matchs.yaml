@@ -28,24 +28,8 @@ jobs:
           COMMITS='${{ toJson(github.event.commits) }}'
 
           echo "$COMMITS" | sed 's/},{/} {/g' | while read -r commit; do
-            ADDED=$(echo "$commit" | grep -o '"added":
-
-\[[^]]*\]
-
-' | sed 's/"added":
-
-\[\(.*\)\]
-
-/\1/' | tr -d '"' | tr ',' '\n')
-            MODIFIED=$(echo "$commit" | grep -o '"modified":
-
-\[[^]]*\]
-
-' | sed 's/"modified":
-
-\[\(.*\)\]
-
-/\1/' | tr -d '"' | tr ',' '\n')
+            ADDED=$(echo "$commit" | grep -o '"added":\[[^]]*\]' | sed 's/"added":\[\(.*\)\]/\1/' | tr -d '"' | tr ',' '\n')
+            MODIFIED=$(echo "$commit" | grep -o '"modified":\[[^]]*\]' | sed 's/"modified":\[\(.*\)\]/\1/' | tr -d '"' | tr ',' '\n')
 
             for f in $ADDED $MODIFIED; do
               if [[ "$f" == *.xlsx ]]; then
