@@ -24,20 +24,8 @@ jobs:
       - name: Get XLS file name
         id: getfile
         run: |
-          FILE=""
-          COMMITS='${{ toJson(github.event.commits) }}'
-
-          echo "$COMMITS" | sed 's/},{/} {/g' | while read -r commit; do
-            ADDED=$(echo "$commit" | grep -o '"added":\[[^]]*\]' | sed 's/"added":\[\(.*\)\]/\1/' | tr -d '"' | tr ',' '\n')
-            MODIFIED=$(echo "$commit" | grep -o '"modified":\[[^]]*\]' | sed 's/"modified":\[\(.*\)\]/\1/' | tr -d '"' | tr ',' '\n')
-
-            for f in $ADDED $MODIFIED; do
-              if [[ "$f" == *.xlsx ]]; then
-                FILE="$f"
-              fi
-            done
-          done
-
+          FILE=$(echo '${{ toJson(github.event.commits) }}' \
+            | jq -r '[.[].added[], .[].modified[]] | map(select(endswith(".xlsx"))) | last // ""')
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
