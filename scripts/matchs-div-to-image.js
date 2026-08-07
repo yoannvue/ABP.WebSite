@@ -15,7 +15,9 @@ const path = require("path");
     });
 
     // Attendre que ton script JS ait généré le rendu
-    await page.waitForSelector("#sectionRencontres");
+    await page.waitForFunction(() => {
+        return document.body.getAttribute("data-rencontres-ready") === "1";
+    });
 
     // Capturer uniquement la div
     const element = await page.$("#sectionRencontres");

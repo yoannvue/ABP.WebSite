@@ -39,6 +39,8 @@ async function chargerRencontres() {
         const exempts = fichier.rencontres.filter(r => r.EstExempt);
         listerExempts(divRencontres, exempts);
 
+        document.body.setAttribute("data-rencontres-ready", "1");
+
     } catch (e) {
         console.error(e);
     }
