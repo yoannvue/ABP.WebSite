@@ -1,6 +1,161 @@
 {
   "semaine": "Semaine du 24 janvier",
   "rencontres": [
-    
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U9M",
+      "Equipe2": "RAIMBEAUCOURT",
+      "Date": "24/01/2026 09:42",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n09H42",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U9M",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U9F",
+      "Equipe2": "FLINES LEZ RACHES",
+      "Date": "24/01/2026 11:00",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n11H00",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U9F",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U11M-1",
+      "Equipe2": "RAIMBEAUCOURT",
+      "Date": "24/01/2026 14:00",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n14H00",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U11M",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U13F",
+      "Equipe2": "BREBIERES BC",
+      "Date": "24/01/2026 15:30",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n15H30",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U13F",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U18M",
+      "Equipe2": "SOISSONS CUFFIES AISNE B.B",
+      "Date": "24/01/2026 17:00",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n17H00",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U18M",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U15F",
+      "Equipe2": "SOLESMES BC",
+      "Date": "24/01/2026 18:30",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n18H30",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U15F",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U13M",
+      "Equipe2": "PHALEMPIN B C - 1",
+      "Date": "25/01/2026 11:00",
+      "JourRencontre": "2026-01-25",
+      "DateFormatted": "DIMANCHE\n11H00",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "U13M",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "SENIORS-2",
+      "Equipe2": "CUINCY ASB - 1",
+      "Date": "25/01/2026 16:00",
+      "JourRencontre": "2026-01-25",
+      "DateFormatted": "DIMANCHE\n16H00",
+      "Salle": "JEAN DEGROS",
+      "Categorie": "SENIORS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "FLERS",
+      "Equipe2": "U13M-2",
+      "Date": "24/01/2026 11:00",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n11H00",
+      "Salle": "Fernand WANDWINGOR",
+      "Categorie": "FLERS ",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "LOUVROIL ASG",
+      "Equipe2": "U18M-2",
+      "Date": "24/01/2026 14:00",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n14H00",
+      "Salle": "MARCEL DUFOUR",
+      "Categorie": "LOUVROIL ASG ",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "MAUBEUGE - 2",
+      "Equipe2": "U11M-2",
+      "Date": "24/01/2026 14:00",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n14H00",
+      "Salle": "SALLES GENAUDET",
+      "Categorie": "MAUBEUGE ",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "FRETIN BC - 1",
+      "Equipe2": "SENIORS-1",
+      "Date": "24/01/2026 18:30",
+      "JourRencontre": "2026-01-24",
+      "DateFormatted": "SAMEDI\n18H30",
+      "Salle": "des Sports",
+      "Categorie": "FRETIN BC ",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "ST AMAND P H",
+      "Equipe2": "U11F-1",
+      "Date": "25/01/2026 16:00",
+      "JourRencontre": "2026-01-25",
+      "DateFormatted": "DIMANCHE\n16H00",
+      "Salle": "du MOULIN BLANC",
+      "Categorie": "ST AMAND P H ",
+      "EstExempt": false,
+      "ADomicile": false
+    }
   ]
 }
