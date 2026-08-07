@@ -3,7 +3,7 @@ name: XLS to JSON
 on:
   push:
     paths:
-      - "data/rencontres/*.xlsx"
+      - "data/rencontres/**/*.xlsx"
 
 jobs:
   build:
@@ -24,7 +24,34 @@ jobs:
       - name: Get XLS file name
         id: getfile
         run: |
-          FILE=$(echo '${{ toJson(github.event.commits) }}' | jq -r '.[] | .added[], .modified[] | select(endswith(".xlsx"))')
+          FILE=""
+          for commit in $(echo '${{ toJson(github.event.commits) }}' | sed 's/},{/} {/g'); do
+            ADDED=$(echo "$commit" | grep -o '"added":
+
+\[[^]]*\]
+
+' | sed 's/"added":
+
+\[\(.*\)\]
+
+/\1/' | tr -d '"' | tr ',' '\n')
+            MODIFIED=$(echo "$commit" | grep -o '"modified":
+
+\[[^]]*\]
+
+' | sed 's/"modified":
+
+\[\(.*\)\]
+
+/\1/' | tr -d '"' | tr ',' '\n')
+
+            for f in $ADDED $MODIFIED; do
+              if [[ "$f" == *.xlsx ]]; then
+                FILE="$f"
+              fi
+            done
+          done
+
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Debug file
