@@ -7,7 +7,7 @@ const inputFile = process.argv[2];
 
 if (!inputFile) {
     console.error("❌ Aucun fichier XLS fourni en argument.");
-    process.exit(1);
+    process.exit(0);
 }
 
 const excelPath = path.join(__dirname, "..", inputFile);
