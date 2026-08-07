@@ -50,6 +50,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add output/*.png
+          git add data/rencontres/*.png
           git commit -m "Ajout de l'image de la semaine"
           git push
