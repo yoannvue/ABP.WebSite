@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/yoannvue/ABP.WebSite#readme",
   "dependencies": {
-    "xlsx": "^0.18.5",
-    "puppeteer": "^22.0.0"
+    "exceljs": "^4.4.0",
+    "puppeteer": "^22.15.0"
   }
 }

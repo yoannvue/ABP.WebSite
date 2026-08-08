@@ -1,12 +1,32 @@
+import { getEnvironment } from './utils.js';
+
 async function chargerRencontres() {
     try {
-        const response = await fetch("/docs/no-rencontres.json");
-        const fichier = await response.json();
+        
+        const isPuppeteer = getEnvironment() == "puppeteer";
+        // Determiner si on on est dans un cas de génération automtique de l'image des rencontres dans github actions
+
+        let data;
+        if (!isPuppeteer) {
+
+            // fichierRencontres selon environnement
+            let fichierRencontres = "/docs/rencontres.json"
+            if (getEnvironment() == "prod") {
+                fichierRencontres = "/docs/no-rencontres.json";
+            }
+
+            const response = await fetch(fichierRencontres);
+            data = await response.json();
+        }
+        else {
+            // dans le cas de puppeteers, on va injecter les données dans la variables windows puisque Fetch est impossible
+            data = window.dataRencontres;
+        }
 
         const section = document.getElementById("sectionRencontres");
         section.innerHTML = "";
 
-        if (fichier.rencontres.length == 0) {
+        if (data.rencontres.length == 0) {
             section.innerText = "Aucune rencontre prévue cette semaine";
             section.className = "AucuneRencontre";
             return;
@@ -18,7 +38,7 @@ async function chargerRencontres() {
 
 
         // Tri chronologique
-        fichier.rencontres.sort((a, b) => {
+        data.rencontres.sort((a, b) => {
             const da = convertirDate(a.Date);
             const db = convertirDate(b.Date);
             return da - db;
@@ -26,17 +46,17 @@ async function chargerRencontres() {
 
         // titre de la semaine
         let title = document.createElement("span");
-        title.innerText = fichier.semaine;
+        title.innerText = data.semaine;
         title.className = "titreSemaine"
         divRencontres.appendChild(title);
 
-        const domicile = fichier.rencontres.filter(r => r.ADomicile && !r.EstExempt);
-        const exterieur = fichier.rencontres.filter(r => !r.ADomicile && !r.EstExempt);
+        const domicile = data.rencontres.filter(r => r.ADomicile && !r.EstExempt);
+        const exterieur = data.rencontres.filter(r => !r.ADomicile && !r.EstExempt);
 
         creerGroupe(divRencontres, true, domicile);
         creerGroupe(divRencontres, false, exterieur);
 
-        const exempts = fichier.rencontres.filter(r => r.EstExempt);
+        const exempts = data.rencontres.filter(r => r.EstExempt);
         listerExempts(divRencontres, exempts);
 
         document.body.setAttribute("data-rencontres-ready", "1");
