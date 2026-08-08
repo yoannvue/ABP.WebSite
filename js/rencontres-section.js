@@ -11,10 +11,7 @@ async function chargerRencontres() {
 
             // fichierRencontres selon environnement
             let fichierRencontres = "/docs/rencontres.json"
-            if (getEnvironment() == "prod") {
-                fichierRencontres = "/docs/no-rencontres.json";
-            }
-
+            
             const response = await fetch(fichierRencontres);
             data = await response.json();
         }
