@@ -41,7 +41,7 @@ async function main() {
     console.log("📄 Création de la Google Sheet dans le dossier Drive...");
 
     const fileMetadata = {
-        name: "Rencontres ABP",
+        name: "Rencontres "+matchs.semaine,
         mimeType: "application/vnd.google-apps.spreadsheet",
         parents: [process.env.GOOGLE_DRIVE_FOLDER_ID]
     };
