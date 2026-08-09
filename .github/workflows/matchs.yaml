@@ -29,13 +29,20 @@ jobs:
         id: getfile
         run: |
           FILE=$(git diff --name-only --diff-filter=d HEAD~1 HEAD | grep 'data/rencontres/.*\.xlsx$' | tail -1)
+          if [ -z "$FILE" ]; then
+            echo "Aucun fichier XLSX trouvé dans ce commit."
+          else
+            echo "Fichier détecté : $FILE"
+          fi
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Convert XLS to JSON
+        if: steps.getfile.outputs.file != ''
         run: |
           node scripts/matchs-xls-to-json.js ${{ steps.getfile.outputs.file }}
 
       - name: Commit and push JSON
+        if: steps.getfile.outputs.file != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -44,9 +51,11 @@ jobs:
           git push
 
       - name: Generate image
+        if: steps.getfile.outputs.file != ''
         run: node scripts/matchs-div-to-image.js
 
       - name: Commit image
+        if: steps.getfile.outputs.file != ''
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
@@ -55,6 +64,7 @@ jobs:
           git push
 
       - name: Générer la Sheet
+        if: steps.getfile.outputs.file != ''
         env:
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
