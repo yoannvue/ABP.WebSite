@@ -105,6 +105,10 @@ async function main() {
 
     console.log("✅ Données écrites dans la Sheet !");
     console.log(`🔗 https://docs.google.com/spreadsheets/d/${spreadsheetId}`);
+
+    if (process.env.GITHUB_OUTPUT) {
+        fs.appendFileSync(process.env.GITHUB_OUTPUT, `sheet_url=https://docs.google.com/spreadsheets/d/${spreadsheetId}\n`);
+    }
 }
 
 main().catch(err => {
