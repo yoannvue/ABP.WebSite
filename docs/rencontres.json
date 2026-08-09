@@ -25,6 +25,17 @@
     },
     {
       "Type": "CHAMPIONNAT",
+      "Equipe1": "U11F-1",
+      "Equipe2": "PEVELE",
+      "Date": "2026-03-28T14:00:00.000Z",
+      "JourRencontre": "2026/03/28",
+      "DateFormatted": "SAMEDI\n14H00",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
       "Equipe1": "Exempt",
       "Equipe2": "U11F-2",
       "Date": "2026-03-28T14:00:00.000Z",
@@ -32,17 +43,6 @@
       "DateFormatted": "SAMEDI\n14H00",
       "EstExempt": true,
       "ADomicile": false
-    },
-    {
-      "Type": "CHAMPIONNAT",
-      "Equipe1": "U11F-1",
-      "Equipe2": "PEVELE",
-      "Date": "2026-03-28T15:00:00.000Z",
-      "JourRencontre": "2026/03/28",
-      "DateFormatted": "SAMEDI\n15H00",
-      "Salle": "JEAN DEGROS",
-      "EstExempt": false,
-      "ADomicile": true
     },
     {
       "Type": "CHAMPIONNAT",
