@@ -41,4 +41,5 @@ const fs = require("fs");
     });
 
     await browser.close();
+    console.log("Fichier rencontres.png généré ")
 })();

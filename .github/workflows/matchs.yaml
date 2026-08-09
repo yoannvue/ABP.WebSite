@@ -59,9 +59,15 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
-          git add data/rencontres/*.png
-          git commit -m "Ajout de l'image de la semaine"
-          git push
+          shopt -s nullglob
+          FILES=(data/rencontres/*.png)
+          if [ ${#FILES[@]} -eq 0 ]; then
+            echo "Aucune image PNG trouvée, rien à committer."
+            exit 0
+          fi
+          git add "${FILES[@]}"
+          git diff --cached --quiet || git commit -m "Ajout de l'image de la semaine"
+          git diff --cached --quiet || git push
 
       - name: Générer la Sheet
         if: steps.getfile.outputs.file != ''
