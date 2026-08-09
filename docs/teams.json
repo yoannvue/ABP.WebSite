@@ -226,46 +226,955 @@
     }
   },
   "adversaires": {
-    "ARRAS PAYS D'ARTOIS BASKET": "ARRAS",
-    "JEUNESSE BASKET CLUB AUBY": "AUBY",
-    "AVELIN BASKET CLUB PONT-A-MARCQ": "AVELIN BC",
-    "BEUVRAGES USM": "BEUVRAGES",
-    "BRILLON BASKET COMPETITION ET LOISIR": "BRILLON",
-    "IE - CTC CAMBRESIS UNION BASKET - CAMBRAI BASKET": "CAMBRAI",
-    "CRESPINOISE BB": "CRESPIN",
-    "CYSOING SAINGHIN BOUVINES BASKET": "CYSOING",
-    "UNION DECHY SIN BASKET": "DECHY SIN",
-    "ASC DENAIN VOLTAIRE PORTE DU HAINAUT": "DENAIN",
-    "DORIGNIES DOUAI AAE": "DORIGNIES",
-    "AVENIR BASKET FLERSOIS": "FLERS",
-    "FLINES LEZ RACHES BC": "FLINES LEZ RACHES",
-    "GAYANT BASKET": "GAYANT",
-    "HELESMES SPORTING CLUB": "HELESMES SC",
-    "HELLEMMES LILLE BFC": "HELLEMMES LILLE",
-    "HORNAINGEOIS BC": "HORNAING",
-    "LAMBERSART B L M - 2": "LAMBERSART",
-    "LAMBRES BASKET CLUB": "LAMBRES BC",
-    "LOMME BASKET CLUB (LBC)": "LOMME BC",
-    "LOOSSOIS BASKET CLUB": "LOOS",
-    "NEUVILLE EN FERRAIN PP": "NEUVILLE EN F.",
-    "ONNAING JA": "ONNAING",
-    "OSTREVENT BASKET BALL EAA MONCHECOURT": "OSTREVENT",
-    "OSTRICOURT ABC": "OSTRICOURT",
-    "BASKET CLUB PEVELE": "PEVELE",
-    "RAIMBEAUCOURT CSL": "RAIMBEAUCOURT",
-    "RAISMES AS": "RAISMES",
-    "USAC SOMAIN MARCHIENNES BASKETBALL": "SOMAIN",
-    "THUMERIES A G": "THUMERIES",
-    "CO TRITH BASKET PORTE DU HAINAUT": "TRITH",
-    "VILLENEUVE D'ASCQ ESB": "VILLENEUVE D'ASCQ",
-    "WATTIGNIES/TEMPLEMARS AS": "WATTIGNIES",
-    "BASKET CLUB DOUCHY": "BC DOUCHY",
-    "MARCQ EN BAROEUL ASJ": "MARCQ EN BAROEUL",
-    "ACADEMIE DE BASKET CATESIENNE": "LE CATEAU",
-    "ETOILE SPORTIVE ISBERGUES": "ISBERGUES",
-    "UNION SPORTIVE MAUBEUGE BASKET BALL": "MAUBEUGE",
-    "BASKET CLUB ASSEVENT BOUSSOIS RECQUIGNIES": "ASSEVENT BOUSSOIS",
-    "WALINCOURT SELVIGNY BASKET AVENIR": "WALINCOURT SELVIGNY",
-    "ASSOCIATION SPORTIVE BASKET LOURCHOIS": "LOURCHES"
+    "ACADEMIE DE BASKET CATESIENNE": {
+        "nomcourt": "LE CATEAU",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059250",
+        "logo": "https://api.ffbb.app/assets/7a8ec280-c8cc-4521-a492-a75aa10c67bc"
+    },
+    "AMICALE BASKET PECQUENCOURT": {
+        "nomcourt": "AMICALE BASKET PECQUENCOURT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059043",
+        "logo": "https://api.ffbb.app/assets/2876917a-ac3a-488c-99ee-303d06c3d068"
+    },
+    "ASSOCIATION SPORTIVE DU VIEUX-LILLE BASKET": {
+        "nomcourt": "ASSOCIATION SPORTIVE DU VIEUX-LILLE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059128",
+        "logo": "https://api.ffbb.app/assets/75ad42b8-7f7e-4f02-a542-21dd4498cabf"
+    },
+    "AULNOY VALENCIENNES S": {
+        "nomcourt": "AULNOY VALENCIENNES S",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059145",
+        "logo": "https://api.ffbb.app/assets/9addbee9-87db-452a-a1b7-5bdbe3c44cf2"
+    },
+    "AULNOYE AS": {
+        "nomcourt": "AULNOYE AS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059003",
+        "logo": "https://api.ffbb.app/assets/5f3eb5f5-6855-42d8-a791-078b6d83343c"
+    },
+    "BAILLEULOIS B C": {
+        "nomcourt": "BAILLEULOIS B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059134",
+        "logo": "https://api.ffbb.app/assets/4b13c870-715e-4170-946f-b816c4c1954b"
+    },
+    "BASKET CLUB BONDUES": {
+        "nomcourt": "BASKET CLUB BONDUES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059081",
+        "logo": "https://api.ffbb.app/assets/d339fab0-0ca5-4ab8-a984-676f0eaa95fc"
+    },
+    "BASKET CLUB LEZENNOIS": {
+        "nomcourt": "BASKET CLUB LEZENNOIS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059226",
+        "logo": "https://api.ffbb.app/assets/8790a038-2dd7-4b1b-acd8-ec7691c7e894"
+    },
+    "BAUVIN B C": {
+        "nomcourt": "BAUVIN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059090",
+        "logo": "https://api.ffbb.app/assets/7d176dbc-2094-4d5d-b8fa-0db0c709ff2b"
+    },
+    "BC PETITE FORET": {
+        "nomcourt": "BC PETITE FORET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059255",
+        "logo": "https://api.ffbb.app/assets/6ba37df5-075a-464c-84ff-36393b1c484a"
+    },
+    "BEUVRAGES ASM": {
+        "nomcourt": "BEUVRAGES ASM",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059193",
+        "logo": "https://api.ffbb.app/assets/eaf20353-24cb-4021-aa62-7addcc7d6aac"
+    },
+    "BEUVRAGES USM": {
+        "nomcourt": "BEUVRAGES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059147",
+        "logo": "https://api.ffbb.app/assets/6cbddeba-f45f-428a-9e06-8f45178a5764"
+    },
+    "BIERNOIS BC": {
+        "nomcourt": "BIERNOIS BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059057",
+        "logo": "https://api.ffbb.app/assets/91dc7cc6-6a49-4f78-bb64-c03cd5ce9d87"
+    },
+    "BOURBOURG SC": {
+        "nomcourt": "BOURBOURG SC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059053",
+        "logo": "https://api.ffbb.app/assets/873862b3-93c0-493b-9d34-8fa9851b5a9c"
+    },
+    "BRILLON BASKET COMPETITION ET LOISIR": {
+        "nomcourt": "BRILLON",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059241",
+        "logo": "https://api.ffbb.app/assets/95ac428e-1139-43c9-8016-b77125d9b324"
+    },
+    "CHAPELLE D'ARMENTIERES OSM": {
+        "nomcourt": "CHAPELLE D'ARMENTIERES OSM",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059191",
+        "logo": "https://api.ffbb.app/assets/e57f8c8a-c2bf-409c-808f-2f1d1db2badd"
+    },
+    "CHERENG ABC": {
+        "nomcourt": "CHERENG ABC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059082",
+        "logo": "https://api.ffbb.app/assets/a53577cd-8643-4a4b-ac3f-f7944f189825"
+    },
+    "COEUR DE FLANDRE BASKET BALL": {
+        "nomcourt": "COEUR DE FLANDRE BASKET BALL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059190",
+        "logo": "https://api.ffbb.app/assets/565f406a-2cda-4d71-bea8-0549addecf20"
+    },
+    "COUDEKERQUE BRANCHE AL": {
+        "nomcourt": "COUDEKERQUE BRANCHE AL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059056",
+        "logo": "https://api.ffbb.app/assets/469176cf-d028-4042-b6cc-4a6c91675d93"
+    },
+    "CROIX BASKET BALL": {
+        "nomcourt": "CROIX BASKET BALL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059253",
+        "logo": "https://api.ffbb.app/assets/72624c5d-ed78-4c4c-b1ab-6ade5f58d4ef"
+    },
+    "CROIX OLYMPIQUE": {
+        "nomcourt": "CROIX OLYMPIQUE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059086",
+        "logo": "https://api.ffbb.app/assets/726954eb-796f-46f9-9e79-43fae1407f40"
+    },
+    "CUINCY ASB": {
+        "nomcourt": "CUINCY ASB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059050",
+        "logo": "https://api.ffbb.app/assets/00d8711f-baa0-40e9-b2ff-868ea122a83e"
+    },
+    "CYSOING SAINGHIN BOUVINES BASKET": {
+        "nomcourt": "CYSOING",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059087",
+        "logo": "https://api.ffbb.app/assets/6ba74d76-7b6d-4515-970d-454dd1a5605c"
+    },
+    "DORIGNIES DOUAI AAE": {
+        "nomcourt": "DORIGNIES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059034",
+        "logo": "https://api.ffbb.app/assets/fd41108d-af91-4f78-be71-951dc825859b"
+    },
+    "DUNKERQUE MALO BASKET CLUB": {
+        "nomcourt": "DUNKERQUE MALO BASKET CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059058",
+        "logo": "https://api.ffbb.app/assets/dc5532d4-787e-4369-abfc-1102e7d1076e"
+    },
+    "ESABC SALOME": {
+        "nomcourt": "ESABC SALOME",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059066",
+        "logo": "https://api.ffbb.app/assets/ed676e53-a13b-407b-8ead-38d6d9a9d957"
+    },
+    "ESCAUDAIN BASKET PORTE DU HAINAUT": {
+        "nomcourt": "ESCAUDAIN BASKET PORTE DU HAINAUT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059156",
+        "logo": "https://api.ffbb.app/assets/970de7ec-8665-437b-9f6c-ee0b914b168e"
+    },
+    "ESTAIRES BC": {
+        "nomcourt": "ESTAIRES BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059227",
+        "logo": "https://api.ffbb.app/assets/4c521a45-4035-4e6c-9b65-bd15390500ee"
+    },
+    "FAMILY BASKET": {
+        "nomcourt": "FAMILY BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059254",
+        "logo": "https://api.ffbb.app/assets/40d1efd6-da9f-436d-be86-70c4e55b5ab8"
+    },
+    "FOURMIES CSC": {
+        "nomcourt": "FOURMIES CSC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059016",
+        "logo": "https://api.ffbb.app/assets/c7988a4a-74fa-4eba-9049-d4ed3a4ca3cf"
+    },
+    "FRETIN BC": {
+        "nomcourt": "FRETIN BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059186",
+        "logo": "https://api.ffbb.app/assets/0dbf5605-3d2d-46e2-a913-b08c70f38f36"
+    },
+    "HASNON BASKET": {
+        "nomcourt": "HASNON BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059078",
+        "logo": "https://api.ffbb.app/assets/97832008-2ab4-4a1f-bca8-7dd60b825daf"
+    },
+    "HAUBOURDIN CG": {
+        "nomcourt": "HAUBOURDIN CG",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059092",
+        "logo": "https://api.ffbb.app/assets/1baf2145-b60c-4ab4-b0de-bdd5531858c8"
+    },
+    "HELESMES SPORTING CLUB": {
+        "nomcourt": "HELESMES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059256",
+        "logo": "https://api.ffbb.app/assets/d2254aa4-88f4-43c5-9b08-afd4599985cf"
+    },
+    "HEM S B B": {
+        "nomcourt": "HEM S B B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059094",
+        "logo": "https://api.ffbb.app/assets/559dae24-5923-493f-a05e-33f95968915e"
+    },
+    "HORNAINGEOIS BC": {
+        "nomcourt": "HORNAING",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059162",
+        "logo": "https://api.ffbb.app/assets/baa27aa2-703c-4933-92ad-cdb7b87cf304"
+    },
+    "JEUNESSE BASKET CLUB AUBY": {
+        "nomcourt": "AUBY",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059221",
+        "logo": "https://api.ffbb.app/assets/cd4836cb-566f-4137-9d04-c4b82f19f660"
+    },
+    "LAMBERSART B L M": {
+        "nomcourt": "LAMBERSART B L M",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059097",
+        "logo": "https://api.ffbb.app/assets/54a15646-b6f8-4280-ae10-5b6291011b2f"
+    },
+    "LAMBERSART J F": {
+        "nomcourt": "LAMBERSART J F",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059096",
+        "logo": "https://api.ffbb.app/assets/35c69abd-7d0d-45fe-903f-ad94985f03f2"
+    },
+    "LAMBRES BASKET CLUB": {
+        "nomcourt": "LAMBRES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059041",
+        "logo": "https://api.ffbb.app/assets/8b320a40-2107-4276-b3aa-542867da0afa"
+    },
+    "LANDRECIEN B C": {
+        "nomcourt": "LANDRECIEN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059208",
+        "logo": "https://api.ffbb.app/assets/cf2c86a5-fb18-4055-bfaf-077bfea09e3e"
+    },
+    "LEERS OSBB": {
+        "nomcourt": "LEERS OSBB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059098",
+        "logo": "https://api.ffbb.app/assets/2d6951a6-662a-4230-987f-97cf0762b58e"
+    },
+    "LEFFRINCKOUCKE BC": {
+        "nomcourt": "LEFFRINCKOUCKE BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059064",
+        "logo": "https://api.ffbb.app/assets/7ead591d-7eab-4cd1-b186-c81af92a6df1"
+    },
+    "LILLE BASKET": {
+        "nomcourt": "LILLE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059233",
+        "logo": "https://api.ffbb.app/assets/78f06d84-b71c-4940-8756-b814ee07a09e"
+    },
+    "LINSELLES B": {
+        "nomcourt": "LINSELLES B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059104",
+        "logo": "https://api.ffbb.app/assets/1998016c-3716-4d26-8a4f-7252d27c3307"
+    },
+    "LOMME BASKET CLUB (LBC)": {
+        "nomcourt": "LOMME",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059189",
+        "logo": "https://api.ffbb.app/assets/09ddc715-c501-4cca-b024-151d2799bcd1"
+    },
+    "LOOSSOIS BASKET CLUB": {
+        "nomcourt": "LOOS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059091",
+        "logo": "https://api.ffbb.app/assets/1bd01d54-eb85-456d-9dac-fceea2cd975d"
+    },
+    "MARCQ EN BAROEUL ASJ": {
+        "nomcourt": "MARCQ EN BAROEUL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059107",
+        "logo": "https://api.ffbb.app/assets/748ef9c5-40c8-4bb2-8f09-3bed61186c18"
+    },
+    "MERVILLE S B B": {
+        "nomcourt": "MERVILLE S B B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059109",
+        "logo": "https://api.ffbb.app/assets/71e05a6a-9944-4205-8217-9b6094c4a9b4"
+    },
+    "MOUVAUX ABC": {
+        "nomcourt": "MOUVAUX ABC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059111",
+        "logo": "https://api.ffbb.app/assets/d7cd4072-170a-4df8-9cd8-8152919430c4"
+    },
+    "NEUVILLE EN FERRAIN PP": {
+        "nomcourt": "NEUVILLE EN F.",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059112",
+        "logo": "https://api.ffbb.app/assets/3a418417-9f46-43ad-a82d-cc5e8732675a"
+    },
+    "NEUVILLE SUR ESCAUT BC": {
+        "nomcourt": "NEUVILLE SUR ESCAUT BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059164",
+        "logo": "https://api.ffbb.app/assets/cfc7bd6f-7665-4fc3-ae5f-0e10ee3a6852"
+    },
+    "OLYMPIQUE GRANDE SYNTHE BASKET": {
+        "nomcourt": "OLYMPIQUE GRANDE SYNTHE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059061",
+        "logo": "https://api.ffbb.app/assets/07369ebe-89da-4a82-86f7-c1168627441c"
+    },
+    "OSTREVENT BASKET BALL EAA MONCHECOURT": {
+        "nomcourt": "OSTREVENT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059038",
+        "logo": "https://api.ffbb.app/assets/eea17c4b-92c3-48a4-ba59-da16526a6798"
+    },
+    "OSTRICOURT ABC": {
+        "nomcourt": "OSTRICOURT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059045",
+        "logo": "https://api.ffbb.app/assets/808a5050-63f5-4053-b4a0-0ffd09f6ab38"
+    },
+    "PROVIN BC": {
+        "nomcourt": "PROVIN BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059108",
+        "logo": "https://api.ffbb.app/assets/1aa1a71a-5548-4036-b6a5-4d6c8070b856"
+    },
+    "RONCQ U S": {
+        "nomcourt": "RONCQ U S",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059116",
+        "logo": "https://api.ffbb.app/assets/f841786d-cf7b-4d38-88ae-8669fe390826"
+    },
+    "SAINGHIN WEPPES LCJMPT": {
+        "nomcourt": "SAINGHIN WEPPES LCJMPT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059100",
+        "logo": "https://api.ffbb.app/assets/2c56e71e-b60e-4c1d-86fb-c92a98437bf2"
+    },
+    "SAINT SAULVE BC": {
+        "nomcourt": "SAINT SAULVE BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059169",
+        "logo": "https://api.ffbb.app/assets/9f105246-ea8e-4d15-91dd-812af6b1929d"
+    },
+    "SANTES BB": {
+        "nomcourt": "SANTES BB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059199",
+        "logo": "https://api.ffbb.app/assets/bef4c29e-aa6c-4caf-b17e-277fdb84001c"
+    },
+    "SECLIN BC": {
+        "nomcourt": "SECLIN BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059121",
+        "logo": "https://api.ffbb.app/assets/836b86d6-98e4-409e-acde-0b3c7fe315ab"
+    },
+    "SEQUEDIN OSM": {
+        "nomcourt": "SEQUEDIN OSM",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059122",
+        "logo": "https://api.ffbb.app/assets/da1263c9-26fb-4084-b69a-028b9c512a78"
+    },
+    "SPORTS OUVRIERS ARMENTIEROIS": {
+        "nomcourt": "SPORTS OUVRIERS ARMENTIEROIS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059080",
+        "logo": "https://api.ffbb.app/assets/44219ab9-5e28-4ad3-ac9e-aa0ed64cef47"
+    },
+    "ST AMAND P H": {
+        "nomcourt": "ST AMAND P H",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059168",
+        "logo": "https://api.ffbb.app/assets/8f318826-a23f-44d7-817d-339896a2cfc7"
+    },
+    "TEMPLEUVE L P": {
+        "nomcourt": "TEMPLEUVE L P",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059125",
+        "logo": "https://api.ffbb.app/assets/da05ac5e-caaa-43e8-9b1d-8a619421d7b8"
+    },
+    "TOUFFLERS CSP": {
+        "nomcourt": "TOUFFLERS CSP",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059127",
+        "logo": "https://api.ffbb.app/assets/8d493f7e-6843-476c-8375-c91f113c3d9d"
+    },
+    "TOURCOING I C": {
+        "nomcourt": "TOURCOING I C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059129",
+        "logo": "https://api.ffbb.app/assets/7c098dfb-c2ec-4454-996b-613c6b384cd8"
+    },
+    "TOURCOING J G": {
+        "nomcourt": "TOURCOING J G",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059130",
+        "logo": "https://api.ffbb.app/assets/8c076303-3010-4bb6-afb6-ab436724b768"
+    },
+    "TOURCOING S M": {
+        "nomcourt": "TOURCOING S M",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059131",
+        "logo": "https://api.ffbb.app/assets/d51510fe-1df9-46d8-bbdc-2a8ad128df50"
+    },
+    "TOURCOING US F": {
+        "nomcourt": "TOURCOING US F",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059217",
+        "logo": "https://api.ffbb.app/assets/c1695f10-03ef-4651-bd9a-cb6cc9f283a2"
+    },
+    "USAC SOMAIN MARCHIENNES BASKETBALL": {
+        "nomcourt": "SOMAIN",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059049",
+        "logo": "https://api.ffbb.app/assets/e6c77792-014a-4908-9f9c-ef9979bc0729"
+    },
+    "WALINCOURT SELVIGNY BASKET AVENIR": {
+        "nomcourt": "WALINCOURT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059027",
+        "logo": "https://api.ffbb.app/assets/3c18e108-f0f8-4a05-8f3e-a8e41b073f6f"
+    },
+    "WAMBRECHIES J": {
+        "nomcourt": "WAMBRECHIES J",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059133",
+        "logo": "https://api.ffbb.app/assets/30f932ce-4b51-4633-b371-9896a2aec658"
+    },
+    "WASQUEHAL FLASH B": {
+        "nomcourt": "WASQUEHAL FLASH B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059136",
+        "logo": "https://api.ffbb.app/assets/5cb80b5d-ab82-4868-abbc-ec9c39068090"
+    },
+    "WATTIGNIES/TEMPLEMARS AS": {
+        "nomcourt": "WATTIGNIES/TEMPLEMARS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059135",
+        "logo": "https://api.ffbb.app/assets/1f2d4bba-ac20-4fa8-a601-954c284a4b50"
+    },
+    "WATTRELOS BC": {
+        "nomcourt": "WATTRELOS BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059183",
+        "logo": "https://api.ffbb.app/assets/6d2492e5-4781-406e-98f0-b5194594947f"
+    },
+    "WAVRECHAIN / DENAIN BC": {
+        "nomcourt": "WAVRECHAIN / DENAIN BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059214",
+        "logo": "https://api.ffbb.app/assets/de47274c-89f6-4ad7-b740-27b32a171fb1"
+    },
+    "WAVRIN WEPPES BASKET BALL": {
+        "nomcourt": "WAVRIN WEPPES BASKET BALL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059139",
+        "logo": "https://api.ffbb.app/assets/b1422ee5-3db9-4b23-a48d-746e1752ae45"
+    },
+    "ABC WATTEN": {
+        "nomcourt": "ABC WATTEN",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059198",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ANNOEULLIN B C": {
+        "nomcourt": "ANNOEULLIN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059077",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ARMENTIERES ASRSL": {
+        "nomcourt": "ARMENTIERES ASRSL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059079",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ASC DENAIN VOLTAIRE PORTE DU HAINAUT": {
+        "nomcourt": "DENAIN VOLTAIRET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059216",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ASSOCIATION SPORTIVE BASKET LOURCHOIS": {
+        "nomcourt": "LOURCHES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059232",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "AVELIN B C": {
+        "nomcourt": "AVELIN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059205",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "AVELIN BASKET CLUB PONT-A-MARCQ": {
+        "nomcourt": "AVELIN",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059236",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "AVENIR BASKET FLERSOIS": {
+        "nomcourt": "FLERS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059040",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKET CLUB ASSEVENT BOUSSOIS RECQUIGNIES": {
+        "nomcourt": "BOUSSOIS RECQUIGNIES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059204",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKET CLUB BRAY DUNES": {
+        "nomcourt": "BASKET CLUB BRAY DUNES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059054",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKET CLUB DOUCHY": {
+        "nomcourt": "DOUCHY",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059248",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKET CLUB MARLY": {
+        "nomcourt": "BASKET CLUB MARLY",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059240",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKET CLUB PEVELE": {
+        "nomcourt": "PEVELE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059229",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT": {
+        "nomcourt": "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059157",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKETBALL CLUB COLLERET": {
+        "nomcourt": "BASKETBALL CLUB COLLERET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059257",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BASKETSPHERE ACADEMY": {
+        "nomcourt": "BASKETSPHERE ACADEMY",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059247",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BC BLARINGHEM": {
+        "nomcourt": "BC BLARINGHEM",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059262",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BC ESTAIRES": {
+        "nomcourt": "BC ESTAIRES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059088",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BC LESQUIN": {
+        "nomcourt": "BC LESQUIN",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059099",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BCT BASKET CLUB TETEGHEM": {
+        "nomcourt": "BCT BASKET CLUB TETEGHEM",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059071",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "BOUCHAIN BC": {
+        "nomcourt": "BOUCHAIN BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059149",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CAMBRAI BASKET": {
+        "nomcourt": "CAMBRAI BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059017",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CAMBRESIS": {
+        "nomcourt": "CAMBRESIS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059222",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CAMBRESIS/DOUAISIS": {
+        "nomcourt": "CAMBRESIS/DOUAISIS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059251",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CAPPELLE BC": {
+        "nomcourt": "CAPPELLE BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059055",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CARNIERES BC": {
+        "nomcourt": "CARNIERES BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059018",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CASC BOLLEZEELE BASKET": {
+        "nomcourt": "CASC BOLLEZEELE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059200",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CAUDRY BC": {
+        "nomcourt": "CAUDRY BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059019",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CAUDRY WALINCOURT BASKET BALL": {
+        "nomcourt": "CAUDRY WALINCOURT BASKET BALL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059207",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CD 59 HORS ASSOCIATION": {
+        "nomcourt": "CD 59 HORS ASSOCIATION",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059001",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CHOSEN ONES LILLE METROPOLE": {
+        "nomcourt": "CHOSEN ONES LILLE METROPOLE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059153",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CO TRITH BASKET PORTE DU HAINAUT": {
+        "nomcourt": "CO TRITH",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059171",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "COMINOISE L L": {
+        "nomcourt": "COMINOISE L L",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059083",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CONDE BASKET": {
+        "nomcourt": "CONDE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059150",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CRESPINOISE BB": {
+        "nomcourt": "CRESPIN",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059151",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "CROIX F S P": {
+        "nomcourt": "CROIX F S P",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059084",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "DOUAI BASKET FEMININ": {
+        "nomcourt": "DOUAI BASKET FEMININ",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059036",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "DOUAISIS": {
+        "nomcourt": "DOUAISIS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059242",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "DOUCHY BASKET CLUB": {
+        "nomcourt": "DOUCHY BASKET CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059219",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ELITE PREP": {
+        "nomcourt": "ELITE PREP",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059252",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ENTENTE CONDE/CRESPIN FEMININE": {
+        "nomcourt": "ENTENTE CONDE/CRESPIN FEMININE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059035",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ENTENTE LILLE LBLS": {
+        "nomcourt": "ENTENTE LILLE LBLS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059249",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ESCAUDOEUVRES BASKET CLUB": {
+        "nomcourt": "ESCAUDOEUVRES BASKET CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059220",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "FERRIEROIS BC": {
+        "nomcourt": "FERRIEROIS BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059020",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "FLINES LEZ RACHES BC": {
+        "nomcourt": "FLINES LEZ RACHES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059005",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "FORT MARDYCK BASKET CLUB": {
+        "nomcourt": "FORT MARDYCK BASKET CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059261",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "GAYANT BASKET": {
+        "nomcourt": "GAYANT BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059009",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "GRAVELINES B ESLA": {
+        "nomcourt": "GRAVELINES B ESLA",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059075",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "GRAVELINES B F": {
+        "nomcourt": "GRAVELINES B F",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059063",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "GRAVELINES GRAND FORT BCM": {
+        "nomcourt": "GRAVELINES GRAND FORT BCM",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059062",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HALLUIN E B": {
+        "nomcourt": "HALLUIN E B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059196",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HAULCHIN B C M": {
+        "nomcourt": "HAULCHIN B C M",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059158",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HAUTMONT USO": {
+        "nomcourt": "HAUTMONT USO",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059007",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HELLEMMES LILLE BFC": {
+        "nomcourt": "HELLEMMES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059093",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HERIN FJEP": {
+        "nomcourt": "HERIN FJEP",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059160",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HOOPS FACTORY LILLE": {
+        "nomcourt": "HOOPS FACTORY LILLE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059039",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "HOYMILLE ACS": {
+        "nomcourt": "HOYMILLE ACS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059184",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "JEUMONT JSBB": {
+        "nomcourt": "JEUMONT JSBB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059008",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LA MADELEINE ROSTAND CLUB": {
+        "nomcourt": "LA MADELEINE ROSTAND CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059611",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LE CATEAU C J BB": {
+        "nomcourt": "LE CATEAU C J BB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059022",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LES HUTTES BASKET SOLIDARITE": {
+        "nomcourt": "LES HUTTES BASKET SOLIDARITE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059610",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LILLE METROPOLE BASKET CLUBS": {
+        "nomcourt": "LILLE METROPOLE BASKET CLUBS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059115",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LILLE SUD BASKET-BALL SPORTING CLUB": {
+        "nomcourt": "LILLE SUD BASKET-BALL SPORTING CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059612",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LILLE-EST BASKET": {
+        "nomcourt": "LILLE-EST BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059105",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LOON PLAGE AS": {
+        "nomcourt": "LOON PLAGE AS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059065",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "LOUVROIL ASG": {
+        "nomcourt": "LOUVROIL ASG",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059011",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "MARITIME": {
+        "nomcourt": "MARITIME",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059508",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "MASNIERES BC": {
+        "nomcourt": "MASNIERES BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059213",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "MONS EN BAROEUL BAC": {
+        "nomcourt": "MONS EN BAROEUL BAC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059110",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "NIEPPE BASKET CLUB": {
+        "nomcourt": "NIEPPE BASKET CLUB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059175",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ONNAING JA": {
+        "nomcourt": "ONNAING",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059165",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ORCHESIEN B C": {
+        "nomcourt": "ORCHESIEN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059177",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "PERDANT DU MATCH": {
+        "nomcourt": "PERDANT DU MATCH",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059074",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "PETITE SYNTHE DUNKERQUE BASKET BALL": {
+        "nomcourt": "PETITE SYNTHE DUNKERQUE BASKET BALL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059067",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "PHALEMPIN B C": {
+        "nomcourt": "PHALEMPIN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059114",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "POLE HDF": {
+        "nomcourt": "POLE HDF",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059509",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "POLE VISITEUR": {
+        "nomcourt": "POLE VISITEUR",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059510",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "PONTOIS ASB": {
+        "nomcourt": "PONTOIS ASB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059013",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "PROVILLE BASKET": {
+        "nomcourt": "PROVILLE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059023",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "RAIMBEAUCOURT CSL": {
+        "nomcourt": "RAIMBEAUCOURT",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059047",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "RAISMES AS": {
+        "nomcourt": "RAISMES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059167",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "RONCHIN B C": {
+        "nomcourt": "RONCHIN B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059103",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ROUBAISIEN STADE": {
+        "nomcourt": "ROUBAISIEN STADE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059119",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ROUBAIX BCJMP": {
+        "nomcourt": "ROUBAIX BCJMP",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059117",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "SAINT ANDRE US": {
+        "nomcourt": "SAINT ANDRE US",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059120",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "SAINT POL SUR MER BC": {
+        "nomcourt": "SAINT POL SUR MER BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059069",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "SOLESMES BC": {
+        "nomcourt": "SOLESMES BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059024",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "SOLREZIS B C": {
+        "nomcourt": "SOLREZIS B C",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059173",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "ST PIERREBROUCK AL": {
+        "nomcourt": "ST PIERREBROUCK AL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059068",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "STEENWERCK BC": {
+        "nomcourt": "STEENWERCK BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059123",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "SUD EST": {
+        "nomcourt": "SUD EST",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059258",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "SUD OUEST": {
+        "nomcourt": "SUD OUEST",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059259",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "TERRIEN NORD": {
+        "nomcourt": "TERRIEN NORD",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059503",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "TERRIEN SUD": {
+        "nomcourt": "TERRIEN SUD",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059504",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "THIANT BC": {
+        "nomcourt": "THIANT BC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059170",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "THUMERIES A G": {
+        "nomcourt": "THUMERIES",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059126",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "UNION BASKET LAMBERSART / VILLENEUVE D'ASCQ": {
+        "nomcourt": "UNION BASKET LAMBERSART / VILLENEUVE D'ASCQ",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059210",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "UNION DECHY SIN BASKET": {
+        "nomcourt": "DECHY SIN",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059033",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "UNION DENAIN HASNON BASKET BALL": {
+        "nomcourt": "UNION DENAIN HASNON BASKET BALL",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059212",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "UNION LAMBERSART LILLE VILLENEUVE D'ASCQ": {
+        "nomcourt": "UNION LAMBERSART LILLE VILLENEUVE D'ASCQ",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059260",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "UNION SAULZOIR MONTRECOURT BASKET": {
+        "nomcourt": "UNION SAULZOIR MONTRECOURT BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059195",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "UNION SPORTIVE MAUBEUGE BASKET BALL": {
+        "nomcourt": "MAUBEUGE",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059012",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "US HONDSCHOOTE BASKET": {
+        "nomcourt": "US HONDSCHOOTE BASKET",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059613",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "VAINQUEUR DU MATCH": {
+        "nomcourt": "VAINQUEUR DU MATCH",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059159",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "VALENCIENNES RSC": {
+        "nomcourt": "VALENCIENNES RSC",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059174",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "VALENCIENNOIS": {
+        "nomcourt": "VALENCIENNOIS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059505",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "VILLENEUVE D'ASCQ ESB": {
+        "nomcourt": "VILLENEUVE D'ASCQ",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059076",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "VILLERS OUTREAUX BB": {
+        "nomcourt": "VILLERS OUTREAUX BB",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059026",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "WASQUEHAL FEM B": {
+        "nomcourt": "WASQUEHAL FEM B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059215",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "WAZIERS A B": {
+        "nomcourt": "WAZIERS A B",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059051",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "WILLEMS ALS": {
+        "nomcourt": "WILLEMS ALS",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059140",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    },
+    "WORMHOUT A S": {
+        "nomcourt": "WORMHOUT A S",
+        "url": "/ligues/hdf/comites/0059/clubs/hdf0059072",
+        "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+    }
   }
 }

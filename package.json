@@ -22,7 +22,11 @@
   },
   "homepage": "https://github.com/yoannvue/ABP.WebSite#readme",
   "dependencies": {
+    "@googleapis/drive": "^21.0.0",
+    "@googleapis/sheets": "^14.0.0",
     "exceljs": "^4.4.0",
+    "google-auth-library": "^11.0.0",
+    "jszip": "^3.10.1",
     "puppeteer": "^22.15.0"
   }
 }

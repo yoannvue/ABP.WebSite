@@ -28,7 +28,7 @@ jobs:
       - name: Get XLS file name
         id: getfile
         run: |
-          FILE=$(git diff --name-only HEAD~1 HEAD | grep 'data/rencontres/.*\.xlsx$' | tail -1)
+          FILE=$(git diff --name-only --diff-filter=d HEAD~1 HEAD | grep 'data/rencontres/.*\.xlsx$' | tail -1)
           echo "file=$FILE" >> $GITHUB_OUTPUT
 
       - name: Convert XLS to JSON
