@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/rencontres.png
+          git add data/rencontres/rencontres.png
           git diff --cached --quiet || git commit -m "chore: Ajout de l'image de la semaine"
           git push
 
