@@ -77,4 +77,4 @@ jobs:
           GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
           MATCHS_JSON_PATH: "docs/rencontres.json"
-        run: node matchs-json-to-sheet.js
+        run: node scripts/matchs-json-to-sheet.js
