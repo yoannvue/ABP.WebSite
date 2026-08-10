@@ -403,7 +403,20 @@
       "images": [
         {
           "side": "full",
-          "url": "/ressources/Coachs/Manu.jpg"
+          "url": "/ressources/Coachs/manu 2.jpg"
+        }
+      ]
+    },
+    {
+      "id": "elio-coach",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Elio - Coach U18F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/elio.jpg"
         }
       ]
     },
@@ -417,6 +430,19 @@
         {
           "side": "full",
           "url": "/ressources/Coachs/thomas.jpg"
+        }
+      ]
+    },
+    {
+      "id": "anthony-coach",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Anthony - Coach Seniors",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/anthony.jpg"
         }
       ]
     },
@@ -574,7 +600,7 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "remy-coach-011", "manu-coach-012", "thomas-coach-009", "aurelien-coach-013"]
+        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "aurelien-coach-013","remy-coach-011", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
       },
       {
         "name": "Bureau",       
