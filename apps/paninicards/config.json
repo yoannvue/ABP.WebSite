@@ -382,6 +382,19 @@
       ]
     },
     {
+      "id": "ludo-coach",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Ludovic - Coach U15M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/ludovic.jpg"
+        }
+      ]
+    },
+    {
       "id": "remy-coach-011",
       "name": "Coach",
       "category": "staff",
@@ -600,7 +613,7 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010", "aurelien-coach-013","remy-coach-011", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
+        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010","ludo-coach", "aurelien-coach-013","remy-coach-011", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
       },
       {
         "name": "Bureau",       

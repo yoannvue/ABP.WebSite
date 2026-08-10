@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,800&family=Oswald:wght@500;600;700&display=swap');
+
+/* --- Configuration Globale & Impression --- */
+@page {
+    size: A4 portrait;
+    margin: 10mm;
+    background-color: #FAF6EE;
+    /* Fond crème clair / blanc cassé */
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    font-family: 'Oswald', 'Arial Narrow', sans-serif;
+    color: #0b1a3a;
+    background-color: #FAF6EE;
+    width: 700px;
+}
+
+/* --- Palette de Couleurs --- */
+:root {
+    --primary-blue: #0b1a3a;
+    /* Bleu marine foncé */
+    --accent-orange: #e66012;
+    /* Orange vif basket */
+    --light-bg: #FAF6EE;
+    /* Fond crème */
+    --card-border: #e07a38;
+    /* Bordure orange des cartes */
+    --row-alt: #fdfaf5;
+    /* Zébrure de tableau */
+}
+
+/* --- En-tête (Header) --- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+
+.header-left {
+    width: 120px;
+    text-align: center;
+    padding-left:90px;
+}
+
+.header-right {
+    background-image: url('../ressources/Header-Rencontres.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 500px;
+    height: 120px;
+}
+
+.logo-ball {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-blue);
+    background: radial-gradient(circle at 50% 50%, #faf6f3, #cfae9a);
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.title-main {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 32pt;
+    color: var(--primary-blue);
+    letter-spacing: 2px;
+    line-height: 0.9;
+    text-transform: uppercase;
+}
+
+.title-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-style: italic;
+    font-size: 24pt;
+    color: var(--accent-orange);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.date-banner {    
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 11pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 18px 0 18px 0;
+    display: inline-block;
+    top: 90px;
+    position: relative;
+    left: 110px;
+}
+
+/* --- Bloc Journée (Card) --- */
+.day-card {
+    margin-bottom: 15px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.day-header {
+    background: var(--primary-blue);
+    color: #ffffff;
+    padding: 8px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    border-radius: 8px 30px 0px 0px;
+}
+
+.day-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 13pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.table-legend-header {
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 1px;
+    display: flex;
+    gap: 15px;
+}
+
+.match-div {
+    border: 2px solid var(--primary-blue);
+    border-radius: 0px 12px 12px 12px;
+    background-color: #ffffff;
+    padding: 0px 12px 12px 12px;
+}
+
+/* --- Tableau des Matchs --- */
+.match-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+
+}
+
+.match-table tr {
+    border-bottom: 1px solid #f2e6d8;
+}
+
+.match-table tr:nth-child(even) {
+    background-color: var(--row-alt);
+}
+
+.match-table tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+.match-table td {
+    padding: 6px 8px;
+    vertical-align: middle;
+}
+
+.col-time {
+    width: 10%;
+    font-weight: 700;
+    color: var(--primary-blue);
+    font-size: 11pt;
+}
+
+.col-home {
+    width: 29%;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.col-vs {
+    width: 6%;
+    font-weight: 700;
+    color: var(--primary-blue);
+    text-align: center;
+    font-size: 9pt;
+}
+
+.col-away {
+    width: 29%;
+    font-weight: 600;
+    color: #1a1a1a;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.col-salle {
+    width: 21%;
+    font-size: 9pt;
+    color: #2c3e50;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.col-loc {
+    width: 5%;
+    text-align: center;
+}
+
+.icon-dom {
+    color: var(--accent-orange);
+    font-size: 12pt;
+}
+
+.icon-ext {
+    color: var(--primary-blue);
+    font-size: 11pt;
+}
+
+/* --- Pied de Page --- */
+.footer-legend {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: var(--primary-blue);
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.footer-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 2px solid var(--accent-orange);
+}
+
+.footer-slogan {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13pt;
+    color: var(--primary-blue);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.footer-slogan span {
+    color: var(--accent-orange);
+}
+
+.footer-tag {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 10pt;
+    color: var(--primary-blue);
+}
