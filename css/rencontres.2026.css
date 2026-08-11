@@ -1,273 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,800;0,900;1,800&family=Oswald:wght@500;600;700&display=swap');
-
-/* --- Configuration Globale & Impression --- */
-@page {
-    size: A4 portrait;
-    margin: 10mm;
-    background-color: #FAF6EE;
-    /* Fond crème clair / blanc cassé */
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    padding: 10px;
-    font-family: 'Oswald', 'Arial Narrow', sans-serif;
-    color: #0b1a3a;
-    background-color: #FAF6EE;
-    width: 700px;
-}
-
-/* --- Palette de Couleurs --- */
-:root {
-    --primary-blue: #0b1a3a;
-    /* Bleu marine foncé */
-    --accent-orange: #e66012;
-    /* Orange vif basket */
-    --light-bg: #FAF6EE;
-    /* Fond crème */
-    --card-border: #e07a38;
-    /* Bordure orange des cartes */
-    --row-alt: #fdfaf5;
-    /* Zébrure de tableau */
-}
-
-/* --- En-tête (Header) --- */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-bottom: 15px;
-    gap: 20px;
-}
-
-.header-left {
-    width: 120px;
-    text-align: center;
-    padding-left:90px;
-}
-
-.header-right {
-    background-image: url('../ressources/Header-Rencontres.png');
+#sectionRencontres{
+    background-image: url('/ressources/fonds/automne.jpg');
+    background-size: 100% auto; /* 100% de la largeur, hauteur automatique sans déformation */
     background-repeat: no-repeat;
-    background-size: cover;
-    width: 500px;
-    height: 120px;
-}
-
-.logo-ball {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 3px solid var(--primary-blue);
-    background: radial-gradient(circle at 50% 50%, #faf6f3, #cfae9a);
-    position: relative;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-}
-
-.title-main {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 32pt;
-    color: var(--primary-blue);
-    letter-spacing: 2px;
-    line-height: 0.9;
-    text-transform: uppercase;
-}
-
-.title-sub {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-style: italic;
-    font-size: 24pt;
-    color: var(--accent-orange);
-    letter-spacing: 1px;
-    line-height: 1;
-    margin-top: 2px;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-}
-
-.date-banner {    
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 11pt;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 6px 16px;
-    border-radius: 18px 0 18px 0;
-    display: inline-block;
-    top: 90px;
-    position: relative;
-    left: 110px;
-}
-
-/* --- Bloc Journée (Card) --- */
-.day-card {
-    margin-bottom: 15px;
-    overflow: hidden;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-}
-
-.day-header {
-    background: var(--primary-blue);
-    color: #ffffff;
-    padding: 8px 14px;
+    background-position: top center;
+    
+    /* Opacité appliquée uniquement à l'image */
+    opacity: 0.7;
+    
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top:10px;
+    padding-bottom:250px;   
+    
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 40%;
-    border-radius: 8px 30px 0px 0px;
+    align-items: center; /* Aligne verticalement au centre */
+    grid-area: stack;
 }
 
-.day-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 13pt;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+.section-wrap {
+    height: 1350px;
+    width: 1022px;
+    display: grid
 }
 
-.table-legend-header {
-    font-size: 9pt;
-    font-weight: 600;
-    letter-spacing: 1px;
-    display: flex;
-    gap: 15px;
+img.fondagenda {
+    z-index: 2; /* Force l'image à passer au-dessus de la div */
+    align-self: center; /* Optionnel : centre verticalement */
+    justify-self: center; /* Optionnel : centre horizontalement */
+    pointer-events: none; /* Optionnel : permet d'interagir avec le texte en dessous */
+    grid-area: stack;
 }
 
-.match-div {
-    border: 2px solid var(--primary-blue);
-    border-radius: 0px 12px 12px 12px;
-    background-color: #ffffff;
-    padding: 0px 12px 12px 12px;
+#sectionRencontres.AucuneRencontre{
+    display:block;
+    background-image: none;
+    background-repeat: no-repeat;
+    min-height: 50px;
+    height: 50px;
+    padding-left: 0px;
 }
 
-/* --- Tableau des Matchs --- */
-.match-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 10.5pt;
-
+.listRencontres {
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    width:100%
 }
 
-.match-table tr {
-    border-bottom: 1px solid #f2e6d8;
-}
-
-.match-table tr:nth-child(even) {
-    background-color: var(--row-alt);
-}
-
-.match-table tr:nth-child(odd) {
-    background-color: #ffffff;
-}
-
-.match-table td {
-    padding: 6px 8px;
-    vertical-align: middle;
-}
-
-.col-time {
-    width: 10%;
-    font-weight: 700;
-    color: var(--primary-blue);
-    font-size: 11pt;
-}
-
-.col-home {
-    width: 29%;
-    font-weight: 600;
-    color: #1a1a1a;
+.titreSemaine{
+    margin:10px;
+    font-family: 'Alfa Slab One', 'Impact', 'Arial Black', cursive, sans-serif;
+    font-size: 50px;
+    color: #ec843f; /* Orange vif / cuivré */
     text-align: left;
+
+    /* Contour/Lueur sombre et ombre portée pour reproduire l'effet 3D/relief */
+    text-shadow: 
+        -1px -1px 0 #111,  
+        1px -1px 0 #111,
+        -1px  1px 0 #111,
+        1px  1px 0 #111,
+        3px  4px 6px rgba(0, 0, 0, 0.85);
+        
+    letter-spacing: 0.5px;
+}
+
+.titreGroupe{
+    margin:10px;
     text-transform: uppercase;
-}
-
-.col-vs {
-    width: 6%;
-    font-weight: 700;
-    color: var(--primary-blue);
-    text-align: center;
-    font-size: 9pt;
-}
-
-.col-away {
-    width: 29%;
-    font-weight: 600;
-    color: #1a1a1a;
-    text-align: left;
-    text-transform: uppercase;
-}
-
-.col-salle {
-    width: 21%;
-    font-size: 9pt;
-    color: #2c3e50;
-    text-align: center;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-.col-loc {
-    width: 5%;
-    text-align: center;
-}
-
-.icon-dom {
-    color: var(--accent-orange);
-    font-size: 12pt;
-}
-
-.icon-ext {
-    color: var(--primary-blue);
-    font-size: 11pt;
-}
-
-/* --- Pied de Page --- */
-.footer-legend {
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    font-size: 9.5pt;
-    font-weight: 700;
-    color: var(--primary-blue);
-    letter-spacing: 1px;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.footer-banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 2px solid var(--accent-orange);
-}
-
-.footer-slogan {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Impact', 'Arial Black', sans-serif;
     font-weight: 900;
-    font-size: 13pt;
-    color: var(--primary-blue);
-    letter-spacing: 1px;
+    font-size: 30px;
+    color: #100347; /* Blanc pur */
     text-transform: uppercase;
+    letter-spacing: 2.5px; /* Espacement marqué entre les lettres */
+    
+    /* Légère ombre portée pour détacher le texte du fond dégradé bleu */
+    display: flex;
+    align-items: center; /* Aligne verticalement au centre */    
 }
 
-.footer-slogan span {
-    color: var(--accent-orange);
+.rencontre{
+    display:grid;
+    grid-template-columns:1fr 250px 1fr;
+    align-items:center;
+
+    border:2px solid #15078f;
+    border-radius:5px;
+    background-color: rgba(211, 212, 224, 0.63);
+
+    padding:1px 10px;
+    margin-bottom:0px;
+    color:rgb(0, 0, 0);
+    font-family: 'Alfa Slab One', 'Arial Black', sans-serif;   
 }
 
-.footer-tag {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 800;
-    font-size: 10pt;
-    color: var(--primary-blue);
+.exempt_list {
+    text-align: left;
+    margin-top:50px;
+    margin-right:10px;
+    font-size:28px;
+    color: rgb(32, 1, 143);
+    font-family: 'Impact', 'Arial Black', sans-serif;
+}
+
+.equipeABP {
+    color: orange;
+    text-shadow: 
+        -1px -1px 0 #111,  
+        1px -1px 0 #111,
+        -1px  1px 0 #111,
+        1px  1px 0 #111,
+        3px  4px 6px rgba(0, 0, 0, 0.85);
+}
+
+.equipe{
+    font-size:20px; 
+}
+
+.gauche{
+    text-align:left;
+}
+
+.droite{
+    text-align:right;
+}
+
+.centre{
+    text-align:center;
+    font-size: 16px;
+    font-weight:bold;
+}
+
+.jour{
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.heure{
+    margin-top:4px;
+    font-size:20px;
+    color:#0b63c8;
 }

@@ -14,7 +14,7 @@
     },
     {
       "Type": "CHAMPIONNAT",
-      "Equipe1": "DENAIN VOLTAIRET-3",
+      "Equipe1": "DENAIN VOLTAIRE-3",
       "Equipe2": "U11M-1",
       "Date": "2026-03-28T11:00:00.000Z",
       "JourRencontre": "2026/03/28",
@@ -47,7 +47,7 @@
     {
       "Type": "CHAMPIONNAT",
       "Equipe1": "U13M",
-      "Equipe2": "DENAIN VOLTAIRET",
+      "Equipe2": "DENAIN VOLTAIRE",
       "Date": "2026-03-28T15:30:00.000Z",
       "JourRencontre": "2026/03/28",
       "DateFormatted": "SAMEDI\n15H30",
