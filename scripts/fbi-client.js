@@ -54,7 +54,7 @@ nextWeek.setDate(today.getDate() + 28);
 
     await Promise.all([        
         page.click('#rechercher'),
-        page.waitForSelector('.boutonExcelNew')
+        page.waitForSelector('.boutonExcelNew', { visible: true })
     ]);
 
     // Clic sur le bouton d'export Excel
