@@ -32,3 +32,6 @@ jobs:
           git add data/rencontres/rencontres.xlsx
           git diff --staged --quiet || git commit -m "Mise à jour automatique des résultats FFBB"
           git push
+
+      - name: Déclencher le workflow Generate Agenda
+        run: gh workflow run generate-agenda.yml
