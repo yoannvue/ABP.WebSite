@@ -1,4 +1,4 @@
-name: XLS to JSON
+name: Generate Agenda
 
 on:
   push:

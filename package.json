@@ -25,8 +25,12 @@
     "@googleapis/drive": "^21.0.0",
     "@googleapis/sheets": "^14.0.0",
     "exceljs": "^4.4.0",
+    "ffbb-api-client": "^0.1.0",
     "google-auth-library": "^11.0.0",
     "jszip": "^3.10.1",
     "puppeteer": "^22.15.0"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2"
   }
 }
