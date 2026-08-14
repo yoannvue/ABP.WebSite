@@ -11,7 +11,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-04T17:00:00.000Z"
+      "Date": "2026-09-04T19:00:00.000Z"
     },
     {
       "Categorie": "SENIORS",
@@ -23,7 +23,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-04T18:30:00.000Z"
+      "Date": "2026-09-04T20:30:00.000Z"
     },
     {
       "Categorie": "U9",
@@ -35,7 +35,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T07:00:00.000Z"
+      "Date": "2026-09-05T09:00:00.000Z"
     },
     {
       "Categorie": "U9",
@@ -47,7 +47,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T08:30:00.000Z"
+      "Date": "2026-09-05T10:30:00.000Z"
     },
     {
       "Categorie": "U11M",
@@ -59,7 +59,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T10:00:00.000Z"
+      "Date": "2026-09-05T12:00:00.000Z"
     },
     {
       "Categorie": "U11M",
@@ -71,7 +71,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T11:30:00.000Z"
+      "Date": "2026-09-05T13:30:00.000Z"
     },
     {
       "Categorie": "U13F",
@@ -83,7 +83,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T13:00:00.000Z"
+      "Date": "2026-09-05T15:00:00.000Z"
     },
     {
       "Categorie": "U15F",
@@ -95,7 +95,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T15:00:00.000Z"
+      "Date": "2026-09-05T17:00:00.000Z"
     },
     {
       "Categorie": "U18F",
@@ -107,7 +107,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-05T18:00:00.000Z"
+      "Date": "2026-09-05T20:00:00.000Z"
     },
     {
       "Categorie": "U13M",
@@ -119,7 +119,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T07:30:00.000Z"
+      "Date": "2026-09-06T09:30:00.000Z"
     },
     {
       "Categorie": "LOISIRS",
@@ -131,7 +131,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T09:00:00.000Z"
+      "Date": "2026-09-06T11:00:00.000Z"
     },
     {
       "Categorie": "U18M",
@@ -143,7 +143,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T11:00:00.000Z"
+      "Date": "2026-09-06T13:00:00.000Z"
     },
     {
       "Categorie": "SENIORS",
@@ -155,7 +155,7 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T13:00:00.000Z"
+      "Date": "2026-09-06T15:00:00.000Z"
     }
   ]
 }
