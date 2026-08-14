@@ -28,41 +28,26 @@ jobs:
       - name: Install dependencies
         run: npm install      
 
-      - name: Generate image
-        if: steps.getfile.outputs.file != ''
+      - name: Generate image        
         run: node scripts/matchs-div-to-image.js "https://abpecquencourt.fr/pages/resultats.2026.html" "docs/resultats.json" "../data/resultats/resultats.png"
 
       - name: Commit image
-        if: steps.getfile.outputs.file != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/rencontres/rencontres.png
+          git add data/resultats/resultats.png
           git diff --cached --quiet || git commit -m "chore: Ajout de l'image de la semaine"
           git push
 
-      - name: Générer la Sheet
-        id: gensheet
-        if: steps.getfile.outputs.file != ''
-        env:
-          GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
-          GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
-          GOOGLE_OAUTH_REFRESH_TOKEN: ${{ secrets.GOOGLE_OAUTH_REFRESH_TOKEN }}
-          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-          MATCHS_JSON_PATH: "docs/rencontres.json"
-        run: node scripts/matchs-json-to-sheet.js
-
       - name: Envoyer le mail
-        if: steps.getfile.outputs.file != '' && steps.gensheet.outputs.sheet_url != ''
         uses: dawidd6/action-send-mail@v4
         with:
           server_address: smtp.gmail.com
           server_port: 465
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: "Planning généré"
+          subject: "Resultats généré"
           to: ${{ secrets.NOTIFY_EMAIL }}
           from: ABP WebSite Bot
           html_body: |
-            <p>La feuille de la semaine est disponible ici : <a href="${{ steps.gensheet.outputs.sheet_url }}">${{ steps.gensheet.outputs.sheet_url }}</a></p>
-            <img src="https://abpecquencourt.fr/data/rencontres/rencontres.png" alt="Affiche de la semaine" style="max-width:600px;" />
+            <img src="https://abpecquencourt.fr/data/resultats/resultats.png" alt="Affiche des resultats" style="max-width:600px;" />

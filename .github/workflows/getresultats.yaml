@@ -56,7 +56,7 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: update resultats.json from ${{ steps.getfile.outputs.file }}"
           git push
 
-      - name: Déclencher le workflow Generate Agenda
+      - name: Déclencher le workflow Generate Resultats
         run: gh workflow run resultats.yaml
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

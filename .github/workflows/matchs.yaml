@@ -29,11 +29,9 @@ jobs:
         run: npm install      
 
       - name: Generate image
-        if: steps.getfile.outputs.file != ''
         run: node scripts/matchs-div-to-image.js "https://abpecquencourt.fr/pages/matchs.2026.html" "docs/rencontres.json" "../data/rencontres/rencontres.png"
 
       - name: Commit image
-        if: steps.getfile.outputs.file != ''
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -43,7 +41,6 @@ jobs:
 
       - name: Générer la Sheet
         id: gensheet
-        if: steps.getfile.outputs.file != ''
         env:
           GOOGLE_OAUTH_CLIENT_ID: ${{ secrets.GOOGLE_OAUTH_CLIENT_ID }}
           GOOGLE_OAUTH_CLIENT_SECRET: ${{ secrets.GOOGLE_OAUTH_CLIENT_SECRET }}
@@ -53,7 +50,7 @@ jobs:
         run: node scripts/matchs-json-to-sheet.js
 
       - name: Envoyer le mail
-        if: steps.getfile.outputs.file != '' && steps.gensheet.outputs.sheet_url != ''
+        if: steps.gensheet.outputs.sheet_url != ''
         uses: dawidd6/action-send-mail@v4
         with:
           server_address: smtp.gmail.com
