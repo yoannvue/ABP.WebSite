@@ -2,6 +2,8 @@ const puppeteer = require('puppeteer');
 const path = require("path");
 const fs = require("fs");
 
+const outputxls = process.argv[2];
+
 if (!process.env.CI) {
     require("dotenv").config({ path: path.resolve(__dirname, "../.env.local") });
 }
@@ -65,7 +67,7 @@ nextWeek.setDate(today.getDate() + 28);
     console.log('✅ Fichier téléchargé :', filePath);
 
     // Copie vers un emplacement fixe dans le repo, pour que le workflow sache quoi commiter
-    const targetPath = path.resolve(__dirname, '../data/rencontres/rencontres.xlsx');
+    const targetPath = path.resolve(__dirname, outputxls);
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });
     fs.renameSync(filePath, targetPath);
     console.log('✅ Fichier déplacé vers :', targetPath);
