@@ -2,7 +2,7 @@ name: Weekly Export Results
 
 on:
   schedule:
-    - cron: '0 8 * * 2'
+    - cron: '0 18 * * 0'
   workflow_dispatch:
 
 permissions:
@@ -42,21 +42,21 @@ jobs:
         id: getfile
         run: echo "file=data/resultats/resultats.xlsx" >> $GITHUB_OUTPUT
 
-      # - name: Convert XLS to JSON
-      #   if: steps.getfile.outputs.file != ''
-      #   run: |
-      #     node scripts/results-xls-to-json.js ${{ steps.getfile.outputs.file }}
+      - name: Convert XLS to JSON
+        if: steps.getfile.outputs.file != ''
+        run: |
+          node scripts/results-xls-to-json.js ${{ steps.getfile.outputs.file }}
 
-      # - name: Commit and push JSON
-      #   if: steps.getfile.outputs.file != ''
-      #   run: |
-      #     git config user.name "github-actions[bot]"
-      #     git config user.email "github-actions[bot]@users.noreply.github.com"
-      #     git add docs/resultats.json
-      #     git diff --cached --quiet || git commit -m "chore: update resultats.json from ${{ steps.getfile.outputs.file }}"
-      #     git push
+      - name: Commit and push JSON
+        if: steps.getfile.outputs.file != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/resultats.json
+          git diff --cached --quiet || git commit -m "chore: update resultats.json from ${{ steps.getfile.outputs.file }}"
+          git push
 
-      # - name: Déclencher le workflow Generate Agenda
-      #   run: gh workflow run resultats.yaml
-      #   env:
-      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Déclencher le workflow Generate Agenda
+        run: gh workflow run resultats.yaml
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
