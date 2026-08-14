@@ -5,145 +5,157 @@
       "Categorie": "U15M",
       "Equipe1": "U15M",
       "Equipe2": "CARNIERES BC",
-      "Score1": "0",
-      "Score2": "20",
-      "Forfait1": true,
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-04T17:00:00.000Z"
     },
     {
       "Categorie": "SENIORS",
       "Equipe1": "SENIORS",
       "Equipe2": "OSTREVENT BASKET BALL EAA MONCHECOURT",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-04T18:30:00.000Z"
     },
     {
-      "Categorie": "U9M",
-      "Equipe1": "U9M",
+      "Categorie": "U9",
+      "Equipe1": "U9",
       "Equipe2": "TEMPLEUVE L P",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T07:00:00.000Z"
     },
     {
-      "Categorie":"U9F",
-      "Equipe1": "U9F",
+      "Categorie": "U9",
+      "Equipe1": "U9",
       "Equipe2": "TEMPLEUVE L P",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T08:30:00.000Z"
     },
     {
-      "Categorie":"U11M",
+      "Categorie": "U11M",
       "Equipe1": "U11M",
       "Equipe2": "ANNOEULLIN B C",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T10:00:00.000Z"
     },
     {
-      "Categorie":"U11F",
-      "Equipe1": "U11F",
+      "Categorie": "U11M",
+      "Equipe1": "U11M",
       "Equipe2": "ONNAING JA",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T11:30:00.000Z"
     },
     {
-      "Categorie":"U13F",
+      "Categorie": "U13F",
       "Equipe1": "U13F",
-      "Equipe2": "NEUVILLE EN F.",
-      "Score1": "10",
-      "Score2": "30",
+      "Equipe2": "NEUVILLE EN FERRAIN PP",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T13:00:00.000Z"
     },
     {
-      "Categorie":"U15F",
+      "Categorie": "U15F",
       "Equipe1": "U15F",
       "Equipe2": "BASKET CLUB PEVELE",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T15:00:00.000Z"
     },
     {
-      "Categorie":"U18F",
+      "Categorie": "U18F",
       "Equipe1": "U18F",
       "Equipe2": "UNION DECHY SIN BASKET",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-05T18:00:00.000Z"
     },
     {
-      "Categorie":"U13M",
+      "Categorie": "U13M",
       "Equipe1": "U13M",
       "Equipe2": "AULNOY VALENCIENNES S",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-06T07:30:00.000Z"
     },
     {
-      "Categorie":"LOISIRS",
+      "Categorie": "LOISIRS",
       "Equipe1": "LOISIRS",
       "Equipe2": "BASKET CLUB HULLUCH",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-06T09:00:00.000Z"
     },
     {
-      "Categorie":"U18M",
+      "Categorie": "U18M",
       "Equipe1": "U18M",
       "Equipe2": "UNION DECHY SIN BASKET",
-      "Date": "2026-09-06T13:00:00.000Z",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-06T11:00:00.000Z"
     },
     {
-      "Categorie":"SENIORS",
+      "Categorie": "SENIORS",
       "Equipe1": "SENIORS",
       "Equipe2": "THIANT BC",
-      "Score1": "10",
-      "Score2": "30",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true
+      "ADomicile": true,
+      "Date": "2026-09-06T13:00:00.000Z"
     }
   ]
 }

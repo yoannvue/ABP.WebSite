@@ -45,7 +45,7 @@ jobs:
       # - name: Convert XLS to JSON
       #   if: steps.getfile.outputs.file != ''
       #   run: |
-      #     node scripts/resultats-xls-to-json.js ${{ steps.getfile.outputs.file }}
+      #     node scripts/results-xls-to-json.js ${{ steps.getfile.outputs.file }}
 
       # - name: Commit and push JSON
       #   if: steps.getfile.outputs.file != ''

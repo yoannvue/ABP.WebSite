@@ -506,7 +506,7 @@
         "NEUVILLE EN FERRAIN PP": {
             "nomcourt": "NEUVILLE EN F.",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059112",
-            "logo": "https://api.ffbb.app/assets/3a418417-9f46-43ad-a82d-cc5e8732675a"
+            "logo": "/ressources/clubs/NEUVILLE EN FERRAIN PP.png"
         },
         "NEUVILLE SUR ESCAUT BC": {
             "nomcourt": "NEUVILLE SUR ESCAUT BC",
@@ -656,7 +656,7 @@
         "ANNOEULLIN B C": {
             "nomcourt": "ANNOEULLIN B C",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059077",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/ANNOEULLIN B C.webp"
         },
         "ARMENTIERES ASRSL": {
             "nomcourt": "ARMENTIERES ASRSL",
@@ -1130,7 +1130,7 @@
         "THIANT BC": {
             "nomcourt": "THIANT BC",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059170",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/THIANT BC.png"
         },
         "THUMERIES A G": {
             "nomcourt": "THUMERIES",
