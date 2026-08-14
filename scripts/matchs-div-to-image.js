@@ -2,6 +2,12 @@ const puppeteer = require("puppeteer");
 const path = require("path");
 const fs = require("fs");
 
+// Chargement des fichiers
+const inputurl = process.argv[2];
+const inputjson = process.argv[3];
+const outputImg = process.argv[4];
+
+
 (async () => {
     const browser = await puppeteer.launch({
         headless: "new",
@@ -11,7 +17,7 @@ const fs = require("fs");
     const page = await browser.newPage();
 
     // Charger le JSON AVANT le goto
-    const data = JSON.parse(fs.readFileSync("docs/rencontres.json", "utf8"));
+    const data = JSON.parse(fs.readFileSync(inputjson, "utf8"));
 
     // Injecter les variables AVANT le goto
     await page.evaluateOnNewDocument((data) => {
@@ -21,7 +27,7 @@ const fs = require("fs");
 
 
     // Charger la page
-    await page.goto("https://abpecquencourt.fr/pages/matchs.html", {
+    await page.goto(inputurl, {
         waitUntil: "networkidle0"
     });
 
@@ -37,9 +43,9 @@ const fs = require("fs");
     // Screenshot
     const element = await page.$("#sectionRencontres");
     await element.screenshot({
-        path: path.join(__dirname, "../data/rencontres/rencontres.png")
+        path: path.join(__dirname, outputImg)
     });
 
     await browser.close();
-    console.log("Fichier rencontres.png généré ")
+    console.log("Fichier "+outputImg+" généré ")
 })();

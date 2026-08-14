@@ -65,6 +65,8 @@ async function chargerRencontres() {
 
 function creerGroupe(parent, ADomicile, rencontres) {
 
+    if (rencontres.length == 0) return;
+
     const h2 = document.createElement("h2");
     h2.className = "titreGroupe";
     let titre = ADomicile ? "SALLE JEAN DEGROS PECQUENCOURT" : "A L'EXTERIEUR"

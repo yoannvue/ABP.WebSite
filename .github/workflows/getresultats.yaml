@@ -1,0 +1,62 @@
+name: Weekly Export Results
+
+on:
+  schedule:
+    - cron: '0 8 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # nécessaire pour push
+  actions: write
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - run: npm install
+
+      - run: node scripts/fbi-client.js
+        env:
+          FBI_CLIENT: ${{ secrets.FBI_CLIENT }}
+          FBI_PASSWORD: ${{ secrets.FBI_PASSWORD }}
+
+      - name: Commit et push si changement
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/resultats/resultats.xlsx
+          git diff --staged --quiet || git commit -m "Mise à jour automatique des résultats FFBB"
+          git push
+      
+      - name: Get XLS file name
+        id: getfile
+        run: echo "file=data/resultats/resultats.xlsx" >> $GITHUB_OUTPUT
+
+      # - name: Convert XLS to JSON
+      #   if: steps.getfile.outputs.file != ''
+      #   run: |
+      #     node scripts/resultats-xls-to-json.js ${{ steps.getfile.outputs.file }}
+
+      # - name: Commit and push JSON
+      #   if: steps.getfile.outputs.file != ''
+      #   run: |
+      #     git config user.name "github-actions[bot]"
+      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      #     git add docs/resultats.json
+      #     git diff --cached --quiet || git commit -m "chore: update resultats.json from ${{ steps.getfile.outputs.file }}"
+      #     git push
+
+      # - name: Déclencher le workflow Generate Agenda
+      #   run: gh workflow run resultats.yaml
+      #   env:
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

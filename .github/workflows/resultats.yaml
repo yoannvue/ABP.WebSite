@@ -1,4 +1,4 @@
-name: Generate Agenda
+name: Generate Resultats
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ jobs:
 
       - name: Generate image
         if: steps.getfile.outputs.file != ''
-        run: node scripts/matchs-div-to-image.js "https://abpecquencourt.fr/pages/matchs.2026.html" "docs/rencontres.json" "../data/rencontres/rencontres.png"
+        run: node scripts/matchs-div-to-image.js "https://abpecquencourt.fr/pages/resultats.2026.html" "docs/resultats.json" "../data/resultats/resultats.png"
 
       - name: Commit image
         if: steps.getfile.outputs.file != ''

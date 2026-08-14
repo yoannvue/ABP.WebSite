@@ -1,18 +1,18 @@
 #sectionRencontres{
-    background-image: url('/ressources/fonds/ete  ;; .jpg');
+    background-image: url('/ressources/resultats2026.jpg');
     background-size: 100% auto; /* 100% de la largeur, hauteur automatique sans déformation */
     background-repeat: no-repeat;
     background-position: top center;
     
     /* Opacité appliquée uniquement à l'image */
-    opacity: 0.85;
+    opacity: 0.7;
     
     padding-left: 25px;
     padding-right: 25px;
-    padding-top:0px;
-    padding-bottom:300px;   
+    padding-top:10px;
+    padding-bottom:250px;   
     
-    display: flex;
+    display: grid;
     align-items: center; /* Aligne verticalement au centre */
     grid-area: stack;
 }
@@ -41,9 +41,9 @@ img.fondagenda {
 }
 
 .listRencontres {
-    display:flex;
-    flex-direction:column;
-    gap:6px;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:15px;
     width:100%
 }
 
@@ -81,18 +81,21 @@ img.fondagenda {
 }
 
 .rencontre{
-    display:grid;
-    grid-template-columns:1fr 120px 1fr;
-    align-items:center;
+    width:450px;
+    height:130px;
+    border:8px solid #e5e5e5;
+    border-radius:25px;
+    background-color: rgba(211, 212, 224, 0.63);
+    box-shadow: 0 4px 12px rgb(243 224 18);
 
-    border:2px solid #15078f;
-    border-radius:5px;
-    background-color: #f7f5f4;
-
-    padding:3px 10px;
+    padding:1px 10px;
     margin-bottom:0px;
-    color: #072f69;
+    color:rgb(0, 0, 0);
     font-family: 'Alfa Slab One', 'Arial Black', sans-serif;   
+
+    display: flex;
+    justify-content: space-between; /* Espace les 3 éléments sur toute la largeur */
+    align-items: center;        /* Aligne les éléments gauches et droits sur le haut */
 }
 
 .exempt_list {
@@ -100,30 +103,59 @@ img.fondagenda {
     margin-top:50px;
     margin-right:10px;
     font-size:28px;
-    color: #072f69;
+    color: rgb(32, 1, 143);
     font-family: 'Impact', 'Arial Black', sans-serif;
 }
 
 .equipeABP {
-    color: #e5772e;
+    color: orange;
+    text-shadow: 
+        -1px -1px 0 #111,  
+        1px -1px 0 #111,
+        -1px  1px 0 #111,
+        1px  1px 0 #111,
+        3px  4px 6px rgba(0, 0, 0, 0.85);
 }
 
 .equipe{
-    font-size:25px; 
+    font-size:15px; 
+    flex: 1;
 }
 
 .gauche{
-    text-align:left;
+    text-align:center;
+    display: flex;
+    flex-direction: column; /* Empile l'image et le span verticalement */
+    align-items: center;  /* Aligne tous les éléments sur le bord droit */
 }
 
 .droite{
-    text-align:right;
+    text-align:center;
+    display: flex;
+    flex-direction: column; /* Empile l'image et le span verticalement */
+    align-items: center;  /* Aligne tous les éléments sur le bord droit */
 }
 
 .centre{
     text-align:center;
-    font-size: 16px;
-    font-weight:bold;
+    font-size: 10px;
+}
+
+.logo {
+    height:90px;
+}
+
+.centre span{
+    display: inline-block;
+    font-family: 'Arial Black', system-ui, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Bleu dynamique */
+    padding: 6px 16px;
+    border-radius: 20px;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .jour{

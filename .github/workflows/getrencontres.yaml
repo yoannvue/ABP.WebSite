@@ -37,6 +37,24 @@ jobs:
           git add data/rencontres/rencontres.xlsx
           git diff --staged --quiet || git commit -m "Mise à jour automatique des résultats FFBB"
           git push
+      
+      - name: Get XLS file name
+        id: getfile
+        run: echo "file=data/rencontres/rencontres.xlsx" >> $GITHUB_OUTPUT
+
+      - name: Convert XLS to JSON
+        if: steps.getfile.outputs.file != ''
+        run: |
+          node scripts/matchs-xls-to-json.js ${{ steps.getfile.outputs.file }}
+
+      - name: Commit and push JSON
+        if: steps.getfile.outputs.file != ''
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/rencontres.json
+          git diff --cached --quiet || git commit -m "chore: update rencontres.json from ${{ steps.getfile.outputs.file }}"
+          git push
 
       - name: Déclencher le workflow Generate Agenda
         run: gh workflow run matchs.yaml
