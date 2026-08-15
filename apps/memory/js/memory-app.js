@@ -98,7 +98,7 @@ scoreForm.addEventListener("submit", async (event) => {
   try {
     await submitScore({ pseudo, elapsedSeconds });
     submitStatus.textContent = "Score envoyé, merci !";
-    loadLeaderboard();
+    window.location.href = "index.html";
   } catch (err) {
     console.error(err);
     submitStatus.textContent = "Erreur lors de l'envoi, réessaie.";

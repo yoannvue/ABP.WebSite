@@ -31,7 +31,7 @@ export async function submitScore({ pseudo, elapsedSeconds }) {
  * Retourne un tableau trié par temps croissant, limité à LEADERBOARD_MAX_ROWS.
  */
 export async function fetchLeaderboard() {
-  const response = await fetch(CONFIG.LEADERBOARD_CSV_URL, { cache: "no-store" });
+  const response = await fetch(CONFIG.LEADERBOARD_CSV_URL, { cache: "reload" });
   if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
 
   const text = await response.text();
