@@ -123,8 +123,22 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+function loadAnalyticsScript() {
+    const existingScript = document.querySelector('script[data-analytics-loader="true"]');
+    if (existingScript) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.src = '/js/analytics.js';
+    script.async = true;
+    script.dataset.analyticsLoader = 'true';
+    document.head.appendChild(script);
+  }
+
 // ------------------------------------------------------------------
 // Démarrage
 // ------------------------------------------------------------------
 startNewGame();
+loadAnalyticsScript();
 
