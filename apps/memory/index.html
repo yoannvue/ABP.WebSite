@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory ABP - Amicale Basket Pecquencourt</title>
+    <link rel="stylesheet" href="css/memory.css">
+</head>
+
+<body>
+
+    <header class="memory-header">
+        <h1>Memory ABP</h1>
+        <p class="subtitle">Retrouve les paires de cartes le plus vite possible !</p>
+    </header>
+    <section class="leaderboard">
+        <img src="./ressources/memory.png" style="width:80%"/>
+        <button type="button" class="btn-primary" onclick="window.location.href='memory.html'">
+            Tentez votre chance
+        </button>
+        <br />
+        <p>Attention, le jeu est chronométré et démarre tout de suite !!<br />
+    </section>
+    <!-- Classement -->
+    <section id="leaderboard-section" class="leaderboard">
+        <h2>Classement</h2>
+        <p id="leaderboard-status" class="leaderboard-status">Chargement du classement...</p>
+        <table id="leaderboard-table" class="hidden">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pseudo</th>
+                    <th>Temps</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body"></tbody>
+        </table>
+        <button id="refresh-leaderboard-btn" class="btn-secondary">Actualiser le classement</button>
+
+    </section>
+
+    <script type="module" src="js/memory-board.js"></script>
+</body>
+
+</html>

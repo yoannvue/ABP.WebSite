@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory ABP - Amicale Basket Pecquencourt</title>
+  <link rel="stylesheet" href="css/memory.css">
+</head>
+<body>
+
+  <section class="memory-toolbar">
+    <div class="stat">
+      <span class="label">Temps</span>
+      <span id="timer" class="value">00:00</span>
+    </div>
+    <div class="stat">
+      <span class="label">Coups</span>
+      <span id="moves" class="value">0</span>
+    </div>
+    <button id="restart-btn" class="btn-secondary">Rejouer</button>
+  </section>
+
+  <main>
+    <div id="board" class="memory-board"></div>
+  </main>
+
+  <!-- Modale de fin de partie -->
+  <div id="end-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Bravo !</h2>
+      <p>Tu as terminé en <strong id="end-time"></strong> avec <strong id="end-moves"></strong> coups.</p>
+
+      <form id="score-form" autocomplete="off">
+        <label for="pseudo">Ton pseudo</label>
+        <input type="text" id="pseudo" name="pseudo" maxlength="20" required placeholder="Ex: Kevin_ABP">
+        <button type="submit" class="btn-primary">Envoyer mon score</button>
+      </form>
+      <p id="submit-status" class="submit-status"></p>
+
+      <button id="close-modal-btn" class="btn-secondary">Rejouer sans envoyer</button>
+    </div>
+  </div>
+
+
+  <script type="module" src="js/memory-app.js"></script>
+</body>
+</html>
