@@ -8,7 +8,7 @@ export const CONFIG = {
   // Nombre de paires par défaut (16 cartes = 8 paires).
   // Peut être surchargé ponctuellement via l'URL : memory.html?pairs=6
   // pratique pour les tests sans toucher au code.
-  NUM_PAIRS: 2,
+  NUM_PAIRS: 15,
 
   // Nombre de colonnes de la grille selon le nombre de paires.
   // Ajuste ces paliers si besoin.
