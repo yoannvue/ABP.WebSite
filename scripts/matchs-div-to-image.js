@@ -18,12 +18,14 @@ const outputImg = process.argv[4];
 
     // Charger le JSON AVANT le goto
     const data = JSON.parse(fs.readFileSync(inputjson, "utf8"));
+    const teams = JSON.parse(fs.readFileSync("docs/teams.json", "utf8"));
 
     // Injecter les variables AVANT le goto
-    await page.evaluateOnNewDocument((data) => {
+    await page.evaluateOnNewDocument((data, teams) => {
         window.__IS_PUPPETEER__ = true;
         window.dataRencontres = data;
-    }, data);
+        window.dataTeams = teams;
+    }, data, teams);
 
 
     // Charger la page

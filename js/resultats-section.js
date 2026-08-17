@@ -6,24 +6,23 @@ async function chargerRencontres() {
         const isPuppeteer = getEnvironment() == "puppeteer";
         // Determiner si on on est dans un cas de génération automtique de l'image des rencontres dans github actions
 
-        let data;
+        let data, teams;
         if (!isPuppeteer) {
 
             // fichierRencontres selon environnement
             let fichierRencontres = "/docs/resultats.json"
-            
+            let fichierTeams = "/docs/teams.json"
             const response = await fetch(fichierRencontres);
             data = await response.json();
 
-            await getDataTeams();
+            const responseTeams = await fetch(fichierTeams);
+            teams = await responseTeams.json();
         }
         else {
             // dans le cas de puppeteers, on va injecter les données dans la variables windows puisque Fetch est impossible
             data = window.dataRencontres;
             teams = window.dataTeams;
         }
-
-        
 
         const section = document.getElementById("sectionRencontres");
         section.innerHTML = "";
@@ -46,21 +45,21 @@ async function chargerRencontres() {
 
         // Tri chronologique
         data.rencontres.sort((a, b) => {
-            const da = getCategorieDisplayOrder(a.Categorie);
-            const db = getCategorieDisplayOrder(b.Categorie);
+            const da = getCategorieDisplayOrder(teams, a.Categorie);
+            const db = getCategorieDisplayOrder(teams, b.Categorie);
             return da - db;
         });
 
         data.rencontres.forEach(match => {
 
-            const equipeGauche = match.ADomicile ? match.Equipe1 : getShortName(match.Equipe1);
-            const equipeDroite = !match.ADomicile ? match.Equipe2 : getShortName(match.Equipe2);
+            const equipeGauche = match.ADomicile ? match.Equipe1 : getShortName(teams, match.Equipe1);
+            const equipeDroite = !match.ADomicile ? match.Equipe2 : getShortName(teams, match.Equipe2);
 
             const styleequipegauche = match.ADomicile ? "equipeABP" : "";
             const styleequipedroite = match.ADomicile ? "" : "equipeABP";
 
-            const logoequipegauche = match.ADomicile ? getLogoUrl("AMICALE BASKET PECQUENCOURT") : getLogoUrl(match.Equipe1);
-            const logoequipedroite = match.ADomicile ? getLogoUrl(match.Equipe2): getLogoUrl("AMICALE BASKET PECQUENCOURT");
+            const logoequipegauche = match.ADomicile ? getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT") : getLogoUrl(teams, match.Equipe1);
+            const logoequipedroite = match.ADomicile ? getLogoUrl(teams, match.Equipe2): getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT");
 
             const Score = match.Score1+ (match.Forfait1?"(F)":"") + " - "+match.Score2+(match.Forfait2?"(F)":"");
 
@@ -95,40 +94,19 @@ async function chargerRencontres() {
 
 document.addEventListener("DOMContentLoaded", chargerRencontres);
 
-let dataTeams = null;
-let dataTeamsPromise = null;
 
-// Charge /docs/teams.json une seule fois, quel que soit le nombre d'appels.
-// Le premier appel déclenche le fetch et met en cache la Promise ;
-// les appels suivants réutilisent directement cette Promise (déjà résolue ou en cours).
-function getDataTeams() {
-    if (!dataTeamsPromise) {
-        dataTeamsPromise = fetch("/docs/teams.json")
-            .then(response => response.json())
-            .then(json => {
-                dataTeams = json;
-                return dataTeams;
-            })
-            .catch(e => {
-                dataTeamsPromise = null; // permet de réessayer au prochain appel en cas d'échec
-                throw e;
-            });
-    }
-    return dataTeamsPromise;
+function getCategorieDisplayOrder(teams, categorie) {
+    return teams.categories[categorie];
 }
 
-function getCategorieDisplayOrder(categorie) {
-    return dataTeams.categories[categorie];
-}
-
-function getShortName(club) {
-    var clubObj = dataTeams.adversaires[club];
+function getShortName(teams, club) {
+    var clubObj = teams.adversaires[club];
     if (!clubObj || !clubObj.nomcourt) return club;
     return clubObj.nomcourt;
 }
 
-function getLogoUrl(club) {
-    var clubObj = dataTeams.adversaires[club];
+function getLogoUrl(teams, club) {
+    var clubObj = teams.adversaires[club];
     if (!clubObj || !clubObj.nomcourt) return "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg";
     return clubObj.logo;
 }
