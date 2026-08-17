@@ -263,6 +263,19 @@
           "url": "/ressources/Coachs/anaelle.jpg"
         }
       ]
+    }, 
+    {
+      "id": "kornelia-coach-001",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Kornelia - Coach U9F",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/kornelia.jpg"
+        }
+      ]
     },
     {
       "id": "camille-coach-001",
@@ -613,7 +626,7 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "camille-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010","ludo-coach", "aurelien-coach-013","remy-coach-011", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
+        "cards": ["anaelle-coach-001", "camille-coach-001","kornelia-coach-001", "yoann-coach-002", "sebastien-coach-003", "steeve-coach-004", "cedric-coach-005", "jimmy-coach-006", "gaetan-coach-007", "annegaelle-coach-008", "manon-coach-010","ludo-coach", "aurelien-coach-013","remy-coach-011", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
       },
       {
         "name": "Bureau",       
