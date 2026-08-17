@@ -42,10 +42,27 @@ const outputImg = process.argv[4];
         return document.body.getAttribute("data-rencontres-ready") === "1";
     });
 
-    // Screenshot
-    const element = await page.$("#sectionRencontres");
-    await element.screenshot({
-        path: path.join(__dirname, outputImg)
+    await page.evaluate(() => {
+        const el = document.querySelector("#contenu");
+        const rect = el.getBoundingClientRect();
+        document.body.style.height = rect.height + "px";
+        document.body.style.width = rect.width + "px";
+    });
+
+    const rect = await page.evaluate(() => {
+        const el = document.querySelector("#contenu");
+        const { x, y, width, height } = el.getBoundingClientRect();
+        return { x, y, width, height };
+    });
+
+    await page.screenshot({
+        path: path.join(__dirname, outputImg),
+        clip: {
+            x: rect.x,
+            y: rect.y,
+            width: rect.width,
+            height: rect.height
+        }
     });
 
     await browser.close();
