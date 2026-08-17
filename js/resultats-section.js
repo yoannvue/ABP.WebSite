@@ -51,8 +51,6 @@ async function chargerRencontres() {
             return da - db;
         });
 
-        
-
         data.rencontres.forEach(match => {
 
             const equipeGauche = match.ADomicile ? match.Equipe1 : getShortName(match.Equipe1);

@@ -38,7 +38,7 @@ const outputImg = process.argv[4];
     // Attendre que ton script ait fini
     await page.waitForFunction(() => {
         return document.body.getAttribute("data-rencontres-ready") === "1";
-    }, { timeout: 15000 });
+    });
 
     // Screenshot
     const element = await page.$("#sectionRencontres");
