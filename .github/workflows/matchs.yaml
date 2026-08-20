@@ -62,4 +62,5 @@ jobs:
           from: ABP WebSite Bot
           html_body: |
             <p>La feuille de la semaine est disponible ici : <a href="${{ steps.gensheet.outputs.sheet_url }}">${{ steps.gensheet.outputs.sheet_url }}</a></p>
+            <p>L'affiche : <a href="https://abpecquencourt.fr/data/rencontres/rencontres.png">https://abpecquencourt.fr/data/rencontres/rencontres.png</a></p>
             <img src="https://abpecquencourt.fr/data/rencontres/rencontres.png" alt="Affiche de la semaine" style="max-width:600px;" />
