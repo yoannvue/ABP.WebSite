@@ -156,6 +156,30 @@
       "EstExempt": false,
       "ADomicile": true,
       "Date": "2026-09-06T15:00:00.000Z"
+    },
+    {
+      "Categorie": "U11M",
+      "Equipe1": "ORCHESIEN B C-2",
+      "Equipe2": "U11M",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-19T11:00:00.000Z"
+    },
+    {
+      "Categorie": "U11F",
+      "Equipe1": "U11F",
+      "Equipe2": "AULNOY VALENCIENNES S",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": true,
+      "Date": "2026-09-19T14:00:00.000Z"
     }
   ]
 }
