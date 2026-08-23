@@ -33,10 +33,10 @@ export function getCardsPerDraw() {
 }
 
 export function canDrawToday() {
-  return true; // Always allow drawing for testing purposes
-  // const stored = getCollection();
-  // const today = formatDate();
-  // return stored.lastDrawDate !== today;
+  //return true; // Always allow drawing for testing purposes
+  const stored = getCollection();
+  const today = formatDate();
+  return stored.lastDrawDate !== today;
 }
 
 export function drawCardsForToday() {

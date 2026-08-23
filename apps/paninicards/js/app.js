@@ -2,7 +2,7 @@
  * app.js - Point d'entrée principal et orchestration
  */
 
-import { initGame, drawCardsForToday, getPlayerStats } from './game.js';
+import { initGame, drawCardsForToday,canDrawToday, getPlayerStats } from './game.js';
 import { setupNavigation, displayDrawnCards, updateProgress, displayMissing, setupConsentBanner } from './ui.js';
 import { getCollection, saveCollection, exportCollection, importCollection, deleteCollection } from './storage.js';
 import { decodeGiftValue } from './utils.js';
@@ -81,27 +81,39 @@ function applyGiftFromUrl() {
 }
 
 function setupDailyDraw() {
-  const drawBtn = document.getElementById('draw-btn');
 
-  drawBtn?.addEventListener('click', () => {
-    try {
-      const result = drawCardsForToday();
+  const tirageDiv = document.getElementById('tirage');
+  const tirageDivDone = document.getElementById('tirageDone');
 
-      if (result.status === 'success') {
-        // Masquer le div tirage
-        const tirageDiv = document.getElementById('tirage');
-        if (tirageDiv) {
-          tirageDiv.style.display = 'none';
+  if (canDrawToday()) {
+    
+    tirageDivDone.style.display = "none";
+    tirageDiv.style.display = "block";
+
+    const drawBtn = document.getElementById('draw-btn');
+
+    drawBtn?.addEventListener('click', () => {
+      try {
+        const result = drawCardsForToday();
+
+        if (result.status === 'success') {
+          // Masquer le div tirage
+          tirageDiv.style.display = 'none';          
+          displayDrawnCards(result.cards);
+        } else {
+          alert(result.message);
         }
-        displayDrawnCards(result.cards);
-      } else {
-        alert(result.message);
+      } catch (error) {
+        console.error('Erreur tirage', error);
+        alert('Erreur lors du tirage. Rafraîchissez la page.');
       }
-    } catch (error) {
-      console.error('Erreur tirage', error);
-      alert('Erreur lors du tirage. Rafraîchissez la page.');
-    }
-  });
+    });
+  }
+  else {
+    tirageDiv.style.display = "none";
+    tirageDivDone.style.display = "block";
+
+  }
 }
 
 function setupActions() {
