@@ -18,12 +18,13 @@
       "Date": "2026-09-04T20:30:00.000Z",
       "JourRencontre": "2026/09/04",
       "DateFormatted": "VENDREDI\n20H30",
+      "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "U9M",
+      "Equipe1": "U9",
       "Equipe2": "TEMPLEUVE L P",
       "Date": "2026-09-05T09:00:00.000Z",
       "JourRencontre": "2026/09/05",
@@ -33,7 +34,7 @@
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "U9F",
+      "Equipe1": "U9",
       "Equipe2": "TEMPLEUVE L P",
       "Date": "2026-09-05T10:30:00.000Z",
       "JourRencontre": "2026/09/05",
@@ -53,7 +54,7 @@
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "U11F",
+      "Equipe1": "U11M",
       "Equipe2": "ONNAING",
       "Date": "2026-09-05T13:30:00.000Z",
       "JourRencontre": "2026/09/05",
@@ -123,11 +124,34 @@
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "SENIORS-2",
+      "Equipe1": "SENIORS",
       "Equipe2": "THIANT BC",
       "Date": "2026-09-06T15:00:00.000Z",
       "JourRencontre": "2026/09/06",
       "DateFormatted": "DIMANCHE\n15H00",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "ORCHIES-2",
+      "Equipe2": "U11M",
+      "Date": "2026-09-19T11:00:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n11H00",
+      "Salle": "LEO LAGRANGE",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U11F",
+      "Equipe2": "AULNOY-LEZ-VAL.",
+      "Date": "2026-09-19T14:00:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n14H00",
+      "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
     }
