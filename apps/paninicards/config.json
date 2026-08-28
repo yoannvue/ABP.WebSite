@@ -135,6 +135,19 @@
       ]
     }, 
     {
+      "id": "sabrina-labre-coach",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Sabrina - Coach Baby",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/sabrina labre.jpg"
+        }
+      ]
+    }, 
+    {
       "id": "kornelia-coach-001",
       "name": "Coach",
       "category": "staff",
@@ -510,7 +523,7 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001", "camille-coach-001","kornelia-coach-001", "yoann-coach-002", "sebastien-coach-003", 
+        "cards": ["anaelle-coach-001","sabrina-labre-coach", "camille-coach-001","kornelia-coach-001", "yoann-coach-002", "sebastien-coach-003", 
               "steeve-coach-004", "cedric-coach-005","john-coach", "jimmy-coach-006","guillaume-coach", "andy-coach","gaetan-coach-007", "annegaelle-coach-008", 
                 "manon-coach-010","ludo-coach", "aurelien-coach-013","remy-coach-011", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
       },

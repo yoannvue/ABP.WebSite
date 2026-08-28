@@ -128,8 +128,7 @@
       "coach": "Entrainés par Manon",
       "accent": "blue",
       "sessions": [
-        { "day": "Mercredi", "time": "21h15 — 22h30", "place": "Salle des sport - Montigny en Ostrevent" },
-        { "day": "Lundi", "time": "20h30 — 22h00", "place": "Salle Jean Degros - Pecquencourt" }
+        { "day": "Mercredi", "time": "21h15 — 22h30", "place": "Salle des sport - Montigny en Ostrevent" }
       ]
     },
     {
