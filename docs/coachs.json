@@ -24,7 +24,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image":  "/ressources/Coachs/Homme.jpg"
+    "image":  "/ressources/Coachs/eric.jpg"
   },
   {
     "prenom": "Sabrina",
@@ -61,7 +61,7 @@
     "imageDiplome": "",
     "specification": "",
     "image":  "/ressources/Coachs/camille.jpg"
-  },
+  }, 
   {
     "prenom": "Bastien",
     "nom": "Chausson",
@@ -69,7 +69,7 @@
     "diplome": "",
     "imageDiplome": "",
     "specification": "",
-    "image": "/ressources/Coachs/Homme.jpg"
+    "image": "/ressources/Coachs/bastien.jpg"
   },
   {
     "prenom": "Yoann",

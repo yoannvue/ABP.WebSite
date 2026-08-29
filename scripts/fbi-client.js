@@ -17,7 +17,7 @@ function formatDate(d) {
 
 const today = new Date();
 const nextWeek = new Date();
-nextWeek.setDate(today.getDate() + 28);
+nextWeek.setDate(today.getDate() + 7);
 
 (async () => {
 

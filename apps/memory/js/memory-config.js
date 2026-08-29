@@ -52,7 +52,9 @@ export const CONFIG = {
     "/ressources/Coachs/Steeve Dorchy.jpg",
     "/ressources/Coachs/thomas.jpg",
     "/ressources/Coachs/Yoann.jpg",
-    "/ressources/Coachs/sabrina labre.jpg"
+    "/ressources/Coachs/sabrina labre.jpg",
+    "/ressources/Coachs/eric.jpg",
+    "/ressources/Coachs/bastien.jpg"
   ],
 
   // ------------------------------------------------------------------
