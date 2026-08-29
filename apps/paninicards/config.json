@@ -369,6 +369,19 @@
       ]
     },
     {
+      "id": "antoine-coach",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Antoine - Coach U18M",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/antoine.jpg"
+        }
+      ]
+    },
+    {
       "id": "manu-coach-012",
       "name": "Coach",
       "category": "staff",

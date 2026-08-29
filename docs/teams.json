@@ -317,7 +317,7 @@
         "BRILLON BASKET COMPETITION ET LOISIR": {
             "nomcourt": "BRILLON",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059241",
-            "logo": "/ressources/clubs/BRILLON BASKET COMPETITION ET LOISIR.webp",
+            "logo": "/ressources/clubs/BRILLON BASKET COMPETITION ET LOISIR.png",
             "commune": "Brillon"
         },
         "CHAPELLE D'ARMENTIERES OSM": {
@@ -579,7 +579,7 @@
         "TEMPLEUVE L P": {
             "nomcourt": "TEMPLEUVE L P",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059125",
-            "logo": "/ressources/clubs/TEMPLEUVE L P.webp",
+            "logo": "/ressources/clubs/TEMPLEUVE L P.png",
             "commune": "Templeuve"
         },
         "TOUFFLERS CSP": {
@@ -656,7 +656,7 @@
         "ANNOEULLIN B C": {
             "nomcourt": "ANNOEULLIN B C",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059077",
-            "logo": "/ressources/clubs/ANNOEULLIN B C.webp"
+            "logo": "/ressources/clubs/ANNOEULLIN B C.png"
         },
         "ARMENTIERES ASRSL": {
             "nomcourt": "ARMENTIERES ASRSL",
@@ -718,7 +718,7 @@
         "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT": {
             "nomcourt": "ESCAUDAIN FEMININ",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059157",
-            "logo": "/ressources/clubs/BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT.webp",
+            "logo": "/ressources/clubs/BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT.png",
             "commune": "Escaudain"
         },
         "BASKETBALL CLUB COLLERET": {
@@ -1007,13 +1007,13 @@
         "ONNAING JA": {
             "nomcourt": "ONNAING",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059165",
-            "logo": "/ressources/clubs/ONNAING JA.webp",
+            "logo": "/ressources/clubs/ONNAING JA.png",
             "commune": "Onnaing"
         },
         "ORCHESIEN B C": {
             "nomcourt": "ORCHIES",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059177",
-            "logo": "/ressources/clubs/ORCHESIEN B C.webp",
+            "logo": "/ressources/clubs/ORCHESIEN B C.png",
             "commune": "Orchies"
         },
         "PERDANT DU MATCH": {
@@ -1145,7 +1145,7 @@
         "UNION DECHY SIN BASKET": {
             "nomcourt": "DECHY SIN",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059033",
-            "logo": "/ressources/clubs/UNION DECHY SIN BASKET.webp",
+            "logo": "/ressources/clubs/UNION DECHY SIN BASKET.png",
             "commune": "Dechy"
         },
         "UNION DENAIN HASNON BASKET BALL": {
