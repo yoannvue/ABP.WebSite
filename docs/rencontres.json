@@ -91,6 +91,47 @@
       "DateFormatted": "SAMEDI\n20H00",
       "EstExempt": false,
       "ADomicile": true
+    },
+    {
+      "Type": "AMICAL",
+      "Equipe1": "U13M",
+      "Equipe2": "AULNOY VALENCIENNES S",
+      "Date": "2026-09-06T07:30:00.000Z",
+      "JourRencontre": "2026/09/06",
+      "DateFormatted": "DIMANCHE\n09H30",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "AMICAL",
+      "Equipe1": "LOISIRS",
+      "Equipe2": "BASKET CLUB HULLUCH",
+      "Date": "2026-09-06T09:00:00.000Z",
+      "JourRencontre": "2026/09/06",
+      "DateFormatted": "DIMANCHE\n11H00",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "AMICAL",
+      "Equipe1": "U18M",
+      "Equipe2": "UNION DECHY SIN BASKET",
+      "Date": "2026-09-06T11:00:00.000Z",
+      "JourRencontre": "2026/09/06",
+      "DateFormatted": "DIMANCHE\n13H00",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "AMICAL",
+      "Equipe1": "SENIORS 2",
+      "Equipe2": "THIANT BC",
+      "Date": "2026-09-06T13:00:00.000Z",
+      "JourRencontre": "2026/09/06",
+      "DateFormatted": "DIMANCHE\n15H00",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
     }
   ]
 }

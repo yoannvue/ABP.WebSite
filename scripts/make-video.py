@@ -21,6 +21,10 @@ RENCONTRES_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 're
 # Image de fond des clips de match (remplace le vert émeraude uni)
 MATCH_BG_IMAGE_PATH = os.path.join(os.path.dirname(__file__), '..', 'ressources', 'fond_match.png')
 
+# Police en gras utilisée pour les textes des matchs (fichier embarqué dans le repo,
+# fonctionne identiquement sur Windows en local et sur le runner Linux de GitHub Actions)
+FONT_BOLD_PATH = os.path.join(os.path.dirname(__file__), '..', 'ressources', 'fonts', 'impact.ttf')
+
 # Musique de fond
 MUSIC_PATH = os.path.join(os.path.dirname(__file__), '..', 'ressources', 'audio', 'musique_fond.mp3')
 MUSIC_VOLUME = 0.3  # 30% du volume d'origine, pour rester discrète
@@ -185,9 +189,9 @@ def create_match_clip(category, logo_home_path, logo_away_path, date_time):
         print(f"Erreur chargement logo away: {logo_away_path} - {e}")
     
     # Textes (Catégorie, VS, Date/Heure) - zones élargies, repositionnées autour des logos agrandis
-    txt_cat = TextClip(text="MATCH "+category, font="C:/Windows/Fonts/arialbd.ttf", font_size=45, color='yellow', size=(700, 90)).with_duration(duration).with_position(('center', 10))
+    txt_cat = TextClip(text="MATCH "+category, font=FONT_BOLD_PATH, font_size=45, color='yellow', size=(700, 90)).with_duration(duration).with_position(('center', 10))
     txt_vs = TextClip(text="VS", font_size=28, color='white', size=(200, 60)).with_duration(duration).with_position(('center', 220))
-    txt_time = TextClip(text= date_time.replace("\n", " "), font="C:/Windows/Fonts/arialbd.ttf", font_size=45, color='white', size=(700, 90), text_align='center').with_duration(duration).with_position(('center', 450))
+    txt_time = TextClip(text= date_time.replace("\n", " "), font=FONT_BOLD_PATH, font_size=45, color='white', size=(700, 90), text_align='center').with_duration(duration).with_position(('center', 450))
     
     # Assemblage du clip pour ce match
     clips_to_compose = [bg, txt_cat, txt_vs, txt_time]
@@ -236,4 +240,11 @@ else:
     print(f"Musique de fond introuvable, vidéo générée sans son: {MUSIC_PATH}")
 
 output_path = os.path.join(output_dir, 'rencontres_weekend.mp4')
-final_video.write_videofile(output_path, fps=24, audio=(final_video.audio is not None))
+final_video.write_videofile(
+    output_path,
+    fps=24,
+    audio=(final_video.audio is not None),
+    codec="libx264",
+    preset="medium",
+    ffmpeg_params=["-crf", "28"],
+)
