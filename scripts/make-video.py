@@ -3,22 +3,81 @@ from moviepy import TextClip, ImageClip, CompositeVideoClip, concatenate_videocl
 from PIL import Image
 import numpy as np
 import os
+import json
 
 # Configuration de base
-DURATION_PER_MATCH = 4  # secondes par match
-FADE_DURATION = 0.5  # durée du fondu d'apparition/disparition de chaque match
-GAP_DURATION = 0.5  # durée de l'écran vide entre deux matchs
+DURATION_PER_MATCH = 3.5  # secondes par match
+FADE_DURATION = 0.3  # durée du fondu d'apparition/disparition de chaque match
+GAP_DURATION = 0.1  # durée de l'écran vide entre deux matchs
 VIDEO_WIDTH = 800
 VIDEO_HEIGHT = 600
 BG_COLOR = (15, 23, 42)  # Couleur de fond (intro)
-BG_MATCH_COLOR = (5, 150, 105)  # Vert émeraude (clips de match)
+BG_MATCH_COLOR = (5, 150, 105)  # Vert émeraude (secours si l'image de fond des matchs est introuvable)
 RESSOURCES_DIR = os.path.join(os.path.dirname(__file__), '..', 'ressources', 'clubs')
-CLUB_LOGO_PATH = os.path.join(RESSOURCES_DIR, 'AMICALE BASKET PECQUENCOURT.png')
+CLUB_NAME = 'AMICALE BASKET PECQUENCOURT'
+CLUB_LOGO_PATH = os.path.join(RESSOURCES_DIR, f'{CLUB_NAME}.png')
+RENCONTRES_JSON_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'rencontres.json')
+
+# Image de fond des clips de match (remplace le vert émeraude uni)
+MATCH_BG_IMAGE_PATH = os.path.join(os.path.dirname(__file__), '..', 'ressources', 'fond_match.png')
 
 # Musique de fond
 MUSIC_PATH = os.path.join(os.path.dirname(__file__), '..', 'ressources', 'audio', 'musique_fond.mp3')
 MUSIC_VOLUME = 0.3  # 30% du volume d'origine, pour rester discrète
 MUSIC_FADE_OUT = 1.0  # fondu de sortie en fin de vidéo (secondes)
+
+def load_matches(json_path):
+    """
+    Charge les rencontres depuis le fichier JSON externalisé (docs/rencontres.json).
+    Mapping :
+      - cat  <- Equipe1 (catégorie, ex: "U15M")
+      - home/away <- selon ADomicile : le nom du club (Equipe2 ou notre club) + ".png"
+      - time <- DateFormatted (déjà au format "JOUR\nHEURE")
+    Les rencontres avec EstExempt=true sont ignorées (pas de match cette semaine-là).
+    """
+    with open(json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    matches = []
+    for rencontre in data.get("rencontres", []):
+        if rencontre.get("EstExempt"):
+            continue
+
+        opponent_logo = f"{rencontre['Equipe2']}.png"
+        club_logo = f"{CLUB_NAME}.png"
+
+        if rencontre.get("ADomicile", True):
+            home_logo, away_logo = club_logo, opponent_logo
+        else:
+            home_logo, away_logo = opponent_logo, club_logo
+
+        matches.append({
+            "cat": rencontre["Equipe1"],
+            "home": home_logo,
+            "away": away_logo,
+            "time": rencontre["DateFormatted"],
+        })
+
+    return matches
+
+
+def load_background_image(image_path, width, height):
+    """
+    Charge une image de fond et la redimensionne en mode 'cover' pour remplir
+    exactement le cadre (width x height), quelle que soit la taille/le ratio
+    d'origine, avec un recadrage centré si le ratio ne correspond pas.
+    """
+    img = Image.open(image_path).convert('RGB')
+    scale = max(width / img.width, height / img.height)
+    new_size = (int(img.width * scale), int(img.height * scale))
+    img_resized = img.resize(new_size, Image.Resampling.LANCZOS)
+
+    left = (img_resized.width - width) // 2
+    top = (img_resized.height - height) // 2
+    img_cropped = img_resized.crop((left, top, left + width, top + height))
+
+    return np.array(img_cropped)
+
 
 def load_and_resize_logo(image_path, target_width=300):
     """Charge une image et la redimensionne (largeur cible, hauteur proportionnelle)"""
@@ -93,13 +152,18 @@ def create_match_clip(category, logo_home_path, logo_away_path, date_time):
     """Crée un clip pour un match"""
     duration = DURATION_PER_MATCH
 
-    # Fond vert émeraude
-    bg = ColorClip(size=(VIDEO_WIDTH, VIDEO_HEIGHT), color=BG_MATCH_COLOR).with_duration(duration)
+    # Fond : image fournie si disponible, sinon couleur unie en secours
+    try:
+        bg_array = load_background_image(MATCH_BG_IMAGE_PATH, VIDEO_WIDTH, VIDEO_HEIGHT)
+        bg = ImageClip(bg_array).with_duration(duration)
+    except Exception as e:
+        print(f"Erreur chargement image de fond des matchs: {MATCH_BG_IMAGE_PATH} - {e}")
+        bg = ColorClip(size=(VIDEO_WIDTH, VIDEO_HEIGHT), color=BG_MATCH_COLOR).with_duration(duration)
 
     # Chargement et positionnement des logos (300px de large, disposés de part et d'autre)
     # Les logos sont centrés verticalement dans une zone commune (LOGO_AREA_TOP -> +LOGO_AREA_HEIGHT),
     # car certains logos ont un ratio différent et ne font pas tous la même hauteur une fois redimensionnés.
-    LOGO_AREA_TOP = 110
+    LOGO_AREA_TOP = 130
     LOGO_AREA_HEIGHT = 300
 
     logo_home = None
@@ -107,7 +171,7 @@ def create_match_clip(category, logo_home_path, logo_away_path, date_time):
         logo_home = load_and_resize_logo(logo_home_path, target_width=300)
         if logo_home:
             logo_home_y = LOGO_AREA_TOP + (LOGO_AREA_HEIGHT - logo_home.h) // 2
-            logo_home = logo_home.with_position((20, logo_home_y)).with_duration(duration)
+            logo_home = logo_home.with_position((40, logo_home_y)).with_duration(duration)
     except Exception as e:
         print(f"Erreur chargement logo home: {logo_home_path} - {e}")
     
@@ -116,14 +180,14 @@ def create_match_clip(category, logo_home_path, logo_away_path, date_time):
         logo_away = load_and_resize_logo(logo_away_path, target_width=300)
         if logo_away:
             logo_away_y = LOGO_AREA_TOP + (LOGO_AREA_HEIGHT - logo_away.h) // 2
-            logo_away = logo_away.with_position((VIDEO_WIDTH - 300 - 20, logo_away_y)).with_duration(duration)
+            logo_away = logo_away.with_position((VIDEO_WIDTH - 300 - 40, logo_away_y)).with_duration(duration)
     except Exception as e:
         print(f"Erreur chargement logo away: {logo_away_path} - {e}")
     
     # Textes (Catégorie, VS, Date/Heure) - zones élargies, repositionnées autour des logos agrandis
-    txt_cat = TextClip(text="Rencontre "+category, font="C:/Windows/Fonts/arialbd.ttf", font_size=45, color='yellow', size=(700, 90)).with_duration(duration).with_position(('center', 10))
+    txt_cat = TextClip(text="MATCH "+category, font="C:/Windows/Fonts/arialbd.ttf", font_size=45, color='yellow', size=(700, 90)).with_duration(duration).with_position(('center', 10))
     txt_vs = TextClip(text="VS", font_size=28, color='white', size=(200, 60)).with_duration(duration).with_position(('center', 220))
-    txt_time = TextClip(text=date_time, font_size=45, color='white', size=(700, 90)).with_duration(duration).with_position(('center', 430))
+    txt_time = TextClip(text= date_time.replace("\n", " "), font="C:/Windows/Fonts/arialbd.ttf", font_size=45, color='white', size=(700, 90), text_align='center').with_duration(duration).with_position(('center', 450))
     
     # Assemblage du clip pour ce match
     clips_to_compose = [bg, txt_cat, txt_vs, txt_time]
@@ -134,11 +198,8 @@ def create_match_clip(category, logo_home_path, logo_away_path, date_time):
     
     return CompositeVideoClip(clips_to_compose, size=(VIDEO_WIDTH, VIDEO_HEIGHT))
 
-# Liste des rencontres
-matches = [
-    {"cat": "U11F", "home": "AMICALE BASKET PECQUENCOURT.png", "away": "ONNAING JA.png", "time": "Samedi - 14h00"},
-    {"cat": "U9M", "home": "AMICALE BASKET PECQUENCOURT.png", "away": "TEMPLEUVE L P.png", "time": "Samedi - 09h00"}
-]
+# Liste des rencontres, chargée depuis le fichier JSON généré automatiquement
+matches = load_matches(RENCONTRES_JSON_PATH)
 
 # Assemblage de la vidéo complète
 clips = [create_intro(CLUB_LOGO_PATH)]

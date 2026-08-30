@@ -6,18 +6,23 @@ async function chargerRencontres() {
         const isPuppeteer = getEnvironment() == "puppeteer";
         // Determiner si on on est dans un cas de génération automtique de l'image des rencontres dans github actions
 
-        let data;
+        let data, teams;
         if (!isPuppeteer) {
 
             // fichierRencontres selon environnement
-            let fichierRencontres = "/docs/rencontres.json"
+            let fichierRencontres = "/docs/rencontres.json";
+            let fichierTeams = "/docs/teams.json";
             
             const response = await fetch(fichierRencontres);
             data = await response.json();
+
+            const responseTeams = await fetch(fichierTeams);
+            teams = await responseTeams.json();
         }
         else {
             // dans le cas de puppeteers, on va injecter les données dans la variables windows puisque Fetch est impossible
             data = window.dataRencontres;
+            teams = window.dataTeams;
         }
 
         const section = document.getElementById("sectionRencontres");
@@ -50,8 +55,8 @@ async function chargerRencontres() {
         const domicile = data.rencontres.filter(r => r.ADomicile && !r.EstExempt);
         const exterieur = data.rencontres.filter(r => !r.ADomicile && !r.EstExempt);
 
-        creerGroupe(divRencontres, true, domicile);
-        creerGroupe(divRencontres, false, exterieur);
+        creerGroupe(divRencontres, true, domicile, teams);
+        creerGroupe(divRencontres, false, exterieur, teams);
 
         const exempts = data.rencontres.filter(r => r.EstExempt);
         listerExempts(divRencontres, exempts);
@@ -63,7 +68,7 @@ async function chargerRencontres() {
     }
 }
 
-function creerGroupe(parent, ADomicile, rencontres) {
+function creerGroupe(parent, ADomicile, rencontres, teams) {
 
     if (rencontres.length == 0) return;
 
@@ -76,8 +81,8 @@ function creerGroupe(parent, ADomicile, rencontres) {
 
     rencontres.forEach(match => {
 
-        const equipeGauche = match.Equipe1;
-        const equipeDroite = match.Equipe2;
+        const equipeGauche = getShortName(teams, match.Equipe1);
+        const equipeDroite = getShortName(teams, match.Equipe2);
 
         const styleequipegauche = match.ADomicile ? "equipeABP" : "";
         const styleequipedroite = match.ADomicile ? "" : "equipeABP";
@@ -112,6 +117,12 @@ function listerExempts(parent, exempts) {
     elExempts.textContent += exempts.map(match => match.ADomicile ? match.Equipe1 : match.Equipe2).join(",")
 
     parent.appendChild(elExempts);
+}
+
+function getShortName(teams, club) {
+    var clubObj = teams.adversaires[club];
+    if (!clubObj || !clubObj.nomcourt) return club;
+    return clubObj.nomcourt;
 }
 
 function convertirDate(dateFr) {

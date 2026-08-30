@@ -69,7 +69,7 @@ function normalizeEquipe(name) {
     // 3. Normaliser via la config sur le nom de base
     let nom = cleaned;
     if (config.adversaires[cleaned] !== undefined) {
-        nom = config.adversaires[cleaned].nomcourt;
+        nom = cleaned;
     }
 
     console.log("Normalize " + name +" => "+nom);

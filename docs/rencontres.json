@@ -14,7 +14,7 @@
     {
       "Type": "AMICAL",
       "Equipe1": "SENIORS",
-      "Equipe2": "OSTREVENT",
+      "Equipe2": "OSTREVENT BASKET BALL EAA MONCHECOURT",
       "Date": "2026-09-04T18:30:00.000Z",
       "JourRencontre": "2026/09/04",
       "DateFormatted": "VENDREDI\n20H30",
@@ -24,7 +24,7 @@
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "U9",
+      "Equipe1": "U9M",
       "Equipe2": "TEMPLEUVE L P",
       "Date": "2026-09-05T07:00:00.000Z",
       "JourRencontre": "2026/09/05",
@@ -34,7 +34,7 @@
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "U9",
+      "Equipe1": "U9F",
       "Equipe2": "TEMPLEUVE L P",
       "Date": "2026-09-05T08:30:00.000Z",
       "JourRencontre": "2026/09/05",
@@ -54,8 +54,8 @@
     },
     {
       "Type": "AMICAL",
-      "Equipe1": "U11M",
-      "Equipe2": "ONNAING",
+      "Equipe1": "U11F",
+      "Equipe2": "ONNAING JA",
       "Date": "2026-09-05T11:30:00.000Z",
       "JourRencontre": "2026/09/05",
       "DateFormatted": "SAMEDI\n13H30",
@@ -65,7 +65,7 @@
     {
       "Type": "AMICAL",
       "Equipe1": "U13F",
-      "Equipe2": "NEUVILLE EN F.",
+      "Equipe2": "NEUVILLE EN FERRAIN PP",
       "Date": "2026-09-05T13:00:00.000Z",
       "JourRencontre": "2026/09/05",
       "DateFormatted": "SAMEDI\n15H00",
@@ -75,7 +75,7 @@
     {
       "Type": "AMICAL",
       "Equipe1": "U15F",
-      "Equipe2": "PEVELE",
+      "Equipe2": "BASKET CLUB PEVELE",
       "Date": "2026-09-05T15:00:00.000Z",
       "JourRencontre": "2026/09/05",
       "DateFormatted": "SAMEDI\n17H00",
@@ -85,7 +85,7 @@
     {
       "Type": "AMICAL",
       "Equipe1": "U18F",
-      "Equipe2": "DECHY SIN",
+      "Equipe2": "UNION DECHY SIN BASKET",
       "Date": "2026-09-05T18:00:00.000Z",
       "JourRencontre": "2026/09/05",
       "DateFormatted": "SAMEDI\n20H00",
