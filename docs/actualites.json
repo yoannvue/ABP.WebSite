@@ -31,6 +31,11 @@
             },
             { 
                  "type": "image", 
+                "titre": "U13M",
+                "lien": "/ressources/Equipes/2026-2027/U13M.01.jpg"
+            },
+            { 
+                 "type": "image", 
                 "titre": "U15F",
                 "lien": "/ressources/Equipes/2026-2027/U15F.01.JPG"
             },

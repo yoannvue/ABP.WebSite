@@ -260,7 +260,8 @@
           startX = null;
         });
       }
-
+      this.el.appendChild(document.createElement('BR'));
+      this.el.appendChild(document.createElement('BR'));
       this.render();
     }
 

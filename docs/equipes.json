@@ -38,7 +38,9 @@
             {
                 "equipe": "U13M",
                 "coach": "Jimmy et Guillaume",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U13M.01.jpg"
+                ]
             },
             {
                 "equipe": "U15F",
