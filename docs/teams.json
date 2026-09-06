@@ -428,7 +428,8 @@
         "HORNAINGEOIS BC": {
             "nomcourt": "HORNAING",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059162",
-            "logo": "https://api.ffbb.app/assets/baa27aa2-703c-4933-92ad-cdb7b87cf304"
+            "logo": "/ressources/clubs/HORNAINGEOIS BC.png",
+            "commune": "Hornaing"
         },
         "JEUNESSE BASKET CLUB AUBY": {
             "nomcourt": "AUBY",

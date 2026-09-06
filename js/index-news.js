@@ -23,16 +23,16 @@
       if (imageBuffer.length > 2) {
         const imgsHtml = imageBuffer
           .map((block, i) => {
-            const alt = block.texte || `Photo ${i + 1} de l’actualité « ${titre} »`;
-            return `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(alt)}" loading="lazy" />`;
+            const alt = block.titre || block.texte || `Photo ${i + 1} de l’actualité « ${titre} »`;
+            const caption = block.titre ? ` data-titre="${escapeHtml(block.titre)}"` : '';
+            return `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(alt)}"${caption} loading="lazy" />`;
           })
           .join('');
         parts.push(`<div class="photo-fan">${imgsHtml}</div>`);
       } else {
         imageBuffer.forEach((block) => {
-          parts.push(
-            `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(block.texte || 'Image de l’actualité')}" loading="lazy" />`
-          );
+          const alt = block.titre || block.texte || 'Image de l’actualité';
+          parts.push(`<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(alt)}" loading="lazy" />`);
         });
       }
 
@@ -52,17 +52,8 @@
       flushImages();
 
       if (block.type === 'texte' && block.texte) {
-        parts.push(`<p>${escapeHtml(block.texte)}</p>`);
+        parts.push(`<p>${escapeHtml(block.texte)}</p><br/>`);
       }
-      if (block.lien) {
-        parts.push(`
-          <a
-            href="${escapeHtml(block.lien)}">
-            <span class="post-read">Consulter <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span><br/>
-          </a>`
-        );
-      }
-      parts.push(`<BR/>`);
     });
 
     flushImages();
@@ -155,6 +146,7 @@
       const photos = Array.from(this.el.querySelectorAll('img')).map((img) => ({
         src: img.currentSrc || img.src,
         alt: img.alt || '',
+        titre: img.dataset.titre || '',
       }));
       if (photos.length === 0) {
         return;
@@ -177,7 +169,17 @@
         img.src = p.src;
         img.alt = p.alt;
         img.loading = 'lazy';
+        if (p.titre) {
+          img.dataset.titre = p.titre;
+        }
         card.appendChild(img);
+
+        if (p.titre) {
+          const caption = document.createElement('span');
+          caption.className = 'photo-fan__caption';
+          caption.textContent = p.titre;
+          card.appendChild(caption);
+        }
         card.addEventListener('click', (e) => {
           // Empêche la navigation si l'éventail se trouve dans une
           // actualité elle-même cliquable (carte <a class="post-card">).

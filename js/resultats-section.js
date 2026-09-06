@@ -61,7 +61,11 @@ async function chargerRencontres() {
             const logoequipegauche = match.ADomicile ? getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT") : getLogoUrl(teams, match.Equipe1);
             const logoequipedroite = match.ADomicile ? getLogoUrl(teams, match.Equipe2): getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT");
 
-            const Score = match.Score1+ (match.Forfait1?"(F)":"") + " - "+match.Score2+(match.Forfait2?"(F)":"");
+            const Score = (match.Score1?match.Score1:"xx") + (match.Forfait1?"(F)":"") + " - "+(match.Score2?match.Score2:"xx") +(match.Forfait2?"(F)":"");
+            const score1 = Number(match.Score1);
+            const score2 = Number(match.Score2);
+            const gagnant = Number.isFinite(score1) && Number.isFinite(score2) &&
+                ((match.ADomicile && score1 > score2) || (!match.ADomicile && score2 > score1));
 
             const carte = document.createElement("div");
             carte.className = "rencontre";
@@ -72,7 +76,7 @@ async function chargerRencontres() {
                     <span>${equipeGauche}</span>
                 </div>
 
-                <div class="centre">
+                <div class="centre${gagnant ? " gagnant" : ""}">
                     <span>${Score}</span>
                 </div>
 

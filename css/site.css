@@ -1582,8 +1582,8 @@ img {
 
 .team-photo img {
     width: 100%;
-    max-height: 300px;
-    object-fit: cover;
+    max-height: 400px;
+    object-fit: scale-down;
     display: block
 }
 

@@ -10,7 +10,10 @@
   --fan-angle: 13deg;       /* angle entre deux photos */
   --fan-card-w: 384px;      /* largeur d'une photo (référence bureau) */
   --fan-card-w-min: 150px;  /* largeur minimale d'une photo (petits écrans) */
-  --fan-card-ratio: 4 / 5;  /* format des photos */
+  --fan-card-ratio: 5 / 4;  /* format des photos (largeur / hauteur), pour aspect-ratio */
+  --fan-card-h-mult: 0.8;  /* hauteur = largeur × ce facteur — DOIT correspondre à --fan-card-ratio
+                                (facteur = hauteur ÷ largeur). Pour 4/5 → 1.25 ; pour 5/4 → 0.8 ;
+                                pour un carré 1/1 → 1. Si vous changez le ratio, changez ce facteur. */
   --fan-margin: 90px;       /* espace réservé au-dessus pour l'étalement */
   --fan-accent: #d8571f;    /* couleur des flèches/points actifs */
   outline: none;
@@ -23,7 +26,7 @@
 .photo-fan__stage {
   --fan-card-w-fluid: clamp(var(--fan-card-w-min), 60vw, var(--fan-card-w));
   position: relative;
-  height: calc(var(--fan-card-w-fluid) / 0.8 + var(--fan-margin));
+  height: calc(var(--fan-card-w-fluid) * var(--fan-card-h-mult) + var(--fan-margin));
   margin: 0 auto;
   touch-action: pan-y;
 }
@@ -54,6 +57,22 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
+}
+
+.photo-fan__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 8px 8px;
+  text-align: center;
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   pointer-events: none;
 }
 

@@ -11,19 +11,49 @@
             },
             { 
                 "type": "image", 
+                "titre": "U9M",
                 "lien": "/ressources/Equipes/2026-2027/U9M.01.jpg"
             },
             { 
                 "type": "image", 
+                "titre": "U9F",
                 "lien": "/ressources/Equipes/2026-2027/U9F.01.JPG"
             },
             { 
                  "type": "image", 
+                "titre": "U11F",
                 "lien": "/ressources/Equipes/2026-2027/U11F.01.jpg"
             },
             { 
                  "type": "image", 
+                "titre": "U11M",
+                "lien": "/ressources/Equipes/2026-2027/U11M.01.JPG"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U15F",
                 "lien": "/ressources/Equipes/2026-2027/U15F.01.JPG"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U15M",
+                "lien": "/ressources/Equipes/2026-2027/U15M.01.JPG"
+            },
+            { 
+                "type": "image", 
+                "titre": "U18M",
+                "lien": "/ressources/Equipes/2026-2027/U18M.01.JPG"
+            },
+            { 
+                "type": "image", 
+                "titre": "Séniors M 2",
+                "lien" : "/ressources/Equipes/2026-2027/Seniors2.01.jpg"
+            },
+
+            { 
+                "type": "image", 
+                "titre": "Loisirs",
+                "lien": "/ressources/Equipes/2026-2027/Loisirs.01.jpg"
             },
             { 
                 "type": "texte", 

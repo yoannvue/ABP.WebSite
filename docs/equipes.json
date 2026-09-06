@@ -26,7 +26,9 @@
             {
                 "equipe": "U11M",
                 "coach": "Cédric et John",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U11M.01.JPG"
+                ]
             },
             {
                 "equipe": "U13F",
@@ -48,7 +50,9 @@
             {
                 "equipe": "U15M",
                 "coach": "Ludovic et Aurélien",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U15M.01.JPG"
+                ]
             },
             {
                 "equipe": "U18F",
@@ -58,7 +62,9 @@
             {
                 "equipe": "U18M",
                 "coach": "Remy",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U18M.01.JPG"
+                ]
             },
             {
                 "equipe": "Seniors M",
@@ -66,9 +72,18 @@
                 "photos": []
             },
             {
+                "equipe": "Seniors 2 M",
+                "coach": "Anthony, Thomas et Estelle",
+                "photos": [
+                    "/ressources/Equipes/2026-2027/Seniors2.01.jpg"
+                ]
+            },
+            {
                 "equipe": "Loisirs",
                 "coach": "Manon",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/Loisirs.01.jpg"
+                ]
             }
         ]
     },

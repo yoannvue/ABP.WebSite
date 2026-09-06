@@ -157,6 +157,11 @@ img.fondagenda {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.gagnant span{
+    background: linear-gradient(135deg, #1e7229, #4d982a) !important; /* vert dynamique */
+    border: 2px solid #f16507;
+}
+
 .jour{
     font-weight:bold;
     text-transform:uppercase;
