@@ -5,17 +5,23 @@
             {
                 "equipe": "U9F",
                 "coach": "Kornélia, Camille et Bastien",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U9F.01.jpg"
+                ]
             },
             {
                 "equipe": "U9M",
-                "coach": "Anaëlle",
-                "photos": []
+                "coach": "Anaëlle et Sabrina",
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U9M.01.jpg"
+                ]
             },
             {
                 "equipe": "U11F",
                 "coach": "Sébastien et Yoann",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U11F.01.jpg"
+                ]
             },
             {
                 "equipe": "U11M",
@@ -35,7 +41,9 @@
             {
                 "equipe": "U15F",
                 "coach": "Anne Gaëlle et Manon",
-                "photos": []
+                "photos": [
+                     "/ressources/Equipes/2026-2027/U15F.01.jpg"
+                ]
             },
             {
                 "equipe": "U15M",
