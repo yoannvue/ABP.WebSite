@@ -52,8 +52,17 @@
       flushImages();
 
       if (block.type === 'texte' && block.texte) {
-        parts.push(`<p>${escapeHtml(block.texte)}</p><br/>`);
+        parts.push(`<p>${escapeHtml(block.texte)}</p>`);
       }
+      if (block.lien) {
+        parts.push(`
+          <a
+            href="${escapeHtml(block.lien)}">
+            <span class="post-read">Consulter <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span><br/>
+          </a>`
+        );
+      }
+      parts.push(`<BR/>`);
     });
 
     flushImages();

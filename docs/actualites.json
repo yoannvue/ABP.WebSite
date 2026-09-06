@@ -27,7 +27,8 @@
             },
             { 
                 "type": "texte", 
-                "texte": "Retrouvez toutes les photos de ce week end basket dans la galerie du site."
+                "texte": "Retrouvez toutes les photos de ce week end basket dans la galerie du site.",
+                "lien": "/pages/equipes.html"
             }
         ]
     },
