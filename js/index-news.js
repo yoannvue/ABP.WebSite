@@ -8,24 +8,57 @@
       .replace(/'/g, '&#039;');
   }
 
-  function renderContentBlocks(content = []) {
-    return content
-      .map((block) => {
-        if (!block || typeof block !== 'object') {
-          return '';
-        }
+  // Regroupe les blocs "image" consécutifs. Un groupe de plus de 2 photos
+  // est rendu en éventail (.photo-fan) ; 1 ou 2 photos restent affichées
+  // telles quelles, comme avant.
+  function renderContentBlocks(content = [], titre = '') {
+    const parts = [];
+    let imageBuffer = [];
 
-        if (block.type === 'texte' && block.texte) {
-          return `<p>${escapeHtml(block.texte)}</p><Br/>`;
-        }
+    const flushImages = () => {
+      if (imageBuffer.length === 0) {
+        return;
+      }
 
-        if (block.type === 'image' && block.lien) {
-          return `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(block.texte || 'Image de l’actualité')}" loading="lazy" />`;
-        }
+      if (imageBuffer.length > 2) {
+        const imgsHtml = imageBuffer
+          .map((block, i) => {
+            const alt = block.texte || `Photo ${i + 1} de l’actualité « ${titre} »`;
+            return `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(alt)}" loading="lazy" />`;
+          })
+          .join('');
+        parts.push(`<div class="photo-fan">${imgsHtml}</div>`);
+      } else {
+        imageBuffer.forEach((block) => {
+          parts.push(
+            `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(block.texte || 'Image de l’actualité')}" loading="lazy" />`
+          );
+        });
+      }
 
-        return '';
-      })
-      .join('');
+      imageBuffer = [];
+    };
+
+    content.forEach((block) => {
+      if (!block || typeof block !== 'object') {
+        return;
+      }
+
+      if (block.type === 'image' && block.lien) {
+        imageBuffer.push(block);
+        return;
+      }
+
+      flushImages();
+
+      if (block.type === 'texte' && block.texte) {
+        parts.push(`<p>${escapeHtml(block.texte)}</p><br/>`);
+      }
+    });
+
+    flushImages();
+
+    return parts.join('');
   }
 
   function getNewsCardClass(index = 0) {
@@ -45,7 +78,7 @@
           <time>${escapeHtml(item.date || '')}</time>
         </div>
         <h3>${escapeHtml(item.titre || 'Actualité')}</h3>
-        ${renderContentBlocks(item.contenu || [])}
+        ${renderContentBlocks(item.contenu || [], item.titre || '')}
         ${hasLink ? '<span class="post-read">Consulter <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>' : ''}
       </article>
     `;
@@ -71,6 +104,8 @@
 
     const list = Array.isArray(items) ? items : [];
     root.innerHTML = list.map((item, index) => renderNewsCard(item, index)).join('');
+
+    initPhotoFans(root);
   }
 
   async function loadNews() {
@@ -91,6 +126,167 @@
         root.innerHTML = '<p class="posts-empty">Aucune actualité disponible pour le moment.</p>';
       }
     }
+  }
+
+  // ============================================================
+  // COMPOSANT : éventail de photos
+  // Transforme un <div class="photo-fan"> contenant des <img>
+  // en carrousel visuel en éventail, navigable au clic, au clavier
+  // et au tactile. Nécessite le fichier photo-fan.css.
+  // ============================================================
+  class PhotoFan {
+    constructor(el) {
+      this.el = el;
+      this.maxSide = 2; // nombre de photos visibles de chaque côté de la photo active
+      this.active = 0;
+      this.build();
+    }
+
+    build() {
+      const photos = Array.from(this.el.querySelectorAll('img')).map((img) => ({
+        src: img.currentSrc || img.src,
+        alt: img.alt || '',
+      }));
+      if (photos.length === 0) {
+        return;
+      }
+
+      this.el.innerHTML = '';
+      this.el.setAttribute('role', 'group');
+      this.el.setAttribute('aria-roledescription', 'carrousel de photos');
+      this.el.tabIndex = 0;
+
+      const stage = document.createElement('div');
+      stage.className = 'photo-fan__stage';
+
+      this.cards = photos.map((p, i) => {
+        const card = document.createElement('button');
+        card.type = 'button';
+        card.className = 'photo-fan__card';
+        card.setAttribute('aria-label', p.alt || `Photo ${i + 1} sur ${photos.length}`);
+        const img = document.createElement('img');
+        img.src = p.src;
+        img.alt = p.alt;
+        img.loading = 'lazy';
+        card.appendChild(img);
+        card.addEventListener('click', (e) => {
+          // Empêche la navigation si l'éventail se trouve dans une
+          // actualité elle-même cliquable (carte <a class="post-card">).
+          e.preventDefault();
+          e.stopPropagation();
+          this.step(1);
+        });
+        stage.appendChild(card);
+        return card;
+      });
+      this.el.appendChild(stage);
+      this.stage = stage;
+
+      if (photos.length > 1) {
+        const nav = document.createElement('div');
+        nav.className = 'photo-fan__nav';
+
+        const prev = document.createElement('button');
+        prev.type = 'button';
+        prev.className = 'photo-fan__arrow photo-fan__arrow--prev';
+        prev.setAttribute('aria-label', 'Photo précédente');
+        prev.textContent = '‹';
+        prev.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.step(-1);
+        });
+
+        const next = document.createElement('button');
+        next.type = 'button';
+        next.className = 'photo-fan__arrow photo-fan__arrow--next';
+        next.setAttribute('aria-label', 'Photo suivante');
+        next.textContent = '›';
+        next.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.step(1);
+        });
+
+        const dots = document.createElement('div');
+        dots.className = 'photo-fan__dots';
+        this.dots = photos.map((_, i) => {
+          const d = document.createElement('button');
+          d.type = 'button';
+          d.className = 'photo-fan__dot';
+          d.setAttribute('aria-label', `Aller à la photo ${i + 1}`);
+          d.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            this.goTo(i);
+          });
+          dots.appendChild(d);
+          return d;
+        });
+
+        nav.appendChild(prev);
+        nav.appendChild(dots);
+        nav.appendChild(next);
+        this.el.appendChild(nav);
+
+        this.el.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            this.step(-1);
+            e.preventDefault();
+          }
+          if (e.key === 'ArrowRight') {
+            this.step(1);
+            e.preventDefault();
+          }
+        });
+
+        let startX = null;
+        stage.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+        stage.addEventListener('touchend', (e) => {
+          if (startX === null) return;
+          const dx = e.changedTouches[0].clientX - startX;
+          if (Math.abs(dx) > 40) this.step(dx > 0 ? -1 : 1);
+          startX = null;
+        });
+      }
+
+      this.render();
+    }
+
+    step(dir) {
+      const n = this.cards.length;
+      this.goTo((this.active + dir + n) % n);
+    }
+
+    goTo(i) {
+      this.active = i;
+      this.render();
+    }
+
+    render() {
+      const n = this.cards.length;
+      this.cards.forEach((card, i) => {
+        let offset = i - this.active;
+        if (offset > n / 2) offset -= n;
+        if (offset < -n / 2) offset += n;
+        const abs = Math.abs(offset);
+        const visible = abs <= this.maxSide;
+
+        card.style.setProperty('--offset', offset);
+        card.style.setProperty('--abs', abs);
+        card.style.zIndex = 100 - abs;
+        card.classList.toggle('is-active', offset === 0);
+        card.classList.toggle('is-hidden', !visible);
+        card.setAttribute('aria-hidden', visible ? 'false' : 'true');
+      });
+      if (this.dots) {
+        this.dots.forEach((d, i) => d.classList.toggle('is-active', i === this.active));
+      }
+    }
+  }
+
+  function initPhotoFans(root) {
+    root.querySelectorAll('.photo-fan').forEach((el) => new PhotoFan(el));
   }
 
   if (document.readyState === 'loading') {

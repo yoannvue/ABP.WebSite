@@ -1,0 +1,151 @@
+/* ============================================================
+   COMPOSANT : ÉVENTAIL DE PHOTOS (photo-fan)
+   À charger sur toute page utilisant index-news.js, par ex. :
+     <link rel="stylesheet" href="photo-fan.css">
+   Les variables ci-dessous peuvent être surchargées dans le CSS
+   du site (ou directement sur .photo-fan via style="--fan-...").
+   ============================================================ */
+
+.photo-fan {
+  --fan-angle: 13deg;       /* angle entre deux photos */
+  --fan-card-w: 384px;      /* largeur d'une photo (référence bureau) */
+  --fan-card-w-min: 150px;  /* largeur minimale d'une photo (petits écrans) */
+  --fan-card-ratio: 4 / 5;  /* format des photos */
+  --fan-margin: 90px;       /* espace réservé au-dessus pour l'étalement */
+  --fan-accent: #d8571f;    /* couleur des flèches/points actifs */
+  outline: none;
+  margin-bottom:40px;
+}
+
+/* Largeur réelle de la photo active : plafonnée à --fan-card-w, réduite
+   sur petit écran (clamp entre --fan-card-w-min et --fan-card-w, sur base
+   de 60% de la largeur de la fenêtre) pour que l'éventail tienne sur mobile. */
+.photo-fan__stage {
+  --fan-card-w-fluid: clamp(var(--fan-card-w-min), 60vw, var(--fan-card-w));
+  position: relative;
+  height: calc(var(--fan-card-w-fluid) / 0.8 + var(--fan-margin));
+  margin: 0 auto;
+  touch-action: pan-y;
+}
+
+.photo-fan__card {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: var(--fan-card-w-fluid);
+  aspect-ratio: var(--fan-card-ratio);
+  margin-left: calc(var(--fan-card-w-fluid) / -2);
+  padding: 0;
+  border: 3px solid #fff;
+  border-radius: 8px;
+  background: #ddd;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  overflow: hidden;
+  transform-origin: 50% 100%;
+  transform: rotate(calc(var(--offset) * var(--fan-angle)))
+             translateY(calc(var(--abs) * 4px))
+             scale(calc(1 - var(--abs) * 0.08));
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1), opacity 0.35s ease;
+}
+
+.photo-fan__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.photo-fan__card.is-active {
+  cursor: default;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}
+
+.photo-fan__card.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.photo-fan__card:focus-visible {
+  outline: 3px solid var(--fan-accent);
+  outline-offset: 2px;
+}
+
+.photo-fan__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.photo-fan__arrow {
+  border: none;
+  background: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: inherit;
+  opacity: 0.6;
+  cursor: pointer;
+  /* Zone cliquable ≥ 44px, taille tactile recommandée, même si le
+     glyphe affiché reste discret visuellement. */
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+}
+
+.photo-fan__arrow:hover {
+  opacity: 1;
+  color: var(--fan-accent);
+}
+
+.photo-fan__arrow:focus-visible {
+  outline: 2px solid var(--fan-accent);
+}
+
+.photo-fan__dots {
+  display: flex;
+  gap: 2px;
+}
+
+.photo-fan__dot {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  /* Le point visible (::before) reste petit ; le bouton, lui, garde
+     une zone de clic large pour un pouce sur mobile. */
+  position: relative;
+}
+
+.photo-fan__dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #d8d2c8;
+  transform: translate(-50%, -50%);
+}
+
+.photo-fan__dot.is-active::before {
+  background: var(--fan-accent);
+}
+
+@media (max-width: 420px) {
+  .photo-fan {
+    --fan-angle: 10deg;
+    --fan-margin: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-fan__card {
+    transition: none;
+  }
+}

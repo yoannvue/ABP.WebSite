@@ -24,6 +24,10 @@
             { 
                  "type": "image", 
                 "lien": "/ressources/Equipes/2026-2027/U15F.01.JPG"
+            },
+            { 
+                "type": "texte", 
+                "texte": "Retrouvez toutes les photos de ce week end basket dans la galerie du site."
             }
         ]
     },
