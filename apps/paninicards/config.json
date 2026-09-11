@@ -161,6 +161,19 @@
       ]
     },
     {
+      "id": "sade-coach",
+      "name": "Coach",
+      "category": "staff",
+      "weight": 4,
+      "displayName": "Sade - Coach Baby",
+      "images": [
+        {
+          "side": "full",
+          "url": "/ressources/Coachs/sade.png"
+        }
+      ]
+    },
+    {
       "id": "kornelia-coach-001",
       "name": "Coach",
       "category": "staff",
@@ -562,7 +575,7 @@
       },
       {
         "name": "Encadrement",
-        "cards": ["anaelle-coach-001","sabrina-labre-coach","eric-coach", "camille-coach-001","kornelia-coach-001","bastien-coach", "yoann-coach-002", "sebastien-coach-003", 
+        "cards": ["anaelle-coach-001","sabrina-labre-coach","eric-coach","sade-coach", "camille-coach-001","kornelia-coach-001","bastien-coach", "yoann-coach-002", "sebastien-coach-003", 
               "steeve-coach-004", "cedric-coach-005","john-coach", "jimmy-coach-006","guillaume-coach", "andy-coach","gaetan-coach-007", "annegaelle-coach-008", 
                 "manon-coach-010","ludo-coach", "aurelien-coach-013","remy-coach-011","antoine-coach", "manu-coach-012", "elio-coach", "thomas-coach-009","anthony-coach" ]
       },
