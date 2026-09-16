@@ -81,8 +81,8 @@ function creerGroupe(parent, ADomicile, rencontres, teams) {
 
     rencontres.forEach(match => {
 
-        const equipeGauche = getShortName(teams, match.Equipe1);
-        const equipeDroite = getShortName(teams, match.Equipe2);
+        const equipeGauche = ADomicile? match.Equipe1 : getShortName(teams, match.Equipe1);
+        const equipeDroite = ADomicile? getShortName(teams, match.Equipe2) : match.Equipe2;
 
         const styleequipegauche = match.ADomicile ? "equipeABP" : "";
         const styleequipedroite = match.ADomicile ? "" : "equipeABP";
@@ -120,9 +120,12 @@ function listerExempts(parent, exempts) {
 }
 
 function getShortName(teams, club) {
-    var clubObj = teams.adversaires[club];
+
+    const suffixeEquipe = club.match(/\s*-\s*\d+$/)?.[0] ?? "";
+    const clubnormalized = club.slice(0, club.length - suffixeEquipe.length);
+    const clubObj = teams.adversaires[clubnormalized];
     if (!clubObj || !clubObj.nomcourt) return club;
-    return clubObj.nomcourt;
+    return clubObj.nomcourt + suffixeEquipe;
 }
 
 function convertirDate(dateFr) {
