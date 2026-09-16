@@ -1,56 +1,137 @@
 {
-  "semaine": "Semaine du 12 septembre",
+  "semaine": "Semaine du 19 septembre",
   "rencontres": [
     {
-      "Type": "AMICAL",
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "ORCHESIEN B C-2",
+      "Equipe2": "U11M",
+      "Date": "2026-09-19T09:00:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n11H00",
+      "Salle": "LEO LAGRANGE",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U9M",
+      "Equipe2": "ST AMAND P H",
+      "Date": "2026-09-19T09:00:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n11H00",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "ONNAING JA-1",
+      "Equipe2": "U9F",
+      "Date": "2026-09-19T10:30:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n12H30",
+      "Salle": "BEATRICE HEISS",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
       "Equipe1": "U11F",
-      "Equipe2": "UNION DECHY SIN BASKET",
-      "Date": "2026-09-12T14:00:00.000Z",
-      "JourRencontre": "2026/09/12",
+      "Equipe2": "AULNOY VALENCIENNES S",
+      "Date": "2026-09-19T12:00:00.000Z",
+      "JourRencontre": "2026/09/19",
       "DateFormatted": "SAMEDI\n14H00",
+      "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
     },
     {
-      "Type": "AMICAL",
-      "Equipe1": "HORNAINGEOIS  BC",
-      "Equipe2": "U15F",
-      "Date": "2026-09-12T16:00:00.000Z",
-      "JourRencontre": "2026/09/12",
-      "DateFormatted": "SAMEDI\n16H00",
-      "EstExempt": false,
-      "ADomicile": false
-    },
-    {
-      "Type": "AMICAL",
-      "Equipe1": "HORNAINGEOIS  BC",
-      "Equipe2": "U15M",
-      "Date": "2026-09-12T17:30:00.000Z",
-      "JourRencontre": "2026/09/12",
-      "DateFormatted": "SAMEDI\n17H30",
-      "Salle": "Jean-Louis CARRON",
-      "EstExempt": false,
-      "ADomicile": false
-    },
-    {
-      "Type": "AMICAL",
-      "Equipe1": "SENIORS",
-      "Equipe2": "SAINT SAULVE BC",
-      "Date": "2026-09-12T20:30:00.000Z",
-      "JourRencontre": "2026/09/12",
-      "DateFormatted": "SAMEDI\n20H30",
-      "EstExempt": false,
-      "ADomicile": true
-    },
-    {
-      "Type": "AMICAL",
+      "Type": "CHAMPIONNAT",
       "Equipe1": "U13F",
-      "Equipe2": "TOURCOING US F",
-      "Date": "2026-09-13T10:30:00.000Z",
-      "JourRencontre": "2026/09/13",
-      "DateFormatted": "DIMANCHE\n10H30",
+      "Equipe2": "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT-2",
+      "Date": "2026-09-19T13:30:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n15H30",
+      "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "UNION DECHY SIN BASKET",
+      "Equipe2": "U13M",
+      "Date": "2026-09-19T13:30:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n15H30",
+      "Salle": "Jules LADOUMEGUE",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U15F",
+      "Equipe2": "BASKET CLUB PEVELE",
+      "Date": "2026-09-19T15:00:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n17H00",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "ONNAING JA",
+      "Equipe2": "U15M",
+      "Date": "2026-09-19T16:30:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n18H30",
+      "Salle": "Daniel COLMONT",
+      "EstExempt": false,
+      "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "SENIORS-1",
+      "Equipe2": "BASKET CLUB PEVELE",
+      "Date": "2026-09-19T16:30:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n18H30",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "SENIORS-2",
+      "Equipe2": "BREBIERES BC-1",
+      "Date": "2026-09-19T18:30:00.000Z",
+      "JourRencontre": "2026/09/19",
+      "DateFormatted": "SAMEDI\n20H30",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U18F",
+      "Equipe2": "USAC SOMAIN MARCHIENNES BASKETBALL",
+      "Date": "2026-09-20T08:30:00.000Z",
+      "JourRencontre": "2026/09/20",
+      "DateFormatted": "DIMANCHE\n10H30",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "ST AMAND P H",
+      "Equipe2": "U18M",
+      "Date": "2026-09-20T11:00:00.000Z",
+      "JourRencontre": "2026/09/20",
+      "DateFormatted": "DIMANCHE\n13H00",
+      "Salle": "MAURICE HUGOT",
+      "EstExempt": false,
+      "ADomicile": false
     }
   ]
 }

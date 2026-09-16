@@ -72,6 +72,10 @@
             "categorie": "U11F",
             "type": "CHAMPIONNAT"
         },
+        "DFU13-2": {
+            "categorie": "U13F",
+            "type": "CHAMPIONNAT"
+        },
         "DFU13-2-P2": {
             "categorie": "U13F",
             "type": "CHAMPIONNAT"
@@ -80,7 +84,11 @@
             "categorie": "U13F",
             "type": "CHAMPIONNAT"
         },
-        "DFU15-2-P2": {
+        "DFU15-8": {
+            "categorie": "U15F",
+            "type": "CHAMPIONNAT"
+        },
+        "DFU15-8-P2": {
             "categorie": "U15F",
             "type": "CHAMPIONNAT"
         },
@@ -100,7 +108,7 @@
             "categorie": "U18F",
             "type": "CHAMPIONNAT"
         },
-        "DFU9-9": {
+        "DFU9-8": {
             "categorie": "U9F",
             "type": "CHAMPIONNAT"
         },
@@ -113,6 +121,10 @@
             "type": "CHAMPIONNAT"
         },
         "DM2": {
+            "categorie": "SENIORS",
+            "type": "CHAMPIONNAT"
+        },
+        "PRM": {
             "categorie": "SENIORS",
             "type": "CHAMPIONNAT"
         },
@@ -136,16 +148,20 @@
             "categorie": "U13M",
             "type": "CHAMPIONNAT"
         },
-        "DMU13-4": {
+        "DMU13-8": {
             "categorie": "U13M",
             "type": "CHAMPIONNAT"
         },
-        "DMU13-4-P2": {
+        "DMU13-8-P2": {
             "categorie": "U13M",
             "type": "CHAMPIONNAT"
         },
-        "DMU13-4-P2-P2": {
+        "DMU13-8-P2-P2": {
             "categorie": "U13M",
+            "type": "CHAMPIONNAT"
+        },
+        "DMU15-2": {
+            "categorie": "U15M",
             "type": "CHAMPIONNAT"
         },
         "DMU15-2-P2": {
@@ -154,6 +170,10 @@
         },
         "DMU15-2-P2-P2": {
             "categorie": "U15M",
+            "type": "CHAMPIONNAT"
+        },
+        "DMU18-2": {
+            "categorie": "U18M",
             "type": "CHAMPIONNAT"
         },
         "DMU18-2-P2": {
@@ -168,15 +188,15 @@
             "categorie": "U18M",
             "type": "CHAMPIONNAT"
         },
-        "DXU9-9": {
+        "DXU9-8": {
             "categorie": "U9M",
             "type": "CHAMPIONNAT"
         },
-        "DXU9-9-P2": {
+        "DXU9-8-P2": {
             "categorie": "U9M",
             "type": "CHAMPIONNAT"
         },
-        "DXU9-9-P2-P2": {
+        "DXU9-8-P2-P2": {
             "categorie": "U9M",
             "type": "CHAMPIONNAT"
         },
