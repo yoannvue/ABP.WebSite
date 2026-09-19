@@ -59,7 +59,9 @@
             {
                 "equipe": "U18F",
                 "coach": "Manu et Elio",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U18F.01.jpg"
+                ]
             },
             {
                 "equipe": "U18M",
