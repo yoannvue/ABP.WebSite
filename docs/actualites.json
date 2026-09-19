@@ -94,6 +94,11 @@
             },
             { 
                  "type": "image", 
+                "titre": "U13F",
+                "lien": "/ressources/Equipes/2026-2027/U13F.01.jpg"
+            },
+            { 
+                 "type": "image", 
                 "titre": "U13M",
                 "lien": "/ressources/Equipes/2026-2027/U13M.01.jpg"
             },

@@ -34,7 +34,9 @@
             {
                 "equipe": "U13F",
                 "coach": "Steeve et Gaëtan",
-                "photos": []
+                "photos": [
+                    "/ressources/Equipes/2026-2027/U13F.01.jpg"
+                ]
             },
             {
                 "equipe": "U13M",
