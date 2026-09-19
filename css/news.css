@@ -8,7 +8,7 @@
 
 .photo-fan {
   --fan-angle: 13deg;       /* angle entre deux photos */
-  --fan-card-w: 384px;      /* largeur d'une photo (référence bureau) */
+  --fan-card-w: 600px;      /* largeur d'une photo (référence bureau) */
   --fan-card-w-min: 150px;  /* largeur minimale d'une photo (petits écrans) */
   --fan-card-ratio: 5 / 4;  /* format des photos (largeur / hauteur), pour aspect-ratio */
   --fan-card-h-mult: 0.8;  /* hauteur = largeur × ce facteur — DOIT correspondre à --fan-card-ratio

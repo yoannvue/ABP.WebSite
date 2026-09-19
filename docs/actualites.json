@@ -1,6 +1,69 @@
 [
     {
         "date": "Septembre 2026",
+        "categorie": "Présentation",
+        "titre": "Nos coachs Saison 2026/2027",
+        "lien" :"",
+        "contenu": [
+             { 
+                "type": "image", 
+                "titre": "Baby Basket",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_Baby.jpg"
+            },
+            { 
+                "type": "image", 
+                "titre": "U9M",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U9M.jpg"
+            },
+            { 
+                "type": "image", 
+                "titre": "U9F",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U9F.jpg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U11F",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U11F.jpg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U11M",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U11M.jpg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U13M",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U13M.jpg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U15F",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U15F.jpg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U15M",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U15M.jpg"
+            },
+            { 
+                "type": "image", 
+                "titre": "U18M",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U18M.jpg"
+            },
+            { 
+                "type": "image", 
+                "titre": "U18F",
+                "lien": "/ressources/Equipes/2026-2027/Coachs_U18F.jpg"
+            },
+            { 
+                "type": "image", 
+                "titre": "Séniors M 2",
+                "lien" : "/ressources/Equipes/2026-2027/Coachs_Seniors.jpg"
+            }
+        ]
+    },
+    {
+        "date": "Septembre 2026",
         "categorie": "Rencontres",
         "titre": "Week end basket 2026",
         "lien" :"",
