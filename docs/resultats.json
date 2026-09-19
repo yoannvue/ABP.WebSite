@@ -14,11 +14,11 @@
       "Date": "2026-09-06T09:30:00.000Z"
     },
     {
-      "Categorie": "U13M",
-      "Equipe1": "U13M",
+      "Categorie": "U9M",
+      "Equipe1": "U9M",
       "Equipe2": "AULNOY VALENCIENNES S",
-      "Score1": "",
-      "Score2": "",
+      "Score1": "10",
+      "Score2": "35",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
@@ -26,16 +26,16 @@
       "Date": "2026-09-06T09:30:00.000Z"
     },
     {
-      "Categorie": "LOISIRS",
-      "Equipe1": "LOISIRS",
-      "Equipe2": "BASKET CLUB HULLUCH",
-      "Score1": "",
-      "Score2": "",
+      "Categorie": "U9F",
+      "Equipe1": "U9F",
+      "Equipe2": "AULNOY VALENCIENNES S",
+      "Score1": "40",
+      "Score2": "35",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T11:00:00.000Z"
+      "Date": "2026-09-06T09:30:00.000Z"
     },
     {
       "Categorie": "U18M",

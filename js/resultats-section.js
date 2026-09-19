@@ -64,8 +64,15 @@ async function chargerRencontres() {
             const Score = (match.Score1?match.Score1:"xx") + (match.Forfait1?"(F)":"") + " - "+(match.Score2?match.Score2:"xx") +(match.Forfait2?"(F)":"");
             const score1 = Number(match.Score1);
             const score2 = Number(match.Score2);
-            const gagnant = Number.isFinite(score1) && Number.isFinite(score2) &&
-                ((match.ADomicile && score1 > score2) || (!match.ADomicile && score2 > score1));
+            const hasScore = Number.isFinite(score1) && Number.isFinite(score2);
+            const isU9Category = ["U9M", "U9F"].includes(match.Categorie);
+            const gagnant = hasScore && ((match.ADomicile && score1 > score2) || (!match.ADomicile && score2 > score1));
+            const resultatTexte = isU9Category
+                ? (hasScore ? (gagnant ? "Victoire" : "Defaite") : "")
+                : Score;
+            const centreClasse = isU9Category
+                ? (hasScore ? (gagnant ? " victoire" : " defaite") : "")
+                : (gagnant ? " gagnant" : "");
 
             const carte = document.createElement("div");
             carte.className = "rencontre";
@@ -76,8 +83,8 @@ async function chargerRencontres() {
                     <span>${equipeGauche}</span>
                 </div>
 
-                <div class="centre${gagnant ? " gagnant" : ""}">
-                    <span>${Score}</span>
+                <div class="centre${centreClasse}">
+                    <span>${resultatTexte}</span>
                 </div>
 
                 <div class="equipe droite ${styleequipedroite}">
