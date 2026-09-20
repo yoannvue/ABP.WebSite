@@ -1,11 +1,70 @@
 const puppeteer = require('puppeteer');
 const path = require("path");
 const fs = require("fs");
+const crypto = require("crypto");
+const AdmZip = require("adm-zip");
+const { PDFDocument } = require("@cantoo/pdf-lib");
 
 const outputSpec = process.argv[2];
 
 if (!process.env.CI) {
     require("dotenv").config({ path: path.resolve(__dirname, "../.env.local") });
+}
+
+const ZIP_PASSWORD = process.env.ZIP_PASSWORD;
+if (!ZIP_PASSWORD) {
+    throw new Error('❌ ZIP_PASSWORD manquant : refus de publier des PDF non protégés.');
+}
+
+// Préfixes (sans accents, en minuscules) des PDF à extraire de chaque archive
+const PDF_PREFIXES = ['resume', 'feuillematch'];
+
+function normalize(s) {
+    return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // "Résumé" -> "resume"
+}
+
+/**
+ * Extrait de l'archive les PDF dont le nom commence par un des préfixes,
+ * les chiffre (AES-256, via @cantoo/pdf-lib) et les écrit dans targetDir.
+ * Retourne la liste des noms de fichiers produits.
+ */
+async function extractAndProtectPdfs(zipPath, targetDir, password) {
+    const zipBase = path.basename(zipPath, path.extname(zipPath));
+    const zip = new AdmZip(zipPath);
+    const produced = [];
+
+    for (const entry of zip.getEntries()) {
+        if (entry.isDirectory) continue;
+
+        const name = path.basename(entry.entryName); // basename : évite tout "zip slip"
+        const norm = normalize(name);
+        if (!norm.endsWith('.pdf') || !PDF_PREFIXES.some((p) => norm.startsWith(p))) continue;
+
+        const outName = `${zipBase}_${name}`;
+        if (produced.includes(outName)) {
+            console.log(`⚠️ Doublon ignoré dans l'archive : ${name}`);
+            continue;
+        }
+
+        const pdfDoc = await PDFDocument.load(entry.getData());
+        pdfDoc.encrypt({
+            userPassword: password, // mot de passe d'ouverture
+            ownerPassword: crypto.randomBytes(16).toString('hex'), // aléatoire et jeté
+            permissions: {
+                printing: 'highResolution',
+                copying: true,
+                contentAccessibility: true,
+                annotating: true,
+                fillingForms: true,
+                documentAssembly: true,
+            },
+        });
+        fs.writeFileSync(path.join(targetDir, outName), await pdfDoc.save());
+        produced.push(outName);
+        console.log('🔒 PDF chiffré :', outName);
+    }
+
+    return produced;
 }
 
 function formatDate(d) {
@@ -132,7 +191,8 @@ dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
 
         if (fs.existsSync(targetDir)) {
             for (const file of fs.readdirSync(targetDir)) {
-                if (file.toLowerCase().endsWith('.zip')) {
+                const lower = file.toLowerCase();
+                if (lower.endsWith('.zip') || lower.endsWith('.pdf')) {
                     fs.rmSync(path.join(targetDir, file), { force: true });
                 }
             }
@@ -156,26 +216,34 @@ dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
             }, onclickCode);
 
             const downloadedFile = await waitForDownload(downloadPath, existingFiles);
-            const targetPath = path.join(targetDir, path.basename(downloadedFile));
-            if (fs.existsSync(targetPath)) {
-                fs.rmSync(targetPath, { force: true });
-            }
-            fs.copyFileSync(downloadedFile, targetPath);
-            fs.rmSync(downloadedFile, { force: true });
-            console.log('✅ Fichier copié vers :', targetPath);
+            const zipName = path.basename(downloadedFile);
+            const producedFiles = await extractAndProtectPdfs(downloadedFile, targetDir, ZIP_PASSWORD);
+            fs.rmSync(downloadedFile, { force: true }); // l'archive en clair n'est jamais publiée
 
+            if (producedFiles.length !== PDF_PREFIXES.length) {
+                console.log(`⚠️ ${producedFiles.length} PDF extrait(s) de ${zipName} (${PDF_PREFIXES.length} attendus).`);
+            }
+            if (!producedFiles.length) {
+                continue; // rien à publier, pas d'entrée dans le manifest
+            }
+
+            // Manifest : 1 entrée par archive d'origine, avec ses PDF en sous-entrées
             const manifestPath = path.join(targetDir, 'manifest.json');
             const manifestEntries = fs.existsSync(manifestPath)
-                ? JSON.parse(fs.readFileSync(manifestPath, 'utf8'))
+                ? JSON.parse(fs.readFileSync(manifestPath, 'utf8')).filter((e) => e && typeof e === 'object')
                 : [];
 
-            const fileName = path.basename(targetPath);
-            const alreadyPresent = manifestEntries.includes(fileName);
-            if (!alreadyPresent) {
-                manifestEntries.push(fileName);
-                fs.writeFileSync(manifestPath, JSON.stringify(manifestEntries.sort(), null, 2));
-                console.log('✅ Manifest mis à jour :', manifestPath);
+            const entry = { source: zipName, fichiers: producedFiles.sort() };
+            const existingIndex = manifestEntries.findIndex((e) => e.source === zipName);
+            if (existingIndex >= 0) {
+                manifestEntries[existingIndex] = entry;
+            } else {
+                manifestEntries.push(entry);
             }
+
+            manifestEntries.sort((a, b) => a.source.localeCompare(b.source));
+            fs.writeFileSync(manifestPath, JSON.stringify(manifestEntries, null, 2));
+            console.log('✅ Manifest mis à jour :', manifestPath);
         }
     }
     else {
@@ -198,4 +266,3 @@ async function waitForDownload(downloadPath, existingFiles = new Set(), timeout 
     }
     throw new Error('❌ Téléchargement du fichier : timeout dépassé');
 }
-

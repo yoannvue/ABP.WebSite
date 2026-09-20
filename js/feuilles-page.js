@@ -48,6 +48,67 @@
       return [];
     }
 
+    const entries = data
+      .map((item) => {
+        if (!item || typeof item !== 'object') {
+          return null;
+        }
+
+        const sourceName = typeof item.source === 'string' ? item.source : item.name;
+        if (!sourceName) {
+          return null;
+        }
+
+        const displayName = sourceName.replace(/\.zip$/i, '');
+
+        const files = Array.isArray(item.fichiers) ? item.fichiers : [];
+        const links = files
+          .map((fileName) => {
+            const cleanName = typeof fileName === 'string' ? fileName : '';
+            if (!cleanName) return null;
+
+            const lower = cleanName.toLowerCase();
+            const label = lower.includes('resume') ? 'Résumé' : lower.includes('feuillematch') ? 'Feuille de match' : null;
+
+            if (!label) return null;
+
+            return {
+              label,
+              href: getBasePath() + 'data/resultats/' + cleanName,
+              name: cleanName,
+            };
+          })
+          .filter(Boolean)
+          .sort((a, b) => a.label.localeCompare(b.label));
+
+        if (!links.length) {
+          return {
+            name: sourceName,
+            href: getBasePath() + 'data/resultats/' + sourceName,
+            links: [
+              {
+                label: 'Télécharger',
+                href: getBasePath() + 'data/resultats/' + sourceName,
+                name: sourceName,
+              },
+            ],
+          };
+        }
+
+        return {
+          name: sourceName,
+          displayName,
+          href: getBasePath() + 'data/resultats/' + sourceName,
+          links,
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+
+    if (entries.length) {
+      return entries;
+    }
+
     return data
       .map((item) => {
         const fileName = typeof item === 'string' ? item : item.name;
@@ -57,7 +118,15 @@
 
         return {
           name: fileName,
+          displayName: fileName.replace(/\.zip$/i, ''),
           href: getBasePath() + 'data/resultats/' + fileName,
+          links: [
+            {
+              label: 'Télécharger',
+              href: getBasePath() + 'data/resultats/' + fileName,
+              name: fileName,
+            },
+          ],
         };
       })
       .filter(Boolean)
@@ -87,12 +156,28 @@
 
     entries.forEach((entry) => {
       const item = document.createElement('li');
-      const link = document.createElement('a');
-      link.href = toAbsoluteUrl(entry.href);
-      link.textContent = entry.name;
-      link.className = 'download-link';
-      link.setAttribute('download', entry.name);
-      item.appendChild(link);
+      item.className = 'download-item';
+
+      const itemHeader = document.createElement('div');
+      itemHeader.className = 'download-item__title';
+      itemHeader.textContent = entry.displayName || entry.name.replace(/\.zip$/i, '');
+      item.appendChild(itemHeader);
+
+      const subList = document.createElement('ul');
+      subList.className = 'download-sublist';
+
+      (entry.links || []).forEach((linkInfo) => {
+        const subItem = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = toAbsoluteUrl(linkInfo.href);
+        link.textContent = linkInfo.label;
+        link.className = 'download-sub-link';
+        link.setAttribute('download', linkInfo.name || linkInfo.label);
+        subItem.appendChild(link);
+        subList.appendChild(subItem);
+      });
+
+      item.appendChild(subList);
       list.appendChild(item);
     });
 

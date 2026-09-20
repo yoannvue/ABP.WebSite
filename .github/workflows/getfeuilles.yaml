@@ -1,0 +1,45 @@
+name: Weekly Export FFBB
+
+on:
+  schedule:
+    - cron: '0 8 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: write   # nécessaire pour push
+  actions: write
+
+jobs:
+  run-task:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+
+      - run: npm install
+
+      - name: Extraire les feuilles de matchs
+        run: node scripts/extract_feuilles_matchs.js data/resultats
+        env:
+          FBI_CLIENT: ${{ secrets.FBI_CLIENT }}
+          FBI_PASSWORD: ${{ secrets.FBI_PASSWORD }}
+          ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
+
+      - name: Commit des fichiers générés
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Aucun changement à committer."
+          else
+            git commit -m "Maj Feuilles matchs"
+            git push
+          fi

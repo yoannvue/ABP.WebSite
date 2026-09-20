@@ -2354,38 +2354,48 @@ h2 {
 .download-list {
     display: flex;
     flex-direction: column;
-    gap: 0.85rem;
+    gap: 1rem;
     margin-top: 1.5rem;
     padding-left: 0;
     list-style: none;
 }
 
-.download-list li {
-    margin: 0;
-    padding: 0;
+.download-item {
+    padding: 0.3rem 0;
 }
 
-.download-link {
+.download-item__title {
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #0f2e4f;
+}
+
+.download-sublist {
+    list-style: disc;
+    padding-left: 1.4rem;
     display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin: 0;
+}
+
+.download-sub-link {
+    display: inline-flex;
     align-items: center;
-    gap: 0.8rem;
-    padding: 0.9rem 1rem;
-    border-radius: 0.8rem;
-    background: rgba(18, 52, 96, 0.04);
-    border: 1px solid rgba(18, 52, 96, 0.12);
+    gap: 0.55rem;
+    padding: 0.45rem 0.65rem;
+    border-radius: 0.6rem;
     color: #0f2e4f;
     font-weight: 600;
-    line-height: 1.45;
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 1px 0 rgba(19, 40, 67, 0.04);
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
-.download-link::before {
+.download-sub-link::before {
     content: "";
     display: inline-block;
-    width: 1.1rem;
-    height: 1.1rem;
-    flex: 0 0 1.1rem;
+    width: 1rem;
+    height: 1rem;
     background-color: #d34b43;
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M9 13h6'/%3E%3Cpath d='M9 17h6'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M9 13h6'/%3E%3Cpath d='M9 17h6'/%3E%3C/svg%3E");
@@ -2397,14 +2407,13 @@ h2 {
     mask-position: center;
 }
 
-.download-link:hover,
-.download-link:focus-visible {
+.download-sub-link:hover,
+.download-sub-link:focus-visible {
     background: rgba(211, 75, 67, 0.08);
-    transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(17, 43, 74, 0.12);
+    transform: translateX(2px);
 }
 
-.download-link:focus-visible {
+.download-sub-link:focus-visible {
     outline: 2px solid rgba(211, 75, 67, 0.6);
     outline-offset: 2px;
 }
