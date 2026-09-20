@@ -6,7 +6,25 @@ const AdmZip = require("adm-zip");
 const { PDFDocument } = require("@cantoo/pdf-lib");
 
 const outputSpec = process.argv[2];
-const projectRoot = path.resolve(__dirname, '..');
+const projectRoot = process.cwd();
+
+function resolveOutputPath(spec) {
+    if (!spec) {
+        return path.resolve(projectRoot, 'data/resultats');
+    }
+
+    const normalized = String(spec).replace(/^[.][/\\]+/, '');
+    const candidate = path.isAbsolute(spec)
+        ? spec
+        : path.resolve(projectRoot, normalized);
+
+    const rootPrefix = path.resolve(projectRoot) + path.sep;
+    if (candidate.startsWith(rootPrefix) || candidate === path.resolve(projectRoot)) {
+        return candidate;
+    }
+
+    return path.resolve(projectRoot, 'data/resultats');
+}
 
 if (!process.env.CI) {
     require("dotenv").config({ path: path.resolve(projectRoot, '.env.local') });
@@ -185,7 +203,7 @@ dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
     console.log('Liens trouvés avec la classe emarquepictureafter :', links.length);
 
     if (links.length) {
-        const resolvedOutputPath = path.resolve(projectRoot, outputSpec || '.');
+        const resolvedOutputPath = resolveOutputPath(outputSpec || 'data/resultats');
         const targetDir = path.extname(outputSpec || '') ? path.dirname(resolvedOutputPath) : resolvedOutputPath;
         fs.mkdirSync(targetDir, { recursive: true });
 

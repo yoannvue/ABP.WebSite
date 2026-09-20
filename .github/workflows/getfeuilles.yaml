@@ -25,16 +25,16 @@ jobs:
       - run: npm install
 
       - name: Extraire les feuilles de matchs
-        run: node scripts/extract_feuilles_matchs.js '../data/resultats'
+        run: node scripts/extract_feuilles_matchs.js 'data/resultats'
         env:
           FBI_CLIENT: ${{ secrets.FBI_CLIENT }}
           FBI_PASSWORD: ${{ secrets.FBI_PASSWORD }}
           ZIP_PASSWORD: ${{ secrets.ZIP_PASSWORD }}
-          
+
       - name: Vérifier ce que Git voit
         run: |
           git status --short
-          git check-ignore -v data/resultats/manifest.json || true
+          git check-ignore -v 'data/resultats/manifest.json' || true
 
       - name: Commit des fichiers générés
         run: |
