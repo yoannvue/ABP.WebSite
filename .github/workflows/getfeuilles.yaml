@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v5
         with:
@@ -45,6 +47,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Aucun changement à committer."
           else
+            git pull --rebase origin "${GITHUB_REF_NAME:-main}"
             git commit -m "Maj Feuilles matchs"
-            git push
+            git push origin HEAD:"${GITHUB_REF_NAME:-main}"
           fi
