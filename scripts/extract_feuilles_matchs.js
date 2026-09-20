@@ -6,9 +6,10 @@ const AdmZip = require("adm-zip");
 const { PDFDocument } = require("@cantoo/pdf-lib");
 
 const outputSpec = process.argv[2];
+const projectRoot = path.resolve(__dirname, '..');
 
 if (!process.env.CI) {
-    require("dotenv").config({ path: path.resolve(__dirname, "../.env.local") });
+    require("dotenv").config({ path: path.resolve(projectRoot, '.env.local') });
 }
 
 const ZIP_PASSWORD = process.env.ZIP_PASSWORD;
@@ -184,7 +185,7 @@ dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
     console.log('Liens trouvés avec la classe emarquepictureafter :', links.length);
 
     if (links.length) {
-        const resolvedOutputPath = path.resolve(__dirname, outputSpec || '.');
+        const resolvedOutputPath = path.resolve(projectRoot, outputSpec || '.');
         const targetDir = path.extname(outputSpec || '') ? path.dirname(resolvedOutputPath) : resolvedOutputPath;
         fs.mkdirSync(targetDir, { recursive: true });
 
