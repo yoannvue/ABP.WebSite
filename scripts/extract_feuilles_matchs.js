@@ -29,7 +29,6 @@ function normalize(s) {
  * Retourne la liste des noms de fichiers produits.
  */
 async function extractAndProtectPdfs(zipPath, targetDir, password) {
-    const zipBase = path.basename(zipPath, path.extname(zipPath));
     const zip = new AdmZip(zipPath);
     const produced = [];
 
@@ -40,7 +39,7 @@ async function extractAndProtectPdfs(zipPath, targetDir, password) {
         const norm = normalize(name);
         if (!norm.endsWith('.pdf') || !PDF_PREFIXES.some((p) => norm.startsWith(p))) continue;
 
-        const outName = `${zipBase}_${name}`;
+        const outName = name;
         if (produced.includes(outName)) {
             console.log(`⚠️ Doublon ignoré dans l'archive : ${name}`);
             continue;
