@@ -61,7 +61,15 @@ async function chargerRencontres() {
             const logoequipegauche = match.ADomicile ? getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT") : getLogoUrl(teams, match.Equipe1);
             const logoequipedroite = match.ADomicile ? getLogoUrl(teams, match.Equipe2): getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT");
 
-            const Score = (match.Score1?match.Score1:"xx") + (match.Forfait1?"(F)":"") + " - "+(match.Score2?match.Score2:"xx") +(match.Forfait2?"(F)":"");
+            const formatScore = (value) => {
+                const numericValue = Number(value);
+                if (!Number.isFinite(numericValue)) {
+                    return value ?? "xx";
+                }
+                return numericValue < 10 ? `0${numericValue}` : String(numericValue);
+            };
+
+            const Score = `${formatScore(match.Score1)}${match.Forfait1 ? "(F)" : ""} - ${formatScore(match.Score2)}${match.Forfait2 ? "(F)" : ""}`;
             const score1 = Number(match.Score1);
             const score2 = Number(match.Score2);
             const hasScore = Number.isFinite(score1) && Number.isFinite(score2);
@@ -111,13 +119,18 @@ function getCategorieDisplayOrder(teams, categorie) {
 }
 
 function getShortName(teams, club) {
-    var clubObj = teams.adversaires[club];
+
+    const suffixeEquipe = club.match(/\s*-\s*\d+$/)?.[0] ?? "";
+    const clubnormalized = club.slice(0, club.length - suffixeEquipe.length);
+    const clubObj = teams.adversaires[clubnormalized];
     if (!clubObj || !clubObj.nomcourt) return club;
-    return clubObj.nomcourt;
+    return clubObj.nomcourt + suffixeEquipe;
 }
 
 function getLogoUrl(teams, club) {
-    var clubObj = teams.adversaires[club];
+    const suffixeEquipe = club.match(/\s*-\s*\d+$/)?.[0] ?? "";
+    const clubnormalized = club.slice(0, club.length - suffixeEquipe.length);
+    var clubObj = teams.adversaires[clubnormalized];
     if (!clubObj || !clubObj.nomcourt) return "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg";
     return clubObj.logo;
 }
