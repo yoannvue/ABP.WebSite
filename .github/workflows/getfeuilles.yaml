@@ -47,7 +47,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Aucun changement à committer."
           else
-            git pull --rebase origin "${GITHUB_REF_NAME:-main}"
             git commit -m "Maj Feuilles matchs"
+            git pull --rebase origin "${GITHUB_REF_NAME:-main}"
             git push origin HEAD:"${GITHUB_REF_NAME:-main}"
           fi
