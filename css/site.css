@@ -1039,6 +1039,16 @@ img {
     line-height: .89
 }
 
+h2 {
+    max-width: 900px;
+    font-family: var(--display);
+    letter-spacing: -.065em;
+    text-transform: uppercase;
+    margin: 20px 0 22px;
+    font-size: 25px;
+    line-height: .89
+}
+
 .page-intro p {
     max-width: 720px;
     color: var(--muted);
@@ -2339,6 +2349,64 @@ img {
 .icon--specification::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect width='8' height='4' x='8' y='2' rx='1' ry='1'/%3E%3Cpath d='M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2'/%3E%3Cpath d='m9 14 2 2 4-4'/%3E%3C/svg%3E");
+}
+
+.download-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-top: 1.5rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.download-list li {
+    margin: 0;
+    padding: 0;
+}
+
+.download-link {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+    border-radius: 0.8rem;
+    background: rgba(18, 52, 96, 0.04);
+    border: 1px solid rgba(18, 52, 96, 0.12);
+    color: #0f2e4f;
+    font-weight: 600;
+    line-height: 1.45;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 0 rgba(19, 40, 67, 0.04);
+}
+
+.download-link::before {
+    content: "";
+    display: inline-block;
+    width: 1.1rem;
+    height: 1.1rem;
+    flex: 0 0 1.1rem;
+    background-color: #d34b43;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M9 13h6'/%3E%3Cpath d='M9 17h6'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z'/%3E%3Cpath d='M14 2v6h6'/%3E%3Cpath d='M9 13h6'/%3E%3Cpath d='M9 17h6'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.download-link:hover,
+.download-link:focus-visible {
+    background: rgba(211, 75, 67, 0.08);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(17, 43, 74, 0.12);
+}
+
+.download-link:focus-visible {
+    outline: 2px solid rgba(211, 75, 67, 0.6);
+    outline-offset: 2px;
 }
 
 img.coach-diplome{
