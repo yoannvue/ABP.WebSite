@@ -1,45 +1,45 @@
 {
-  "semaine": "Semaine du 6 septembre",
+  "semaine": "Semaine du 20 septembre",
   "rencontres": [
     {
-      "Categorie": "U13F",
-      "Equipe1": "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT",
-      "Equipe2": "U13F",
-      "Score1": "15",
-      "Score2": "49",
+      "Categorie": "U18F",
+      "Equipe1": "U18F",
+      "Equipe2": "USAC SOMAIN MARCHIENNES BASKETBALL",
+      "Score1": "33",
+      "Score2": "42",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": true,
+      "Date": "2026-09-20T10:30:00.000Z"
+    },
+    {
+      "Categorie": "U18M",
+      "Equipe1": "ST AMAND P H",
+      "Equipe2": "U18M",
+      "Score1": "100",
+      "Score2": "52",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": false,
-      "Date": "2026-09-06T09:30:00.000Z"
+      "Date": "2026-09-20T13:00:00.000Z"
     },
     {
-      "Categorie": "U9M",
-      "Equipe1": "U9M",
-      "Equipe2": "AULNOY VALENCIENNES S",
-      "Score1": "10",
-      "Score2": "35",
+      "Categorie": "LOISIRS",
+      "Equipe1": "LOISIRS",
+      "Equipe2": "USAC SOMAIN MARCHIENNES BASKETBALL",
+      "Score1": "",
+      "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T09:30:00.000Z"
+      "Date": "2026-09-23T21:30:00.000Z"
     },
     {
       "Categorie": "U9F",
       "Equipe1": "U9F",
-      "Equipe2": "AULNOY VALENCIENNES S",
-      "Score1": "40",
-      "Score2": "35",
-      "Forfait1": false,
-      "Forfait2": false,
-      "EstExempt": false,
-      "ADomicile": true,
-      "Date": "2026-09-06T09:30:00.000Z"
-    },
-    {
-      "Categorie": "U18M",
-      "Equipe1": "U18M",
       "Equipe2": "UNION DECHY SIN BASKET",
       "Score1": "",
       "Score2": "",
@@ -47,43 +47,139 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-06T13:00:00.000Z"
+      "Date": "2026-09-26T11:00:00.000Z"
     },
     {
-      "Categorie": "SENIORS",
-      "Equipe1": "SENIORS",
-      "Equipe2": "THIANT BC",
+      "Categorie": "U11F",
+      "Equipe1": "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT-1",
+      "Equipe2": "U11F",
       "Score1": "",
       "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": true,
-      "Date": "2026-09-06T15:00:00.000Z"
-    },
-    {
-      "Categorie": "SENIORS",
-      "Equipe1": "SENIORS",
-      "Equipe2": "SAINT SAULVE BC",
-      "Score1": "",
-      "Score2": "",
-      "Forfait1": false,
-      "Forfait2": false,
-      "EstExempt": false,
-      "ADomicile": true,
-      "Date": "2026-09-12T20:30:00.000Z"
+      "ADomicile": false,
+      "Date": "2026-09-26T13:45:00.000Z"
     },
     {
       "Categorie": "U13F",
-      "Equipe1": "U13F",
-      "Equipe2": "TOURCOING US F",
+      "Equipe1": "TEMPLEUVE L P-3",
+      "Equipe2": "U13F",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-26T14:00:00.000Z"
+    },
+    {
+      "Categorie": "U11M",
+      "Equipe1": "U11M",
+      "Equipe2": "OSTREVENT BASKET BALL EAA MONCHECOURT-1",
       "Score1": "",
       "Score2": "",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": true,
-      "Date": "2026-09-13T10:30:00.000Z"
+      "Date": "2026-09-26T14:00:00.000Z"
+    },
+    {
+      "Categorie": "U13M",
+      "Equipe1": "U13M",
+      "Equipe2": "LAMBRES BASKET CLUB-1",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": true,
+      "Date": "2026-09-26T15:30:00.000Z"
+    },
+    {
+      "Categorie": "U15M",
+      "Equipe1": "U15M",
+      "Equipe2": "AULNOYE AS",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": true,
+      "Date": "2026-09-26T17:00:00.000Z"
+    },
+    {
+      "Categorie": "U18M",
+      "Equipe1": "RAIMBEAUCOURT CSL",
+      "Equipe2": "U18M",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-26T17:00:00.000Z"
+    },
+    {
+      "Categorie": "U15F",
+      "Equipe1": "UNION DECHY SIN BASKET",
+      "Equipe2": "U15F",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-26T17:00:00.000Z"
+    },
+    {
+      "Categorie": "U18F",
+      "Equipe1": "DORIGNIES DOUAI AAE",
+      "Equipe2": "U18F",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-27T09:00:00.000Z"
+    },
+    {
+      "Categorie": "U9M",
+      "Equipe1": "FLINES LEZ RACHES BC-1",
+      "Equipe2": "U9M",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-27T14:00:00.000Z"
+    },
+    {
+      "Categorie": "SENIORS 2",
+      "Equipe1": "BC LESQUIN-2",
+      "Equipe2": "SENIORS 2-2",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-27T16:00:00.000Z"
+    },
+    {
+      "Categorie": "SENIORS 1",
+      "Equipe1": "RAIMBEAUCOURT CSL-1",
+      "Equipe2": "SENIORS 1-1",
+      "Score1": "",
+      "Score2": "",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-09-27T16:00:00.000Z"
     }
   ]
 }
