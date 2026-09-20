@@ -121,11 +121,11 @@
             "type": "CHAMPIONNAT"
         },
         "DM2": {
-            "categorie": "SENIORS 2",
+            "categorie": "SENIORS",
             "type": "CHAMPIONNAT"
         },
         "PRM": {
-            "categorie": "SENIORS 1",
+            "categorie": "SENIORS",
             "type": "CHAMPIONNAT"
         },
         "DMU11-8": {
@@ -252,8 +252,7 @@
         "U15M": 8,
         "U18F": 9,
         "U18M": 10,
-        "SENIORS 1": 15,
-        "SENIORS 2": 16,
+        "SENIORS": 15,
         "LOISIRS": 17
     },
     "adversaires": {
