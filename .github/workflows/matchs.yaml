@@ -1,4 +1,4 @@
-name: Generate Agenda
+name: Génération de l'agenda des matchs
 
 on:
   workflow_dispatch:

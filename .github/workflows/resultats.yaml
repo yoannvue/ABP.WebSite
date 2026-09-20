@@ -1,4 +1,4 @@
-name: Generate Resultats
+name: Génération des resultats
 
 on:
   workflow_dispatch:

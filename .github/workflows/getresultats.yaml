@@ -1,4 +1,4 @@
-name: Weekly Export Results
+name: Consultation des resultats FFBB
 
 on:
   schedule:

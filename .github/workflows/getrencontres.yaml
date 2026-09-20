@@ -1,4 +1,4 @@
-name: Weekly Export FFBB
+name: Consultation des rencontres FFBB
 
 on:
   schedule:
