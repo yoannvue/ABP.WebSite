@@ -25,7 +25,7 @@ jobs:
       - run: npm install
 
       - name: Extraire les feuilles de matchs
-        run: node scripts/extract_feuilles_matchs.js data/resultats
+        run: node scripts/extract_feuilles_matchs.js '../data/resultats'
         env:
           FBI_CLIENT: ${{ secrets.FBI_CLIENT }}
           FBI_PASSWORD: ${{ secrets.FBI_PASSWORD }}
