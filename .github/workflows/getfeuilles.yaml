@@ -1,5 +1,4 @@
-name: Weekly Export FFBB
-
+name: Récupération des feuilles de matchs FFBB
 on:
   schedule:
     - cron: '0 20 * * 0'
