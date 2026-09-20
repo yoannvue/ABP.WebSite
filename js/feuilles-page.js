@@ -43,7 +43,39 @@
       .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
   }
 
-  function getZipEntriesFromManifest(data) {
+  function getDivisionFromMatchName(fileName) {
+    const normalized = String(fileName || '').replace(/\.zip$/i, '');
+    const match = normalized.match(/^0059_([^_]+)_/i);
+    return match ? match[1] : null;
+  }
+
+  function getCategoryFromMatchName(fileName, teamsData) {
+    const division = getDivisionFromMatchName(fileName);
+    if (!division || !teamsData || !teamsData.divisions) {
+      return null;
+    }
+
+    const divisionInfo = teamsData.divisions[division];
+    if (!divisionInfo || !divisionInfo.categorie) {
+      return null;
+    }
+
+    return divisionInfo.categorie;
+  }
+
+  function getCategoryOrder(category, teamsData) {
+    if (!teamsData || !teamsData.categories) {
+      return Number.MAX_SAFE_INTEGER;
+    }
+
+    if (teamsData.categories[category] !== undefined) {
+      return teamsData.categories[category];
+    }
+
+    return Number.MAX_SAFE_INTEGER;
+  }
+
+  function getZipEntriesFromManifest(data, teamsData) {
     if (!Array.isArray(data)) {
       return [];
     }
@@ -56,6 +88,11 @@
 
         const sourceName = typeof item.source === 'string' ? item.source : item.name;
         if (!sourceName) {
+          return null;
+        }
+
+        const category = getCategoryFromMatchName(sourceName, teamsData);
+        if (!category) {
           return null;
         }
 
@@ -84,6 +121,8 @@
         if (!links.length) {
           return {
             name: sourceName,
+            category,
+            displayName,
             href: getBasePath() + 'data/resultats/' + sourceName,
             links: [
               {
@@ -97,13 +136,18 @@
 
         return {
           name: sourceName,
+          category,
           displayName,
           href: getBasePath() + 'data/resultats/' + sourceName,
           links,
         };
       })
       .filter(Boolean)
-      .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+      .sort((a, b) => {
+        const orderDiff = getCategoryOrder(a.category, teamsData) - getCategoryOrder(b.category, teamsData);
+        if (orderDiff !== 0) return orderDiff;
+        return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+      });
 
     if (entries.length) {
       return entries;
@@ -116,8 +160,14 @@
           return null;
         }
 
+        const category = getCategoryFromMatchName(fileName, teamsData);
+        if (!category) {
+          return null;
+        }
+
         return {
           name: fileName,
+          category,
           displayName: fileName.replace(/\.zip$/i, ''),
           href: getBasePath() + 'data/resultats/' + fileName,
           links: [
@@ -130,7 +180,11 @@
         };
       })
       .filter(Boolean)
-      .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }));
+      .sort((a, b) => {
+        const orderDiff = getCategoryOrder(a.category, teamsData) - getCategoryOrder(b.category, teamsData);
+        if (orderDiff !== 0) return orderDiff;
+        return a.name.localeCompare(b.name, undefined, { sensitivity: 'base' });
+      });
   }
 
   function renderList(entries) {
@@ -160,7 +214,7 @@
 
       const itemHeader = document.createElement('div');
       itemHeader.className = 'download-item__title';
-      itemHeader.textContent = entry.displayName || entry.name.replace(/\.zip$/i, '');
+      itemHeader.textContent = entry.category || (entry.displayName || entry.name.replace(/\.zip$/i, ''));
       item.appendChild(itemHeader);
 
       const subList = document.createElement('ul');
@@ -189,17 +243,27 @@
     if (!main) return;
 
     const manifestUrl = getBasePath() + 'data/resultats/manifest.json?v=' + Date.now();
+    const teamsUrl = getBasePath() + 'docs/teams.json?v=' + Date.now();
     const directoryUrl = getBasePath() + 'data/resultats/?v=' + Date.now();
 
-    fetch(manifestUrl, { cache: 'no-store' })
-      .then((response) => {
-        if (!response.ok) {
+    Promise.all([
+      fetch(manifestUrl, { cache: 'no-store' }),
+      fetch(teamsUrl, { cache: 'no-store' }),
+    ])
+      .then(async ([manifestResponse, teamsResponse]) => {
+        if (!manifestResponse.ok) {
           throw new Error('Manifest absent');
         }
-        return response.json();
-      })
-      .then((data) => {
-        const entries = getZipEntriesFromManifest(data);
+        if (!teamsResponse.ok) {
+          throw new Error('Fichier teams.json absent');
+        }
+
+        const [data, teamsData] = await Promise.all([
+          manifestResponse.json(),
+          teamsResponse.json(),
+        ]);
+
+        const entries = getZipEntriesFromManifest(data, teamsData);
         renderList(entries);
       })
       .catch(() => {

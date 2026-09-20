@@ -2358,6 +2358,7 @@ h2 {
     margin-top: 1.5rem;
     padding-left: 0;
     list-style: none;
+        margin-left: 10px;
 }
 
 .download-item {
@@ -2375,7 +2376,7 @@ h2 {
     padding-left: 1.4rem;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0px;
     margin: 0;
 }
 

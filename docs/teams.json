@@ -121,11 +121,11 @@
             "type": "CHAMPIONNAT"
         },
         "DM2": {
-            "categorie": "SENIORS",
+            "categorie": "SENIORS 2",
             "type": "CHAMPIONNAT"
         },
         "PRM": {
-            "categorie": "SENIORS",
+            "categorie": "SENIORS 1",
             "type": "CHAMPIONNAT"
         },
         "DMU11-8": {
@@ -239,10 +239,6 @@
         "CDSU11M 1/4": {
             "categorie": "U11M",
             "type": "COUPE"
-        },
-        "TEST": {
-            "categorie": "TEST",
-            "type": "CHAMPIONNAT"
         }
     },
     "categories": {
@@ -256,8 +252,9 @@
         "U15M": 8,
         "U18F": 9,
         "U18M": 10,
-        "SENIORS": 15,
-        "LOISIRS": 16
+        "SENIORS 1": 15,
+        "SENIORS 2": 16,
+        "LOISIRS": 17
     },
     "adversaires": {
         "ACADEMIE DE BASKET CATESIENNE": {
