@@ -16,8 +16,21 @@ function formatDate(d) {
 }
 
 const today = new Date();
-const nextWeek = new Date();
-nextWeek.setDate(today.getDate() + 7);
+const dayStart = new Date(today);
+const dayEnd = new Date(today);
+
+const mode = (process.argv[2] || '').toLowerCase();
+
+if (mode.includes('rencontres')) {
+    dayStart.setDate(today.getDate());
+    dayEnd.setDate(today.getDate() + 6);
+} else if (mode.includes('resultats')) {
+    dayStart.setDate(today.getDate() - 6);
+    dayEnd.setDate(today.getDate());
+} else {
+    dayStart.setDate(today.getDate());
+    dayEnd.setDate(today.getDate() + 7);
+}
 
 (async () => {
 
@@ -49,9 +62,9 @@ nextWeek.setDate(today.getDate() + 7);
 
     // Tes opérations habituelles ici
     await page.goto('https://extranet.ffbb.com/fbi/rechercherRencontreSaisieResultat.fbi');
-    await page.type('#dateRencontreDeb',formatDate(today));
-    await page.type('#dateRencontreFin',formatDate(nextWeek));
-    console.log("Export de "+formatDate(today)+" au "+formatDate(nextWeek));
+    await page.type('#dateRencontreDeb',formatDate(dayStart));
+    await page.type('#dateRencontreFin',formatDate(dayEnd));
+    console.log("Export de "+formatDate(dayStart)+" au "+formatDate(dayEnd));
     await page.waitForSelector('#rechercher');
 
     await Promise.all([        
