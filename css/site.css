@@ -2369,6 +2369,19 @@ h2 {
     margin-bottom: 0.5rem;
     font-weight: 700;
     color: #0f2e4f;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.download-item__category,
+.download-item__opponent {
+    display: inline-block;
+}
+
+.download-item__opponent {
+    font-weight: 500;
+    color: #355d86;
 }
 
 .download-sublist {

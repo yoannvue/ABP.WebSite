@@ -75,6 +75,36 @@
     return Number.MAX_SAFE_INTEGER;
   }
 
+  function formatTeamName(value) {
+    return String(value || '')
+      .replace(/_/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLowerCase()
+      .replace(/(^|\s|-)([a-z])/g, (match, separator, letter) => separator + letter.toUpperCase());
+  }
+
+  function getOpponentFromMatchName(fileName) {
+    const rawName = String(fileName || '').replace(/\.zip$/i, '');
+    if (!rawName) {
+      return null;
+    }
+
+    const prefix = 'AMICALE_BASKET_PECQUENCOURT';
+    const normalized = rawName.toUpperCase();
+    const markerIndex = normalized.indexOf(prefix);
+    if (markerIndex === -1) {
+      return null;
+    }
+
+    const opponentPart = rawName.slice(markerIndex + prefix.length).replace(/^[-_]+/, '').replace(/^[0-9]+[-_]+/, '');
+    if (!opponentPart) {
+      return null;
+    }
+
+    return formatTeamName(opponentPart);
+  }
+
   function getZipEntriesFromManifest(data, teamsData) {
     if (!Array.isArray(data)) {
       return [];
@@ -97,6 +127,7 @@
         }
 
         const displayName = sourceName.replace(/\.zip$/i, '');
+        const opponent = getOpponentFromMatchName(sourceName);
 
         const files = Array.isArray(item.fichiers) ? item.fichiers : [];
         const links = files
@@ -123,6 +154,7 @@
             name: sourceName,
             category,
             displayName,
+            opponent,
             href: getBasePath() + 'data/resultats/' + sourceName,
             links: [
               {
@@ -138,6 +170,7 @@
           name: sourceName,
           category,
           displayName,
+          opponent,
           href: getBasePath() + 'data/resultats/' + sourceName,
           links,
         };
@@ -169,6 +202,7 @@
           name: fileName,
           category,
           displayName: fileName.replace(/\.zip$/i, ''),
+          opponent: getOpponentFromMatchName(fileName),
           href: getBasePath() + 'data/resultats/' + fileName,
           links: [
             {
@@ -214,7 +248,19 @@
 
       const itemHeader = document.createElement('div');
       itemHeader.className = 'download-item__title';
-      itemHeader.textContent = entry.category || (entry.displayName || entry.name.replace(/\.zip$/i, ''));
+
+      const categoryText = document.createElement('span');
+      categoryText.className = 'download-item__category';
+      categoryText.textContent = entry.category || (entry.displayName || entry.name.replace(/\.zip$/i, ''));
+      itemHeader.appendChild(categoryText);
+
+      if (entry.opponent) {
+        const opponentText = document.createElement('span');
+        opponentText.className = 'download-item__opponent';
+        opponentText.textContent = ' - ' + entry.opponent;
+        itemHeader.appendChild(opponentText);
+      }
+
       item.appendChild(itemHeader);
 
       const subList = document.createElement('ul');
