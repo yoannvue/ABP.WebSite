@@ -50,18 +50,6 @@
       "Date": "2026-09-19T14:00:00.000Z"
     },
     {
-      "Categorie": "U13F",
-      "Equipe1": "U13F",
-      "Equipe2": "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT-2",
-      "Score1": "57",
-      "Score2": "20",
-      "Forfait1": false,
-      "Forfait2": false,
-      "EstExempt": false,
-      "ADomicile": true,
-      "Date": "2026-09-19T15:30:00.000Z"
-    },
-    {
       "Categorie": "U13M",
       "Equipe1": "UNION DECHY SIN BASKET",
       "Equipe2": "U13M",
@@ -71,6 +59,18 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": false,
+      "Date": "2026-09-19T15:30:00.000Z"
+    },
+    {
+      "Categorie": "U13F",
+      "Equipe1": "U13F",
+      "Equipe2": "BASKET FEMININ ESCAUDAIN PORTE DU HAINAUT-2",
+      "Score1": "57",
+      "Score2": "20",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": true,
       "Date": "2026-09-19T15:30:00.000Z"
     },
     {
@@ -86,18 +86,6 @@
       "Date": "2026-09-19T17:00:00.000Z"
     },
     {
-      "Categorie": "SENIORS",
-      "Equipe1": "SENIORS-1",
-      "Equipe2": "BASKET CLUB PEVELE",
-      "Score1": "55",
-      "Score2": "56",
-      "Forfait1": false,
-      "Forfait2": false,
-      "EstExempt": false,
-      "ADomicile": true,
-      "Date": "2026-09-19T18:30:00.000Z"
-    },
-    {
       "Categorie": "U15M",
       "Equipe1": "ONNAING JA",
       "Equipe2": "U15M",
@@ -107,6 +95,18 @@
       "Forfait2": false,
       "EstExempt": false,
       "ADomicile": false,
+      "Date": "2026-09-19T18:30:00.000Z"
+    },
+    {
+      "Categorie": "SENIORS",
+      "Equipe1": "SENIORS-1",
+      "Equipe2": "BASKET CLUB PEVELE",
+      "Score1": "55",
+      "Score2": "56",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": true,
       "Date": "2026-09-19T18:30:00.000Z"
     },
     {
