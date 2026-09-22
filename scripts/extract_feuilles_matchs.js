@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
-const path = require("path");
-const fs = require("fs");
-const crypto = require("crypto");
-const AdmZip = require("adm-zip");
-const { PDFDocument } = require("@cantoo/pdf-lib");
+const path = require('path');
+const fs = require('fs');
+const crypto = require('crypto');
+const AdmZip = require('adm-zip');
+const { PDFDocument } = require('@cantoo/pdf-lib');
+const { formatDate, getCurrentWeekDateRange } = require('./utils.dates');
+const { getDownloadDirectory, resetDownloadDirectory, waitForDownload } = require('./utils.files');
 
 const outputSpec = process.argv[2];
 const projectRoot = process.cwd();
@@ -85,28 +87,8 @@ async function extractAndProtectPdfs(zipPath, targetDir, password) {
     return produced;
 }
 
-function formatDate(d) {
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const year = d.getFullYear();
-    return `${day}/${month}/${year}`;
-}
-
 const today = new Date();
-const day = today.getDay(); // 0=dimanche, 1=lundi, ..., 6=samedi
-const daysSinceMonday = (day + 6) % 7; // lundi=0 ... dimanche=6
-
-const dateRencontreDeb = new Date(today);
-if (day === 1) {
-    // exécution le lundi : on prend le lundi précédent
-    dateRencontreDeb.setDate(today.getDate() - 7);
-} else {
-    // exécution le dimanche, ou tout autre jour : on prend le lundi de la semaine en cours
-    dateRencontreDeb.setDate(today.getDate() - daysSinceMonday);
-}
-
-const dateRencontreFin = new Date(dateRencontreDeb);
-dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
+const { start: dateRencontreDeb, end: dateRencontreFin } = getCurrentWeekDateRange(today);
 
 (async () => {
 
@@ -117,9 +99,7 @@ dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
     const page = await browser.newPage();
 
     // Dossier de téléchargement (vidé avant chaque run pour être sûr de récupérer le bon fichier)
-    const downloadPath = path.resolve(__dirname, '../downloads');
-    fs.rmSync(downloadPath, { recursive: true, force: true });
-    fs.mkdirSync(downloadPath, { recursive: true });
+    const downloadPath = resetDownloadDirectory(getDownloadDirectory(projectRoot));
 
     const manifestPath = path.resolve(__dirname, '../data/resultats/manifest.json');
     if (fs.existsSync(manifestPath)) {
@@ -270,17 +250,3 @@ dateRencontreFin.setDate(dateRencontreDeb.getDate() + 6);
 
     await browser.close();
 })();
-
-async function waitForDownload(downloadPath, existingFiles = new Set(), timeout = 30000) {
-    const start = Date.now();
-    while (Date.now() - start < timeout) {
-        const files = fs.readdirSync(downloadPath);
-        const finished = files.find((file) => {
-            if (existingFiles.has(file)) return false;
-            return !file.endsWith('.crdownload') && !file.endsWith('.tmp');
-        });
-        if (finished) return path.join(downloadPath, finished);
-        await new Promise((r) => setTimeout(r, 500));
-    }
-    throw new Error('❌ Téléchargement du fichier : timeout dépassé');
-}

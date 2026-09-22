@@ -1,36 +1,17 @@
 const puppeteer = require('puppeteer');
-const path = require("path");
-const fs = require("fs");
+const path = require('path');
+const fs = require('fs');
+const { formatDate, getDateRangeForMode } = require('./utils.dates');
+const { getDownloadDirectory, resetDownloadDirectory, waitForDownload } = require('./utils.files');
 
 const outputxls = process.argv[2];
 
 if (!process.env.CI) {
-    require("dotenv").config({ path: path.resolve(__dirname, "../.env.local") });
-}
-
-function formatDate(d) {
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const year = d.getFullYear();
-    return `${day}/${month}/${year}`;
+    require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') });
 }
 
 const today = new Date();
-const dayStart = new Date(today);
-const dayEnd = new Date(today);
-
-const mode = (process.argv[2] || '').toLowerCase();
-
-if (mode.includes('rencontres')) {
-    dayStart.setDate(today.getDate());
-    dayEnd.setDate(today.getDate() + 6);
-} else if (mode.includes('resultats')) {
-    dayStart.setDate(today.getDate() - 6);
-    dayEnd.setDate(today.getDate());
-} else {
-    dayStart.setDate(today.getDate());
-    dayEnd.setDate(today.getDate() + 7);
-}
+const { start: dayStart, end: dayEnd } = getDateRangeForMode(outputxls || '', today);
 
 (async () => {
 
@@ -41,9 +22,7 @@ if (mode.includes('rencontres')) {
     const page = await browser.newPage();
 
     // Dossier de téléchargement (vidé avant chaque run pour être sûr de récupérer le bon fichier)
-    const downloadPath = path.resolve(__dirname, '../downloads');
-    fs.rmSync(downloadPath, { recursive: true, force: true });
-    fs.mkdirSync(downloadPath, { recursive: true });
+    const downloadPath = resetDownloadDirectory(getDownloadDirectory(path.resolve(__dirname, '..')));
 
     const client = await page.createCDPSession();
     await client.send('Page.setDownloadBehavior', {
@@ -62,15 +41,48 @@ if (mode.includes('rencontres')) {
 
     // Tes opérations habituelles ici
     await page.goto('https://extranet.ffbb.com/fbi/rechercherRencontreSaisieResultat.fbi');
-    await page.type('#dateRencontreDeb',formatDate(dayStart));
-    await page.type('#dateRencontreFin',formatDate(dayEnd));
-    console.log("Export de "+formatDate(dayStart)+" au "+formatDate(dayEnd));
+    await page.type('#dateRencontreDeb', formatDate(dayStart));
+    await page.type('#dateRencontreFin', formatDate(dayEnd));
+    console.log('Export de ' + formatDate(dayStart) + ' au ' + formatDate(dayEnd));
     await page.waitForSelector('#rechercher');
+    await page.click('#rechercher');
 
-    await Promise.all([        
-        page.click('#rechercher'),
-        page.waitForSelector('.boutonExcelNew', { visible: true })
-    ]);
+    await page.waitForFunction(() => {
+        const table = document.querySelector('#rechercherRencontreSaisieResultatAjax');
+        const tbody = table ? table.querySelector('tbody') : null;
+        const rowCount = tbody ? tbody.querySelectorAll('tr').length : 0;
+        const processing = document.querySelector('#rechercherRencontreSaisieResultatAjax_processing');
+        const style = processing ? window.getComputedStyle(processing) : null;
+        const processingHidden = !processing || !style || style.display === 'none' || style.visibility === 'hidden';
+        return !!table && processingHidden && rowCount >= 0;
+    }, { timeout: 45000 });
+
+    const tableState = await page.evaluate(() => {
+        const table = document.querySelector('#rechercherRencontreSaisieResultatAjax');
+        const tbody = table ? table.querySelector('tbody') : null;
+        const rowCount = tbody ? tbody.querySelectorAll('tr').length : 0;
+        const processing = document.querySelector('#rechercherRencontreSaisieResultatAjax_processing');
+        const style = processing ? window.getComputedStyle(processing) : null;
+        const processingVisible = !!processing && style && style.display !== 'none' && style.visibility !== 'hidden';
+
+        return {
+            tablePresent: !!table,
+            processingVisible,
+            rowCount,
+        };
+    });
+
+    if (!tableState.tablePresent) {
+        throw new Error('❌ Le tableau #rechercherRencontreSaisieResultatAjax est absent de la page.');
+    }
+
+    if (tableState.rowCount === 0) {
+        console.log('Aucun résultat pour la période demandée, export ignoré.');
+        await browser.close();
+        return;
+    }
+
+    await page.waitForSelector('.boutonExcelNew', { visible: true, timeout: 30000 });
 
     // Clic sur le bouton d'export Excel
     await page.click('.boutonExcelNew');
@@ -88,14 +100,4 @@ if (mode.includes('rencontres')) {
     await browser.close();
 })();
 
-async function waitForDownload(downloadPath, timeout = 30000) {
-    const start = Date.now();
-    while (Date.now() - start < timeout) {
-        const files = fs.readdirSync(downloadPath);
-        const finished = files.find(f => !f.endsWith('.crdownload') && !f.endsWith('.tmp'));
-        if (finished) return path.join(downloadPath, finished);
-        await new Promise(r => setTimeout(r, 500));
-    }
-    throw new Error('❌ Téléchargement du fichier Excel : timeout dépassé');
-}
 
