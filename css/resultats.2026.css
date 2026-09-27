@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 #sectionRencontres{
     background-image: url('/ressources/resultats2026.jpg');
     background-size: 100% auto; /* 100% de la largeur, hauteur automatique sans déformation */
@@ -81,7 +83,6 @@ img.fondagenda {
 }
 
 .rencontre{
-    width:450px;
     height:130px;
     border:4px solid #333333;
     border-radius:25px;
@@ -138,33 +139,62 @@ img.fondagenda {
 .centre{
     text-align:center;
     font-size: 10px;
+    display:grid
 }
 
 .logo {
     height:80px;
 }
 
-.centre span{
+.centre span.resultat{
     display: inline-block;
-    font-family: 'Arial Black', system-ui, sans-serif;
-    font-size: 1.2rem;
+    font-family: 'Bebas Neue', 'Arial Black', system-ui, sans-serif;
+    font-size: 44px;
     font-weight: 800;
     color: #ffffff;
-    background: linear-gradient(135deg, #1e3c72, #2a5298); /* Bleu dynamique */
-    padding: 6px 16px;
-    border-radius: 20px;
+    background: linear-gradient(135deg, #014385, #2a5298); /* Bleu dynamique */
+    padding: 34px 8px 8px 8px;
+    border-radius: 5px;
     letter-spacing: 2px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    min-width: 140px;
+    grid-column: 1;
+    grid-row: 1;
 }
 
-.gagnant span,
-.centre.victoire span{
+.centre span.categorie{
+    z-index: 2;
+    transform: translateY(-5px);
+    grid-column: 1;
+    grid-row: 1;
+    position: relative;
+    color: white;
+    font-size: 14px;
+    top: 6px;
+}
+
+.centre.victoire span.resultat{
     background: linear-gradient(135deg, #1e7229, #4d982a) !important; /* vert dynamique */
-    border: 2px solid #f16507;
+    /* border: 2px solid #f16507; */
 }
 
 .centre.defaite span{
-    border: 2px solid #450b0b;
+    /*border: 2px solid #450b0b;*/
+}
+
+.centre span.barre{
+    z-index: 2;
+    transform: translateY(-5px);
+    grid-column: 1;
+    grid-row: 1;
+    border: 1px solid orange;
+    position: relative;
+    color: white;
+    font-size: 14px;
+    left: 69px;
+    top: 40px;
+    height: 50px;
+    width: 2px;
 }
 
 .jour{

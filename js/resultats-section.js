@@ -61,20 +61,34 @@ async function chargerRencontres() {
             const logoequipegauche = match.ADomicile ? getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT") : getLogoUrl(teams, match.Equipe1);
             const logoequipedroite = match.ADomicile ? getLogoUrl(teams, match.Equipe2): getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT");
 
-            const formatScore = (value) => {
+            const score1 = Number(match.Score1);
+            const score2 = Number(match.Score2);
+            const hasScore = Number.isFinite(score1) && Number.isFinite(score2);
+
+            const formatScore = (value, opponentValue) => {
                 const numericValue = Number(value);
                 if (!Number.isFinite(numericValue)) {
                     return value ?? "xx";
                 }
-                return numericValue < 10 ? `0${numericValue}` : String(numericValue);
+
+                const opponentNumericValue = Number(opponentValue);
+                const width = Number.isFinite(opponentNumericValue)
+                    ? Math.max(String(Math.abs(numericValue)).length, String(Math.abs(opponentNumericValue)).length)
+                    : String(Math.abs(numericValue)).length;
+
+                return String(numericValue).padStart(width, "0");
             };
 
-            const Score = `${formatScore(match.Score1)}${match.Forfait1 ? "(F)" : ""} - ${formatScore(match.Score2)}${match.Forfait2 ? "(F)" : ""}`;
-            const score1 = Number(match.Score1);
-            const score2 = Number(match.Score2);
-            const hasScore = Number.isFinite(score1) && Number.isFinite(score2);
-            const isU9Category = ["U9M", "U9F"].includes(match.Categorie);
             const gagnant = hasScore && ((match.ADomicile && score1 > score2) || (!match.ADomicile && score2 > score1));
+            const score2Color = !hasScore
+                ? ""
+                : (match.ADomicile
+                    ? (score1 > score2 ? "#17a34a" : "#dc2626")
+                    : (score1 > score2 ? "#dc2626" : "#17a34a"));
+            const score1Texte = `${formatScore(match.Score1, match.Score2)}${match.Forfait1 ? "(F)" : ""}`;
+            const score2Texte = `${formatScore(match.Score2, match.Score1)}${match.Forfait2 ? "(F)" : ""}`;
+            const Score = `${score1Texte} <span style="color:${score2Color};">${score2Texte}</span>`;
+            const isU9Category = ["U9M", "U9F"].includes(match.Categorie);
             const resultatTexte = isU9Category
                 ? (hasScore ? (gagnant ? "Victoire" : "Defaite") : "")
                 : Score;
@@ -92,7 +106,9 @@ async function chargerRencontres() {
                 </div>
 
                 <div class="centre${centreClasse}">
-                    <span>${resultatTexte}</span>
+                    <span class="categorie">${match.Categorie}</span>
+                    <span class="resultat">${resultatTexte}</span>
+                    <span class="barre" style="${isU9Category ? 'display:none;' : ''}"></span>
                 </div>
 
                 <div class="equipe droite ${styleequipedroite}">
