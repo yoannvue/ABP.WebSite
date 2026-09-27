@@ -51,3 +51,5 @@ jobs:
           from: ABP WebSite Bot
           html_body: |
             <img src="https://abpecquencourt.fr/data/resultats/resultats.png" alt="Affiche des resultats" style="max-width:600px;" />
+            <p>L'affiche : <a href="https://abpecquencourt.fr/pages/resultats.2026.html">https://abpecquencourt.fr/pages/resultats.2026.html</a></p>
+            <img src="https://abpecquencourt.fr/data/resultats/resultats.png?v=${{ github.run_id }}" alt="Affiche de la semaine" style="max-width:600px;" />

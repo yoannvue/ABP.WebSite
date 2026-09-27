@@ -27,7 +27,20 @@ async function chargerRencontres() {
         const section = document.getElementById("sectionRencontres");
         section.innerHTML = "";
 
-        if (data.rencontres.length == 0) {
+        const rencontresAvecScore = data.rencontres.filter(match => {
+            const score1Raw = match.Score1 ?? '';
+            const score2Raw = match.Score2 ?? '';
+
+            if (score1Raw === '' || score2Raw === '') {
+                return false;
+            }
+
+            const score1 = Number(score1Raw);
+            const score2 = Number(score2Raw);
+            return Number.isFinite(score1) && Number.isFinite(score2);
+        });
+
+        if (rencontresAvecScore.length == 0) {
             section.innerText = "Aucune rencontre cette semaine";
             section.className = "AucuneRencontre";
             return;
@@ -44,13 +57,13 @@ async function chargerRencontres() {
         divRencontres.className= "listRencontres"
 
         // Tri chronologique
-        data.rencontres.sort((a, b) => {
+        rencontresAvecScore.sort((a, b) => {
             const da = getCategorieDisplayOrder(teams, a.Categorie);
             const db = getCategorieDisplayOrder(teams, b.Categorie);
             return da - db;
         });
 
-        data.rencontres.forEach(match => {
+        rencontresAvecScore.forEach(match => {
 
             const equipeGauche = match.ADomicile ? match.Equipe1 : getShortName(teams, match.Equipe1);
             const equipeDroite = !match.ADomicile ? match.Equipe2 : getShortName(teams, match.Equipe2);
