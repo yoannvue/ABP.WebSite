@@ -84,6 +84,12 @@
       .replace(/(^|\s|-)([a-z])/g, (match, separator, letter) => separator + letter.toUpperCase());
   }
 
+  function stripTeamNumberSuffix(value) {
+    // Retire un suffixe de type "-3" ou "_1" en fin de nom d'équipe
+    // (ex: "TEMPLEUVE_L_P-3" -> "TEMPLEUVE_L_P", "LAMBRES_BASKET_CLUB-1" -> "LAMBRES_BASKET_CLUB")
+    return String(value || '').replace(/[-_]\d+$/, '');
+  }
+
   function getOpponentFromMatchName(fileName) {
     const rawName = String(fileName || '').replace(/\.zip$/i, '');
     if (!rawName) {
@@ -91,13 +97,32 @@
     }
 
     const prefix = 'AMICALE_BASKET_PECQUENCOURT';
-    const normalized = rawName.toUpperCase();
-    const markerIndex = normalized.indexOf(prefix);
+
+    // Le nom de fichier suit le motif "0059_DIVISION_CODE_MATCHNUM_EQUIPE_A_EQUIPE_B".
+    // On retire les 4 premiers segments (0059, division, code, numéro de match) pour
+    // isoler la partie qui ne contient que les deux noms d'équipes.
+    const parts = rawName.split('_');
+    const teamsSegment = parts.length > 4 ? parts.slice(4).join('_') : rawName;
+
+    const normalizedTeams = teamsSegment.toUpperCase();
+    const markerIndex = normalizedTeams.indexOf(prefix);
     if (markerIndex === -1) {
       return null;
     }
 
-    const opponentPart = rawName.slice(markerIndex + prefix.length).replace(/^[-_]+/, '').replace(/^[0-9]+[-_]+/, '');
+    const before = teamsSegment.slice(0, markerIndex).replace(/[-_]+$/, '');
+    const after = teamsSegment.slice(markerIndex + prefix.length).replace(/^[-_]+/, '');
+
+    // Ce qui suit immédiatement notre nom de club peut n'être que le suffixe de
+    // numéro de notre propre équipe (ex: "..._PECQUENCOURT-1"), pas un adversaire.
+    const afterIsOnlyOwnSuffix = after === '' || /^\d+$/.test(after);
+
+    let opponentPart = afterIsOnlyOwnSuffix ? before : after;
+    if (!opponentPart) {
+      return null;
+    }
+
+    opponentPart = stripTeamNumberSuffix(opponentPart);
     if (!opponentPart) {
       return null;
     }
