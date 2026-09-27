@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 const path = require('path');
 const fs = require('fs');
-const { formatDate, getDateRangeForMode } = require('./utils.dates');
+const { formatDate, getCurrentWeekDateRange } = require('./utils.dates');
 const { getDownloadDirectory, resetDownloadDirectory, waitForDownload } = require('./utils.files');
 
 const outputxls = process.argv[2];
@@ -11,7 +11,7 @@ if (!process.env.CI) {
 }
 
 const today = new Date();
-const { start: dayStart, end: dayEnd } = getDateRangeForMode(outputxls || '', today);
+const { start: dayStart, end: dayEnd } = getCurrentWeekDateRange(today);
 
 (async () => {
 
