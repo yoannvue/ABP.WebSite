@@ -264,49 +264,95 @@
       return;
     }
 
-    const list = document.createElement('ul');
-    list.className = 'download-list';
+    const tableWrapper = document.createElement('div');
+    tableWrapper.className = 'download-table-wrapper';
 
-    entries.forEach((entry) => {
-      const item = document.createElement('li');
-      item.className = 'download-item';
+    const table = document.createElement('table');
+    table.className = 'download-table';
 
-      const itemHeader = document.createElement('div');
-      itemHeader.className = 'download-item__title';
+    const thead = document.createElement('thead');
+    const headRow = document.createElement('tr');
 
-      const categoryText = document.createElement('span');
-      categoryText.className = 'download-item__category';
-      categoryText.textContent = entry.category || (entry.displayName || entry.name.replace(/\.zip$/i, ''));
-      itemHeader.appendChild(categoryText);
-
-      if (entry.opponent) {
-        const opponentText = document.createElement('span');
-        opponentText.className = 'download-item__opponent';
-        opponentText.textContent = ' - ' + entry.opponent;
-        itemHeader.appendChild(opponentText);
-      }
-
-      item.appendChild(itemHeader);
-
-      const subList = document.createElement('ul');
-      subList.className = 'download-sublist';
-
-      (entry.links || []).forEach((linkInfo) => {
-        const subItem = document.createElement('li');
-        const link = document.createElement('a');
-        link.href = toAbsoluteUrl(linkInfo.href);
-        link.textContent = linkInfo.label;
-        link.className = 'download-sub-link';
-        link.setAttribute('download', linkInfo.name || linkInfo.label);
-        subItem.appendChild(link);
-        subList.appendChild(subItem);
-      });
-
-      item.appendChild(subList);
-      list.appendChild(item);
+    ['Catégorie / adversaire', 'Feuille de match', 'Résumé'].forEach((label) => {
+      const th = document.createElement('th');
+      th.textContent = label;
+      headRow.appendChild(th);
     });
 
-    main.appendChild(list);
+    thead.appendChild(headRow);
+    table.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+
+    entries.forEach((entry) => {
+      const row = document.createElement('tr');
+      row.className = 'download-table__row';
+
+      const matchCell = document.createElement('td');
+      matchCell.className = 'download-table__cell download-table__cell--match';
+
+      const matchSummary = document.createElement('div');
+      matchSummary.className = 'download-table__match';
+
+      const categoryLabel = document.createElement('span');
+      categoryLabel.className = 'download-table__category';
+      categoryLabel.textContent = entry.category || (entry.displayName || entry.name.replace(/\.zip$/i, ''));
+      matchSummary.appendChild(categoryLabel);
+
+      if (entry.opponent) {
+        const opponentLabel = document.createElement('span');
+        opponentLabel.className = 'download-table__opponent';
+        opponentLabel.textContent = entry.opponent;
+        matchSummary.appendChild(opponentLabel);
+      }
+
+      matchCell.appendChild(matchSummary);
+      row.appendChild(matchCell);
+
+      const sheetCell = document.createElement('td');
+      sheetCell.className = 'download-table__cell';
+      const sheetLink = (entry.links || []).find((linkInfo) => {
+        const haystack = `${linkInfo.name || ''} ${linkInfo.label || ''} ${linkInfo.href || ''}`.toLowerCase();
+        return haystack.includes('feuillematch') || haystack.includes('feuille de match');
+      });
+
+      if (sheetLink) {
+        const link = document.createElement('a');
+        link.href = toAbsoluteUrl(sheetLink.href);
+        link.textContent = 'Ouvrir';
+        link.className = 'download-table__link';
+        link.setAttribute('download', sheetLink.name || 'feuille-de-match.pdf');
+        sheetCell.appendChild(link);
+      } else {
+        sheetCell.innerHTML = '<span class="download-table__empty">-</span>';
+      }
+      row.appendChild(sheetCell);
+
+      const resumeCell = document.createElement('td');
+      resumeCell.className = 'download-table__cell';
+      const resumeLink = (entry.links || []).find((linkInfo) => {
+        const haystack = `${linkInfo.name || ''} ${linkInfo.label || ''} ${linkInfo.href || ''}`.toLowerCase();
+        return haystack.includes('resume') || haystack.includes('résumé');
+      });
+
+      if (resumeLink) {
+        const link = document.createElement('a');
+        link.href = toAbsoluteUrl(resumeLink.href);
+        link.textContent = 'Ouvrir';
+        link.className = 'download-table__link';
+        link.setAttribute('download', resumeLink.name || 'resume.pdf');
+        resumeCell.appendChild(link);
+      } else {
+        resumeCell.innerHTML = '<span class="download-table__empty">-</span>';
+      }
+      row.appendChild(resumeCell);
+
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(tbody);
+    tableWrapper.appendChild(table);
+    main.appendChild(tableWrapper);
   }
 
   function init() {
