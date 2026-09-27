@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
 
 #sectionRencontres{
     background-image: url('/ressources/resultats2026.jpg');
@@ -91,7 +92,7 @@ img.fondagenda {
     padding:1px 10px;
     margin-bottom:0px;
     color:rgb(0, 0, 0);
-    font-family: 'Alfa Slab One', 'Arial Black', sans-serif;   
+    font-family: 'Roboto Condensed', sans-serif;
 
     display: flex;
     justify-content: space-between; /* Espace les 3 éléments sur toute la largeur */
@@ -118,8 +119,9 @@ img.fondagenda {
 }
 
 .equipe{
-    font-size:15px; 
+    font-size:18px; 
     flex: 1;
+    font-weight: bold;
 }
 
 .gauche{
