@@ -56,7 +56,7 @@ function getDateRangeForMode(mode, referenceDate = new Date()) {
     }
 
     if (normalizedMode.includes('resultats')) {
-        return getPreviousWeekDateRange(referenceDate);
+        return getCurrentWeekDateRange(referenceDate);
     }
 
     const start = new Date(referenceDate);

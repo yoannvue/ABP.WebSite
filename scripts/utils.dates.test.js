@@ -21,6 +21,10 @@ const previousRange = getPreviousWeekDateRange(tuesday);
 assert.equal(formatDate(previousRange.start), '14/09/2026');
 assert.equal(formatDate(previousRange.end), '20/09/2026');
 
+const sundayResults = getDateRangeForMode('resultats', new Date('2026-09-27T12:00:00'));
+assert.equal(formatDate(sundayResults.start), '21/09/2026');
+assert.equal(formatDate(sundayResults.end), '27/09/2026');
+
 const mondayRencontres = getDateRangeForMode('rencontres', monday);
 assert.equal(formatDate(mondayRencontres.start), '14/09/2026');
 assert.equal(formatDate(mondayRencontres.end), '20/09/2026');
