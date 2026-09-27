@@ -49,13 +49,20 @@ const { start: dayStart, end: dayEnd } = getCurrentWeekDateRange(today);
 
     await page.waitForFunction(() => {
         const table = document.querySelector('#rechercherRencontreSaisieResultatAjax');
-        const tbody = table ? table.querySelector('tbody') : null;
+        if (!table) return false;
+
+        const tbody = table.querySelector('tbody');
         const rowCount = tbody ? tbody.querySelectorAll('tr').length : 0;
         const processing = document.querySelector('#rechercherRencontreSaisieResultatAjax_processing');
         const style = processing ? window.getComputedStyle(processing) : null;
         const processingHidden = !processing || !style || style.display === 'none' || style.visibility === 'hidden';
-        return !!table && processingHidden && rowCount >= 0;
-    }, { timeout: 45000 });
+
+        const info = document.querySelector('#rechercherRencontreSaisieResultatAjax_info');
+        const infoText = info ? (info.textContent || '').toLowerCase() : '';
+        const hasNoResultMessage = infoText.includes('aucun') || infoText.includes('0 résultat') || infoText.includes('0 resultats');
+
+        return processingHidden && (rowCount > 0 || hasNoResultMessage);
+    }, { timeout: 60000 });
 
     const tableState = await page.evaluate(() => {
         const table = document.querySelector('#rechercherRencontreSaisieResultatAjax');
@@ -65,10 +72,15 @@ const { start: dayStart, end: dayEnd } = getCurrentWeekDateRange(today);
         const style = processing ? window.getComputedStyle(processing) : null;
         const processingVisible = !!processing && style && style.display !== 'none' && style.visibility !== 'hidden';
 
+        const info = document.querySelector('#rechercherRencontreSaisieResultatAjax_info');
+        const infoText = info ? (info.textContent || '').toLowerCase() : '';
+        const hasNoResultMessage = infoText.includes('aucun') || infoText.includes('0 résultat') || infoText.includes('0 resultats');
+
         return {
             tablePresent: !!table,
             processingVisible,
             rowCount,
+            hasNoResultMessage,
         };
     });
 
@@ -76,7 +88,13 @@ const { start: dayStart, end: dayEnd } = getCurrentWeekDateRange(today);
         throw new Error('❌ Le tableau #rechercherRencontreSaisieResultatAjax est absent de la page.');
     }
 
-    if (tableState.rowCount === 0) {
+    if (tableState.rowCount === 0 && !tableState.hasNoResultMessage) {
+        console.log('Tableau AJAX non chargé, attente trop courte ou pas de résultats encore disponibles.');
+        await browser.close();
+        return;
+    }
+
+    if (tableState.rowCount === 0 && tableState.hasNoResultMessage) {
         console.log('Aucun résultat pour la période demandée, export ignoré.');
         await browser.close();
         return;

@@ -48,9 +48,30 @@ function getPreviousWeekDateRange(referenceDate = new Date()) {
     return { start, end };
 }
 
+function getDateRangeForMode(mode, referenceDate = new Date()) {
+    const normalizedMode = (mode || '').toLowerCase();
+
+    if (normalizedMode.includes('rencontres')) {
+        return getCurrentWeekDateRange(referenceDate);
+    }
+
+    if (normalizedMode.includes('resultats')) {
+        return getCurrentWeekDateRange(referenceDate);
+    }
+
+    const start = new Date(referenceDate);
+    const end = new Date(referenceDate);
+    start.setHours(0, 0, 0, 0);
+    end.setHours(0, 0, 0, 0);
+    end.setDate(start.getDate() + 7);
+    return { start, end };
+}
+
 module.exports = {
     formatDate,
     getWeekStart,
     getWeekRange,
     getCurrentWeekDateRange,
+    getPreviousWeekDateRange,
+    getDateRangeForMode,
 };
