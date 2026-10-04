@@ -72,8 +72,6 @@ function normalizeEquipe(name) {
         nom = cleaned;
     }
 
-    console.log("Normalize " + name +" => "+nom);
-
     return { nom, numero };
 }
 

@@ -40,7 +40,7 @@ const { start: dayStart, end: dayEnd } = getCurrentWeekDateRange(today);
     ]);
 
     // Tes opérations habituelles ici
-    await page.goto('https://extranet.ffbb.com/fbi/rechercherRencontreSaisieResultat.fbi');
+    await page.goto('https://extranet.ffbb.com/fbi/rechercherRencontreSaisieResultat.fbi', { timeout: 60000 });
     await page.type('#dateRencontreDeb', formatDate(dayStart));
     await page.type('#dateRencontreFin', formatDate(dayEnd));
     console.log('Export de ' + formatDate(dayStart) + ' au ' + formatDate(dayEnd));

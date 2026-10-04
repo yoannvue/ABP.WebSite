@@ -1,4 +1,41 @@
-[
+[ {
+        "date": "Octobre 2026",
+        "categorie": "Opérations",
+        "titre": "Octobre Rose",
+        "lien" :"",
+        "contenu": [
+             { 
+                "type": "image", 
+                "titre": "Logo Octobre Rose",
+                "lien": "/ressources/Actualites/octobrerose-logo.jpeg"
+            },
+            { 
+                "type": "image", 
+                "titre": "U9F",
+                "lien": "/ressources/Actualites/octobrerose-u9f.jpeg"
+            },
+            { 
+                "type": "image", 
+                "titre": "U11F",
+                "lien": "/ressources/Actualites/octobrerose-u11f.jpeg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U13F",
+                "lien": "/ressources/Actualites/octobrerose-u13f.jpeg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U15F",
+                "lien": "/ressources/Actualites/octobrerose-u15f.jpeg"
+            },
+            { 
+                 "type": "image", 
+                "titre": "U18F",
+                "lien": "/ressources/Actualites/octobrerose-u18f.jpeg"
+            }
+        ]
+    },
     {
         "date": "Septembre 2026",
         "categorie": "Présentation",
