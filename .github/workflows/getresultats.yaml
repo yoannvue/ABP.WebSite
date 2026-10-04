@@ -3,6 +3,7 @@ name: Consultation des resultats FFBB
 on:
   schedule:
     - cron: '0 18 * * 0'
+    - cron: '6 18 * * 0'
   workflow_dispatch:
 
 permissions:

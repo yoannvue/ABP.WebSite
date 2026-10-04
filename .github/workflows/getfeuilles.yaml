@@ -2,6 +2,7 @@ name: Récupération des feuilles de matchs FFBB
 on:
   schedule:
     - cron: '0 20 * * 0'
+    - cron: '6 20 * * 0'
   workflow_dispatch:
 
 permissions:
