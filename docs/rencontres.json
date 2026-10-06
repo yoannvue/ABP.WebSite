@@ -25,17 +25,6 @@
     },
     {
       "Type": "CHAMPIONNAT",
-      "Equipe1": "U13M",
-      "Equipe2": "CUINCY ASB",
-      "Date": "2026-10-10T13:30:00.000Z",
-      "JourRencontre": "2026/10/10",
-      "DateFormatted": "SAMEDI\n15H30",
-      "Salle": "JEAN DEGROS",
-      "EstExempt": false,
-      "ADomicile": true
-    },
-    {
-      "Type": "CHAMPIONNAT",
       "Equipe1": "MARCQ EN BAROEUL ASJ",
       "Equipe2": "U13F",
       "Date": "2026-10-10T13:30:00.000Z",
@@ -47,11 +36,11 @@
     },
     {
       "Type": "CHAMPIONNAT",
-      "Equipe1": "U18F",
-      "Equipe2": "DOUAI BASKET FEMININ-3",
-      "Date": "2026-10-10T15:00:00.000Z",
+      "Equipe1": "U13M",
+      "Equipe2": "CUINCY ASB",
+      "Date": "2026-10-10T13:30:00.000Z",
       "JourRencontre": "2026/10/10",
-      "DateFormatted": "SAMEDI\n17H00",
+      "DateFormatted": "SAMEDI\n15H30",
       "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
@@ -69,13 +58,14 @@
     },
     {
       "Type": "CHAMPIONNAT",
-      "Equipe1": "Exempt",
-      "Equipe2": "U15M",
-      "Date": "2026-10-10T16:30:00.000Z",
+      "Equipe1": "U18F",
+      "Equipe2": "DOUAI BASKET FEMININ-3",
+      "Date": "2026-10-10T15:00:00.000Z",
       "JourRencontre": "2026/10/10",
-      "DateFormatted": "SAMEDI\n18H30",
-      "EstExempt": true,
-      "ADomicile": false
+      "DateFormatted": "SAMEDI\n17H00",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
     },
     {
       "Type": "CHAMPIONNAT",
@@ -87,6 +77,16 @@
       "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "Exempt",
+      "Equipe2": "U15M",
+      "Date": "2026-10-10T16:30:00.000Z",
+      "JourRencontre": "2026/10/10",
+      "DateFormatted": "SAMEDI\n18H30",
+      "EstExempt": true,
+      "ADomicile": false
     },
     {
       "Type": "CHAMPIONNAT",
