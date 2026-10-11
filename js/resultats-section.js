@@ -93,21 +93,14 @@ async function chargerRencontres() {
             };
 
             const gagnant = hasScore && ((match.ADomicile && score1 > score2) || (!match.ADomicile && score2 > score1));
-            const score2Color = !hasScore
-                ? ""
-                : (match.ADomicile
-                    ? (score1 > score2 ? "#17a34a" : "#dc2626")
-                    : (score1 > score2 ? "#dc2626" : "#17a34a"));
             const score1Texte = `${formatScore(match.Score1, match.Score2)}${match.Forfait1 ? "(F)" : ""}`;
             const score2Texte = `${formatScore(match.Score2, match.Score1)}${match.Forfait2 ? "(F)" : ""}`;
-            const Score = `${score1Texte} <span style="color:${score2Color};">${score2Texte}</span>`;
+            const Score = `${score1Texte} ${score2Texte}`;
             const isU9Category = ["U9M", "U9F"].includes(match.Categorie);
             const resultatTexte = isU9Category
                 ? (hasScore ? (gagnant ? "Victoire" : "Defaite") : "")
                 : Score;
-            const centreClasse = isU9Category
-                ? (hasScore ? (gagnant ? " victoire" : " defaite") : "")
-                : (gagnant ? " gagnant" : "");
+            const centreClasse = hasScore ? (gagnant ? " victoire" : " defaite") : "";
 
             const carte = document.createElement("div");
             carte.className = "rencontre";
@@ -163,4 +156,3 @@ function getLogoUrl(teams, club) {
     if (!clubObj || !clubObj.nomcourt) return "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg";
     return clubObj.logo;
 }
-
