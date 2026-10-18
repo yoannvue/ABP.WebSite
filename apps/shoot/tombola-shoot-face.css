@@ -1,0 +1,69 @@
+* { box-sizing: border-box; }
+  html, body {
+    touch-action: none; user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent;
+    margin: 0; height: 100%; background: #050b13; overflow: hidden;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: #fff;
+  }
+  #stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  /* 1em = 1 pixel "logique" (scène de 1280 x 720), mis à l'échelle en JS ; --u = ce même pixel pour calc() */
+  #wrap { position: relative; aspect-ratio: 16 / 9; width: min(100vw, 177.78vh); font-size: 1px; }
+  canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  #hud { position: absolute; inset: 0; pointer-events: none; }
+
+  #titre { position: absolute; left: 3%; top: 3.5%; line-height: 1; }
+  #titre span { display: block; font-size: 44em; font-weight: 900; letter-spacing: .08em; color: #ffd166; text-shadow: 0 calc(var(--u) * 2) 0 rgba(0,0,0,.35); }
+  #titre small { display: block; margin-top: calc(var(--u) * 6); font-size: 18em; letter-spacing: .3em; text-transform: uppercase; opacity: .7; }
+
+  #stats { position: absolute; right: 3%; top: 3.5%; text-align: right; font-size: 20em; line-height: 1.5; }
+  #stats b { font-size: 1.5em; color: #ffd166; font-variant-numeric: tabular-nums; }
+  #modeLabel { font-size: .8em; opacity: .7; }
+
+  #aide { position: absolute; left: 0; right: 0; top: 2.6%; text-align: center; font-size: 15em; opacity: .45; letter-spacing: .04em; }
+
+  #msg {
+    position: absolute; left: 50%; top: 77%; transform: translateX(-50%);
+    font-size: 34em; font-weight: 700; white-space: nowrap;
+    padding: calc(var(--u) * 8) calc(var(--u) * 30); border-radius: calc(var(--u) * 40); background: rgba(8,16,28,.72);
+    border: calc(var(--u) * 2) solid rgba(255,255,255,.12); opacity: 0; transition: opacity .2s;
+  }
+  #msg.on { opacity: 1; }
+  #msg.pulse { animation: pulse 1.4s ease-in-out infinite; }
+  @keyframes pulse { 50% { transform: translateX(-50%) scale(1.05); } }
+  kbd {
+    display: inline-block; font: inherit; font-size: .8em; font-weight: 800;
+    background: #fff; color: #0d1b2a; padding: .05em .5em; border-radius: .3em;
+    box-shadow: 0 calc(var(--u) * 3) 0 #9aa7b8;
+  }
+
+  #flash {
+    position: absolute; left: 3.5%; top: 24%; font-size: 62em; font-weight: 900;
+    letter-spacing: .02em; opacity: 0; transform: rotate(-4deg); white-space: nowrap;
+    text-shadow: 0 calc(var(--u) * 5) 0 rgba(0,0,0,.45);
+  }
+  #flash.show { animation: pop 1.5s ease-out forwards; }
+  #flash.or { color: #ffd166; }
+  #flash.orange { color: #ff9f43; }
+  #flash.rouge { color: #ff6b6b; }
+  @keyframes pop {
+    0%   { opacity: 0; transform: scale(.6) rotate(-4deg); }
+    15%  { opacity: 1; transform: scale(1.12) rotate(-4deg); }
+    30%  { transform: scale(1) rotate(-4deg); }
+    80%  { opacity: 1; }
+    100% { opacity: 0; transform: scale(1) rotate(-4deg); }
+  }
+
+  #card {
+    position: absolute; left: 3%; top: 17%; width: 33%; text-align: center;
+    padding: calc(var(--u) * 28) calc(var(--u) * 20) calc(var(--u) * 22); border-radius: calc(var(--u) * 28);
+    background: linear-gradient(160deg, rgba(20,40,70,.94), rgba(8,16,28,.94));
+    border: calc(var(--u) * 3) solid rgba(255,255,255,.2); box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 60) rgba(0,0,0,.5);
+    opacity: 0; transform: scale(.8); transition: opacity .35s, transform .45s cubic-bezier(.2,1.4,.4,1);
+  }
+  #card.visible { opacity: 1; transform: scale(1); }
+  #card.gagnant { border-color: #ffd166; box-shadow: 0 0 calc(var(--u) * 80) rgba(255,209,102,.45), 0 calc(var(--u) * 20) calc(var(--u) * 60) rgba(0,0,0,.5); }
+  #card .etiquette { font-size: 18em; letter-spacing: .35em; text-transform: uppercase; opacity: .65; }
+  #num { font-size: 150em; font-weight: 900; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  #verdict { font-size: 29em; font-weight: 800; letter-spacing: .03em; white-space: nowrap; }
+  #card.gagnant #verdict { color: #ffd166; }
+  #lot { font-size: 26em; margin-top: calc(var(--u) * 4); opacity: .9; min-height: calc(var(--u) * 32); }
+  #card .suite { margin-top: calc(var(--u) * 18); font-size: 16em; opacity: .55; }

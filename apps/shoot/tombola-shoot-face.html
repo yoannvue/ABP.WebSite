@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tombola – Tir de face</title>
+<link rel="stylesheet" href="tombola-shoot-face.css">
+</head>
+<body>
+<div id="stage">
+  <div id="wrap">
+    <canvas id="cv"></canvas>
+    <div id="hud">
+      <div id="titre"><span>TOMBOLA</span><small>Tir au panier</small></div>
+      <div id="stats">
+        <div>Tickets restants&nbsp; <b id="restants">–</b></div>
+        <div id="modeLabel"></div>
+      </div>
+      <div id="aide">Entrée ou toucher · M&nbsp;mode · S&nbsp;son · R&nbsp;réinitialiser · F&nbsp;plein écran</div>
+      <div id="flash"></div>
+      <div id="card">
+        <div class="etiquette">Ticket tiré</div>
+        <div id="num">0</div>
+        <div id="verdict"></div>
+        <div id="lot"></div>
+        <div class="suite">ENTRÉE : tirage suivant</div>
+      </div>
+      <div id="msg"></div>
+    </div>
+  </div>
+</div>
+
+<script src="tombola-shoot-face.js"></script>
+</body>
+</html>
