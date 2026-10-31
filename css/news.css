@@ -1,7 +1,7 @@
 /* ============================================================
-   COMPOSANT : ÉVENTAIL DE PHOTOS (photo-fan)
+   COMPOSANT : ÉVENTAIL DE MÉDIAS (photo-fan)
    À charger sur toute page utilisant index-news.js, par ex. :
-     <link rel="stylesheet" href="photo-fan.css">
+     <link rel="stylesheet" href="news.css">
    Les variables ci-dessous peuvent être surchargées dans le CSS
    du site (ou directement sur .photo-fan via style="--fan-...").
    ============================================================ */
@@ -52,11 +52,30 @@
   transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.3, 1), opacity 0.35s ease;
 }
 
-.photo-fan__card img {
+.photo-fan__card img,
+.photo-fan__card video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  pointer-events: none;
+}
+
+.photo-fan__video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  padding-left: 4px;
+  border: 2px solid #ffffffd9;
+  border-radius: 50%;
+  color: #fff;
+  background: #10112fbf;
+  font-size: 24px;
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 

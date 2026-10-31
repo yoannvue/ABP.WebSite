@@ -1,253 +1,337 @@
-[ {
+[
+    {
+        "reference": 9,
+        "date": "Octobre 2026",
+        "categorie": "Opérations",
+        "titre": "Halloween Basket",       
+        "contenu": [
+            {
+                "type": "texte",
+                "texte": "Nos équipes féminines ont eu la chance de participer à des entrainements déguisés pour Halloween. Merci à tous les participants et aux bénévoles pour leur engagement."
+            },
+            {
+                "type": "video",
+                "titre": "U9F",
+                "lien": "/ressources/Actualites/Halloween2026-U9F.mp4"
+            },
+            {
+                "type": "image",
+                "titre": "Baby Basket",
+                "lien": "/ressources/Actualites/Halloween2026-baby-01.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "Baby Basket",
+                "lien": "/ressources/Actualites/Halloween2026-baby-02.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "Baby Basket",
+                "lien": "/ressources/Actualites/Halloween2026-baby-03.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U11F",
+                "lien": "/ressources/Actualites/Halloween2026-u11f-01.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U11F",
+                "lien": "/ressources/Actualites/Halloween2026-u11f-02.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U11F",
+                "lien": "/ressources/Actualites/Halloween2026-u11f-03.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U11F",
+                "lien": "/ressources/Actualites/Halloween2026-u11f-04.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U13F",
+                "lien": "/ressources/Actualites/Halloween2026-U13F-01.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U15F",
+                "lien": "/ressources/Actualites/Halloween2026-U15F-01.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U15F",
+                "lien": "/ressources/Actualites/Halloween2026-U15F-02.JPG"
+            },
+            {
+                "type": "image",
+                "titre": "U15F",
+                "lien": "/ressources/Actualites/Halloween2026-U15F-03.JPG"
+            }
+        ]
+    },
+    {
+        "reference": 8,
         "date": "Octobre 2026",
         "categorie": "Opérations",
         "titre": "Octobre Rose",
-        "lien" :"",
+        "lien": "",
         "contenu": [
-             { 
-                "type": "image", 
+            {
+                "type": "texte",
+                "texte": "Nos équipes féminines ont eu la chance de participer à des matchs aux couleurs d'Octobre Rose. Merci à tous les participants et aux bénévoles pour leur engagement."
+            },
+            {
+                "type": "image",
                 "titre": "Logo Octobre Rose",
                 "lien": "/ressources/Actualites/octobrerose-logo.jpeg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U9F",
                 "lien": "/ressources/Actualites/octobrerose-u9f.jpeg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U11F",
                 "lien": "/ressources/Actualites/octobrerose-u11f.jpeg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U13F",
                 "lien": "/ressources/Actualites/octobrerose-u13f.jpeg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U15F",
                 "lien": "/ressources/Actualites/octobrerose-u15f.jpeg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U18F",
                 "lien": "/ressources/Actualites/octobrerose-u18f.jpeg"
             }
         ]
     },
     {
+        "reference": 7,
         "date": "Septembre 2026",
         "categorie": "Présentation",
         "titre": "Nos coachs Saison 2026/2027",
-        "lien" :"",
+        "lien": "",
         "contenu": [
-             { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "Baby Basket",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_Baby.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U9M",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U9M.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U9F",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U9F.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U11F",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U11F.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U11M",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U11M.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U13M",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U13M.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U15F",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U15F.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U15M",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U15M.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U18M",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U18M.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U18F",
                 "lien": "/ressources/Equipes/2026-2027/Coachs_U18F.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "Séniors M 2",
-                "lien" : "/ressources/Equipes/2026-2027/Coachs_Seniors.jpg"
+                "lien": "/ressources/Equipes/2026-2027/Coachs_Seniors.jpg"
             }
         ]
     },
     {
+        "reference": 6,
         "date": "Septembre 2026",
         "categorie": "Rencontres",
         "titre": "Week end basket 2026",
-        "lien" :"",
+        "lien": "",
         "contenu": [
-            { 
-                "type": "texte", 
+            {
+                "type": "texte",
                 "texte": "Ce week end basket a été l'occasion de se retrouver pour les jeunes et les moins jeunes du club. Merci à tous les participants et aux bénévoles pour leur engagement."
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U9M",
                 "lien": "/ressources/Equipes/2026-2027/U9M.01.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U9F",
                 "lien": "/ressources/Equipes/2026-2027/U9F.01.JPG"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U11F",
                 "lien": "/ressources/Equipes/2026-2027/U11F.01.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U11M",
                 "lien": "/ressources/Equipes/2026-2027/U11M.01.JPG"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U13F",
                 "lien": "/ressources/Equipes/2026-2027/U13F.01.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U13M",
                 "lien": "/ressources/Equipes/2026-2027/U13M.01.jpg"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U15F",
                 "lien": "/ressources/Equipes/2026-2027/U15F.01.JPG"
             },
-            { 
-                 "type": "image", 
+            {
+                "type": "image",
                 "titre": "U15M",
                 "lien": "/ressources/Equipes/2026-2027/U15M.01.JPG"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "U18M",
                 "lien": "/ressources/Equipes/2026-2027/U18M.01.JPG"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "Séniors M 2",
-                "lien" : "/ressources/Equipes/2026-2027/Seniors2.01.jpg"
+                "lien": "/ressources/Equipes/2026-2027/Seniors2.01.jpg"
             },
-
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "titre": "Loisirs",
                 "lien": "/ressources/Equipes/2026-2027/Loisirs.01.jpg"
             },
-            { 
-                "type": "texte", 
+            {
+                "type": "texte",
                 "texte": "Retrouvez toutes les photos de ce week end basket dans la galerie du site.",
                 "lien": "/pages/equipes.html"
             }
         ]
     },
     {
+        "reference": 5,
         "date": "Juillet 2026",
         "categorie": "Training Camp",
         "titre": "Duo Training Camp 2026",
-        "lien" :"",
+        "lien": "",
         "contenu": [
-            { 
-                "type": "texte", 
+            {
+                "type": "texte",
                 "texte": "Clap de fin pour nos 24 sportifs en herbe participant au stage de basket en présence de Virginie Bremont et Sade Aded Hussein."
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "lien": "/ressources/Actualites/20260714 - Fin Duo Training Camp.jpg"
             },
-            { 
-                "type": "image", 
+            {
+                "type": "image",
                 "lien": "/ressources/Actualites/20260714 - Fin Duo Training Camp -02.jpg"
             }
         ]
     },
     {
+        "reference": 4,
         "date": "Juin 2026",
         "categorie": "Recompenses",
         "titre": "Label Mini Basket",
-        "contenu":[
-            { 
-                "type": "texte", 
-                "texte":"Le BabyBasket a pour vocation de faire découvrir le basket aux enfants de façon ludique à travers de nombreux jeux."
+        "contenu": [
+            {
+                "type": "texte",
+                "texte": "Le BabyBasket a pour vocation de faire découvrir le basket aux enfants de façon ludique à travers de nombreux jeux."
             },
-            { 
-                "type": "image", 
-                "lien":"/ressources/Actualites/labelminibasket.jpg"
+            {
+                "type": "image",
+                "lien": "/ressources/Actualites/labelminibasket.jpg"
             },
-            { 
-                "type": "texte", 
-                "texte":"Notre club a obtenu la 1ière et la 3ième étoile pour la période 2026-2029."
+            {
+                "type": "texte",
+                "texte": "Notre club a obtenu la 1ière et la 3ième étoile pour la période 2026-2029."
             }
         ]
     },
     {
+        "reference": 3,
         "date": "Juillet 2026",
         "categorie": "Vie du club",
         "titre": "Les inscriptions pour la saison 2026 – 2027 sont ouvertes",
-        "lien" :"",
+        "lien": "",
         "contenu": [
-            { 
-                "type": "texte", 
-                "texte": "Jeunes, adultes, débutants ou compétiteurs : rejoignez les Cerfs pour une nouvelle saison de basket." 
+            {
+                "type": "texte",
+                "texte": "Jeunes, adultes, débutants ou compétiteurs : rejoignez les Cerfs pour une nouvelle saison de basket."
             }
         ]
     },
     {
+        "reference": 2,
         "date": "Juillet 2026",
         "categorie": "Horaires",
         "titre": "Organisation des entrainements",
-        "lien" :"/pages/entrainements.html",
+        "lien": "/pages/entrainements.html",
         "contenu": [
-            { 
-                "type": "texte", 
-                "texte": "Les nouveaux horaires d'entraînement sont disponibles dès maintenant." 
+            {
+                "type": "texte",
+                "texte": "Les nouveaux horaires d'entraînement sont disponibles dès maintenant."
             }
         ]
     },
-     {
+    {
+        "reference": 1,
         "date": "Juin 2026",
         "categorie": "Recompenses",
         "titre": "Label Parité Sport 2026",
-        "lien" :"https://www.cdosnord.fr/label-parite-sport-2026-12-clubs-nordistes-labellises/",
+        "lien": "https://www.cdosnord.fr/label-parite-sport-2026-12-clubs-nordistes-labellises/",
         "contenu": [
-            { 
-                "type": "texte", 
-                "texte": "Notre club fait partie des labellisés Parité Sport 2026." 
+            {
+                "type": "texte",
+                "texte": "Notre club fait partie des labellisés Parité Sport 2026."
             },
-            { 
-                "type": "image", 
-                "lien": "/ressources/Actualites/LABEL_PARITE_SPORT-300x224.jpg" 
+            {
+                "type": "image",
+                "lien": "/ressources/Actualites/LABEL_PARITE_SPORT-300x224.jpg"
             }
         ]
     }

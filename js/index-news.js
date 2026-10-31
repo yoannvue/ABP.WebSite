@@ -8,35 +8,37 @@
       .replace(/'/g, '&#039;');
   }
 
-  // Regroupe les blocs "image" consécutifs. Un groupe de plus de 2 photos
-  // est rendu en éventail (.photo-fan) ; 1 ou 2 photos restent affichées
-  // telles quelles, comme avant.
+  // Regroupe les blocs image/vidéo consécutifs dans un éventail.
   function renderContentBlocks(content = [], titre = '') {
     const parts = [];
-    let imageBuffer = [];
+    let mediaBuffer = [];
 
-    const flushImages = () => {
-      if (imageBuffer.length === 0) {
+    const flushMedia = () => {
+      if (mediaBuffer.length === 0) {
         return;
       }
 
-      if (imageBuffer.length > 2) {
-        const imgsHtml = imageBuffer
+      const hasVideo = mediaBuffer.some((block) => block.type === 'video');
+      if (mediaBuffer.length > 2 || hasVideo) {
+        const mediaHtml = mediaBuffer
           .map((block, i) => {
-            const alt = block.titre || block.texte || `Photo ${i + 1} de l’actualité « ${titre} »`;
+            const alt = block.titre || block.texte || `${block.type === 'video' ? 'Vidéo' : 'Photo'} ${i + 1} de l’actualité « ${titre} »`;
             const caption = block.titre ? ` data-titre="${escapeHtml(block.titre)}"` : '';
+            if (block.type === 'video') {
+              return `<video src="${escapeHtml(block.lien)}" aria-label="${escapeHtml(alt)}"${caption} muted playsinline preload="metadata"></video><span class="photo-fan__video-play" aria-hidden="true">▶</span>`;
+            }
             return `<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(alt)}"${caption} loading="lazy" />`;
           })
           .join('');
-        parts.push(`<div class="photo-fan">${imgsHtml}</div>`);
+        parts.push(`<div class="photo-fan">${mediaHtml}</div>`);
       } else {
-        imageBuffer.forEach((block) => {
+        mediaBuffer.forEach((block) => {
           const alt = block.titre || block.texte || 'Image de l’actualité';
           parts.push(`<img src="${escapeHtml(block.lien)}" alt="${escapeHtml(alt)}" loading="lazy" />`);
         });
       }
 
-      imageBuffer = [];
+      mediaBuffer = [];
     };
 
     content.forEach((block) => {
@@ -44,19 +46,19 @@
         return;
       }
 
-      if (block.type === 'image' && block.lien) {
-        imageBuffer.push(block);
+      if ((block.type === 'image' || block.type === 'video') && block.lien) {
+        mediaBuffer.push(block);
         return;
       }
 
-      flushImages();
+      flushMedia();
 
       if (block.type === 'texte' && block.texte) {
         parts.push(`<p>${escapeHtml(block.texte)}</p><br/>`);
       }
     });
 
-    flushImages();
+    flushMedia();
 
     return parts.join('');
   }
@@ -67,8 +69,7 @@
   }
 
   function renderNewsCard(item = {}, index = 0) {
-    const hasLink = typeof item.lien === 'string' && item.lien.trim() !== '';
-    const external = hasLink && /^https?:\/\//i.test(item.lien);
+    const hasReference = item.reference !== undefined && item.reference !== null;
     const cardClass = getNewsCardClass(index);
     const cardMarkup = `
       <article>
@@ -79,21 +80,11 @@
         </div>
         <h3>${escapeHtml(item.titre || 'Actualité')}</h3>
         ${renderContentBlocks(item.contenu || [], item.titre || '')}
-        ${hasLink ? '<span class="post-read">Consulter <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></span>' : ''}
+        ${hasReference ? `<a href="pages/news.html?reference=${encodeURIComponent(item.reference)}" class="post-read">Lire l’actualité <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>` : ''}
       </article>
     `;
 
-    if (!hasLink) {
-      return `<div class="${cardClass}">${cardMarkup}</div>`;
-    }
-
-    return `
-      <a
-        href="${escapeHtml(item.lien)}"
-        class="${cardClass}"
-        ${external ? 'target="_blank" rel="noopener noreferrer"' : ''}
-      >${cardMarkup}</a>
-    `;
+    return `<div class="${cardClass}">${cardMarkup}</div>`;
   }
 
   function renderNews(items) {
@@ -129,10 +120,10 @@
   }
 
   // ============================================================
-  // COMPOSANT : éventail de photos
-  // Transforme un <div class="photo-fan"> contenant des <img>
+  // COMPOSANT : éventail de médias
+  // Transforme un <div class="photo-fan"> contenant des images et vidéos
   // en carrousel visuel en éventail, navigable au clic, au clavier
-  // et au tactile. Nécessite le fichier photo-fan.css.
+  // et au tactile. Nécessite le fichier news.css.
   // ============================================================
   class PhotoFan {
     constructor(el) {
@@ -143,37 +134,47 @@
     }
 
     build() {
-      const photos = Array.from(this.el.querySelectorAll('img')).map((img) => ({
-        src: img.currentSrc || img.src,
-        alt: img.alt || '',
-        titre: img.dataset.titre || '',
+      const media = Array.from(this.el.querySelectorAll('img, video')).map((element) => ({
+        src: element.currentSrc || element.src,
+        alt: element.alt || element.getAttribute('aria-label') || '',
+        titre: element.dataset.titre || '',
+        type: element.tagName.toLowerCase(),
       }));
-      if (photos.length === 0) {
+      if (media.length === 0) {
         return;
       }
 
       this.el.innerHTML = '';
       this.el.setAttribute('role', 'group');
-      this.el.setAttribute('aria-roledescription', 'carrousel de photos');
+      this.el.setAttribute('aria-roledescription', 'carrousel de médias');
       this.el.tabIndex = 0;
 
       const stage = document.createElement('div');
       stage.className = 'photo-fan__stage';
 
-      this.cards = photos.map((p, i) => {
+      this.cards = media.map((p, i) => {
         const card = document.createElement('button');
         card.type = 'button';
         card.className = 'photo-fan__card';
-        card.setAttribute('aria-label', p.alt || `Photo ${i + 1} sur ${photos.length}`);
-        const img = document.createElement('img');
-        img.src = p.src;
-        img.alt = p.alt;
-        img.loading = 'lazy';
-        if (p.titre) {
-          img.dataset.titre = p.titre;
+        card.setAttribute('aria-label', `${p.type === 'video' ? 'Vidéo' : 'Photo'} ${i + 1} sur ${media.length}${p.alt ? ` : ${p.alt}` : ''}`);
+        const preview = document.createElement(p.type);
+        preview.src = p.src;
+        if (p.type === 'img') {
+          preview.alt = p.alt;
+          preview.loading = 'lazy';
+          card.appendChild(preview);
+        } else {
+          preview.muted = true;
+          preview.playsInline = true;
+          preview.preload = 'metadata';
+          preview.setAttribute('aria-hidden', 'true');
+          const play = document.createElement('span');
+          play.className = 'photo-fan__video-play';
+          play.setAttribute('aria-hidden', 'true');
+          play.textContent = '▶';
+          card.appendChild(preview);
+          card.appendChild(play);
         }
-        card.appendChild(img);
-
         if (p.titre) {
           const caption = document.createElement('span');
           caption.className = 'photo-fan__caption';
@@ -193,14 +194,14 @@
       this.el.appendChild(stage);
       this.stage = stage;
 
-      if (photos.length > 1) {
+      if (media.length > 1) {
         const nav = document.createElement('div');
         nav.className = 'photo-fan__nav';
 
         const prev = document.createElement('button');
         prev.type = 'button';
         prev.className = 'photo-fan__arrow photo-fan__arrow--prev';
-        prev.setAttribute('aria-label', 'Photo précédente');
+        prev.setAttribute('aria-label', 'Contenu précédent');
         prev.textContent = '‹';
         prev.addEventListener('click', (e) => {
           e.preventDefault();
@@ -211,7 +212,7 @@
         const next = document.createElement('button');
         next.type = 'button';
         next.className = 'photo-fan__arrow photo-fan__arrow--next';
-        next.setAttribute('aria-label', 'Photo suivante');
+        next.setAttribute('aria-label', 'Contenu suivant');
         next.textContent = '›';
         next.addEventListener('click', (e) => {
           e.preventDefault();
@@ -221,11 +222,11 @@
 
         const dots = document.createElement('div');
         dots.className = 'photo-fan__dots';
-        this.dots = photos.map((_, i) => {
+        this.dots = media.map((_, i) => {
           const d = document.createElement('button');
           d.type = 'button';
           d.className = 'photo-fan__dot';
-          d.setAttribute('aria-label', `Aller à la photo ${i + 1}`);
+          d.setAttribute('aria-label', `Aller au contenu ${i + 1}`);
           d.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();

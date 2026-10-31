@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preload" as="image" href="/ressources/logo-abp.png" />
+    <link rel="stylesheet" href="/css/site.css" type="text/css" />
+    <link rel="stylesheet" href="/css/news-page.css" type="text/css" />
+    <title>Actualité - Amicale Basket Pecquencourt - Montigny en Ostrevent</title>
+    <meta name="description" content="Retrouvez le détail des actualités de l’Amicale Basket Pecquencourt - Montigny en Ostrevent." />
+    <link rel="icon" href="/ressources/logo-abp.png" />
+</head>
+
+<body data-page="news">
+    <div class="site-shell">
+        <a class="skip-link" href="#contenu">Aller au contenu</a>
+        <header id="site-header"></header>
+        <main id="contenu">
+            <section class="page-intro news-detail-intro" aria-labelledby="news-title">
+                <div class="page-intro-copy">
+                    <a class="news-back" href="/#actualites">← Toutes les actualités</a>
+                    <div class="news-detail-meta">
+                        <span class="news-category" data-news-category></span>
+                        <span data-news-date></span>
+                    </div>
+                    <h1 id="news-title" data-news-title>Chargement de l’actualité…</h1>
+                    <div class="news-detail-link" data-news-link-container hidden>
+                        <span>Lien associé</span>
+                        <a data-news-link></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-wrap news-content-section" aria-label="Contenu de l’actualité">
+                <p class="news-status" data-news-status role="status">Chargement de l’actualité…</p>
+                <div class="news-content-grid" data-news-content></div>
+            </section>
+        </main>
+        <footer id="site-footer"></footer>
+    </div>
+
+    <dialog class="news-lightbox" data-news-lightbox aria-label="Contenu agrandi">
+        <div class="news-lightbox-toolbar">
+            <span data-lightbox-count></span>
+            <button type="button" class="news-lightbox-close" data-lightbox-close aria-label="Fermer l’agrandissement">×</button>
+        </div>
+        <button type="button" class="news-lightbox-nav news-lightbox-prev" data-lightbox-prev aria-label="Contenu précédent">‹</button>
+        <figure>
+            <img data-lightbox-image alt="" hidden />
+            <video data-lightbox-video controls playsinline preload="none" hidden></video>
+            <figcaption data-lightbox-caption></figcaption>
+        </figure>
+        <button type="button" class="news-lightbox-nav news-lightbox-next" data-lightbox-next aria-label="Contenu suivant">›</button>
+    </dialog>
+
+    <script src="/js/site-shell.js" type="text/javascript"></script>
+    <script src="/js/news-page.js" type="text/javascript"></script>
+</body>
+
+</html>
