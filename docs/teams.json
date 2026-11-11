@@ -68,6 +68,10 @@
             "categorie": "U11F",
             "type": "CHAMPIONNAT"
         },
+        "DFU11-8-P2": {
+            "categorie": "U11F",
+            "type": "CHAMPIONNAT"
+        },
         "DFU11-8-P2-P2": {
             "categorie": "U11F",
             "type": "CHAMPIONNAT"
@@ -81,6 +85,18 @@
             "type": "CHAMPIONNAT"
         },
         "DFU13-2-P2-P2": {
+            "categorie": "U13F",
+            "type": "CHAMPIONNAT"
+        },
+        "DFU13-8": {
+            "categorie": "U13F",
+            "type": "CHAMPIONNAT"
+        },
+        "DFU13-8-P2": {
+            "categorie": "U13F",
+            "type": "CHAMPIONNAT"
+        },
+        "DFU13-8-P2-P2": {
             "categorie": "U13F",
             "type": "CHAMPIONNAT"
         },

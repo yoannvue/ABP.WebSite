@@ -13,8 +13,8 @@
       "ADomicile": true
     },
     {
-      "Type": null,
-      "Equipe1": "undefined",
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U11F",
       "Equipe2": "Exempt",
       "Date": "2026-11-14T13:00:00.000Z",
       "JourRencontre": "2026/11/14",
@@ -24,8 +24,8 @@
       "ADomicile": true
     },
     {
-      "Type": null,
-      "Equipe1": "undefined-2",
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U13F-2",
       "Equipe2": "RAIMBEAUCOURT CSL",
       "Date": "2026-11-14T14:00:00.000Z",
       "JourRencontre": "2026/11/14",
