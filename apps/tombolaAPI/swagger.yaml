@@ -1,0 +1,188 @@
+openapi: 3.0.3
+info:
+  title: API Tombola
+  version: 1.0.0
+  description: |
+    API de gestion d'une tombola, utilisée en local par une application web HTML/JS.
+
+    - Les tickets (gagnants ou perdants) sont importés au préalable par la commande `importer`.
+    - Un tirage choisit un ticket au hasard parmi les tickets non encore tirés et le clôture définitivement.
+    - Un ticket gagnant est associé à un lot ; un même lot peut exister en plusieurs exemplaires.
+    - Aucune authentification (usage local, unique).
+servers:
+  - url: http://localhost:5000
+    description: Serveur local (port fixe)
+tags:
+  - name: Tirages
+    description: Tirage des tickets
+  - name: Statistiques
+    description: Tickets et lots restants
+  - name: Administration
+    description: Opérations de débogage
+paths:
+  /tirages:
+    post:
+      tags: [Tirages]
+      operationId: effectuerTirage
+      summary: Tirer un ticket au hasard
+      description: |
+        Choisit au hasard un ticket non encore tiré, renseigne sa date de tirage (le ticket est alors clôturé)
+        et renvoie son résultat. L'opération est atomique : un même ticket ne peut jamais être tiré deux fois,
+        même en cas d'appels simultanés.
+      responses:
+        '200':
+          description: Ticket tiré.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tirage'
+              examples:
+                gagnant:
+                  summary: Ticket gagnant
+                  value:
+                    numero: '0004'
+                    gagnant: true
+                    lot: Maillot du club
+                    dateTirage: '2026-11-20T20:15:42+01:00'
+                perdant:
+                  summary: Ticket perdant
+                  value:
+                    numero: '0003'
+                    gagnant: false
+                    lot: null
+                    dateTirage: '2026-11-20T20:16:10+01:00'
+        '409':
+          description: Tous les tickets ont été tirés, la tombola est terminée.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
+              example:
+                type: https://tools.ietf.org/html/rfc9110#section-15.5.10
+                title: Tombola terminée
+                status: 409
+                detail: Tous les tickets ont déjà été tirés.
+        '500':
+          $ref: '#/components/responses/ErreurInterne'
+  /statistiques:
+    get:
+      tags: [Statistiques]
+      operationId: obtenirStatistiques
+      summary: Tickets et lots restants
+      description: |
+        Renvoie le nombre de tickets restants (non tirés), le nombre de tickets gagnants restants,
+        et pour chaque lot sa quantité initiale et le nombre d'exemplaires restants.
+      responses:
+        '200':
+          description: Statistiques courantes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Statistiques'
+        '500':
+          $ref: '#/components/responses/ErreurInterne'
+  /administration/reinitialisation:
+    post:
+      tags: [Administration]
+      operationId: reinitialiserTickets
+      summary: Réinitialiser tous les tickets (débogage)
+      description: |
+        Remet la date de tirage à `null` sur tous les tickets, qui redeviennent tirables.
+        Les lots et les tickets eux-mêmes ne sont pas modifiés.
+      responses:
+        '200':
+          description: Tickets réinitialisés.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Reinitialisation'
+        '500':
+          $ref: '#/components/responses/ErreurInterne'
+components:
+  responses:
+    ErreurInterne:
+      description: Erreur interne du serveur.
+      content:
+        application/problem+json:
+          schema:
+            $ref: '#/components/schemas/ProblemDetails'
+  schemas:
+    Tirage:
+      type: object
+      description: Résultat du tirage d'un ticket.
+      required: [numero, gagnant, lot, dateTirage]
+      properties:
+        numero:
+          type: string
+          description: Numéro du ticket (format libre).
+          example: '0004'
+        gagnant:
+          type: boolean
+          description: Indique si le ticket est gagnant.
+        lot:
+          type: string
+          nullable: true
+          description: Nom du lot gagné ; `null` si le ticket est perdant.
+          example: Maillot du club
+        dateTirage:
+          type: string
+          format: date-time
+          description: Date et heure du tirage.
+    Statistiques:
+      type: object
+      required: [ticketsRestants, ticketsGagnantsRestants, lots]
+      properties:
+        ticketsRestants:
+          type: integer
+          minimum: 0
+          description: Nombre de tickets non encore tirés (gagnants et perdants).
+          example: 120
+        ticketsGagnantsRestants:
+          type: integer
+          minimum: 0
+          description: Nombre de tickets gagnants non encore tirés.
+          example: 18
+        lots:
+          type: array
+          items:
+            $ref: '#/components/schemas/StatistiqueLot'
+    StatistiqueLot:
+      type: object
+      required: [nom, quantite, restants]
+      properties:
+        nom:
+          type: string
+          example: Ballon de basket
+        quantite:
+          type: integer
+          minimum: 0
+          description: Nombre d'exemplaires du lot à l'origine.
+          example: 10
+        restants:
+          type: integer
+          minimum: 0
+          description: Nombre d'exemplaires encore à gagner.
+          example: 7
+    Reinitialisation:
+      type: object
+      required: [ticketsReinitialises]
+      properties:
+        ticketsReinitialises:
+          type: integer
+          minimum: 0
+          description: Nombre de tickets remis à l'état « non tiré ».
+          example: 63
+    ProblemDetails:
+      type: object
+      description: Erreur au format RFC 9457 (Problem Details).
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+        instance:
+          type: string

@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "API Tombola",
+      "type": "dotnet",
+      "request": "launch",
+      "projectPath": "${workspaceFolder}\\apps\\tombolaAPI\\src\\Tombola.Api\\Tombola.Api.csproj",
+      "launchSettingsProfile": "http"
+    },
+    {
+      "name": "Page de test Tombola (Edge)",
+      "type": "pwa-msedge",
+      "request": "launch",
+      "url": "file:///${workspaceFolder}/apps/tombolaAPI/tests/index.html",
+      "webRoot": "${workspaceFolder}\\apps\\tombolaAPI\\tests"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Tombola : API + page de test",
+      "configurations": [
+        "API Tombola",
+        "Page de test Tombola (Edge)"
+      ],
+      "stopAll": true
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test de l’API Tombola</title>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Test de l’API Tombola</h1>
+    <p>API utilisée : <code id="api-url"></code></p>
+
+    <section aria-labelledby="tirage-heading">
+      <h2 id="tirage-heading">Tirage</h2>
+      <button id="draw-button" type="button">Effectuer un tirage</button>
+      <p id="draw-result" role="status" aria-live="polite">Aucun tirage effectué.</p>
+    </section>
+
+    <section aria-labelledby="reset-heading">
+      <h2 id="reset-heading">Réinitialisation</h2>
+      <button id="reset-button" type="button">Réinitialiser les tickets</button>
+      <p id="reset-result" role="status" aria-live="polite"></p>
+    </section>
+
+    <section aria-labelledby="statistics-heading">
+      <h2 id="statistics-heading">Statistiques</h2>
+      <button id="refresh-button" type="button">Actualiser</button>
+      <p id="statistics-result" role="status" aria-live="polite"></p>
+      <p>Tickets restants : <strong id="tickets-remaining">-</strong></p>
+      <p>Tickets gagnants restants : <strong id="winning-tickets-remaining">-</strong></p>
+      <h3>Lots</h3>
+      <ul id="prizes-list"></ul>
+    </section>
+  </main>
+</body>
+</html>
