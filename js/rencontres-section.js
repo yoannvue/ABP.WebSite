@@ -55,7 +55,20 @@ async function chargerRencontres() {
         const domicile = data.rencontres.filter(r => r.ADomicile && !r.EstExempt);
         const exterieur = data.rencontres.filter(r => !r.ADomicile && !r.EstExempt);
 
-        creerGroupe(divRencontres, true, domicile, teams);
+        const titresSalles = {
+            "JEAN DEGROS": "SALLE JEAN DEGROS PECQUENCOURT",
+            "ANCHIN": "SALLE ANCHIN PECQUENCOURT"
+        };
+        const groupesDomicile = new Map();
+        domicile.forEach(match => {
+            const salle = match.Salle || "JEAN DEGROS";
+            if (!groupesDomicile.has(salle)) groupesDomicile.set(salle, []);
+            groupesDomicile.get(salle).push(match);
+        });
+
+        groupesDomicile.forEach((rencontresSalle, salle) => {
+            creerGroupe(divRencontres, true, rencontresSalle, teams, titresSalles[salle] || salle);
+        });
         creerGroupe(divRencontres, false, exterieur, teams);
 
         const exempts = data.rencontres.filter(r => r.EstExempt);
@@ -68,13 +81,13 @@ async function chargerRencontres() {
     }
 }
 
-function creerGroupe(parent, ADomicile, rencontres, teams) {
+function creerGroupe(parent, ADomicile, rencontres, teams, titreDomicile) {
 
     if (rencontres.length == 0) return;
 
     const h2 = document.createElement("h2");
     h2.className = "titreGroupe";
-    let titre = ADomicile ? "SALLE JEAN DEGROS PECQUENCOURT" : "A L'EXTERIEUR"
+    let titre = ADomicile ? titreDomicile : "A L'EXTERIEUR"
 
     h2.textContent = titre;
     parent.appendChild(h2);
