@@ -158,6 +158,9 @@ async function main() {
 
             const divisionRow = row["Division"];
             const division = config.divisions[divisionRow];
+            if (!division) {
+                console.warn(`⚠ Division inconnue pour la ligne : ${divisionRow}`);
+            }
 
             const estExempt = row["Equipe 1"] == "Exempt" || row["Equipe 2"] == "Exempt";
             const { nom: equipe1Nom, numero: equipe1Numero } = normalizeEquipe(row["Equipe 1"]);
@@ -166,9 +169,9 @@ async function main() {
             const Adomicile = isHome(row);
 
             return {
-                Type: division.type,
-                Equipe1: (Adomicile ? division.categorie : equipe1Nom)+ (equipe1Numero?"-"+equipe1Numero:""),
-                Equipe2: (!Adomicile ? division.categorie : equipe2Nom)+ (equipe2Numero?"-"+equipe2Numero:""),
+                Type: division ? division.type : null,
+                Equipe1: (Adomicile ? division?.categorie : equipe1Nom)+ (equipe1Numero?"-"+equipe1Numero:""),
+                Equipe2: (!Adomicile ? division?.categorie : equipe2Nom)+ (equipe2Numero?"-"+equipe2Numero:""),
                 Date: dateObj.jsDate,
                 JourRencontre: DayOfDate(dateObj),
                 DateFormatted: formatDate(dateObj),

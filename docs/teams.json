@@ -172,6 +172,14 @@
             "categorie": "U15M",
             "type": "CHAMPIONNAT"
         },
+        "DMU15-8-P2": {
+            "categorie": "U15M",
+            "type": "CHAMPIONNAT"
+        },
+        "DMU15-8-P2-P2": {
+            "categorie": "U15M",
+            "type": "CHAMPIONNAT"
+        },
         "DMU18-2": {
             "categorie": "U18M",
             "type": "CHAMPIONNAT"
@@ -181,6 +189,10 @@
             "type": "CHAMPIONNAT"
         },
         "DMU18-3": {
+            "categorie": "U18M",
+            "type": "CHAMPIONNAT"
+        },
+        "DMU18-3-P2": {
             "categorie": "U18M",
             "type": "CHAMPIONNAT"
         },
