@@ -7,8 +7,10 @@ import { installerEntrees } from './js/input.js';
 
 const $ = id => document.getElementById(id);
 const elMsg = $('msg'), elFlash = $('flash'), elCard = $('card'), elAnnonce = $('annonce');
+const elTombolaToggle = $('tombolaToggle'), elTombolaStatus = $('tombolaStatus');
 const { initAudio, son, toggle: toggleSound } = createAudio();
 const tickets = createTicketPool();
+let tombolaActive = true;
 
 const G = {
   etat: 'suivant',         // suivant | prepare | jauge | tir | rate
@@ -44,8 +46,31 @@ function flash(texte, couleur) {
   elFlash.className = 'show ' + couleur;
 }
 function majStats() {
-  $('restants').textContent = tickets.restants.length;
-  $('modeLabel').textContent = G.essai > 0 ? `Essai ${G.essai} / ${CONFIG.essaisMax}` : `${CONFIG.essaisMax} essais par joueur`;
+  $('restants').textContent = tombolaActive && tickets.restants !== null ? tickets.restants : '–';
+  $('modeLabel').textContent = !tombolaActive
+    ? 'Tombola désactivée'
+    : G.essai > 0 ? `Essai ${G.essai} / ${CONFIG.essaisMax}` : `${CONFIG.essaisMax} essais par joueur`;
+}
+function majTombolaToggle() {
+  elTombolaToggle.textContent = tombolaActive ? 'Tombola activée' : 'Tombola désactivée';
+  elTombolaToggle.setAttribute('aria-pressed', String(tombolaActive));
+  majStats();
+}
+async function basculerTombola() {
+  tombolaActive = !tombolaActive;
+  majTombolaToggle();
+  if (!tombolaActive) {
+    elTombolaStatus.textContent = 'Le jeu continue sans tirage.';
+    return;
+  }
+  elTombolaStatus.textContent = 'Connexion à l’API…';
+  try {
+    await tickets.refresh();
+    elTombolaStatus.textContent = '';
+  } catch (e) {
+    elTombolaStatus.textContent = `API indisponible : ${e.message}`;
+  }
+  majStats();
 }
 function annonce(titre, sous, classe) {                // grand message devant le panier
   elAnnonce.className = 'on ' + classe;
@@ -133,19 +158,26 @@ function finTir() {                                    // le ballon a fini son v
     const reste = CONFIG.essaisMax - G.essai;
     setMsg(`Raté ! Encore ${reste} essai${reste > 1 ? 's' : ''} – <kbd>ENTRÉE</kbd>`, true);
   } else {                                             // 3e essai raté : le tirage a lieu quand même
-    setMsg('Dernier essai raté… place au tirage !', false);
+    setMsg(tombolaActive ? 'Dernier essai raté… place au tirage !' : 'Dernier essai raté.', false);
     G.revealT = .9;
   }
 }
 
 async function reveler() {                             // LE tirage de la tombola : une seule fois par joueur, à la fin
+  if (!tombolaActive) {
+    const note = G.scored
+      ? 'Panier marqué – <kbd>ENTRÉE</kbd> pour le joueur suivant'
+      : 'Essais terminés – <kbd>ENTRÉE</kbd> pour le joueur suivant';
+    afficherSuivant(note);
+    return;
+  }
   G.tirageLance = true;                                // à partir d'ici il est irréversible : Échap n'a plus d'effet
-  let t = null, erreur = false;
-  try { t = await tickets.draw(); } catch (e) { erreur = true; console.error(e); }
+  let t = null, erreur = null;
+  try { t = await tickets.draw(); } catch (e) { erreur = e; console.error(e); }
   const num = $('num'), verdict = $('verdict'), lot = $('lot');
   elCard.classList.remove('gagnant');
   if (erreur) {
-    num.textContent = '!'; verdict.textContent = 'Erreur de tirage'; lot.textContent = '';
+    num.textContent = '!'; verdict.textContent = 'Erreur de tirage'; lot.textContent = erreur.message;
   } else if (!t) {
     num.textContent = '–'; verdict.textContent = 'Plus de tickets'; lot.textContent = '';
   } else {
@@ -175,7 +207,7 @@ function afficherSuivant(note) {                       // étape « Joueur suiva
   majStats();
 }
 function preparer() {                                  // étape « On se prépare » : la balle attend dans les mains du joueur
-  if (tickets.restants.length === 0) {
+  if (tombolaActive && tickets.restants === 0) {
     annonce('Tombola terminée', '<kbd>R</kbd> pour réinitialiser', 'suivant');
     return;
   }
@@ -211,9 +243,16 @@ function buzzer() {
 }
 function reinitialiser() {                             // touche R : remet la tombola à zéro (seulement entre deux joueurs)
   if (G.etat !== 'suivant') return;
-  tickets.init();
-  elCard.classList.remove('visible', 'gagnant');
-  afficherSuivant();
+  if (!tombolaActive) return;
+  elTombolaStatus.textContent = 'Réinitialisation des tickets…';
+  tickets.reset().then(() => {
+    elTombolaStatus.textContent = '';
+    majStats();
+    elCard.classList.remove('visible', 'gagnant');
+    afficherSuivant();
+  }).catch(e => {
+    elTombolaStatus.textContent = `Impossible d’actualiser les tickets : ${e.message}`;
+  });
 }
 
 /* ---------- Confettis ---------- */
@@ -286,9 +325,18 @@ function boucle(now) {
   maj(dt); renderer.dessiner();
   requestAnimationFrame(boucle);
 }
+elTombolaToggle.addEventListener('click', basculerTombola);
 installerEntrees({ buzzer, annuler, reinitialiser, initAudio, toggleSound });
-tickets.init();
 renderer.redimensionner();
 majStats();
 afficherSuivant();
+if (tombolaActive) {
+  elTombolaStatus.textContent = 'Connexion à l’API…';
+  tickets.refresh().then(() => {
+    elTombolaStatus.textContent = '';
+    majStats();
+  }).catch(e => {
+    elTombolaStatus.textContent = `API indisponible : ${e.message}`;
+  });
+}
 requestAnimationFrame(boucle);

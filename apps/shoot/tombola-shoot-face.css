@@ -17,6 +17,14 @@
   #stats { position: absolute; right: 3%; top: 3.5%; text-align: right; font-size: 20em; line-height: 1.5; }
   #stats b { font-size: 1.5em; color: #ffd166; font-variant-numeric: tabular-nums; }
   #modeLabel { font-size: .8em; opacity: .7; }
+  #tombolaControls { margin-top: calc(var(--u) * 8); }
+  #tombolaToggle {
+    pointer-events: auto; cursor: pointer; border: calc(var(--u) * 2) solid #ffd166;
+    border-radius: calc(var(--u) * 20); padding: calc(var(--u) * 7) calc(var(--u) * 16);
+    background: rgba(8,16,28,.9); color: #ffd166; font: inherit; font-size: .8em; font-weight: 700;
+  }
+  #tombolaToggle[aria-pressed="false"] { border-color: #9aa7b8; color: #c5ceda; }
+  #tombolaStatus { max-width: 24em; margin-top: calc(var(--u) * 5); font-size: .65em; color: #ffb4a2; }
 
   #aide { display: none; }
 
