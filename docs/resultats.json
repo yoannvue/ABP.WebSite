@@ -86,18 +86,6 @@
       "Date": "2026-11-14T19:30:00.000Z"
     },
     {
-      "Categorie": "U13F",
-      "Equipe1": "U13F",
-      "Equipe2": "ST AMAND P H",
-      "Score1": "22",
-      "Score2": "53",
-      "Forfait1": false,
-      "Forfait2": false,
-      "EstExempt": false,
-      "ADomicile": true,
-      "Date": "2026-11-15T09:30:00.000Z"
-    },
-    {
       "Categorie": "U18F",
       "Equipe1": "BASKET CLUB MARLY-1",
       "Equipe2": "U18F",
@@ -110,16 +98,16 @@
       "Date": "2026-11-15T09:30:00.000Z"
     },
     {
-      "Categorie": "U18M",
-      "Equipe1": "SAINT SAULVE BC-3",
-      "Equipe2": "U18M",
-      "Score1": "93",
-      "Score2": "46",
+      "Categorie": "U13F",
+      "Equipe1": "U13F",
+      "Equipe2": "ST AMAND P H",
+      "Score1": "22",
+      "Score2": "53",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
-      "ADomicile": false,
-      "Date": "2026-11-15T10:00:00.000Z"
+      "ADomicile": true,
+      "Date": "2026-11-15T09:30:00.000Z"
     },
     {
       "Categorie": "U9M",
@@ -127,6 +115,18 @@
       "Equipe2": "U9M",
       "Score1": "22",
       "Score2": "37",
+      "Forfait1": false,
+      "Forfait2": false,
+      "EstExempt": false,
+      "ADomicile": false,
+      "Date": "2026-11-15T10:00:00.000Z"
+    },
+    {
+      "Categorie": "U18M",
+      "Equipe1": "SAINT SAULVE BC-3",
+      "Equipe2": "U18M",
+      "Score1": "93",
+      "Score2": "46",
       "Forfait1": false,
       "Forfait2": false,
       "EstExempt": false,
