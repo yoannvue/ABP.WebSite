@@ -91,17 +91,6 @@
     },
     {
       "Type": "CHAMPIONNAT",
-      "Equipe1": "U18F",
-      "Equipe2": "AULNOYE AS-2",
-      "Date": "2026-11-22T09:30:00.000Z",
-      "JourRencontre": "2026/11/22",
-      "DateFormatted": "DIMANCHE\n10H30",
-      "Salle": "JEAN DEGROS",
-      "EstExempt": false,
-      "ADomicile": true
-    },
-    {
-      "Type": "CHAMPIONNAT",
       "Equipe1": "ST AMAND P H-1",
       "Equipe2": "SENIORS-1",
       "Date": "2026-11-22T09:30:00.000Z",
@@ -110,6 +99,17 @@
       "Salle": "COMPLEXE JEAN VERDAVAINE",
       "EstExempt": false,
       "ADomicile": false
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "U18F",
+      "Equipe2": "AULNOYE AS-2",
+      "Date": "2026-11-22T09:30:00.000Z",
+      "JourRencontre": "2026/11/22",
+      "DateFormatted": "DIMANCHE\n10H30",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
     },
     {
       "Type": "CHAMPIONNAT",
