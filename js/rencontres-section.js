@@ -100,19 +100,23 @@ function creerGroupe(parent, ADomicile, rencontres, teams, titreDomicile) {
         const styleequipegauche = match.ADomicile ? "equipeABP" : "";
         const styleequipedroite = match.ADomicile ? "" : "equipeABP";
 
+        const logoequipegauche = match.ADomicile ? getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT") : getLogoUrl(teams, match.Equipe1);
+        const logoequipedroite = match.ADomicile ? getLogoUrl(teams, match.Equipe2): getLogoUrl(teams, "AMICALE BASKET PECQUENCOURT");
+
+
         const DateFormatted = match.DateFormatted.replace('\\n',"<BR/>");
 
         const carte = document.createElement("div");
         carte.className = "rencontre";
 
         carte.innerHTML = `
-            <div class="equipe gauche ${styleequipegauche}">${equipeGauche}</div>
+            <div class="equipe gauche ${styleequipegauche}"><img class="logo" src="${logoequipegauche}"/>${equipeGauche}</div>
 
             <div class="centre">
                 ${DateFormatted}
             </div>
 
-            <div class="equipe droite ${styleequipedroite}">${equipeDroite}</div>
+            <div class="equipe droite ${styleequipedroite}">${equipeDroite}<img class="logo" src="${logoequipedroite}"/></div>
         `;
 
         parent.appendChild(carte);
@@ -139,6 +143,15 @@ function getShortName(teams, club) {
     const clubObj = teams.adversaires[clubnormalized];
     if (!clubObj || !clubObj.nomcourt) return clubNormalise;
     return clubObj.nomcourt + suffixeEquipe;
+}
+
+function getLogoUrl(teams, club) {
+    const clubNormalise = normalizeClubName(club);
+    const suffixeEquipe = clubNormalise.match(/\s*-\s*\d+$/)?.[0] ?? "";
+    const clubnormalized = clubNormalise.slice(0, clubNormalise.length - suffixeEquipe.length);
+    var clubObj = teams.adversaires[clubnormalized];
+    if (!clubObj || !clubObj.nomcourt) return "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg";
+    return clubObj.logo;
 }
 
 function convertirDate(dateFr) {

@@ -43,7 +43,7 @@ img.fondagenda {
 .listRencontres {
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:10px;
     width:100%
 }
 
@@ -69,12 +69,19 @@ img.fondagenda {
     margin:10px;
     text-transform: uppercase;
     font-family: 'Impact', 'Arial Black', sans-serif;
-    font-weight: 900;
     font-size: 30px;
-    color: #100347; /* Blanc pur */
+    color: #d8671c; /* Orange vif / cuivré */
     text-transform: uppercase;
     letter-spacing: 2.5px; /* Espacement marqué entre les lettres */
     
+    /* Contour/Lueur sombre et ombre portée pour reproduire l'effet 3D/relief */
+    text-shadow: 
+        -1px -1px 0 #111,  
+        1px -1px 0 #111,
+        -1px  1px 0 #111,
+        1px  1px 0 #111,
+        3px  4px 6px rgba(0, 0, 0, 0.85);
+
     /* Légère ombre portée pour détacher le texte du fond dégradé bleu */
     display: flex;
     align-items: center; /* Aligne verticalement au centre */    
@@ -85,11 +92,11 @@ img.fondagenda {
     grid-template-columns:1fr 120px 1fr;
     align-items:center;
 
-    border:2px solid #15078f;
+    border:1px solid #15078f;
     border-radius:5px;
     background-color: #f7f5f4;
 
-    padding:3px 10px;
+    padding:1px 8px;
     margin-bottom:0px;
     color: #072f69;
     font-family: 'Alfa Slab One', 'Arial Black', sans-serif;   
@@ -110,6 +117,7 @@ img.fondagenda {
 
 .equipe{
     font-size:25px; 
+    display:flex;
 }
 
 .gauche{
@@ -118,6 +126,7 @@ img.fondagenda {
 
 .droite{
     text-align:right;
+    justify-content: flex-end;
 }
 
 .centre{
@@ -135,4 +144,11 @@ img.fondagenda {
     margin-top:4px;
     font-size:20px;
     color:#0b63c8;
+}
+
+.logo {
+    height:40px;
+    transform: scale(1.2);
+    margin-left:10px; 
+    margin-right:10px;
 }

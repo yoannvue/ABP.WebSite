@@ -500,7 +500,7 @@
         "LANDRECIEN B C": {
             "nomcourt": "LANDRECIEN B C",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059208",
-            "logo": "https://api.ffbb.app/assets/cf2c86a5-fb18-4055-bfaf-077bfea09e3e"
+            "logo": "/ressources/clubs/LANDRECIEN B C.png"
         },
         "LEERS OSBB": {
             "nomcourt": "LEERS OSBB",
@@ -1094,7 +1094,7 @@
         "PROVILLE BASKET": {
             "nomcourt": "PROVILLE BASKET",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059023",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/PROVILLE BASKET.png"
         },
         "RAIMBEAUCOURT CSL": {
             "nomcourt": "RAIMBEAUCOURT",
@@ -1246,7 +1246,7 @@
         "WASQUEHAL FEM B": {
             "nomcourt": "WASQUEHAL FEM B",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059215",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/WASQUEHAL FEM B.png"
         },
         "WAZIERS A B": {
             "nomcourt": "WAZIERS A B",
