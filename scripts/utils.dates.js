@@ -27,13 +27,13 @@ function getCurrentWeekDateRange(referenceDate = new Date()) {
     const current = new Date(referenceDate);
     const day = current.getDay();
 
-    if (day === 1) {
-        const start = getWeekStart(new Date(current));
-        start.setDate(start.getDate() - 7);
-        const end = new Date(start);
-        end.setDate(start.getDate() + 6);
-        return { start, end };
-    }
+    // if (day === 1) {
+    //     const start = getWeekStart(new Date(current));
+    //     start.setDate(start.getDate() - 7);
+    //     const end = new Date(start);
+    //     end.setDate(start.getDate() + 6);
+    //     return { start, end };
+    // }
 
     return getWeekRange(current);
 }
