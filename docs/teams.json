@@ -346,7 +346,7 @@
         "BEUVRAGES USM": {
             "nomcourt": "BEUVRAGES",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059147",
-            "logo": "https://api.ffbb.app/assets/6cbddeba-f45f-428a-9e06-8f45178a5764"
+            "logo": "/ressources/clubs/BEUVRAGES USM.png"
         },
         "BIERNOIS BC": {
             "nomcourt": "BIERNOIS BC",
@@ -592,7 +592,7 @@
         "SAINT SAULVE BC": {
             "nomcourt": "SAINT SAULVE BC",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059169",
-            "logo": "https://api.ffbb.app/assets/9f105246-ea8e-4d15-91dd-812af6b1929d"
+            "logo": "/ressources/clubs/SAINT SAULVE BC.png"
         },
         "SANTES BB": {
             "nomcourt": "SANTES BB",
@@ -750,9 +750,9 @@
             "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
         },
         "BASKET CLUB MARLY": {
-            "nomcourt": "BASKET CLUB MARLY",
+            "nomcourt": "BC MARLY",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059240",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/BASKET CLUB MARLY.png"
         },
         "BASKET CLUB PEVELE": {
             "nomcourt": "PEVELE",

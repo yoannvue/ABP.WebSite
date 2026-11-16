@@ -1,4 +1,4 @@
-import { getEnvironment } from './utils.js';
+import { getEnvironment, normalizeClubName } from './utils.js';
 
 async function chargerRencontres() {
     try {
@@ -141,17 +141,18 @@ function getCategorieDisplayOrder(teams, categorie) {
 }
 
 function getShortName(teams, club) {
-
-    const suffixeEquipe = club.match(/\s*-\s*\d+$/)?.[0] ?? "";
-    const clubnormalized = club.slice(0, club.length - suffixeEquipe.length);
+    const clubNormalise = normalizeClubName(club);
+    const suffixeEquipe = clubNormalise.match(/\s*-\s*\d+$/)?.[0] ?? "";
+    const clubnormalized = clubNormalise.slice(0, clubNormalise.length - suffixeEquipe.length);
     const clubObj = teams.adversaires[clubnormalized];
-    if (!clubObj || !clubObj.nomcourt) return club;
+    if (!clubObj || !clubObj.nomcourt) return clubNormalise;
     return clubObj.nomcourt + suffixeEquipe;
 }
 
 function getLogoUrl(teams, club) {
-    const suffixeEquipe = club.match(/\s*-\s*\d+$/)?.[0] ?? "";
-    const clubnormalized = club.slice(0, club.length - suffixeEquipe.length);
+    const clubNormalise = normalizeClubName(club);
+    const suffixeEquipe = clubNormalise.match(/\s*-\s*\d+$/)?.[0] ?? "";
+    const clubnormalized = clubNormalise.slice(0, clubNormalise.length - suffixeEquipe.length);
     var clubObj = teams.adversaires[clubnormalized];
     if (!clubObj || !clubObj.nomcourt) return "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg";
     return clubObj.logo;

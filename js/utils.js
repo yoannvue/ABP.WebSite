@@ -20,3 +20,7 @@ export function getEnvironment() {
     // Sinon, c'est la prod
     return "prod";
 }
+
+export function normalizeClubName(club) {
+    return club.replace(/ {2,}/g, " ");
+}
