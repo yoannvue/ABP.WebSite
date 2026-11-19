@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <title>Statistiques de la tombola</title>
+  <link rel="stylesheet" href="stats.css">
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ABP Basket · Tombola</p>
+        <h1>Statistiques</h1>
+      </div>
+      <nav class="actions" aria-label="Navigation">
+        <a class="button button-secondary" href="index.html">Retour au jeu</a>
+        <button id="refreshButton" class="button" type="button">Actualiser</button>
+      </nav>
+    </header>
+
+    <p id="status" class="status" role="status" aria-live="polite">Chargement des statistiques…</p>
+
+    <section class="progress-panel" aria-labelledby="progressTitle">
+      <div class="progress-heading">
+        <div>
+          <p class="eyebrow">Vue d’ensemble</p>
+          <h2 id="progressTitle">Avancement des tirages</h2>
+        </div>
+        <strong id="drawProgress">–</strong>
+      </div>
+      <progress id="drawProgressBar" max="100" value="0" aria-label="Pourcentage des tickets tirés"></progress>
+      <p id="drawProgressDetail" class="muted">–</p>
+    </section>
+
+    <section class="metrics" aria-label="Bilan complet des tickets">
+      <article class="metric">
+        <span class="metric-label">Tickets au total</span>
+        <strong id="ticketsTotal">–</strong>
+        <span class="metric-detail">dans le pool</span>
+      </article>
+      <article class="metric">
+        <span class="metric-label">Tickets tirés</span>
+        <strong id="ticketsDrawn">–</strong>
+        <span class="metric-detail">tous résultats confondus</span>
+      </article>
+      <article class="metric">
+        <span class="metric-label">Tickets restants</span>
+        <strong id="ticketsRemaining">–</strong>
+        <span class="metric-detail">pas encore tirés</span>
+      </article>
+      <article class="metric metric-winners">
+        <span class="metric-label">Tickets gagnants</span>
+        <strong id="winnersDrawn">–</strong>
+        <span id="winnersDetail" class="metric-detail">–</span>
+      </article>
+      <article class="metric metric-losers">
+        <span class="metric-label">Tickets perdants</span>
+        <strong id="losersDrawn">–</strong>
+        <span id="losersDetail" class="metric-detail">–</span>
+      </article>
+      <article class="metric">
+        <span class="metric-label">Ratio du pool</span>
+        <strong id="poolRatio">–</strong>
+        <span class="metric-detail">tickets perdants par gagnant</span>
+      </article>
+    </section>
+
+    <section class="prizes" aria-labelledby="prizesTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Détail des lots</p>
+          <h2 id="prizesTitle">Lots et exemplaires gagnés</h2>
+        </div>
+        <span id="prizeSummary" class="muted"></span>
+      </div>
+      <div id="lotsList" class="lots-list">
+        <p class="empty-state">Chargement des lots…</p>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="stats.js"></script>
+</body>
+</html>

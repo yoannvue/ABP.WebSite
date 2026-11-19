@@ -85,17 +85,32 @@ paths:
     post:
       tags: [Administration]
       operationId: reinitialiserTickets
-      summary: Réinitialiser tous les tickets (débogage)
+      summary: Régénérer les tickets à partir des lots
       description: |
-        Remet la date de tirage à `null` sur tous les tickets, qui redeviennent tirables.
-        Les lots et les tickets eux-mêmes ne sont pas modifiés.
+        Recrée et mélange les tickets à partir des quantités des lots existants.
+        Le ratio indique le nombre de tickets perdants par ticket gagnant.
+      parameters:
+        - name: perdantsParGagnant
+          in: query
+          required: false
+          description: Nombre de tickets perdants par ticket gagnant (0 ou plus, 1 par défaut).
+          schema:
+            type: integer
+            minimum: 0
+            default: 1
       responses:
         '200':
-          description: Tickets réinitialisés.
+          description: Nouveau pool de tickets généré.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Reinitialisation'
+        '400':
+          description: Ratio invalide ou pool dépassant la limite autorisée.
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ProblemDetails'
         '500':
           $ref: '#/components/responses/ErreurInterne'
 components:
@@ -130,8 +145,13 @@ components:
           description: Date et heure du tirage.
     Statistiques:
       type: object
-      required: [ticketsRestants, ticketsGagnantsRestants, lots]
+      required: [ticketsTotaux, ticketsRestants, ticketsGagnantsRestants, lots]
       properties:
+        ticketsTotaux:
+          type: integer
+          minimum: 0
+          description: Nombre total de tickets dans le pool, tirés ou non.
+          example: 120
         ticketsRestants:
           type: integer
           minimum: 0
@@ -165,13 +185,28 @@ components:
           example: 7
     Reinitialisation:
       type: object
-      required: [ticketsReinitialises]
+      required: [ticketsReinitialises, ticketsGagnants, ticketsPerdants, perdantsParGagnant]
       properties:
         ticketsReinitialises:
           type: integer
           minimum: 0
-          description: Nombre de tickets remis à l'état « non tiré ».
-          example: 63
+          description: Nombre total de tickets créés.
+          example: 48
+        ticketsGagnants:
+          type: integer
+          minimum: 0
+          description: Nombre de tickets gagnants créés à partir des quantités des lots.
+          example: 24
+        ticketsPerdants:
+          type: integer
+          minimum: 0
+          description: Nombre de tickets perdants créés.
+          example: 24
+        perdantsParGagnant:
+          type: integer
+          minimum: 0
+          description: Ratio utilisé pour la génération.
+          example: 1
     ProblemDetails:
       type: object
       description: Erreur au format RFC 9457 (Problem Details).

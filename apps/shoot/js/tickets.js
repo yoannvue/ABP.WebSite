@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000';
+export const API_URL = 'http://localhost:5000';
 
 export function createTicketPool() {
   let restants = null;
@@ -24,8 +24,11 @@ export function createTicketPool() {
       if (restants !== null) restants = Math.max(0, restants - 1);
       return tirage;
     },
-    async reset() {
-      const resultat = await request('/administration/reinitialisation', { method: 'POST' });
+    async reset(perdantsParGagnant = 1) {
+      const resultat = await request(
+        `/administration/reinitialisation?perdantsParGagnant=${encodeURIComponent(perdantsParGagnant)}`,
+        { method: 'POST' }
+      );
       restants = resultat.ticketsReinitialises;
       return restants;
     }

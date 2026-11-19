@@ -1,11 +1,13 @@
 export const CONFIG = {
-  essaisMax: 3,         // essais par joueur : tirage au premier panier, ou après le dernier essai même raté
+  essaisMax: 3,         // maximum de lancers par joueur ; tombola : 2 garantis, 3e si aucun panier
   verrouApresTirage: 1200, // ms : juste après un tirage, ENTRÉE est ignorée (double appui du buzzer)
   vitesse: 1.3,         // vitesse de la bille au départ, en rayons de cadran par seconde
   vitesseMax: 3.6,      // vitesse atteinte au bout du délai : plus on attend, plus la bille s'affole
   delaiMax: 5,          // secondes : sans tir au bout de ce délai, le tir est raté
   nervosite: 0.5,       // 0 = oscillations calmes, 1 = changements de cap très fréquents
   zoneSwish: 0.11,      // rayon de la cible verte (fraction du rayon du cadran)
+  amplitudeVisee: 2 / 3, // déplacement maximal de la bille blanche, rapporté au rayon du cadran
+  rayonVisee: (13 * 2 / 3) / 175, // rayon de la bille blanche après réduction d'un tiers
   zoneCercle: 0.27,     // rayon de la zone orange
   precision: 1.35,      // écart latéral du tir (en mètres) pour une bille décalée d'un rayon de cadran, à gauche ou à droite
   puissance: 0.255,     // erreur de puissance pour une bille décalée d'un rayon de cadran, en haut ou en bas (0.255 = 25,5 %)

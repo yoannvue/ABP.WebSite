@@ -8,16 +8,16 @@ export function installerEntrees({ buzzer, annuler, reinitialiser, initAudio, to
   document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement && navigator.keyboard && navigator.keyboard.unlock) navigator.keyboard.unlock();
   });
-  window.addEventListener('keydown', e => {
-    if (e.target instanceof Element && e.target.closest('button')) return;
+  document.addEventListener('keydown', e => {
     if (e.code === 'Enter' || e.code === 'NumpadEnter') { e.preventDefault(); if (!e.repeat) buzzer(); return; }
     if (e.code === 'Escape') { e.preventDefault(); if (!e.repeat) annuler(); return; }
+    if (e.target instanceof Element && e.target.closest('button')) return;
     if (e.ctrlKey || e.altKey || e.metaKey) return;
     const k = e.key.toLowerCase();
     if (k === 's') toggleSound();
     else if (k === 'r') reinitialiser();
     else if (k === 'f') basculerPleinEcran();
-  });
+  }, true);
   /* Toucher l'écran (téléphone, tablette, écran tactile) ou cliquer = même effet que ENTRÉE */
   window.addEventListener('pointerdown', e => {
     if (e.target instanceof Element && e.target.closest('button')) return;

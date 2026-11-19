@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Globalization;
 using Microsoft.VisualBasic.FileIO;
 
 namespace Tombola.Api;
@@ -8,9 +9,10 @@ internal static partial class ImporteurCsv
 {
     public static async Task<int> ExecuterAsync(string[] args, string connectionString)
     {
-        if (args.Length is < 2 or > 3 || (args.Length == 3 && args[2] != "--remplacer"))
+        if (args.Length < 2 || !LireOptions(args, out var remplacer, out var perdantsParGagnant))
         {
-            Console.Error.WriteLine("Usage : Tombola.Api importer <fichier.csv> [--remplacer]");
+            Console.Error.WriteLine(
+                "Usage : Tombola.Api importer <fichier.csv> [--remplacer] [--perdants-par-gagnant <nombre>]");
             return 2;
         }
 
@@ -26,17 +28,17 @@ internal static partial class ImporteurCsv
 
         try
         {
-            var lignes = LireCsv(chemin);
-            var nombre = await ImporterAsync(database, lignes, args.Length == 3);
-            var lots = lignes
-                .Where(ligne => ligne.Lot is not null)
-                .GroupBy(ligne => ligne.Lot!, StringComparer.OrdinalIgnoreCase)
-                .OrderBy(groupe => groupe.Key, StringComparer.OrdinalIgnoreCase);
+            var lots = LireCsv(chemin);
+            await ImporterAsync(database, lots, remplacer, perdantsParGagnant);
+            var gagnants = lots.Sum(lot => lot.Quantite);
+            var perdants = gagnants * perdantsParGagnant;
 
-            Console.WriteLine($"Import terminé : {nombre} tickets, {lignes.Count(ligne => ligne.Lot is not null)} gagnants.");
-            foreach (var lot in lots)
+            Console.WriteLine(
+                $"Import terminé : {gagnants + perdants} tickets générés ({gagnants} gagnants, {perdants} perdants).");
+            Console.WriteLine($"Ratio : {perdantsParGagnant} ticket(s) perdant(s) par ticket gagnant.");
+            foreach (var lot in lots.OrderBy(lot => lot.Nom, StringComparer.OrdinalIgnoreCase))
             {
-                Console.WriteLine($"- {lot.Key} : {lot.Count()}");
+                Console.WriteLine($"- {lot.Nom} : {lot.Quantite}");
             }
 
             return 0;
@@ -46,13 +48,47 @@ internal static partial class ImporteurCsv
             Console.Error.WriteLine(exception.Message);
             return 1;
         }
+        catch (ArgumentException exception)
+        {
+            Console.Error.WriteLine($"Import refusé : {exception.Message}");
+            return 1;
+        }
     }
 
-    private static List<TicketCsv> LireCsv(string chemin)
+    private static bool LireOptions(string[] args, out bool remplacer, out int perdantsParGagnant)
+    {
+        remplacer = false;
+        perdantsParGagnant = 1;
+        var ratioDefini = false;
+
+        for (var index = 2; index < args.Length; index++)
+        {
+            if (args[index] == "--remplacer" && !remplacer)
+            {
+                remplacer = true;
+            }
+            else if (args[index] == "--perdants-par-gagnant"
+                && !ratioDefini
+                && index + 1 < args.Length
+                && int.TryParse(args[++index], NumberStyles.None, CultureInfo.InvariantCulture, out perdantsParGagnant)
+                && perdantsParGagnant >= 0)
+            {
+                ratioDefini = true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private static List<LotCsv> LireCsv(string chemin)
     {
         var erreurs = new List<string>();
-        var tickets = new List<TicketCsv>();
-        var numeros = new HashSet<string>(StringComparer.Ordinal);
+        var lots = new List<LotCsv>();
+        var noms = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         using var lecteur = new TextFieldParser(chemin, Encoding.UTF8, detectEncoding: true)
         {
@@ -61,24 +97,6 @@ internal static partial class ImporteurCsv
             TrimWhiteSpace = false
         };
         lecteur.SetDelimiters(";");
-
-        string[]? entete;
-        try
-        {
-            entete = lecteur.ReadFields();
-        }
-        catch (MalformedLineException exception)
-        {
-            throw new ImportCsvException($"En-tête CSV invalide : {exception.Message}");
-        }
-
-        if (entete is null
-            || entete.Length != 2
-            || !string.Equals(entete[0].Trim(), "numero", StringComparison.OrdinalIgnoreCase)
-            || !string.Equals(entete[1].Trim(), "lot", StringComparison.OrdinalIgnoreCase))
-        {
-            throw new ImportCsvException("L'en-tête doit être exactement « numero;lot ».");
-        }
 
         while (!lecteur.EndOfData)
         {
@@ -94,27 +112,41 @@ internal static partial class ImporteurCsv
                 continue;
             }
 
-            var numero = champs is { Length: > 0 } ? champs[0].Trim() : string.Empty;
-            var nomLot = champs is { Length: > 1 } ? NormaliserNomLot(champs[1]) : null;
             if (champs is null || champs.Length != 2)
             {
                 erreurs.Add($"Ligne {numeroLigne} : deux colonnes sont requises.");
                 continue;
             }
 
-            if (numero.Length == 0)
+            var nomLot = NormaliserNomLot(champs[0]);
+            if (lots.Count == 0 && noms.Count == 0
+                && (string.Equals(nomLot, "lot", StringComparison.OrdinalIgnoreCase)
+                    || string.Equals(nomLot, "nom", StringComparison.OrdinalIgnoreCase))
+                && string.Equals(champs[1].Trim(), "quantite", StringComparison.OrdinalIgnoreCase))
             {
-                erreurs.Add($"Ligne {numeroLigne} : le numéro du ticket est obligatoire.");
                 continue;
             }
 
-            if (!numeros.Add(numero))
+            if (nomLot.Length == 0)
             {
-                erreurs.Add($"Ligne {numeroLigne} : le numéro « {numero} » est en double.");
+                erreurs.Add($"Ligne {numeroLigne} : le nom du lot est obligatoire.");
                 continue;
             }
 
-            tickets.Add(new TicketCsv(numero, string.IsNullOrEmpty(nomLot) ? null : nomLot));
+            if (!long.TryParse(champs[1].Trim(), NumberStyles.None, CultureInfo.InvariantCulture, out var quantite)
+                || quantite <= 0)
+            {
+                erreurs.Add($"Ligne {numeroLigne} : la quantité doit être un entier strictement positif.");
+                continue;
+            }
+
+            if (!noms.Add(nomLot))
+            {
+                erreurs.Add($"Ligne {numeroLigne} : le lot « {nomLot} » est en double.");
+                continue;
+            }
+
+            lots.Add(new LotCsv(nomLot, quantite));
         }
 
         if (erreurs.Count > 0)
@@ -122,39 +154,38 @@ internal static partial class ImporteurCsv
             throw new ImportCsvException("Import refusé :\n" + string.Join('\n', erreurs));
         }
 
-        if (tickets.Count == 0)
+        if (lots.Count == 0)
         {
-            throw new ImportCsvException("Le fichier ne contient aucun ticket.");
+            throw new ImportCsvException("Le fichier ne contient aucun lot.");
         }
 
-        return tickets;
+        return lots;
     }
 
     private static string NormaliserNomLot(string nom) =>
         EspacesMultiples().Replace(nom.Trim(), " ");
 
-    private static async Task<int> ImporterAsync(
+    private static async Task ImporterAsync(
         Database database,
-        IReadOnlyList<TicketCsv> tickets,
-        bool remplacer)
+        IReadOnlyList<LotCsv> lots,
+        bool remplacer,
+        int perdantsParGagnant)
     {
-        var ticketsAImporter = tickets
-            .Select(ticket => new TicketAImporter(ticket.Numero, ticket.Lot))
+        var lotsAImporter = lots
+            .Select(lot => new LotAImporter(lot.Nom, lot.Quantite))
             .ToArray();
-        var importe = await database.ImporterTicketsAsync(ticketsAImporter, remplacer);
+        var importe = await database.ImporterLotsAsync(lotsAImporter, remplacer, perdantsParGagnant);
         if (!importe)
         {
             throw new ImportCsvException(
-                "La base contient déjà des tickets. Utilisez --remplacer pour les remplacer.");
+                "La base contient déjà des lots ou des tickets. Utilisez --remplacer pour les remplacer.");
         }
-
-        return tickets.Count;
     }
 
     [GeneratedRegex(@"\s+")]
     private static partial Regex EspacesMultiples();
 
-    private sealed record TicketCsv(string Numero, string? Lot);
+    private sealed record LotCsv(string Nom, long Quantite);
 
     private sealed class ImportCsvException(string message) : Exception(message)
     {

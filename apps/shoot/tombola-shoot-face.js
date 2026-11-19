@@ -7,22 +7,25 @@ import { installerEntrees } from './js/input.js';
 
 const $ = id => document.getElementById(id);
 const elMsg = $('msg'), elFlash = $('flash'), elCard = $('card'), elAnnonce = $('annonce');
+const elResultatPrecedent = $('resultatPrecedent');
 const elTombolaToggle = $('tombolaToggle'), elTombolaStatus = $('tombolaStatus');
 const { initAudio, son, toggle: toggleSound } = createAudio();
 const tickets = createTicketPool();
-let tombolaActive = true;
+let tombolaActive = false;
 
 const G = {
-  etat: 'suivant',         // suivant | prepare | jauge | tir | rate
+  etat: 'suivant',         // suivant | prepare | jauge | tir | rate | tirage | resultat | resultatTir
   jauge: { x: 0, y: 0, vx: 0, vy: 0, wx: 0, wy: 0, prochain: 0, temps: 0, hist: [] },
   gel: 0,
   essai: 0,
+  aMarque: false,
   balle: { X: DEPART.X, Y: DEPART.Y, Z: DEPART.Z, vX: 0, vY: 0, vZ: 0, rot: 0 },
   shot: null,
   reussi: true, scored: false, animFinie: false, tirageLance: false, verrou: 0,
   netT: 99, revealT: -1,
   particules: [],
-  dernierAppui: 0
+  dernierAppui: 0,
+  attenteConfirmation: false
 };
 let tAbs = 0;
 
@@ -48,8 +51,16 @@ function flash(texte, couleur) {
 function majStats() {
   $('restants').textContent = tombolaActive && tickets.restants !== null ? tickets.restants : '–';
   $('modeLabel').textContent = !tombolaActive
-    ? 'Tombola désactivée'
-    : G.essai > 0 ? `Essai ${G.essai} / ${CONFIG.essaisMax}` : `${CONFIG.essaisMax} essais par joueur`;
+    ? G.essai > 0
+      ? `Tombola désactivée · Tir ${G.essai} / ${CONFIG.essaisMax}`
+      : `Tombola désactivée · ${CONFIG.essaisMax} tirs par joueur`
+    : G.essai === 0
+      ? '2 lancers · 3e si aucun panier'
+      : G.essai === 1
+        ? 'Lancer 1/2 · 2e garanti'
+        : G.essai === 2
+          ? G.aMarque ? 'Lancer 2/2 · tirage ensuite' : 'Lancer 2/2 · 3e si aucun panier'
+          : '3e tentative · dernière chance';
 }
 function majTombolaToggle() {
   elTombolaToggle.textContent = tombolaActive ? 'Tombola activée' : 'Tombola désactivée';
@@ -60,9 +71,15 @@ async function basculerTombola() {
   tombolaActive = !tombolaActive;
   majTombolaToggle();
   if (!tombolaActive) {
+    elResultatPrecedent.classList.remove('visible');
+    elResultatPrecedent.textContent = '';
     elTombolaStatus.textContent = 'Le jeu continue sans tirage.';
     return;
   }
+  if (!elResultatPrecedent.textContent) {
+    elResultatPrecedent.textContent = 'Résultat précédent : aucun tirage';
+  }
+  elResultatPrecedent.classList.add('visible');
   elTombolaStatus.textContent = 'Connexion à l’API…';
   try {
     await tickets.refresh();
@@ -83,19 +100,26 @@ function annonceOff() { elAnnonce.className = ''; }
 function demarrerJauge() {                            // début d'un essai : le cadran démarre, la balle rebondit
   G.essai++;
   annonceOff();
+  elCard.classList.remove('visible', 'gagnant');
   G.dribble = .1;                                      // phase du rebond de la balle
   G.etat = 'jauge';
   G.jauge = nouvelleBille();
   G.gel = 0;
   placerBalle();
   elFlash.className = '';
-  setMsg(G.essai >= CONFIG.essaisMax ? 'DERNIER ESSAI – <kbd>ENTRÉE</kbd> sur la cible !' : '<kbd>ENTRÉE</kbd> quand la bille est sur la cible !', true);
+  const instruction = '<kbd>ENTRÉE</kbd> quand la bille est sur la cible !';
+  const consigne = !tombolaActive
+    ? G.essai >= CONFIG.essaisMax ? 'DERNIER ESSAI' : ''
+    : G.essai === 1 ? '1er lancer · un 2e est garanti'
+      : G.essai === 2 ? G.aMarque ? '2e et dernier lancer' : '2e lancer · 3e si aucun panier'
+        : '3e et dernière tentative';
+  setMsg(`${consigne ? `${consigne} – ` : ''}${instruction}`, true);
   son('lancer');
   majStats();
 }
 
 function nouvelleBille() {                            // la bille part d'un point au hasard, loin du centre
-  const a = Math.random() * 2 * Math.PI, r = .6 + Math.random() * .3;
+  const a = Math.random() * 2 * Math.PI, r = (.6 + Math.random() * .3) * CONFIG.amplitudeVisee;
   return { x: Math.cos(a) * r, y: Math.sin(a) * r, vx: 0, vy: 0, wx: 0, wy: 0, prochain: 0, temps: 0, hist: [] };
 }
 
@@ -130,7 +154,8 @@ function lacher(delai = false) {                       // delai = true : 5 s éc
 
 function marquer() {
   if (G.scored) return;
-  G.scored = true; G.netT = 0; G.revealT = .85;        // panier : le tirage aura lieu dans un instant
+  G.scored = true; G.netT = 0;
+  G.aMarque = true;
   son('filet');
   son('applaudissements');
 }
@@ -151,86 +176,162 @@ function majTir(dt) {                                  // rejoue la trajectoire 
 
 function finTir() {                                    // le ballon a fini son vol
   G.animFinie = true;
-  if (G.reussi) { if (!G.scored) marquer(); return; }  // panier : le tirage est déjà programmé
+  if (G.reussi) {
+    if (!G.scored) marquer();
+    if (doitContinuerApresTir()) {
+      attendreEssaisRestants();
+    } else if (tombolaActive) {
+      setMsg('Fin des lancers – place au tirage !', false);
+      G.revealT = .85;
+    } else {
+      G.etat = 'resultatTir';
+      G.attenteConfirmation = true;
+      G.verrou = performance.now() + CONFIG.verrouApresTirage;
+      setMsg('Panier marqué – <kbd>ENTRÉE</kbd> pour le joueur suivant', true);
+    }
+    return;
+  }
   son('rate');
-  if (G.essai < CONFIG.essaisMax) {                    // il reste des essais : on attend ENTRÉE
+  if (doitContinuerApresTir()) {                       // il reste des essais : on attend ENTRÉE
     G.etat = 'rate';
-    const reste = CONFIG.essaisMax - G.essai;
-    setMsg(`Raté ! Encore ${reste} essai${reste > 1 ? 's' : ''} – <kbd>ENTRÉE</kbd>`, true);
-  } else {                                             // 3e essai raté : le tirage a lieu quand même
-    setMsg(tombolaActive ? 'Dernier essai raté… place au tirage !' : 'Dernier essai raté.', false);
+    attendreEssaisRestants();
+  } else {                                             // tous les lancers sont terminés
+    setMsg(tombolaActive ? 'Fin des lancers – place au tirage !' : 'Dernier essai raté.', false);
     G.revealT = .9;
   }
 }
 
+function doitContinuerApresTir() {
+  return tombolaActive
+    ? G.essai < 2 || (G.essai === 2 && !G.aMarque)
+    : G.essai < CONFIG.essaisMax;
+}
+
+function attendreEssaisRestants() {
+  G.revealT = -1;
+  G.etat = 'rate';
+  if (tombolaActive) {
+    const suite = G.essai === 1
+      ? 'Un 2e lancer est garanti'
+      : 'Aucun panier sur les 2 premiers : 3e tentative';
+    setMsg(`${G.scored ? 'Panier marqué !' : 'Raté !'} ${suite} – <kbd>ENTRÉE</kbd>`, true);
+    return;
+  }
+
+  const reste = CONFIG.essaisMax - G.essai;
+  setMsg(`${G.scored ? 'Panier marqué !' : 'Raté !'} Encore ${reste} tir${reste > 1 ? 's' : ''} – <kbd>ENTRÉE</kbd>`, true);
+}
+
 async function reveler() {                             // LE tirage de la tombola : une seule fois par joueur, à la fin
+  G.revealT = -1;                                      // stoppe définitivement le timer dès le premier appel
+  G.attenteConfirmation = false;
   if (!tombolaActive) {
+    if (!G.animFinie) {
+      G.revealT = .15;
+      return;
+    }
+    if (G.essai < CONFIG.essaisMax) {
+      attendreEssaisRestants();
+      return;
+    }
     const note = G.scored
       ? 'Panier marqué – <kbd>ENTRÉE</kbd> pour le joueur suivant'
       : 'Essais terminés – <kbd>ENTRÉE</kbd> pour le joueur suivant';
-    afficherSuivant(note);
+    G.revealT = -1;
+    G.etat = 'resultatTir';
+    G.attenteConfirmation = true;
+    G.verrou = performance.now() + CONFIG.verrouApresTirage;
+    setMsg(note, true);
     return;
   }
+  if (G.tirageLance) return;                           // évite un second tirage si l'appel arrive deux fois
   G.tirageLance = true;                                // à partir d'ici il est irréversible : Échap n'a plus d'effet
+  G.revealT = -1;
+  G.etat = 'tirage';
+  setMsg(null);
+  annonceOff();
   let t = null, erreur = null;
   try { t = await tickets.draw(); } catch (e) { erreur = e; console.error(e); }
   const num = $('num'), verdict = $('verdict'), lot = $('lot');
   elCard.classList.remove('gagnant');
   if (erreur) {
     num.textContent = '!'; verdict.textContent = 'Erreur de tirage'; lot.textContent = erreur.message;
+    elResultatPrecedent.textContent = `Résultat précédent : erreur de tirage — ${erreur.message}`;
   } else if (!t) {
     num.textContent = '–'; verdict.textContent = 'Plus de tickets'; lot.textContent = '';
+    elResultatPrecedent.textContent = 'Résultat précédent : plus de tickets disponibles';
   } else {
-    num.textContent = t.numero;
+    num.textContent = String(t.numero).padStart(3, '0');
     if (t.gagnant) {
       elCard.classList.add('gagnant');
       verdict.textContent = 'GAGNANT !'; lot.textContent = t.lot || '';
+      elResultatPrecedent.textContent = `Résultat précédent : ticket ${t.numero} — GAGNANT !${t.lot ? ` — ${t.lot}` : ''}`;
     } else {
       verdict.textContent = 'Pas gagnant'; lot.textContent = '';
+      elResultatPrecedent.textContent = `Résultat précédent : ticket ${t.numero} — pas gagnant`;
     }
   }
+  elResultatPrecedent.classList.add('visible');
   elCard.classList.add('visible');
   if (t && t.gagnant) { confettis(); son('gagne'); } else son('neutre');
   G.verrou = performance.now() + CONFIG.verrouApresTirage;
-  afficherSuivant();                                   // la fiche du ticket reste affichée à gauche
+  G.revealT = -1;
+  G.etat = 'resultat';
+  G.attenteConfirmation = true;
+  G.shot = null;
+  setMsg(null);
+  annonceOff();
 }
 
 
 /* ---------- Les étapes : Joueur suivant -> On se prépare -> On joue ---------- */
 function afficherSuivant(note) {                       // étape « Joueur suivant » (aussi l'état de départ)
   G.etat = 'suivant'; G.shot = null; G.essai = 0; G.gel = 0;
-  G.scored = false; G.animFinie = false; G.revealT = -1; G.tirageLance = false;
+  G.scored = false; G.aMarque = false; G.animFinie = false; G.revealT = -1; G.tirageLance = false;
+  G.attenteConfirmation = false;
   elFlash.className = '';
   setMsg(null);
   placerBalle();
   annonce('Joueur suivant', note || '<kbd>ENTRÉE</kbd> pour continuer', 'suivant');
   majStats();
 }
+
+function confirmerResultat() {
+  if (!G.attenteConfirmation) return;
+  elCard.classList.remove('visible', 'gagnant');
+  G.particules = [];
+  G.revealT = -1;
+  afficherSuivant();
+}
 function preparer() {                                  // étape « On se prépare » : la balle attend dans les mains du joueur
   if (tombolaActive && tickets.restants === 0) {
     annonce('Tombola terminée', '<kbd>R</kbd> pour réinitialiser', 'suivant');
     return;
   }
-  elCard.classList.remove('visible', 'gagnant');
   G.particules = [];
-  G.etat = 'prepare'; G.essai = 0;
+  G.etat = 'prepare'; G.essai = 0; G.aMarque = false;
   placerBalle();
-  annonce('On se prépare', `<kbd>ENTRÉE</kbd> quand le joueur est prêt<br>${CONFIG.essaisMax} essais pour marquer`, 'prepare');
+  const consigne = tombolaActive
+    ? '2 lancers garantis · 3e tentative si aucun panier'
+    : `${CONFIG.essaisMax} essais pour marquer`;
+  annonce('On se prépare', `<kbd>ENTRÉE</kbd> quand le joueur est prêt<br>${consigne}`, 'prepare');
   majStats();
 }
-function annuler() {                                   // touche ÉCHAP : on abandonne le joueur en cours, sans tirage
+function annuler() {                                   // ÉCHAP remet le jeu à « Joueur suivant »
   if (G.etat === 'suivant') return;
-  if (G.tirageLance) return;                           // trop tard : le tirage est déjà lancé
+  if (G.etat === 'tirage') return;                    // le tirage déjà envoyé à l'API ne peut pas être annulé
   elCard.classList.remove('visible', 'gagnant');
   G.particules = [];
-  afficherSuivant('Jeu annulé – aucun tirage effectué<br><kbd>ENTRÉE</kbd> pour continuer');
+  G.verrou = 0;
+  G.dernierAppui = 0;
+  afficherSuivant();
 }
 
 /* ---------- Entrées ---------- */
 function buzzer() {
   const now = performance.now();
   if (now - G.dernierAppui < CONFIG.antiRebond) return;
-  if (G.etat === 'suivant' && now < G.verrou) return;  // juste après un tirage : on ignore les rebonds du buzzer
+  if ((G.etat === 'suivant' || G.etat === 'resultat' || G.etat === 'resultatTir') && now < G.verrou) return;  // laisse voir le résultat avant toute action
   G.dernierAppui = now;
   initAudio();
   switch (G.etat) {
@@ -238,14 +339,25 @@ function buzzer() {
     case 'prepare': demarrerJauge(); break;            // -> On joue (essai 1)
     case 'jauge': lacher(); break;                     // le tir part
     case 'rate': demarrerJauge(); break;               // essai suivant
+    case 'resultat':
+    case 'resultatTir':
+      confirmerResultat();
+      break;
     // 'tir' : on laisse finir le vol, puis le tirage éventuel, puis « Joueur suivant »
   }
 }
 function reinitialiser() {                             // touche R : remet la tombola à zéro (seulement entre deux joueurs)
   if (G.etat !== 'suivant') return;
   if (!tombolaActive) return;
+  const saisieRatio = window.prompt('Tickets perdants par ticket gagnant ?', '1');
+  if (saisieRatio === null) return;
+  const perdantsParGagnant = Number(saisieRatio);
+  if (!Number.isSafeInteger(perdantsParGagnant) || perdantsParGagnant < 0) {
+    elTombolaStatus.textContent = 'Saisissez un nombre entier positif ou nul pour le ratio.';
+    return;
+  }
   elTombolaStatus.textContent = 'Réinitialisation des tickets…';
-  tickets.reset().then(() => {
+  tickets.reset(perdantsParGagnant).then(() => {
     elTombolaStatus.textContent = '';
     majStats();
     elCard.classList.remove('visible', 'gagnant');
@@ -292,7 +404,7 @@ function maj(dt) {
     let dx = j.wx - j.x, dy = j.wy - j.y, dist = Math.hypot(dx, dy);
     if (j.prochain <= 0 || dist < .08) {               // nouveau point visé : de l'autre côté du centre, angle au hasard
       const ang = Math.atan2(-j.y, -j.x) + (Math.random() - .5) * 1.8;
-      const r = .55 + Math.random() * .4, n = Math.min(1, CONFIG.nervosite + .4 * p);   // et change de cap de plus en plus souvent
+      const r = (.55 + Math.random() * .4) * CONFIG.amplitudeVisee, n = Math.min(1, CONFIG.nervosite + .4 * p);   // et change de cap de plus en plus souvent
       j.wx = Math.cos(ang) * r; j.wy = Math.sin(ang) * r;
       j.prochain = (.9 - .6 * n) + Math.random() * (.7 - .4 * n);
       dx = j.wx - j.x; dy = j.wy - j.y; dist = Math.hypot(dx, dy) || 1;
@@ -302,7 +414,7 @@ function maj(dt) {
     j.vy += (dy / dist * v - j.vy) * k;
     j.x += j.vx * dt; j.y += j.vy * dt;
     const m = Math.hypot(j.x, j.y);
-    if (m > 1) { j.x /= m; j.y /= m; }
+    if (m > CONFIG.amplitudeVisee) { j.x *= CONFIG.amplitudeVisee / m; j.y *= CONFIG.amplitudeVisee / m; }
     j.hist.push([j.x, j.y]); if (j.hist.length > 9) j.hist.shift();
     if (j.temps >= CONFIG.delaiMax) {                  // temps écoulé
       lacher(true);                                    // 5 s sans tirer : le tir est raté
@@ -311,7 +423,10 @@ function maj(dt) {
   if (G.gel > 0) G.gel -= dt;
   if (G.shot && (G.etat === 'tir' || G.etat === 'rate')) majTir(dt);
   G.netT += dt;
-  if (G.revealT > 0) { G.revealT -= dt; if (G.revealT <= 0) reveler(); }
+  if (G.revealT > 0 && (G.etat === 'tir' || G.etat === 'rate')) {
+    G.revealT -= dt;
+    if (G.revealT <= 0) reveler();
+  }
   for (const p of G.particules) { p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt; p.vx += Math.sin(tAbs * 3 + p.rot) * 20 * dt; }
   G.particules = G.particules.filter(p => p.y < H + 30);
 }
@@ -325,7 +440,10 @@ function boucle(now) {
   maj(dt); renderer.dessiner();
   requestAnimationFrame(boucle);
 }
-elTombolaToggle.addEventListener('click', basculerTombola);
+elTombolaToggle.addEventListener('click', e => {
+  if (e.detail === 0) return;
+  basculerTombola();
+});
 installerEntrees({ buzzer, annuler, reinitialiser, initAudio, toggleSound });
 renderer.redimensionner();
 majStats();

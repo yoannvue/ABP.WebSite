@@ -4,7 +4,7 @@
 
 Backend exposé sous forme d'API pour gérer une tombola, utilisé **une seule fois, en local**, par une application web HTML/JS.
 
-- Une base de données pré-alimentée (import CSV initial, par ligne de commande) contient des **tickets**.
+- Une base de données pré-alimentée (import CSV initial, par ligne de commande) contient les **lots** et les tickets générés à partir de leurs quantités.
 - Chaque ticket est soit **perdant**, soit **gagnant**. Un ticket gagnant est associé à un **lot**.
 - Un même lot existe en **plusieurs exemplaires** : il est associé à autant de tickets gagnants que d'exemplaires.
 - L'API permet de **tirer un ticket au hasard** et renvoie son état (gagnant / perdant) et son lot éventuel.
@@ -56,33 +56,34 @@ Un ticket est **gagnant** si et seulement si `LotId` est renseigné (pas de cham
 L'import se fait par une **commande en ligne de commande** de l'application, pas par l'API :
 
 ```
-Tombola.Api.exe importer tickets.csv
-Tombola.Api.exe importer tickets.csv --remplacer   # vide la base avant import
+Tombola.Api.exe importer lots.csv
+Tombola.Api.exe importer lots.csv --perdants-par-gagnant 2
+Tombola.Api.exe importer lots.csv --remplacer --perdants-par-gagnant 1
 ```
 
-(En développement : `dotnet run -- importer tickets.csv`.)
+(En développement : `dotnet run -- importer lots.csv`.)
 
-- Sans `--remplacer`, l'import est refusé si la base contient déjà des tickets.
-- Le programme crée et initialise la base lors du premier import, importe, affiche un récapitulatif (nombre de tickets, de gagnants, quantité par lot) puis s'arrête. Le fichier reste au même emplacement entre les lancements.
+- Le CSV contient un lot et sa quantité par ligne. Le programme crée un ticket gagnant par exemplaire, ajoute le ratio de tickets perdants (1 par défaut), mélange la pile et attribue des numéros séquentiels.
+- Sans `--remplacer`, l'import est refusé si la base contient déjà des lots ou des tickets.
+- Le programme crée et initialise la base lors du premier import, puis affiche un récapitulatif (tickets générés, gagnants, perdants et quantités par lot). Le fichier reste au même emplacement entre les lancements.
 - L'API ne crée pas de base au démarrage : si le fichier ou son schéma manque, elle s'arrête avec une erreur et demande d'effectuer l'import.
 - Après un crash, redémarrer l'API réutilise le même fichier et conserve les tirages déjà enregistrés. Pour sauvegarder les données, arrêtez l'API puis copiez `src/Tombola.Api/data/tombola.db`.
 
 ### Format du CSV
 
-Un fichier unique, **une ligne par ticket**, séparateur `;` (compatible Excel français), encodage UTF-8, ligne d'en-tête obligatoire.
+Un fichier unique, **une ligne par lot**, séparateur `;` (compatible Excel français), encodage UTF-8. L'en-tête est facultatif.
 
 ```csv
-numero;lot
-0001;
-0002;Ballon de basket
-0003;
-0004;Maillot du club
-0005;Ballon de basket
+Ballon de basket;2
+Télévision;1
+Maillot du club;2
+Rubik's Cube;10
 ```
 
-- `numero` : obligatoire, unique, format libre.
-- `lot` : vide = ticket perdant ; sinon nom du lot. Les lots sont créés automatiquement à l'import, et leur `Quantite` est le nombre de lignes qui les citent.
-- Contrôles à l'import : numéros uniques, pas de ligne sans numéro, noms de lots normalisés (espaces en trop). Rejet complet du fichier en cas d'erreur, avec la liste des lignes fautives.
+- `lot` : nom obligatoire et unique (espaces normalisés).
+- `quantite` : nombre strictement positif d'exemplaires du lot et donc de tickets gagnants.
+- Contrôles à l'import : deux colonnes, quantité entière positive, noms de lots uniques. Tout le fichier est rejeté en cas d'erreur.
+- Les tickets perdants sont générés à partir du ratio configuré ; ils ne sont pas déclarés dans le fichier CSV.
 
 ## API (proposition)
 
@@ -96,6 +97,7 @@ numero;lot
 - `GET /statistiques` : renvoie
   ```json
   {
+    "ticketsTotaux": 120,
     "ticketsRestants": 120,
     "ticketsGagnantsRestants": 18,
     "lots": [
@@ -105,15 +107,16 @@ numero;lot
   }
   ```
 
-### Débogage
-- `POST /administration/reinitialisation` : remet `DateTirage` à `null` sur **tous** les tickets (les lots et les tickets restent inchangés).
+### Réinitialisation
+- `POST /administration/reinitialisation?perdantsParGagnant=1` : régénère tous les tickets depuis les quantités des lots et mélange leur attribution. Le ratio vaut 1 par défaut ; `0` crée uniquement des tickets gagnants. Les lots ne sont pas modifiés.
+- La réponse précise le nombre de tickets créés, le nombre de gagnants/perdants et le ratio utilisé. Le ratio doit être un entier positif ou nul et le pool est limité à 999 tickets afin de conserver une numérotation sur trois chiffres.
 
 ## Structure de projet envisagée
 
 ```
 /src/Tombola.Api          # API : Program.cs, endpoints, services, accès aux données, commande d'import
 /tests/Tombola.Api.Tests
-/exemples/tickets.csv     # CSV d'exemple
+/exemples/lots.csv        # CSV d'exemple
 README.md
 ```
 
@@ -131,7 +134,7 @@ README.md
 
 ### 3. Données
 - [x] Commande en ligne de commande `importer` (validation + messages d'erreur en français)
-- [x] Fichier CSV d'exemple (`exemples/tickets.csv`)
+- [x] Fichier CSV d'exemple (`exemples/lots.csv`)
 - [x] Contrôles de numéros uniques et quantités des lots à l'import
 
 ### 4. Fonctionnel
@@ -160,8 +163,9 @@ Le projet cible .NET 10 et utilise Dapper avec SQLite. Depuis le dossier `apps/t
 
 ```powershell
 dotnet run --project src/Tombola.Api
-dotnet run --project src/Tombola.Api -- importer exemples/tickets.csv
-dotnet run --project src/Tombola.Api -- importer exemples/tickets.csv --remplacer
+dotnet run --project src/Tombola.Api -- importer exemples/lots.csv
+dotnet run --project src/Tombola.Api -- importer exemples/lots.csv --perdants-par-gagnant 2
+dotnet run --project src/Tombola.Api -- importer exemples/lots.csv --remplacer
 dotnet test tests/Tombola.Api.Tests
 ```
 

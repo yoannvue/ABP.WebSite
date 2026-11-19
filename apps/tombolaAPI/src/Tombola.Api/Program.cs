@@ -82,11 +82,36 @@ app.MapGet("/statistiques", async (TombolaService service) =>
     .WithTags("Statistiques")
     .Produces<Statistiques>();
 
-app.MapPost("/administration/reinitialisation", async (TombolaService service) =>
-    Results.Ok(await service.ReinitialiserAsync()))
+app.MapPost("/administration/reinitialisation", async Task<IResult> (
+    TombolaService service,
+    int perdantsParGagnant = 1) =>
+{
+    if (perdantsParGagnant < 0)
+    {
+        return Results.Problem(
+            title: "Ratio invalide",
+            statusCode: StatusCodes.Status400BadRequest,
+            detail: "Le nombre de tickets perdants par ticket gagnant doit être positif ou nul.");
+    }
+
+    try
+    {
+        return Results.Ok(await service.ReinitialiserAsync(perdantsParGagnant));
+    }
+    catch (ArgumentOutOfRangeException)
+    {
+        return Results.Problem(
+            title: "Pool de tickets trop important",
+            statusCode: StatusCodes.Status400BadRequest,
+            detail: "Le ratio demandé dépasse la limite de 999 tickets.");
+    }
+})
     .WithName("ReinitialiserTickets")
     .WithTags("Administration")
-    .Produces<Reinitialisation>();
+    .WithSummary("Régénérer les tickets à partir des lots")
+    .WithDescription("Recrée un ticket gagnant par exemplaire de lot et ajoute le ratio de tickets perdants demandé.")
+    .Produces<Reinitialisation>()
+    .ProducesProblem(StatusCodes.Status400BadRequest);
 
 await app.RunAsync();
 return 0;

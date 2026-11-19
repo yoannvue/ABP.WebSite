@@ -16,20 +16,24 @@
         <div>Tickets restants&nbsp; <b id="restants">–</b></div>
         <div id="modeLabel"></div>
         <div id="tombolaControls">
-          <button id="tombolaToggle" type="button" aria-pressed="true">Tombola activée</button>
+          <button id="tombolaToggle" type="button" aria-pressed="false">Tombola désactivée</button>
+          <a id="statsLink" href="stats.html">Statistiques complètes</a>
           <div id="tombolaStatus" role="status" aria-live="polite"></div>
         </div>
       </div>
       <div id="aide">Entrée ou toucher : étape suivante · Échap : annuler le joueur · S&nbsp;son · R&nbsp;réinitialiser · F&nbsp;plein écran</div>
       <div id="flash"></div>
       <div id="card">
-        <div class="etiquette">Ticket tiré</div>
-        <div id="num">0</div>
-        <div id="verdict"></div>
-        <div id="lot"></div>
-        <div class="suite">ENTRÉE : joueur suivant</div>
+        <div id="ticketResult">
+          <div class="etiquette">Ticket tiré</div>
+          <div id="num">0</div>
+          <div id="verdict"></div>
+          <div id="lot"></div>
+          <div class="suite">ENTRÉE : joueur suivant</div>
+        </div>
       </div>
       <div id="msg"></div>
+      <div id="resultatPrecedent" class="visible" role="status" aria-live="polite">Résultat précédent : aucun tirage</div>
       <div id="annonce"><div class="titre"></div><br><div class="sous"></div></div>
     </div>
   </div>

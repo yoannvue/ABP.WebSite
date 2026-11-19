@@ -1,0 +1,1 @@
+start "API Tombola" /min dotnet run --project "%~dp0src/Tombola.Api/Tombola.Api.csproj"

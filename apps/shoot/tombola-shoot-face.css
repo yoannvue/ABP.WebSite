@@ -24,6 +24,11 @@
     background: rgba(8,16,28,.9); color: #ffd166; font: inherit; font-size: .8em; font-weight: 700;
   }
   #tombolaToggle[aria-pressed="false"] { border-color: #9aa7b8; color: #c5ceda; }
+  #statsLink {
+    display: inline-block; margin-top: calc(var(--u) * 5); color: #d7e3f4;
+    font-size: .65em; pointer-events: auto; text-decoration: underline;
+    text-underline-offset: .2em;
+  }
   #tombolaStatus { max-width: 24em; margin-top: calc(var(--u) * 5); font-size: .65em; color: #ffb4a2; }
 
   #aide { display: none; }
@@ -37,6 +42,17 @@
   #msg.on { opacity: 1; }
   #msg.pulse { animation: pulse 1.4s ease-in-out infinite; }
   @keyframes pulse { 50% { transform: translateX(-50%) scale(1.05); } }
+  #resultatPrecedent {
+    position: absolute; z-index: 20; left: 50%; bottom: 3.5%; transform: translateX(-50%);
+    max-width: 92%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    display: block; min-height: calc(var(--u) * 32); padding: calc(var(--u) * 7) calc(var(--u) * 18);
+    border: calc(var(--u) * 1) solid rgba(255,255,255,.18); border-radius: calc(var(--u) * 18);
+    background: rgba(5,11,19,.82); box-shadow: 0 calc(var(--u) * 4) calc(var(--u) * 16) rgba(0,0,0,.45);
+    color: rgba(255,255,255,.92); font-size: 18em; font-weight: 700; letter-spacing: .02em;
+    text-shadow: 0 calc(var(--u) * 2) calc(var(--u) * 4) rgba(0,0,0,.9);
+    opacity: 0; transition: opacity .25s;
+  }
+  #resultatPrecedent.visible { opacity: 1; }
   kbd {
     display: inline-block; font: inherit; font-size: .8em; font-weight: 800;
     background: #fff; color: #0d1b2a; padding: .05em .5em; border-radius: .3em;
@@ -61,20 +77,24 @@
   }
 
   #card {
-    position: absolute; left: 2%; top: 17%; width: 27%; text-align: center;
-    padding: calc(var(--u) * 28) calc(var(--u) * 20) calc(var(--u) * 22); border-radius: calc(var(--u) * 28);
-    background: linear-gradient(160deg, rgba(20,40,70,.94), rgba(8,16,28,.94));
-    border: calc(var(--u) * 3) solid rgba(255,255,255,.2); box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 60) rgba(0,0,0,.5);
-    opacity: 0; transform: scale(.8); transition: opacity .35s, transform .45s cubic-bezier(.2,1.4,.4,1);
+    position: absolute; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center;
+    padding: calc(var(--u) * 24); background: rgba(3,8,20,.78);
+    opacity: 0; transition: opacity .35s;
   }
-  #card.visible { opacity: 1; transform: scale(1); }
-  #card.gagnant { border-color: #ffd166; box-shadow: 0 0 calc(var(--u) * 80) rgba(255,209,102,.45), 0 calc(var(--u) * 20) calc(var(--u) * 60) rgba(0,0,0,.5); }
-  #card .etiquette { font-size: 18em; letter-spacing: .35em; text-transform: uppercase; opacity: .65; }
-  #num { font-size: 150em; font-weight: 900; line-height: 1.05; font-variant-numeric: tabular-nums; }
+  #card.visible { opacity: 1; }
+  #ticketResult {
+    width: min(58%, 620em); text-align: center; padding: calc(var(--u) * 28) calc(var(--u) * 30) calc(var(--u) * 22);
+    border-radius: calc(var(--u) * 28); background: linear-gradient(160deg, rgba(20,40,70,.98), rgba(8,16,28,.98));
+    border: calc(var(--u) * 3) solid rgba(255,255,255,.2);
+    box-shadow: 0 calc(var(--u) * 20) calc(var(--u) * 60) rgba(0,0,0,.65);
+  }
+  #card.gagnant #ticketResult { border-color: #ffd166; box-shadow: 0 0 calc(var(--u) * 80) rgba(255,209,102,.45), 0 calc(var(--u) * 20) calc(var(--u) * 60) rgba(0,0,0,.5); }
+  #ticketResult .etiquette { font-size: 18em; letter-spacing: .35em; text-transform: uppercase; opacity: .65; }
+  #num { font-size: 26em; font-weight: 900; line-height: 1.05; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
   #verdict { font-size: 26em; font-weight: 800; letter-spacing: .03em; white-space: nowrap; }
   #card.gagnant #verdict { color: #ffd166; }
-  #lot { font-size: 26em; margin-top: calc(var(--u) * 4); opacity: .9; min-height: calc(var(--u) * 32); }
-  #card .suite { margin-top: calc(var(--u) * 18); font-size: 16em; opacity: .55; }
+  #lot { font-size: 105em; margin-top: calc(var(--u) * 4); opacity: .9; min-height: calc(var(--u) * 32); }
+  #ticketResult .suite { margin-top: calc(var(--u) * 18); font-size: 16em; opacity: .55; }
 
   /* Grand message devant le panier : « Joueur suivant » / « On se prépare » */
   #annonce { position: absolute; left: 50%; top: 40%; transform: translate(-50%, -50%); text-align: center;

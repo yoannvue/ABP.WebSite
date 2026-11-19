@@ -10,11 +10,10 @@ public sealed class TombolaServiceTests
     public async Task TirageEtReinitialisationMettenAJourLesStatistiques()
     {
         await using var fixture = await Fixture.CreerAsync();
-        await fixture.AjouterTicketsAsync(
-            new TicketAImporter("0001", "Ballon"),
-            new TicketAImporter("0002", null));
+        await fixture.AjouterLotsAsync(new LotAImporter("Ballon", 1));
 
         var statistiquesInitiales = await fixture.Service.ObtenirStatistiquesAsync();
+        Assert.Equal(2L, statistiquesInitiales.TicketsTotaux);
         Assert.Equal(2L, statistiquesInitiales.TicketsRestants);
         Assert.Equal(1L, statistiquesInitiales.TicketsGagnantsRestants);
         Assert.Equal(1L, Assert.Single(statistiquesInitiales.Lots).Restants);
@@ -22,19 +21,22 @@ public sealed class TombolaServiceTests
         var tirage = await fixture.Service.EffectuerTirageAsync();
         Assert.Equal(tirage.Lot is not null, tirage.Gagnant);
 
-        var resultatReinitialisation = await fixture.Service.ReinitialiserAsync();
-        Assert.Equal(1, resultatReinitialisation.TicketsReinitialises);
-        Assert.Equal(2L, (await fixture.Service.ObtenirStatistiquesAsync()).TicketsRestants);
+        var resultatReinitialisation = await fixture.Service.ReinitialiserAsync(perdantsParGagnant: 2);
+        Assert.Equal(3, resultatReinitialisation.TicketsReinitialises);
+        Assert.Equal(1, resultatReinitialisation.TicketsGagnants);
+        Assert.Equal(2, resultatReinitialisation.TicketsPerdants);
+        Assert.Equal(2, resultatReinitialisation.PerdantsParGagnant);
+        var statistiquesReinitialisees = await fixture.Service.ObtenirStatistiquesAsync();
+        Assert.Equal(3L, statistiquesReinitialisees.TicketsTotaux);
+        Assert.Equal(3L, statistiquesReinitialisees.TicketsRestants);
+        Assert.Equal(1L, statistiquesReinitialisees.TicketsGagnantsRestants);
     }
 
     [Fact]
     public async Task TiragesSimultanesNeRetournentJamaisLeMemeTicket()
     {
         await using var fixture = await Fixture.CreerAsync();
-        await fixture.AjouterTicketsAsync(
-            Enumerable.Range(0, 24)
-                .Select(index => new TicketAImporter(index.ToString("D4"), null))
-                .ToArray());
+        await fixture.AjouterLotsAsync(new LotAImporter("Lot", 24), perdantsParGagnant: 0);
 
         var resultats = await Task.WhenAll(
             Enumerable.Range(0, 40).Select(async _ =>
@@ -53,6 +55,21 @@ public sealed class TombolaServiceTests
         Assert.Equal(24, tirages.Length);
         Assert.Equal(24, tirages.Select(tirage => tirage.Numero).Distinct().Count());
         Assert.Equal(0L, (await fixture.Service.ObtenirStatistiquesAsync()).TicketsRestants);
+    }
+
+    [Fact]
+    public async Task ImportRefuseUnPoolQuiDepasse999TicketsSansModifierLaBase()
+    {
+        await using var fixture = await Fixture.CreerAsync();
+
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => fixture.Database.ImporterLotsAsync(
+                new[] { new LotAImporter("Lot", 500) },
+                remplacer: false));
+
+        var statistiques = await fixture.Service.ObtenirStatistiquesAsync();
+        Assert.Equal(0L, statistiques.TicketsRestants);
+        Assert.Empty(statistiques.Lots);
     }
 
     [Fact]
@@ -97,9 +114,14 @@ public sealed class TombolaServiceTests
             return new Fixture(chemin, database);
         }
 
-        public async Task AjouterTicketsAsync(params TicketAImporter[] tickets)
+        public async Task AjouterLotsAsync(
+            LotAImporter lot,
+            int perdantsParGagnant = 1)
         {
-            Assert.True(await Database.ImporterTicketsAsync(tickets, remplacer: false));
+            Assert.True(await Database.ImporterLotsAsync(
+                new[] { lot },
+                remplacer: false,
+                perdantsParGagnant: perdantsParGagnant));
         }
 
         public ValueTask DisposeAsync()

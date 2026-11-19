@@ -27,6 +27,17 @@ export function createAudio() {
     g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
     s.connect(f).connect(g).connect(AC.destination); s.start(t0);
   }
+  function choc(dur, vol, typeFiltre, frequence, q) {
+    if (!AC) return;
+    const n = Math.floor(AC.sampleRate * dur);
+    const buf = AC.createBuffer(1, n, AC.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < n; i++) d[i] = Math.random() * 2 - 1;
+    const s = AC.createBufferSource(); s.buffer = buf;
+    const f = AC.createBiquadFilter(); f.type = typeFiltre; f.frequency.value = frequence; f.Q.value = q;
+    const g = AC.createGain(), t0 = AC.currentTime;
+    g.gain.setValueAtTime(vol, t0); g.gain.exponentialRampToValueAtTime(.0001, t0 + dur);
+    s.connect(f).connect(g).connect(AC.destination); s.start(t0);
+  }
   function applaudissements() {
     if (!AC || !sonActif) return;
     const debut = AC.currentTime;
@@ -57,8 +68,15 @@ export function createAudio() {
     switch (nom) {
       case 'lancer': bip(300, .3, 'sine', .1, 800); break;
       case 'dribble': bip(150, .09, 'sine', .16, 70); break;
-      case 'rim':    bip(1250, .35, 'sine', .16); bip(1870, .22, 'sine', .07); break;
-      case 'board':  bip(190, .22, 'triangle', .3, 80); bruit(.08, .12, 1500); break;
+      case 'rim':
+        choc(.045, .18, 'bandpass', 2400, 1.8);
+        bip(980, .14, 'sine', .1, 680);
+        bip(1560, .1, 'sine', .05, 1120, .008);
+        break;
+      case 'board':
+        choc(.065, .18, 'lowpass', 420, .5);
+        bip(95, .15, 'triangle', .24, 55);
+        break;
       case 'filet':  bruit(.4, .2, 3500); break;
       case 'applaudissements': applaudissements(); break;
       case 'gagne':  [523, 659, 784, 1047].forEach((f, i) => bip(f, .35, 'triangle', .16, null, i * .12)); break;

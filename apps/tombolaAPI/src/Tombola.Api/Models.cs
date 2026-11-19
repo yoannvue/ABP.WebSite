@@ -12,11 +12,18 @@ public sealed class StatistiqueLot
 public sealed record Statistiques(
     long TicketsRestants,
     long TicketsGagnantsRestants,
-    IReadOnlyList<StatistiqueLot> Lots);
+    IReadOnlyList<StatistiqueLot> Lots)
+{
+    public long TicketsTotaux { get; init; }
+}
 
-public sealed record Reinitialisation(int TicketsReinitialises);
+public sealed record Reinitialisation(
+    int TicketsReinitialises,
+    int TicketsGagnants,
+    int TicketsPerdants,
+    int PerdantsParGagnant);
 
-public sealed record TicketAImporter(string Numero, string? Lot);
+public sealed record LotAImporter(string Nom, long Quantite);
 
 public sealed class TombolaTermineeException : Exception
 {

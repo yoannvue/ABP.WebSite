@@ -15,5 +15,6 @@ public sealed class TombolaService(Database database)
 
     public Task<Statistiques> ObtenirStatistiquesAsync() => database.ObtenirStatistiquesAsync();
 
-    public Task<Reinitialisation> ReinitialiserAsync() => database.ReinitialiserAsync();
+    public Task<Reinitialisation> ReinitialiserAsync(int perdantsParGagnant = 1) =>
+        database.ReinitialiserAsync(perdantsParGagnant);
 }

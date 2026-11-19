@@ -5,6 +5,7 @@ const resetButton = document.querySelector("#reset-button");
 const refreshButton = document.querySelector("#refresh-button");
 const drawResult = document.querySelector("#draw-result");
 const resetResult = document.querySelector("#reset-result");
+const losersPerWinner = document.querySelector("#losers-per-winner");
 const statisticsResult = document.querySelector("#statistics-result");
 const ticketsRemaining = document.querySelector("#tickets-remaining");
 const winningTicketsRemaining = document.querySelector("#winning-tickets-remaining");
@@ -31,6 +32,7 @@ function setBusy(isBusy) {
   drawButton.disabled = isBusy;
   resetButton.disabled = isBusy;
   refreshButton.disabled = isBusy;
+  losersPerWinner.disabled = isBusy;
 }
 
 async function refreshStatistics() {
@@ -77,13 +79,24 @@ resetButton.addEventListener("click", async () => {
     return;
   }
 
+  const ratio = Number(losersPerWinner.value);
+  if (!Number.isSafeInteger(ratio) || ratio < 0) {
+    showError(resetResult, new Error("Le ratio doit être un entier positif ou nul."));
+    return;
+  }
+
   setBusy(true);
   resetResult.textContent = "Réinitialisation en cours…";
   drawResult.textContent = "Aucun tirage effectué.";
 
   try {
-    const result = await request("/administration/reinitialisation", { method: "POST" });
-    resetResult.textContent = `${result.ticketsReinitialises} ticket(s) réinitialisé(s).`;
+    const result = await request(
+      `/administration/reinitialisation?perdantsParGagnant=${encodeURIComponent(ratio)}`,
+      { method: "POST" }
+    );
+    resetResult.textContent =
+      `${result.ticketsReinitialises} tickets créés : ${result.ticketsGagnants} gagnants et ` +
+      `${result.ticketsPerdants} perdants (ratio ${result.perdantsParGagnant}:1).`;
     await refreshStatistics();
   } catch (error) {
     showError(resetResult, error);

@@ -5,10 +5,34 @@ export const PAS = 1 / 240, TUBE = .02, REST_CERCLE = .6, REST_PLANCHE = .7;
 export function simulerTir(px, py, Y0 = DEPART.Y) {
   const K = CONFIG.precision, T = CONFIG.dureeVol;
   const bruit = () => (Math.random() - .5) * .03;       // petite imprécision : deux tirs identiques ne sont jamais jumeaux
-  const f = 1 - py * CONFIG.puissance + (Math.random() - .5) * .008;   // facteur de puissance
-  const Xc = px * K + bruit();
   let X = DEPART.X, Y = Y0, Z = DEPART.Z;
-  let vX = (Xc - X) / T, vZ = (RIM_Z - Z) / T * f, vY = (RIM_Y - Y + .5 * GRAV * T * T) / T * f;
+  let vX, vY, vZ;
+  const distanceCible = Math.hypot(px, py);
+  const rayonRecouvrement = CONFIG.zoneSwish + CONFIG.rayonVisee;
+  const recouvreCible = distanceCible <= rayonRecouvrement;
+  const margeRecouvrement = Math.max(0, Math.min(1,
+    (rayonRecouvrement - distanceCible) / CONFIG.rayonVisee
+  ));
+  const chancePanier = .95 + .04 * margeRecouvrement;
+  if (distanceCible <= CONFIG.zoneSwish || (recouvreCible && Math.random() < chancePanier)) {
+    vX = 0;
+    vY = (RIM_Y - Y + .5 * GRAV * T * T) / T;
+    vZ = (RIM_Z - Z) / T;
+  } else if (py < 0) {
+    const tPlanche = T * 1.2;
+    const zPlanche = BOARD_Z - BALL_R;
+    const xPlanche = Math.max(-.8, Math.min(.8, px * .8)) + bruit();
+    const yPlanche = RIM_Y + .05 - py * .35 + bruit();
+    vX = xPlanche / tPlanche;
+    vY = (yPlanche - Y + .5 * GRAV * tPlanche * tPlanche) / tPlanche;
+    vZ = (zPlanche - Z) / tPlanche;
+  } else {
+    const f = 1 - py * CONFIG.puissance + (Math.random() - .5) * .008; // facteur de puissance
+    const Xc = px * K + bruit();
+    vX = (Xc - X) / T;
+    vZ = (RIM_Z - Z) / T * f;
+    vY = (RIM_Y - Y + .5 * GRAV * T * T) / T * f;
+  }
   let rot = 0;
   const vr = (Math.random() < .5 ? -1 : 1) * (4 + Math.random() * 3);
   const traj = [[X, Y, Z, rot]], evts = [];

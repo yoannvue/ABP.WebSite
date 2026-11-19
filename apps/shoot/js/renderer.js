@@ -402,9 +402,9 @@ export function createRenderer({ wrap, canvas, state, getTime }) {
       ctx.fillStyle = `rgba(255,255,255,${(i + 1) / j.hist.length * .3})`; ctx.fill();
     });
     const bx = cx + j.x * R, by = cy + j.y * R;                           // la bille
-    ctx.beginPath(); ctx.arc(bx, by, 13, 0, 7);
+    ctx.beginPath(); ctx.arc(bx, by, CONFIG.rayonVisee * R, 0, 7);
     ctx.fillStyle = '#fff'; ctx.fill();
-    ctx.lineWidth = 3.5; ctx.strokeStyle = '#0d1b2a'; ctx.stroke();
+    ctx.lineWidth = 3.5 * 2 / 3; ctx.strokeStyle = '#0d1b2a'; ctx.stroke();
     ctx.restore();
   }
 
