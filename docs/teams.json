@@ -802,10 +802,10 @@
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059149",
             "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
         },
-        "CAMBRAI BASKET": {
+        "IE - CAMBRAI BASKET": {
             "nomcourt": "CAMBRAI BASKET",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059017",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/IE - CAMBRAI BASKET.png"
         },
         "CAMBRESIS": {
             "nomcourt": "CAMBRESIS",
@@ -865,7 +865,7 @@
         "CONDE BASKET": {
             "nomcourt": "CONDE BASKET",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059150",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/CONDE BASKET.png"
         },
         "CRESPINOISE BB": {
             "nomcourt": "CRESPIN",
@@ -955,9 +955,9 @@
             "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
         },
         "HAULCHIN B C M": {
-            "nomcourt": "HAULCHIN B C M",
+            "nomcourt": "HAULCHIN",
             "url": "/ligues/hdf/comites/0059/clubs/hdf0059158",
-            "logo": "https://competitions.ffbb.com/_next/static/media/club.3obq4sh8-mrx_.svg"
+            "logo": "/ressources/clubs/HAULCHIN B C M.png"
         },
         "HAUTMONT USO": {
             "nomcourt": "HAUTMONT USO",
