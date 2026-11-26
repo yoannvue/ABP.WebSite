@@ -2,6 +2,17 @@
   "semaine": "Semaine du 28 novembre",
   "rencontres": [
     {
+      "Type": null,
+      "Equipe1": "undefined",
+      "Equipe2": "RAISMES AS",
+      "Date": "2026-11-28T09:30:00.000Z",
+      "JourRencontre": "2026/11/28",
+      "DateFormatted": "SAMEDI\n10H30",
+      "Salle": "JEAN DEGROS",
+      "EstExempt": false,
+      "ADomicile": true
+    },
+    {
       "Type": "CHAMPIONNAT",
       "Equipe1": "U11M",
       "Equipe2": "LAMBRES BASKET CLUB",
@@ -102,17 +113,6 @@
     },
     {
       "Type": "CHAMPIONNAT",
-      "Equipe1": "CONDE BASKET",
-      "Equipe2": "U18M",
-      "Date": "2026-11-29T09:30:00.000Z",
-      "JourRencontre": "2026/11/29",
-      "DateFormatted": "DIMANCHE\n10H30",
-      "Salle": "LEO LAGRANGE",
-      "EstExempt": false,
-      "ADomicile": false
-    },
-    {
-      "Type": "CHAMPIONNAT",
       "Equipe1": "U18F",
       "Equipe2": "HAULCHIN B C M",
       "Date": "2026-11-29T09:30:00.000Z",
@@ -121,6 +121,17 @@
       "Salle": "JEAN DEGROS",
       "EstExempt": false,
       "ADomicile": true
+    },
+    {
+      "Type": "CHAMPIONNAT",
+      "Equipe1": "CONDE BASKET",
+      "Equipe2": "U18M",
+      "Date": "2026-11-29T09:30:00.000Z",
+      "JourRencontre": "2026/11/29",
+      "DateFormatted": "DIMANCHE\n10H30",
+      "Salle": "LEO LAGRANGE",
+      "EstExempt": false,
+      "ADomicile": false
     },
     {
       "Type": "CHAMPIONNAT",
